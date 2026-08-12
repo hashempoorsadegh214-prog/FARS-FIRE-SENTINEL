@@ -1,0 +1,107 @@
+name: Update Fars Fire Data
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "0 * * * *"
+
+  push:
+    paths:
+      - "update_fires.py"
+      - "fars.geojson"
+      - "requirements.txt"
+      - ".github/workflows/update-fires.yml"
+
+jobs:
+  update-fires:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+
+      # ==========================================
+      # دریافت Repository
+      # ==========================================
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ==========================================
+      # نصب Python
+      # ==========================================
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # ==========================================
+      # نصب وابستگی‌ها
+      # ==========================================
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # ==========================================
+      # اجرای Python
+      # ==========================================
+
+      - name: Update fire data
+        env:
+          FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
+        run: |
+          python update_fires.py
+
+      # ==========================================
+      # بررسی CSV
+      # ==========================================
+
+      - name: Check generated CSV
+        run: |
+          echo "Checking fires.csv..."
+
+          if [ ! -f fires.csv ]; then
+            echo "ERROR: fires.csv was not created."
+            exit 1
+          fi
+
+          echo "fires.csv successfully created."
+
+          echo "Number of lines:"
+          wc -l fires.csv
+
+          echo "First 5 rows:"
+          head -n 5 fires.csv
+
+      # ==========================================
+      # ثبت تغییرات در Repository
+      # ==========================================
+
+      - name: Commit updated fire data
+        run: |
+
+          git config --global user.name "github-actions[bot]"
+
+          git config --global user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add fires.csv
+
+          if git diff --cached --quiet; then
+
+            echo "No changes in fires.csv."
+
+          else
+
+            git commit \
+              -m "Update Fars fire data"
+
+            git push
+
+          fi
