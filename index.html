@@ -108,12 +108,22 @@
             direction: rtl;
             text-align: right;
             line-height: 1.9;
-            min-width: 230px;
+            min-width: 240px;
         }
 
         .popup h3 {
             margin: 0 0 8px;
             color: #b71c1c;
+        }
+
+        .boundary-label {
+            background: white;
+            border: 2px solid #d32f2f;
+            color: #b71c1c;
+            font-weight: bold;
+            padding: 5px 9px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,.25);
         }
 
         @media (max-width: 700px) {
@@ -159,55 +169,30 @@
 <div class="stats">
 
     <div class="card">
-
         <h3>کل حریق‌ها</h3>
-
-        <strong id="fireCount">
-            0
-        </strong>
-
+        <strong id="fireCount">0</strong>
     </div>
 
-
     <div class="card">
-
         <h3>VIIRS</h3>
-
-        <strong id="viirsCount">
-            0
-        </strong>
-
+        <strong id="viirsCount">0</strong>
     </div>
 
-
     <div class="card">
-
         <h3>MODIS</h3>
-
-        <strong id="modisCount">
-            0
-        </strong>
-
+        <strong id="modisCount">0</strong>
     </div>
 
-
     <div class="card">
-
         <h3>آخرین تاریخ</h3>
-
-        <strong id="fireDate">
-            ---
-        </strong>
-
+        <strong id="fireDate">---</strong>
     </div>
 
 </div>
 
 
 <div id="status">
-
     در حال دریافت داده‌های حریق...
-
 </div>
 
 
@@ -215,58 +200,52 @@
 
 
 <footer>
-
     NASA FIRMS | VIIRS | MODIS | FARS FIRE SENTINEL
-
 </footer>
-
 
 
 <!-- =====================================================
      Leaflet
 ===================================================== -->
 
-<script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 
 <!-- =====================================================
      Marker Cluster
 ===================================================== -->
 
-<script
-    src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js">
-</script>
-
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
 
 <script>
 
-/* =====================================================
+/* =========================================================
+   تنظیمات فایل‌ها
+========================================================= */
+
+const FIRE_FILE = "fires.csv";
+const BOUNDARY_FILE = "geoBoundaries-IRN-ADM1.geojson";
+
+
+/* =========================================================
    ایجاد نقشه
-===================================================== */
+========================================================= */
 
-var map = L.map("map");
-
-
-
-/* =====================================================
-   OpenStreetMap
-===================================================== */
+const map = L.map("map");
 
 L.tileLayer(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     {
-        attribution: "© OpenStreetMap"
+        maxZoom: 18,
+        attribution: "© OpenStreetMap contributors"
     }
 ).addTo(map);
 
 
-
-/* =====================================================
+/* =========================================================
    مرکز اولیه فارس
-===================================================== */
+========================================================= */
 
 map.setView(
     [29.6, 52.5],
@@ -274,43 +253,320 @@ map.setView(
 );
 
 
-
-/* =====================================================
+/* =========================================================
    لایه حریق
-===================================================== */
+========================================================= */
 
-var fireLayer =
+const fireLayer =
     L.markerClusterGroup({
-
         showCoverageOnHover: false,
-
         spiderfyOnMaxZoom: true,
-
         disableClusteringAtZoom: 12,
-
         maxClusterRadius: 30
+    });
+
+map.addLayer(fireLayer);
+
+
+/* =========================================================
+   لایه مرز فارس
+========================================================= */
+
+let farsBoundaryLayer = null;
+
+
+/* =========================================================
+   وضعیت
+========================================================= */
+
+function setStatus(text) {
+
+    document.getElementById(
+        "status"
+    ).innerText = text;
+
+}
+
+
+/* =========================================================
+   خواندن CSV
+========================================================= */
+
+function parseCSV(text) {
+
+    text = text
+        .replace(/^\uFEFF/, "")
+        .trim();
+
+    if (!text) {
+        return [];
+    }
+
+    const lines =
+        text.split(/\r?\n/);
+
+    if (lines.length < 2) {
+        return [];
+    }
+
+    const headers =
+        lines[0]
+            .split(",")
+            .map(function(header) {
+
+                return header
+                    .trim()
+                    .toLowerCase();
+
+            });
+
+    const data = [];
+
+    for (
+        let i = 1;
+        i < lines.length;
+        i++
+    ) {
+
+        if (!lines[i].trim()) {
+            continue;
+        }
+
+        const values =
+            lines[i].split(",");
+
+        const row = {};
+
+        for (
+            let j = 0;
+            j < headers.length;
+            j++
+        ) {
+
+            row[headers[j]] =
+                values[j] !== undefined
+                ? values[j].trim()
+                : "";
+
+        }
+
+        data.push(row);
+    }
+
+    return data;
+}
+
+
+/* =========================================================
+   نمایش مرز استان فارس
+========================================================= */
+
+function loadFarsBoundary() {
+
+    setStatus(
+        "در حال دریافت مرز استان فارس..."
+    );
+
+    return fetch(
+        BOUNDARY_FILE + "?v=" + Date.now()
+    )
+
+    .then(function(response) {
+
+        if (!response.ok) {
+
+            throw new Error(
+                "فایل GeoJSON مرز پیدا نشد."
+            );
+        }
+
+        return response.json();
+    })
+
+    .then(function(data) {
+
+        if (
+            data.type !==
+            "FeatureCollection"
+        ) {
+
+            throw new Error(
+                "ساختار GeoJSON معتبر نیست."
+            );
+        }
+
+        if (
+            !Array.isArray(data.features) ||
+            data.features.length === 0
+        ) {
+
+            throw new Error(
+                "هیچ استان در GeoJSON پیدا نشد."
+            );
+        }
+
+
+        /* =============================================
+           پیدا کردن فارس
+        ============================================= */
+
+        let fars = null;
+
+        data.features.forEach(
+            function(feature) {
+
+                const properties =
+                    feature.properties || {};
+
+                const name =
+                    String(
+                        properties.shapeName ||
+                        ""
+                    )
+                    .trim()
+                    .toLowerCase();
+
+                if (
+                    name === "fars"
+                ) {
+
+                    fars = feature;
+
+                }
+
+            }
+        );
+
+
+        if (!fars) {
+
+            throw new Error(
+                "استان Fars در GeoJSON پیدا نشد."
+            );
+
+        }
+
+
+        console.log(
+            "Fars boundary found:",
+            fars
+        );
+
+
+        /* =============================================
+           حذف مرز قبلی
+        ============================================= */
+
+        if (
+            farsBoundaryLayer
+        ) {
+
+            map.removeLayer(
+                farsBoundaryLayer
+            );
+
+        }
+
+
+        /* =============================================
+           رسم مرز
+        ============================================= */
+
+        farsBoundaryLayer =
+            L.geoJSON(
+                fars,
+                {
+
+                    style: {
+
+                        color: "#e00000",
+
+                        weight: 4,
+
+                        opacity: 1,
+
+                        fillColor: "#ff0000",
+
+                        fillOpacity: 0.05
+
+                    }
+
+                }
+            ).addTo(map);
+
+
+        /* =============================================
+           زوم روی فارس
+        ============================================= */
+
+        const boundaryBounds =
+            farsBoundaryLayer.getBounds();
+
+
+        if (
+            boundaryBounds.isValid()
+        ) {
+
+            map.fitBounds(
+                boundaryBounds,
+                {
+                    padding: [
+                        20,
+                        20
+                    ]
+                }
+            );
+
+        }
+
+
+        /* =============================================
+           برچسب فارس
+        ============================================= */
+
+        const center =
+            boundaryBounds.getCenter();
+
+
+        L.marker(
+            center,
+            {
+                icon:
+                    L.divIcon({
+                        className:
+                            "boundary-label",
+
+                        html:
+                            "استان فارس",
+
+                        iconSize:
+                            [80, 28],
+
+                        iconAnchor:
+                            [40, 14]
+                    })
+            }
+        ).addTo(map);
+
+
+        return fars;
 
     });
 
-
-map.addLayer(
-    fireLayer
-);
+}
 
 
-
-/* =====================================================
-   خواندن CSV
-===================================================== */
+/* =========================================================
+   دریافت داده‌های حریق
+========================================================= */
 
 function loadFireData() {
 
-    var url =
-        "fires.csv?v=" +
-        new Date().getTime();
-
-
-    fetch(url)
+    return fetch(
+        FIRE_FILE +
+        "?v=" +
+        Date.now()
+    )
 
     .then(function(response) {
 
@@ -319,231 +575,69 @@ function loadFireData() {
             throw new Error(
                 "fires.csv پیدا نشد."
             );
-        }
 
+        }
 
         return response.text();
 
     })
 
-
     .then(function(csvText) {
 
         console.log(
-            "CSV دریافت شد:"
+            "CSV:",
+            csvText
         );
+
+        const fires =
+            parseCSV(
+                csvText
+            );
 
         console.log(
-            csvText
+            "Parsed fires:",
+            fires
         );
 
+        if (
+            fires.length === 0
+        ) {
 
-        parseCSV(
-            csvText
-        );
+            throw new Error(
+                "هیچ رکوردی در fires.csv پیدا نشد."
+            );
 
-    })
+        }
 
-
-    .catch(function(error) {
-
-        console.error(
-            error
-        );
-
-
-        document.getElementById(
-            "status"
-        ).innerText =
-            "خطا: " +
-            error.message;
+        return fires;
 
     });
 
 }
 
 
-
-/* =====================================================
-   CSV Parser
-===================================================== */
-
-function parseCSV(text) {
-
-    text =
-        text
-        .replace(/^\uFEFF/, "")
-        .trim();
-
-
-    if (!text) {
-
-        throw new Error(
-            "fires.csv خالی است."
-        );
-
-    }
-
-
-    var lines =
-        text.split(/\r?\n/);
-
-
-    if (lines.length < 2) {
-
-        throw new Error(
-            "هیچ رکوردی در fires.csv پیدا نشد."
-        );
-
-    }
-
-
-    /* ---------------------------------------------
-       Header
-    --------------------------------------------- */
-
-    var headers =
-        lines[0]
-        .split(",")
-        .map(function(header) {
-
-            return header
-                .trim()
-                .toLowerCase();
-
-        });
-
-
-
-    console.log(
-        "Headers:",
-        headers
-    );
-
-
-
-    var fires = [];
-
-
-
-    /* ---------------------------------------------
-       رکوردها
-    --------------------------------------------- */
-
-    for (
-        var i = 1;
-        i < lines.length;
-        i++
-    ) {
-
-        if (
-            !lines[i].trim()
-        ) {
-            continue;
-        }
-
-
-        var values =
-            lines[i].split(",");
-
-
-        var row = {};
-
-
-
-        for (
-            var j = 0;
-            j < headers.length;
-            j++
-        ) {
-
-            row[
-                headers[j]
-            ] =
-                values[j] !== undefined
-                ? values[j].trim()
-                : "";
-
-        }
-
-
-        fires.push(
-            row
-        );
-
-    }
-
-
-
-    console.log(
-        "تعداد حریق:",
-        fires.length
-    );
-
-
-
-    if (
-        fires.length === 0
-    ) {
-
-        throw new Error(
-            "هیچ رکوردی در fires.csv پیدا نشد."
-        );
-
-    }
-
-
-    displayFires(
-        fires
-    );
-
-}
-
-
-
-/* =====================================================
+/* =========================================================
    نمایش حریق‌ها
-===================================================== */
+========================================================= */
 
-function displayFires(
-    fires
-) {
-
-
-    /* ---------------------------------------------
-       پاک کردن نقاط قبلی
-    --------------------------------------------- */
+function displayFires(fires) {
 
     fireLayer.clearLayers();
 
+    let viirs = 0;
+    let modis = 0;
+    let latestDate = "---";
 
-
-    var viirs =
-        0;
-
-    var modis =
-        0;
-
-    var latestDate =
-        "---";
-
-
-
-    /* ---------------------------------------------
-       پردازش حریق‌ها
-    --------------------------------------------- */
 
     fires.forEach(
         function(fire) {
 
-
-            var lat =
+            const lat =
                 parseFloat(
                     fire.latitude
                 );
 
-
-            var lon =
+            const lon =
                 parseFloat(
                     fire.longitude
                 );
@@ -559,12 +653,7 @@ function displayFires(
             }
 
 
-
-            /* -------------------------------------
-               سنجنده
-            ------------------------------------- */
-
-            var sensor =
+            const sensor =
                 String(
                     fire.detected_sensor ||
                     fire.instrument ||
@@ -572,7 +661,6 @@ function displayFires(
                 )
                 .trim()
                 .toUpperCase();
-
 
 
             if (
@@ -584,7 +672,6 @@ function displayFires(
             }
 
 
-
             if (
                 sensor === "MODIS"
             ) {
@@ -594,54 +681,61 @@ function displayFires(
             }
 
 
-
-            /* -------------------------------------
-               تاریخ
-            ------------------------------------- */
-
-            var date =
-                fire.acq_date ||
-                "---";
-
-
             if (
-                date !== "---" &&
+                fire.acq_date &&
                 (
                     latestDate === "---" ||
-                    date > latestDate
+                    fire.acq_date >
+                    latestDate
                 )
             ) {
 
                 latestDate =
-                    date;
+                    fire.acq_date;
 
             }
 
 
+            /* =========================================
+               رنگ نقطه
+            ========================================= */
 
-            /* -------------------------------------
-               رنگ
-            ------------------------------------- */
+            let fillColor =
+                "#8e24aa";
 
-            var fillColor =
+
+            if (
+                sensor === "VIIRS"
+            ) {
+
+                fillColor =
+                    "#ff1744";
+
+            }
+
+
+            if (
                 sensor === "MODIS"
-                ? "#ff9800"
-                : "#ff1744";
+            ) {
+
+                fillColor =
+                    "#ff9800";
+
+            }
 
 
-
-            /* -------------------------------------
+            /* =========================================
                Marker
-            ------------------------------------- */
+            ========================================= */
 
-            var marker =
+            const marker =
                 L.circleMarker(
                     [lat, lon],
                     {
 
                         radius: 9,
 
-                        color: "#7f0000",
+                        color: "#700000",
 
                         fillColor:
                             fillColor,
@@ -654,12 +748,11 @@ function displayFires(
                 );
 
 
-
-            /* -------------------------------------
+            /* =========================================
                Popup
-            ------------------------------------- */
+            ========================================= */
 
-            var popup =
+            const popup =
 
                 "<div class='popup'>" +
 
@@ -722,6 +815,14 @@ function displayFires(
 
                 "<br>" +
 
+                "<b>Day/Night:</b> " +
+                (
+                    fire.daynight ||
+                    "---"
+                ) +
+
+                "<br>" +
+
                 "<b>مختصات:</b> " +
                 lat.toFixed(5) +
                 " , " +
@@ -730,11 +831,9 @@ function displayFires(
                 "</div>";
 
 
-
             marker.bindPopup(
                 popup
             );
-
 
 
             fireLayer.addLayer(
@@ -745,10 +844,9 @@ function displayFires(
     );
 
 
-
-    /* =================================================
+    /* =====================================================
        آمار
-    ================================================= */
+    ===================================================== */
 
     document.getElementById(
         "fireCount"
@@ -774,125 +872,98 @@ function displayFires(
         latestDate;
 
 
+    /* =====================================================
+       زوم روی حریق
+    ===================================================== */
 
-    /* =================================================
-       وضعیت
-    ================================================= */
-
-    document.getElementById(
-        "status"
-    ).innerText =
-
-        fires.length +
-        " حریق در داده‌های NASA FIRMS نمایش داده شد.";
-
-
-
-    /* =================================================
-       زوم روی نقاط حریق
-    ================================================= */
-
-    var layers =
+    const fireMarkers =
         fireLayer.getLayers();
 
 
-
     if (
-        layers.length > 0
+        fireMarkers.length > 0
     ) {
 
-        var bounds =
+        const fireBounds =
             L.featureGroup(
-                layers
+                fireMarkers
             ).getBounds();
 
 
-        map.fitBounds(
-            bounds,
-            {
-                padding: [40, 40]
+        if (
+            fireBounds.isValid()
+        ) {
+
+            /*
+             * فقط در صورتی روی حریق زوم می‌کنیم
+             * که مرز فارس قبلاً موجود نباشد.
+             */
+
+            if (
+                !farsBoundaryLayer
+            ) {
+
+                map.fitBounds(
+                    fireBounds,
+                    {
+                        padding: [
+                            40,
+                            40
+                        ]
+                    }
+                );
+
             }
-        );
+
+        }
 
     }
 
 }
 
-/* =====================================================
-   نمایش مرز استان فارس
-===================================================== */
 
-fetch("geoBoundaries-IRN-ADM1.geojson")
-    .then(function(response) {
+/* =========================================================
+   شروع برنامه
+========================================================= */
 
-        if (!response.ok) {
-            throw new Error("فایل مرز استان پیدا نشد.");
-        }
+Promise.all([
+    loadFarsBoundary(),
+    loadFireData()
+])
 
-        return response.json();
-    })
+.then(function(results) {
 
-    .then(function(data) {
+    const fires =
+        results[1];
 
-        var fars = null;
+    displayFires(
+        fires
+    );
 
-        data.features.forEach(function(feature) {
 
-            var properties =
-                feature.properties || {};
+    setStatus(
+        fires.length +
+        " حریق از NASA FIRMS دریافت شد."
+    );
 
-            var name =
-                String(
-                    properties.shapeName ||
-                    ""
-                )
-                .trim()
-                .toLowerCase();
+})
 
-            if (name === "fars") {
-                fars = feature;
-            }
-        });
+.catch(function(error) {
 
-        if (!fars) {
-            throw new Error(
-                "استان فارس در GeoJSON پیدا نشد."
-            );
-        }
+    console.error(
+        "FARS FIRE SENTINEL ERROR:",
+        error
+    );
 
-        L.geoJSON(
-            fars,
-            {
-                style: {
-                    color: "#ff0000",
-                    weight: 4,
-                    fillColor: "#ff0000",
-                    fillOpacity: 0.03
-                }
-            }
-        ).addTo(map);
 
-    })
+    setStatus(
+        "خطا: " +
+        error.message
+    );
 
-    .catch(function(error) {
-
-        console.error(
-            "Boundary Error:",
-            error
-        );
-
-    });
-
-/* =====================================================
-   شروع
-===================================================== */
-
-loadFireData();
-
+});
 
 </script>
 
-
 </body>
-
 </html>
