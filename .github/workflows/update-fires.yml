@@ -1,8 +1,9 @@
 name: Update Fars Fire Data
 
 on:
+
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/5 * * * *"
 
   workflow_dispatch:
 
@@ -13,9 +14,14 @@ on:
       - "requirements.txt"
       - ".github/workflows/update-fires.yml"
 
+
 jobs:
 
   update-fires:
+
+    concurrency:
+      group: fars-fire-update
+      cancel-in-progress: false
 
     runs-on: ubuntu-latest
 
@@ -24,8 +30,19 @@ jobs:
 
     steps:
 
+      # ==================================================
+      # CHECKOUT
+      # ==================================================
+
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+
+      # ==================================================
+      # PYTHON
+      # ==================================================
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -33,10 +50,20 @@ jobs:
           python-version: "3.11"
           cache: "pip"
 
+
+      # ==================================================
+      # DEPENDENCIES
+      # ==================================================
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+
+      # ==================================================
+      # CHECK FILES
+      # ==================================================
 
       - name: Check required files
         run: |
@@ -44,28 +71,55 @@ jobs:
           test -f geoBoundaries-IRN-ADM1.geojson
           test -f requirements.txt
 
+          echo "Required files are OK."
+
+
+      # ==================================================
+      # NASA FIRMS
+      # ==================================================
+
       - name: Update fire data
         env:
           FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
         run: |
           python update_fires.py
 
+
+      # ==================================================
+      # CHECK OUTPUT
+      # ==================================================
+
       - name: Check generated files
         run: |
+
           test -f fires.csv
           test -f archive/index.json
           test -f update-info.json
 
-          echo "fires.csv:"
+          echo "=============================="
+          echo "fires.csv"
+          echo "=============================="
+
           wc -l fires.csv
 
-          echo "update-info.json:"
+          echo "=============================="
+          echo "update-info.json"
+          echo "=============================="
+
           cat update-info.json
 
-          echo "Archive:"
+          echo "=============================="
+          echo "ARCHIVE"
+          echo "=============================="
+
           ls -lah archive/
 
-      - name: Commit updated fire data
+
+      # ==================================================
+      # COMMIT
+      # ==================================================
+
+      - name: Commit and push updated data
         run: |
 
           git config user.name "github-actions[bot]"
@@ -81,10 +135,15 @@ jobs:
 
             echo "No changes in fire data."
 
-          else
-
-            git commit -m "Update Fars fire data"
-
-            git push
+            exit 0
 
           fi
+
+          git commit \
+            -m "Update Fars fire data"
+
+          git fetch origin main
+
+          git rebase origin/main
+
+          git push origin HEAD:main
