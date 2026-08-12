@@ -9,7 +9,7 @@ on:
   push:
     paths:
       - "update_fires.py"
-      - "fars.geojson"
+      - "geoBoundaries-IRN-ADM1.geojson"
       - "requirements.txt"
       - ".github/workflows/update-fires.yml"
 
@@ -42,7 +42,7 @@ jobs:
           echo "Checking repository files..."
 
           test -f update_fires.py
-          test -f fars.geojson
+          test -f geoBoundaries-IRN-ADM1.geojson
           test -f requirements.txt
 
           echo "All required files exist."
