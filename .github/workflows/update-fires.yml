@@ -2,7 +2,7 @@ name: Update Fars Fire Data
 
 on:
   schedule:
-    - cron: "15 * * * *"
+    - cron: "*/15 * * * *"
 
   workflow_dispatch:
 
@@ -24,60 +24,47 @@ jobs:
 
     steps:
 
-      # دریافت Repository
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      # نصب Python
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: "pip"
 
-      # نصب requests
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # بررسی فایل‌های لازم
       - name: Check required files
         run: |
           test -f update_fires.py
           test -f geoBoundaries-IRN-ADM1.geojson
           test -f requirements.txt
 
-          echo "Required files are OK."
-
-      # دریافت داده از NASA FIRMS
       - name: Update fire data
         env:
           FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
         run: |
           python update_fires.py
 
-      # بررسی خروجی‌ها
       - name: Check generated files
         run: |
-
-          echo "Checking fires.csv..."
-
           test -f fires.csv
+          test -f archive/index.json
+          test -f update-info.json
 
           echo "fires.csv:"
           wc -l fires.csv
 
-          echo ""
-          echo "Checking archive/index.json..."
+          echo "update-info.json:"
+          cat update-info.json
 
-          test -f archive/index.json
-
-          echo ""
-          echo "Archive files:"
+          echo "Archive:"
           ls -lah archive/
 
-      # ذخیره خودکار داده‌های جدید در GitHub
       - name: Commit updated fire data
         run: |
 
@@ -88,6 +75,7 @@ jobs:
 
           git add fires.csv
           git add archive/
+          git add update-info.json
 
           if git diff --cached --quiet; then
 
@@ -95,8 +83,7 @@ jobs:
 
           else
 
-            git commit \
-              -m "Update Fars fire data"
+            git commit -m "Update Fars fire data"
 
             git push
 
