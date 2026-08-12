@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 
 
 # ============================================================
-# تنظیمات
+# SETTINGS
 # ============================================================
 
 API_KEY = os.environ["FIRMS_MAP_KEY"]
@@ -20,7 +20,8 @@ ARCHIVE_DIR = "archive"
 
 ARCHIVE_INDEX = "archive/index.json"
 
-# محدوده تقریبی فارس
+UPDATE_INFO_FILE = "update-info.json"
+
 WEST = 50.0
 SOUTH = 27.0
 EAST = 54.5
@@ -28,7 +29,6 @@ NORTH = 31.5
 
 AREA = f"{WEST},{SOUTH},{EAST},{NORTH}"
 
-# سنجنده‌ها / محصولات FIRMS
 SENSORS = [
     "VIIRS_SNPP_NRT",
     "VIIRS_NOAA20_NRT",
@@ -36,12 +36,11 @@ SENSORS = [
     "MODIS_NRT"
 ]
 
-# تعداد روزهای آرشیو
 DAYS_TO_KEEP = 5
 
 
 # ============================================================
-# ستون‌های خروجی
+# OUTPUT COLUMNS
 # ============================================================
 
 FIELDNAMES = [
@@ -65,7 +64,7 @@ FIELDNAMES = [
 
 
 # ============================================================
-# Point in Ring
+# POINT IN RING
 # ============================================================
 
 def point_in_ring(point, ring):
@@ -85,8 +84,9 @@ def point_in_ring(point, ring):
             and
             (
                 x <
-                (xj - xi) *
-                (y - yi) /
+                (xj - xi)
+                * (y - yi)
+                /
                 ((yj - yi) or 1e-15)
                 + xi
             )
@@ -101,7 +101,7 @@ def point_in_ring(point, ring):
 
 
 # ============================================================
-# Point in Polygon
+# POINT IN POLYGON
 # ============================================================
 
 def point_in_polygon(lon, lat, polygon):
@@ -129,7 +129,7 @@ def point_in_polygon(lon, lat, polygon):
 
 
 # ============================================================
-# Point in Geometry
+# POINT IN GEOMETRY
 # ============================================================
 
 def point_in_geometry(
@@ -141,13 +141,9 @@ def point_in_geometry(
     if not geometry:
         return False
 
-    geometry_type = geometry.get(
-        "type"
-    )
+    geometry_type = geometry.get("type")
 
-    coordinates = geometry.get(
-        "coordinates"
-    )
+    coordinates = geometry.get("coordinates")
 
     if not coordinates:
         return False
@@ -171,13 +167,11 @@ def point_in_geometry(
             ):
                 return True
 
-        return False
-
     return False
 
 
 # ============================================================
-# خواندن مرز فارس
+# LOAD FARS BOUNDARY
 # ============================================================
 
 def load_fars_geometry():
@@ -186,7 +180,7 @@ def load_fars_geometry():
         BOUNDARY_FILE
     ):
         raise FileNotFoundError(
-            f"فایل {BOUNDARY_FILE} پیدا نشد."
+            f"{BOUNDARY_FILE} پیدا نشد."
         )
 
     with open(
@@ -229,7 +223,7 @@ def load_fars_geometry():
             if not geometry:
 
                 raise ValueError(
-                    "Geometry استان فارس پیدا نشد."
+                    "Geometry فارس پیدا نشد."
                 )
 
             print(
@@ -244,7 +238,7 @@ def load_fars_geometry():
 
 
 # ============================================================
-# دریافت داده FIRMS
+# FIRMS API
 # ============================================================
 
 def get_fire_data(
@@ -298,7 +292,7 @@ def get_fire_data(
 
 
 # ============================================================
-# تشخیص سنجنده
+# SENSOR
 # ============================================================
 
 def detect_sensor(row):
@@ -333,7 +327,7 @@ def detect_sensor(row):
 
 
 # ============================================================
-# پردازش رکورد
+# PROCESS RECORD
 # ============================================================
 
 def process_record(
@@ -359,7 +353,6 @@ def process_record(
 
         return None
 
-    # محدوده تقریبی
     if not (
         WEST <= lon <= EAST
         and
@@ -368,7 +361,6 @@ def process_record(
 
         return None
 
-    # مرز دقیق فارس
     if not point_in_geometry(
         lon,
         lat,
@@ -413,17 +405,13 @@ def process_record(
     return {
 
         "latitude": lat,
-
         "longitude": lon,
 
         "acq_date": acq_date,
-
         "acq_time": acq_time,
 
         "year": year,
-
         "month": month,
-
         "day": day,
 
         "satellite": str(
@@ -491,7 +479,7 @@ def process_record(
 
 
 # ============================================================
-# حذف رکوردهای تکراری
+# REMOVE DUPLICATES
 # ============================================================
 
 def remove_duplicates(records):
@@ -556,7 +544,7 @@ def remove_duplicates(records):
 
 
 # ============================================================
-# مرتب‌سازی
+# SORT
 # ============================================================
 
 def sort_records(records):
@@ -578,7 +566,7 @@ def sort_records(records):
 
 
 # ============================================================
-# ذخیره CSV
+# SAVE CSV
 # ============================================================
 
 def save_csv(
@@ -606,13 +594,11 @@ def save_csv(
 
         writer.writeheader()
 
-        writer.writerows(
-            records
-        )
+        writer.writerows(records)
 
 
 # ============================================================
-# خواندن CSV قبلی
+# LOAD EXISTING CSV
 # ============================================================
 
 def load_existing_csv(
@@ -652,7 +638,7 @@ def load_existing_csv(
 
 
 # ============================================================
-# تاریخ‌های آرشیو
+# ARCHIVE DATES
 # ============================================================
 
 def get_archive_dates():
@@ -684,7 +670,7 @@ def get_archive_dates():
 
 
 # ============================================================
-# ذخیره آرشیو روزانه
+# SAVE DAILY ARCHIVES
 # ============================================================
 
 def save_daily_archives(
@@ -699,21 +685,24 @@ def save_daily_archives(
 
     for date in archive_dates:
 
-        new_records = [
+        daily = [
+
             row
             for row in all_fires
+
             if row.get(
                 "acq_date",
                 ""
             ) == date
+
         ]
 
-        new_records = remove_duplicates(
-            new_records
+        daily = remove_duplicates(
+            daily
         )
 
-        new_records = sort_records(
-            new_records
+        daily = sort_records(
+            daily
         )
 
         filename = os.path.join(
@@ -721,31 +710,27 @@ def save_daily_archives(
             f"{date}.csv"
         )
 
-        # اگر داده جدید داریم
-        if new_records:
+        if daily:
 
             save_csv(
                 filename,
-                new_records
+                daily
             )
 
             print(
-                f"آرشیو {date} "
-                f"با {len(new_records)} رکورد به‌روز شد."
+                f"آرشیو {date}: "
+                f"{len(daily)} رکورد"
             )
 
-        # اگر داده جدید نداریم و فایل قبلی وجود دارد
         elif os.path.exists(
             filename
         ):
 
             print(
                 f"آرشیو {date}: "
-                f"داده جدید ندارد؛ "
-                f"نسخه قبلی حفظ شد."
+                f"داده جدید ندارد؛ قبلی حفظ شد."
             )
 
-        # اگر هیچ فایل قبلی هم وجود ندارد
         else:
 
             save_csv(
@@ -755,12 +740,12 @@ def save_daily_archives(
 
             print(
                 f"آرشیو {date}: "
-                f"داده‌ای وجود ندارد."
+                f"بدون رکورد"
             )
 
 
 # ============================================================
-# حذف آرشیوهای خارج از بازه
+# CLEAN OLD ARCHIVES
 # ============================================================
 
 def clean_old_archives(
@@ -798,12 +783,13 @@ def clean_old_archives(
             os.remove(path)
 
             print(
-                f"آرشیو حذف شد: {filename}"
+                f"حذف آرشیو قدیمی: "
+                f"{filename}"
             )
 
 
 # ============================================================
-# ساخت index آرشیو
+# ARCHIVE INDEX
 # ============================================================
 
 def build_archive_index(
@@ -869,13 +855,9 @@ def build_archive_index(
             indent=2
         )
 
-    print(
-        "archive/index.json ساخته شد."
-    )
-
 
 # ============================================================
-# به‌روزرسانی fires.csv
+# UPDATE MAIN CSV
 # ============================================================
 
 def update_main_csv(
@@ -902,7 +884,6 @@ def update_main_csv(
         today_fires
     )
 
-    # اگر امروز داده جدید داریم
     if today_fires:
 
         save_csv(
@@ -911,13 +892,13 @@ def update_main_csv(
         )
 
         print(
-            f"fires.csv با "
-            f"{len(today_fires)} رکورد جدید به‌روز شد."
+            f"fires.csv: "
+            f"{len(today_fires)} رکورد"
         )
 
         return today_fires
 
-    # اگر امروز داده جدید نداریم
+
     existing = load_existing_csv(
         OUTPUT_FILE
     )
@@ -925,24 +906,64 @@ def update_main_csv(
     if existing:
 
         print(
-            "امروز داده جدیدی دریافت نشد؛ "
+            "داده جدید امروز وجود ندارد؛ "
             "fires.csv قبلی حفظ شد."
         )
 
         return existing
 
-    # اگر فایل قبلی هم وجود نداشت
+
     save_csv(
         OUTPUT_FILE,
         []
     )
 
     print(
-        "داده‌ای موجود نیست؛ "
         "fires.csv خالی ساخته شد."
     )
 
     return []
+
+
+# ============================================================
+# SAVE UPDATE INFO
+# ============================================================
+
+def save_update_info():
+
+    now_utc = datetime.now(
+        timezone.utc
+    )
+
+    info = {
+
+        "updated_at_utc":
+            now_utc.isoformat(),
+
+        "updated_at_timestamp":
+            now_utc.timestamp()
+    }
+
+    with open(
+        UPDATE_INFO_FILE,
+        "w",
+        encoding="utf-8"
+    ) as f:
+
+        json.dump(
+            info,
+            f,
+            ensure_ascii=False,
+            indent=2
+        )
+
+    print(
+        "زمان آخرین به‌روزرسانی ذخیره شد:"
+    )
+
+    print(
+        now_utc.isoformat()
+    )
 
 
 # ============================================================
@@ -956,17 +977,9 @@ def main():
     print("FARS FIRE SENTINEL")
     print("=" * 60)
 
-    # --------------------------------------------------------
-    # مرز فارس
-    # --------------------------------------------------------
-
     fars_geometry = (
         load_fars_geometry()
     )
-
-    # --------------------------------------------------------
-    # تاریخ‌های آرشیو
-    # --------------------------------------------------------
 
     archive_dates = (
         get_archive_dates()
@@ -977,13 +990,9 @@ def main():
     start_date = archive_dates[-1]
 
     print(
-        f"بازه دریافت FIRMS: "
+        f"بازه FIRMS: "
         f"{start_date} تا {current_date}"
     )
-
-    # --------------------------------------------------------
-    # دریافت داده‌ها
-    # --------------------------------------------------------
 
     all_fires = []
 
@@ -999,11 +1008,9 @@ def main():
 
             for row in raw_records:
 
-                processed = (
-                    process_record(
-                        row,
-                        fars_geometry
-                    )
+                processed = process_record(
+                    row,
+                    fars_geometry
                 )
 
                 if processed:
@@ -1018,10 +1025,6 @@ def main():
                 f"خطا در {sensor}: {e}"
             )
 
-    # --------------------------------------------------------
-    # حذف تکراری
-    # --------------------------------------------------------
-
     all_fires = remove_duplicates(
         all_fires
     )
@@ -1030,49 +1033,32 @@ def main():
         all_fires
     )
 
-    print()
     print(
-        f"کل رکوردهای معتبر ۵ روز اخیر: "
+        f"کل رکوردهای معتبر: "
         f"{len(all_fires)}"
     )
-
-    # --------------------------------------------------------
-    # آرشیو
-    # --------------------------------------------------------
 
     save_daily_archives(
         all_fires,
         archive_dates
     )
 
-    # --------------------------------------------------------
-    # حذف آرشیوهای قدیمی
-    # --------------------------------------------------------
-
     clean_old_archives(
         archive_dates
     )
 
-    # --------------------------------------------------------
-    # index آرشیو
-    # --------------------------------------------------------
-
     build_archive_index(
         archive_dates
     )
-
-    # --------------------------------------------------------
-    # fires.csv
-    # --------------------------------------------------------
 
     final_records = update_main_csv(
         all_fires,
         current_date
     )
 
-    # --------------------------------------------------------
-    # آمار
-    # --------------------------------------------------------
+    # فقط وقتی عملیات اصلی تمام شد،
+    # زمان آخرین به‌روزرسانی ثبت می‌شود.
+    save_update_info()
 
     viirs_count = sum(
         1
@@ -1092,33 +1078,30 @@ def main():
 
     print()
     print("=" * 60)
-    print("نتیجه نهایی")
+    print("نتیجه")
     print("=" * 60)
 
     print(
         f"fires.csv: "
-        f"{len(final_records)} رکورد"
+        f"{len(final_records)}"
     )
 
     print(
-        f"VIIRS: {viirs_count}"
+        f"VIIRS: "
+        f"{viirs_count}"
     )
 
     print(
-        f"MODIS: {modis_count}"
+        f"MODIS: "
+        f"{modis_count}"
     )
 
     print(
-        f"آرشیوها: "
-        f"{len(archive_dates)} روز"
+        "به‌روزرسانی با موفقیت انجام شد."
     )
 
     print("=" * 60)
 
-
-# ============================================================
-# RUN
-# ============================================================
 
 if __name__ == "__main__":
     main()
