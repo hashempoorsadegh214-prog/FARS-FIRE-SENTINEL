@@ -1,2 +1,5 @@
 ﻿latitude,longitude,acq_date,acq_time,year,month,day,satellite,instrument,detected_sensor,confidence,frp,brightness,daynight,scan,track
+29.25413,53.12104,2026-08-12,837,2026,8,12,N21,VIIRS,VIIRS,n,27.54,348.42,D,0.66,0.73
+30.10948,53.04953,2026-08-12,837,2026,8,12,N21,VIIRS,VIIRS,l,6.14,332.72,D,0.63,0.72
+30.10955,53.04964,2026-08-12,837,2026,8,12,N21,VIIRS,VIIRS,l,3.83,332.58,D,0.63,0.72
 29.47268,52.54506,2026-08-12,610,2026,8,12,Terra,MODIS,MODIS,47,57.72,325.5,D,3.45,1.75
