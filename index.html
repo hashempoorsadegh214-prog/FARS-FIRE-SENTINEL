@@ -2,21 +2,31 @@
 <html lang="fa" dir="rtl">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>سامانه پایش حریق استان فارس</title>
 
-    <link rel="stylesheet"
-          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <!-- Leaflet -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
 
-    <link rel="stylesheet"
-          href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <!-- Marker Cluster -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+    >
 
-    <link rel="stylesheet"
-          href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+    >
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -31,16 +41,17 @@
             background: #b71c1c;
             color: white;
             text-align: center;
-            padding: 16px;
+            padding: 18px;
         }
 
         header h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 25px;
         }
 
         header p {
-            margin: 7px 0 0;
+            margin: 8px 0 0;
+            font-size: 14px;
         }
 
         .stats {
@@ -54,26 +65,26 @@
         .card {
             background: white;
             min-width: 150px;
-            padding: 12px 22px;
+            padding: 14px 25px;
             text-align: center;
             border-radius: 10px;
             box-shadow: 0 2px 7px rgba(0,0,0,.12);
         }
 
         .card h3 {
-            margin: 0 0 7px;
+            margin: 0 0 8px;
             font-size: 13px;
             color: #555;
         }
 
         .card strong {
-            font-size: 22px;
+            font-size: 24px;
             color: #d32f2f;
         }
 
         #status {
             text-align: center;
-            padding: 8px;
+            padding: 8px 10px 12px;
             color: #555;
         }
 
@@ -82,73 +93,167 @@
             margin: 0 15px 15px;
             border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0 2px 7px rgba(0,0,0,.15);
         }
 
         footer {
             background: #222;
             color: white;
             text-align: center;
-            padding: 12px;
+            padding: 13px;
             font-size: 12px;
         }
+
+        .popup {
+            direction: rtl;
+            text-align: right;
+            line-height: 1.9;
+            min-width: 230px;
+        }
+
+        .popup h3 {
+            margin: 0 0 8px;
+            color: #b71c1c;
+        }
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 19px;
+            }
+
+            #map {
+                height: 500px;
+                margin: 0 8px 10px;
+            }
+
+            .card {
+                min-width: 130px;
+                padding: 10px;
+            }
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
     <h1>🔥 سامانه پایش حریق استان فارس</h1>
-    <p>پایش حریق با داده‌های NASA FIRMS</p>
+
+    <p>
+        پایش حریق با داده‌های NASA FIRMS
+    </p>
+
 </header>
+
+
+<!-- =====================================================
+     آمار
+===================================================== -->
 
 <div class="stats">
 
     <div class="card">
+
         <h3>کل حریق‌ها</h3>
-        <strong id="fireCount">0</strong>
+
+        <strong id="fireCount">
+            0
+        </strong>
+
     </div>
 
+
     <div class="card">
+
         <h3>VIIRS</h3>
-        <strong id="viirsCount">0</strong>
+
+        <strong id="viirsCount">
+            0
+        </strong>
+
     </div>
 
+
     <div class="card">
+
         <h3>MODIS</h3>
-        <strong id="modisCount">0</strong>
+
+        <strong id="modisCount">
+            0
+        </strong>
+
     </div>
 
+
     <div class="card">
-        <h3>تاریخ</h3>
-        <strong id="fireDate">---</strong>
+
+        <h3>آخرین تاریخ</h3>
+
+        <strong id="fireDate">
+            ---
+        </strong>
+
     </div>
 
 </div>
+
 
 <div id="status">
+
     در حال دریافت داده‌های حریق...
+
 </div>
+
 
 <div id="map"></div>
 
+
 <footer>
-    NASA FIRMS | VIIRS | MODIS
+
+    NASA FIRMS | VIIRS | MODIS | FARS FIRE SENTINEL
+
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<script src="https://unpkg.com/leaflet.markercluster@1.9.4/dist/leaflet.markercluster.js"></script>
+
+<!-- =====================================================
+     Leaflet
+===================================================== -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<!-- =====================================================
+     Marker Cluster
+===================================================== -->
+
+<script
+    src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js">
+</script>
+
+
 
 <script>
 
 /* =====================================================
-   نقشه
+   ایجاد نقشه
 ===================================================== */
 
-var map = L.map("map").setView(
-    [29.6, 52.5],
-    8
-);
+var map = L.map("map");
+
+
+
+/* =====================================================
+   OpenStreetMap
+===================================================== */
 
 L.tileLayer(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -158,256 +263,491 @@ L.tileLayer(
 ).addTo(map);
 
 
+
+/* =====================================================
+   مرکز اولیه فارس
+===================================================== */
+
+map.setView(
+    [29.6, 52.5],
+    8
+);
+
+
+
 /* =====================================================
    لایه حریق
 ===================================================== */
 
 var fireLayer =
-    L.markerClusterGroup();
+    L.markerClusterGroup({
 
-map.addLayer(fireLayer);
+        showCoverageOnHover: false,
 
+        spiderfyOnMaxZoom: true,
 
-/* =====================================================
-   CSV Parser ساده و مطمئن
-===================================================== */
+        disableClusteringAtZoom: 12,
 
-function parseCSV(text) {
-
-    text = text.replace(/^\uFEFF/, "").trim();
-
-    var lines =
-        text.split(/\r?\n/);
-
-    if (lines.length < 2) {
-        return [];
-    }
-
-    var headers =
-        lines[0].split(",").map(function(h) {
-            return h.trim();
-        });
-
-    var data = [];
-
-    for (var i = 1; i < lines.length; i++) {
-
-        if (!lines[i].trim()) {
-            continue;
-        }
-
-        var values =
-            lines[i].split(",");
-
-        var row = {};
-
-        for (var j = 0; j < headers.length; j++) {
-
-            row[headers[j]] =
-                values[j] !== undefined
-                ? values[j].trim()
-                : "";
-        }
-
-        data.push(row);
-    }
-
-    return data;
-}
-
-
-/* =====================================================
-   دریافت CSV
-===================================================== */
-
-fetch(
-    "fires.csv?cache=" + Date.now()
-)
-
-.then(function(response) {
-
-    if (!response.ok) {
-        throw new Error(
-            "fires.csv پیدا نشد."
-        );
-    }
-
-    return response.text();
-})
-
-.then(function(csvText) {
-
-    console.log(
-        "CSV:",
-        csvText
-    );
-
-    var fires =
-        parseCSV(csvText);
-
-    console.log(
-        "Parsed fires:",
-        fires
-    );
-
-    if (!fires.length) {
-
-        throw new Error(
-            "هیچ رکوردی در fires.csv پیدا نشد."
-        );
-    }
-
-
-    /* =================================================
-       آمار
-    ================================================= */
-
-    var viirs = 0;
-    var modis = 0;
-
-    var latestDate = "---";
-
-
-    /* =================================================
-       پردازش حریق‌ها
-    ================================================= */
-
-    fires.forEach(function(fire) {
-
-        var lat =
-            parseFloat(
-                fire.latitude
-            );
-
-        var lon =
-            parseFloat(
-                fire.longitude
-            );
-
-        if (
-            isNaN(lat) ||
-            isNaN(lon)
-        ) {
-            return;
-        }
-
-
-        var sensor =
-            String(
-                fire.detected_sensor || ""
-            )
-            .trim()
-            .toUpperCase();
-
-
-        if (sensor === "VIIRS") {
-            viirs++;
-        }
-
-        if (sensor === "MODIS") {
-            modis++;
-        }
-
-
-        if (
-            fire.acq_date &&
-            (
-                latestDate === "---" ||
-                fire.acq_date > latestDate
-            )
-        ) {
-
-            latestDate =
-                fire.acq_date;
-        }
-
-
-        /* =============================================
-           رنگ
-        ============================================= */
-
-        var color =
-            sensor === "MODIS"
-            ? "#ff9800"
-            : "#ff1744";
-
-
-        /* =============================================
-           Marker
-        ============================================= */
-
-        var marker =
-            L.circleMarker(
-                [lat, lon],
-                {
-                    radius: 9,
-                    color: "#700000",
-                    fillColor: color,
-                    fillOpacity: 0.95,
-                    weight: 2
-                }
-            );
-
-
-        /* =============================================
-           Popup
-        ============================================= */
-
-        marker.bindPopup(
-
-            "<div dir='rtl'>" +
-
-            "<h3>🔥 حریق فارس</h3>" +
-
-            "<b>سنجنده:</b> " +
-            (fire.detected_sensor || "---") +
-
-            "<br>" +
-
-            "<b>ماهواره:</b> " +
-            (fire.satellite || "---") +
-
-            "<br>" +
-
-            "<b>تاریخ:</b> " +
-            (fire.acq_date || "---") +
-
-            "<br>" +
-
-            "<b>ساعت:</b> " +
-            (fire.acq_time || "---") +
-
-            "<br>" +
-
-            "<b>FRP:</b> " +
-            (fire.frp || "---") +
-            " MW" +
-
-            "<br>" +
-
-            "<b>Confidence:</b> " +
-            (fire.confidence || "---") +
-
-            "<br>" +
-
-            "<b>مختصات:</b> " +
-            lat.toFixed(5) +
-            ", " +
-            lon.toFixed(5) +
-
-            "</div>"
-        );
-
-
-        fireLayer.addLayer(
-            marker
-        );
+        maxClusterRadius: 30
 
     });
 
 
+map.addLayer(
+    fireLayer
+);
+
+
+
+/* =====================================================
+   خواندن CSV
+===================================================== */
+
+function loadFireData() {
+
+    var url =
+        "fires.csv?v=" +
+        new Date().getTime();
+
+
+    fetch(url)
+
+    .then(function(response) {
+
+        if (!response.ok) {
+
+            throw new Error(
+                "fires.csv پیدا نشد."
+            );
+        }
+
+
+        return response.text();
+
+    })
+
+
+    .then(function(csvText) {
+
+        console.log(
+            "CSV دریافت شد:"
+        );
+
+        console.log(
+            csvText
+        );
+
+
+        parseCSV(
+            csvText
+        );
+
+    })
+
+
+    .catch(function(error) {
+
+        console.error(
+            error
+        );
+
+
+        document.getElementById(
+            "status"
+        ).innerText =
+            "خطا: " +
+            error.message;
+
+    });
+
+}
+
+
+
+/* =====================================================
+   CSV Parser
+===================================================== */
+
+function parseCSV(text) {
+
+    text =
+        text
+        .replace(/^\uFEFF/, "")
+        .trim();
+
+
+    if (!text) {
+
+        throw new Error(
+            "fires.csv خالی است."
+        );
+
+    }
+
+
+    var lines =
+        text.split(/\r?\n/);
+
+
+    if (lines.length < 2) {
+
+        throw new Error(
+            "هیچ رکوردی در fires.csv پیدا نشد."
+        );
+
+    }
+
+
+    /* ---------------------------------------------
+       Header
+    --------------------------------------------- */
+
+    var headers =
+        lines[0]
+        .split(",")
+        .map(function(header) {
+
+            return header
+                .trim()
+                .toLowerCase();
+
+        });
+
+
+
+    console.log(
+        "Headers:",
+        headers
+    );
+
+
+
+    var fires = [];
+
+
+
+    /* ---------------------------------------------
+       رکوردها
+    --------------------------------------------- */
+
+    for (
+        var i = 1;
+        i < lines.length;
+        i++
+    ) {
+
+        if (
+            !lines[i].trim()
+        ) {
+            continue;
+        }
+
+
+        var values =
+            lines[i].split(",");
+
+
+        var row = {};
+
+
+
+        for (
+            var j = 0;
+            j < headers.length;
+            j++
+        ) {
+
+            row[
+                headers[j]
+            ] =
+                values[j] !== undefined
+                ? values[j].trim()
+                : "";
+
+        }
+
+
+        fires.push(
+            row
+        );
+
+    }
+
+
+
+    console.log(
+        "تعداد حریق:",
+        fires.length
+    );
+
+
+
+    if (
+        fires.length === 0
+    ) {
+
+        throw new Error(
+            "هیچ رکوردی در fires.csv پیدا نشد."
+        );
+
+    }
+
+
+    displayFires(
+        fires
+    );
+
+}
+
+
+
+/* =====================================================
+   نمایش حریق‌ها
+===================================================== */
+
+function displayFires(
+    fires
+) {
+
+
+    /* ---------------------------------------------
+       پاک کردن نقاط قبلی
+    --------------------------------------------- */
+
+    fireLayer.clearLayers();
+
+
+
+    var viirs =
+        0;
+
+    var modis =
+        0;
+
+    var latestDate =
+        "---";
+
+
+
+    /* ---------------------------------------------
+       پردازش حریق‌ها
+    --------------------------------------------- */
+
+    fires.forEach(
+        function(fire) {
+
+
+            var lat =
+                parseFloat(
+                    fire.latitude
+                );
+
+
+            var lon =
+                parseFloat(
+                    fire.longitude
+                );
+
+
+            if (
+                isNaN(lat) ||
+                isNaN(lon)
+            ) {
+
+                return;
+
+            }
+
+
+
+            /* -------------------------------------
+               سنجنده
+            ------------------------------------- */
+
+            var sensor =
+                String(
+                    fire.detected_sensor ||
+                    fire.instrument ||
+                    ""
+                )
+                .trim()
+                .toUpperCase();
+
+
+
+            if (
+                sensor === "VIIRS"
+            ) {
+
+                viirs++;
+
+            }
+
+
+
+            if (
+                sensor === "MODIS"
+            ) {
+
+                modis++;
+
+            }
+
+
+
+            /* -------------------------------------
+               تاریخ
+            ------------------------------------- */
+
+            var date =
+                fire.acq_date ||
+                "---";
+
+
+            if (
+                date !== "---" &&
+                (
+                    latestDate === "---" ||
+                    date > latestDate
+                )
+            ) {
+
+                latestDate =
+                    date;
+
+            }
+
+
+
+            /* -------------------------------------
+               رنگ
+            ------------------------------------- */
+
+            var fillColor =
+                sensor === "MODIS"
+                ? "#ff9800"
+                : "#ff1744";
+
+
+
+            /* -------------------------------------
+               Marker
+            ------------------------------------- */
+
+            var marker =
+                L.circleMarker(
+                    [lat, lon],
+                    {
+
+                        radius: 9,
+
+                        color: "#7f0000",
+
+                        fillColor:
+                            fillColor,
+
+                        fillOpacity: 0.95,
+
+                        weight: 2
+
+                    }
+                );
+
+
+
+            /* -------------------------------------
+               Popup
+            ------------------------------------- */
+
+            var popup =
+
+                "<div class='popup'>" +
+
+                "<h3>🔥 حریق استان فارس</h3>" +
+
+                "<b>سنجنده:</b> " +
+                (
+                    fire.detected_sensor ||
+                    "---"
+                ) +
+
+                "<br>" +
+
+                "<b>ماهواره:</b> " +
+                (
+                    fire.satellite ||
+                    "---"
+                ) +
+
+                "<br>" +
+
+                "<b>تاریخ:</b> " +
+                (
+                    fire.acq_date ||
+                    "---"
+                ) +
+
+                "<br>" +
+
+                "<b>ساعت:</b> " +
+                (
+                    fire.acq_time ||
+                    "---"
+                ) +
+
+                "<br>" +
+
+                "<b>FRP:</b> " +
+                (
+                    fire.frp ||
+                    "---"
+                ) +
+                " MW" +
+
+                "<br>" +
+
+                "<b>Confidence:</b> " +
+                (
+                    fire.confidence ||
+                    "---"
+                ) +
+
+                "<br>" +
+
+                "<b>Brightness:</b> " +
+                (
+                    fire.brightness ||
+                    "---"
+                ) +
+
+                "<br>" +
+
+                "<b>مختصات:</b> " +
+                lat.toFixed(5) +
+                " , " +
+                lon.toFixed(5) +
+
+                "</div>";
+
+
+
+            marker.bindPopup(
+                popup
+            );
+
+
+
+            fireLayer.addLayer(
+                marker
+            );
+
+        }
+    );
+
+
+
     /* =================================================
-       نمایش آمار
+       آمار
     ================================================= */
 
     document.getElementById(
@@ -434,47 +774,62 @@ fetch(
         latestDate;
 
 
+
+    /* =================================================
+       وضعیت
+    ================================================= */
+
     document.getElementById(
         "status"
     ).innerText =
+
         fires.length +
-        " حریق در داده‌های FIRMS یافت شد.";
+        " حریق در داده‌های NASA FIRMS نمایش داده شد.";
+
 
 
     /* =================================================
-       زوم روی حریق‌ها
+       زوم روی نقاط حریق
     ================================================= */
 
+    var layers =
+        fireLayer.getLayers();
+
+
+
     if (
-        fireLayer.getLayers().length > 0
+        layers.length > 0
     ) {
 
+        var bounds =
+            L.featureGroup(
+                layers
+            ).getBounds();
+
+
         map.fitBounds(
-            fireLayer.getBounds(),
+            bounds,
             {
-                padding: [30, 30]
+                padding: [40, 40]
             }
         );
+
     }
 
-})
+}
 
 
-.catch(function(error) {
 
-    console.error(
-        error
-    );
+/* =====================================================
+   شروع
+===================================================== */
 
-    document.getElementById(
-        "status"
-    ).innerText =
-        "خطا: " +
-        error.message;
+loadFireData();
 
-});
 
 </script>
 
+
 </body>
+
 </html>
