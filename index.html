@@ -818,7 +818,70 @@ function displayFires(
 
 }
 
+/* =====================================================
+   نمایش مرز استان فارس
+===================================================== */
 
+fetch("geoBoundaries-IRN-ADM1.geojson")
+    .then(function(response) {
+
+        if (!response.ok) {
+            throw new Error("فایل مرز استان پیدا نشد.");
+        }
+
+        return response.json();
+    })
+
+    .then(function(data) {
+
+        var fars = null;
+
+        data.features.forEach(function(feature) {
+
+            var properties =
+                feature.properties || {};
+
+            var name =
+                String(
+                    properties.shapeName ||
+                    ""
+                )
+                .trim()
+                .toLowerCase();
+
+            if (name === "fars") {
+                fars = feature;
+            }
+        });
+
+        if (!fars) {
+            throw new Error(
+                "استان فارس در GeoJSON پیدا نشد."
+            );
+        }
+
+        L.geoJSON(
+            fars,
+            {
+                style: {
+                    color: "#ff0000",
+                    weight: 4,
+                    fillColor: "#ff0000",
+                    fillOpacity: 0.03
+                }
+            }
+        ).addTo(map);
+
+    })
+
+    .catch(function(error) {
+
+        console.error(
+            "Boundary Error:",
+            error
+        );
+
+    });
 
 /* =====================================================
    شروع
