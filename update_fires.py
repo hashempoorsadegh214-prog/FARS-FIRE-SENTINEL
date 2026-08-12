@@ -3,17 +3,22 @@ import csv
 import io
 import json
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 
 # ============================================================
-# تنظیمات
+# SETTINGS
 # ============================================================
 
 API_KEY = os.environ["FIRMS_MAP_KEY"]
 
 BOUNDARY_FILE = "geoBoundaries-IRN-ADM1.geojson"
+
 OUTPUT_FILE = "fires.csv"
+
+ARCHIVE_DIR = "archive"
+
+ARCHIVE_INDEX = "archive/index.json"
 
 WEST = 50.0
 SOUTH = 27.0
@@ -29,9 +34,12 @@ SENSORS = [
     "MODIS_NRT"
 ]
 
+# تعداد روزهای آرشیو
+DAYS_TO_KEEP = 5
+
 
 # ============================================================
-# Point in Ring
+# POINT IN RING
 # ============================================================
 
 def point_in_ring(point, ring):
@@ -51,8 +59,9 @@ def point_in_ring(point, ring):
             and
             (
                 x <
-                (xj - xi) *
-                (y - yi) /
+                (xj - xi)
+                * (y - yi)
+                /
                 ((yj - yi) or 1e-15)
                 + xi
             )
@@ -67,7 +76,7 @@ def point_in_ring(point, ring):
 
 
 # ============================================================
-# Point in Polygon
+# POINT IN POLYGON
 # ============================================================
 
 def point_in_polygon(lon, lat, polygon):
@@ -83,7 +92,6 @@ def point_in_polygon(lon, lat, polygon):
     ):
         return False
 
-    # بررسی سوراخ‌های Polygon
     for hole in polygon[1:]:
 
         if point_in_ring(
@@ -96,7 +104,7 @@ def point_in_polygon(lon, lat, polygon):
 
 
 # ============================================================
-# Point in Geometry
+# POINT IN GEOMETRY
 # ============================================================
 
 def point_in_geometry(
@@ -108,13 +116,17 @@ def point_in_geometry(
     if not geometry:
         return False
 
-    geometry_type = geometry.get("type")
-    coordinates = geometry.get("coordinates")
+    geometry_type = geometry.get(
+        "type"
+    )
+
+    coordinates = geometry.get(
+        "coordinates"
+    )
 
     if not coordinates:
         return False
 
-    # Polygon
     if geometry_type == "Polygon":
 
         return point_in_polygon(
@@ -123,7 +135,6 @@ def point_in_geometry(
             coordinates
         )
 
-    # MultiPolygon
     if geometry_type == "MultiPolygon":
 
         for polygon in coordinates:
@@ -135,13 +146,11 @@ def point_in_geometry(
             ):
                 return True
 
-        return False
-
     return False
 
 
 # ============================================================
-# پیدا کردن استان فارس از geoBoundaries
+# LOAD FARS BOUNDARY
 # ============================================================
 
 def load_fars_geometry():
@@ -149,9 +158,8 @@ def load_fars_geometry():
     if not os.path.exists(
         BOUNDARY_FILE
     ):
-
         raise FileNotFoundError(
-            f"فایل {BOUNDARY_FILE} پیدا نشد."
+            f"{BOUNDARY_FILE} پیدا نشد."
         )
 
     with open(
@@ -165,35 +173,27 @@ def load_fars_geometry():
     if data.get("type") != "FeatureCollection":
 
         raise ValueError(
-            "فایل GeoJSON از نوع FeatureCollection نیست."
+            "GeoJSON باید FeatureCollection باشد."
         )
 
-    features = data.get(
+    for feature in data.get(
         "features",
         []
-    )
-
-    if not features:
-
-        raise ValueError(
-            "هیچ Featureای در فایل GeoJSON پیدا نشد."
-        )
-
-    for feature in features:
+    ):
 
         properties = feature.get(
             "properties",
             {}
         )
 
-        shape_name = str(
+        name = str(
             properties.get(
                 "shapeName",
                 ""
             )
         ).strip().lower()
 
-        if shape_name == "fars":
+        if name == "fars":
 
             geometry = feature.get(
                 "geometry"
@@ -202,7 +202,7 @@ def load_fars_geometry():
             if not geometry:
 
                 raise ValueError(
-                    "Geometry استان فارس وجود ندارد."
+                    "Geometry فارس پیدا نشد."
                 )
 
             print(
@@ -212,39 +212,28 @@ def load_fars_geometry():
             return geometry
 
     raise ValueError(
-        "استان Fars در فایل GeoJSON پیدا نشد."
+        "استان Fars در GeoJSON پیدا نشد."
     )
 
 
 # ============================================================
-# بررسی نقطه داخل فارس
+# FIRMS API
 # ============================================================
 
-def point_inside_fars(
-    lon,
-    lat,
-    fars_geometry
+def get_fire_data(
+    sensor,
+    start_date,
+    day_range
 ):
-
-    return point_in_geometry(
-        lon,
-        lat,
-        fars_geometry
-    )
-
-
-# ============================================================
-# دریافت داده NASA FIRMS
-# ============================================================
-
-def get_fire_data(sensor):
 
     url = (
         "https://firms.modaps.eosdis.nasa.gov/"
         "api/area/csv/"
         f"{API_KEY}/"
         f"{sensor}/"
-        f"{AREA}/1"
+        f"{AREA}/"
+        f"{day_range}/"
+        f"{start_date}"
     )
 
     print(
@@ -275,15 +264,14 @@ def get_fire_data(sensor):
     records = list(reader)
 
     print(
-        f"{sensor}: "
-        f"{len(records)} رکورد دریافت شد."
+        f"{sensor}: {len(records)} رکورد"
     )
 
     return records
 
 
 # ============================================================
-# تشخیص سنجنده
+# SENSOR
 # ============================================================
 
 def detect_sensor(row):
@@ -318,7 +306,7 @@ def detect_sensor(row):
 
 
 # ============================================================
-# پردازش رکورد
+# PROCESS RECORD
 # ============================================================
 
 def process_record(
@@ -344,10 +332,6 @@ def process_record(
 
         return None
 
-    # -------------------------------
-    # محدوده تقریبی
-    # -------------------------------
-
     if not (
         WEST <= lon <= EAST
         and
@@ -356,21 +340,13 @@ def process_record(
 
         return None
 
-    # -------------------------------
-    # مرز دقیق فارس
-    # -------------------------------
-
-    if not point_inside_fars(
+    if not point_in_geometry(
         lon,
         lat,
         fars_geometry
     ):
 
         return None
-
-    # -------------------------------
-    # تاریخ
-    # -------------------------------
 
     acq_date = str(
         row.get(
@@ -402,110 +378,90 @@ def process_record(
         day = dt.day
 
     except ValueError:
-
         pass
-
-    # -------------------------------
-    # خروجی استاندارد
-    # -------------------------------
 
     return {
 
-        "latitude":
-            lat,
+        "latitude": lat,
 
-        "longitude":
-            lon,
+        "longitude": lon,
 
-        "acq_date":
-            acq_date,
+        "acq_date": acq_date,
 
-        "acq_time":
-            acq_time,
+        "acq_time": acq_time,
 
-        "year":
-            year,
+        "year": year,
 
-        "month":
-            month,
+        "month": month,
 
-        "day":
-            day,
+        "day": day,
 
-        "satellite":
-            str(
-                row.get(
-                    "satellite",
-                    ""
-                )
-            ).strip(),
+        "satellite": str(
+            row.get(
+                "satellite",
+                ""
+            )
+        ).strip(),
 
-        "instrument":
-            str(
-                row.get(
-                    "instrument",
-                    ""
-                )
-            ).strip(),
+        "instrument": str(
+            row.get(
+                "instrument",
+                ""
+            )
+        ).strip(),
 
         "detected_sensor":
             detect_sensor(row),
 
-        "confidence":
-            str(
+        "confidence": str(
+            row.get(
+                "confidence",
+                ""
+            )
+        ).strip(),
+
+        "frp": str(
+            row.get(
+                "frp",
+                ""
+            )
+        ).strip(),
+
+        "brightness": str(
+            row.get(
+                "bright_ti4",
                 row.get(
-                    "confidence",
+                    "brightness",
                     ""
                 )
-            ).strip(),
+            )
+        ).strip(),
 
-        "frp":
-            str(
-                row.get(
-                    "frp",
-                    ""
-                )
-            ).strip(),
+        "daynight": str(
+            row.get(
+                "daynight",
+                ""
+            )
+        ).strip(),
 
-        "brightness":
-            str(
-                row.get(
-                    "bright_ti4",
-                    row.get(
-                        "brightness",
-                        ""
-                    )
-                )
-            ).strip(),
+        "scan": str(
+            row.get(
+                "scan",
+                ""
+            )
+        ).strip(),
 
-        "daynight":
-            str(
-                row.get(
-                    "daynight",
-                    ""
-                )
-            ).strip(),
-
-        "scan":
-            str(
-                row.get(
-                    "scan",
-                    ""
-                )
-            ).strip(),
-
-        "track":
-            str(
-                row.get(
-                    "track",
-                    ""
-                )
-            ).strip()
+        "track": str(
+            row.get(
+                "track",
+                ""
+            )
+        ).strip()
     }
 
 
 # ============================================================
-# حذف رکوردهای تکراری
+# DUPLICATES
 # ============================================================
 
 def remove_duplicates(records):
@@ -517,16 +473,25 @@ def remove_duplicates(records):
 
         key = (
             round(
-                float(row["latitude"]),
+                float(
+                    row["latitude"]
+                ),
                 5
             ),
+
             round(
-                float(row["longitude"]),
+                float(
+                    row["longitude"]
+                ),
                 5
             ),
+
             row["acq_date"],
+
             row["acq_time"],
+
             row["satellite"],
+
             row["instrument"]
         )
 
@@ -540,39 +505,66 @@ def remove_duplicates(records):
 
 
 # ============================================================
-# ذخیره CSV
+# SORT
 # ============================================================
 
-def save_csv(records):
+def sort_records(records):
 
-    fieldnames = [
+    return sorted(
+        records,
+        key=lambda x: (
+            x.get(
+                "acq_date",
+                ""
+            ),
+            x.get(
+                "acq_time",
+                ""
+            )
+        ),
+        reverse=True
+    )
 
-        "latitude",
-        "longitude",
 
-        "acq_date",
-        "acq_time",
+# ============================================================
+# CSV
+# ============================================================
 
-        "year",
-        "month",
-        "day",
+FIELDNAMES = [
 
-        "satellite",
-        "instrument",
-        "detected_sensor",
+    "latitude",
+    "longitude",
 
-        "confidence",
-        "frp",
+    "acq_date",
+    "acq_time",
 
-        "brightness",
-        "daynight",
+    "year",
+    "month",
+    "day",
 
-        "scan",
-        "track"
-    ]
+    "satellite",
+    "instrument",
+
+    "detected_sensor",
+
+    "confidence",
+    "frp",
+
+    "brightness",
+    "daynight",
+
+    "scan",
+    "track"
+]
+
+
+def save_csv(
+    filename,
+    records
+):
 
     with open(
-        OUTPUT_FILE,
+        filename,
         "w",
         newline="",
         encoding="utf-8-sig"
@@ -580,7 +572,7 @@ def save_csv(records):
 
         writer = csv.DictWriter(
             f,
-            fieldnames=fieldnames
+            fieldnames=FIELDNAMES
         )
 
         writer.writeheader()
@@ -589,46 +581,197 @@ def save_csv(records):
 
 
 # ============================================================
-# آمار
+# DATE RANGE
 # ============================================================
 
-def print_statistics(records):
+def get_date_list():
 
-    viirs_count = sum(
-        1
-        for row in records
-        if row["detected_sensor"] == "VIIRS"
+    today = datetime.now(
+        timezone.utc
+    ).date()
+
+    dates = []
+
+    for i in range(
+        DAYS_TO_KEEP
+    ):
+
+        date_value = (
+            today -
+            timedelta(days=i)
+        )
+
+        dates.append(
+            date_value.strftime(
+                "%Y-%m-%d"
+            )
+        )
+
+    return dates
+
+
+# ============================================================
+# SAVE DAILY ARCHIVES
+# ============================================================
+
+def save_daily_archives(
+    records,
+    dates
+):
+
+    os.makedirs(
+        ARCHIVE_DIR,
+        exist_ok=True
     )
 
-    modis_count = sum(
-        1
-        for row in records
-        if row["detected_sensor"] == "MODIS"
+    grouped = {}
+
+    for date in dates:
+
+        grouped[date] = []
+
+    for row in records:
+
+        date = row.get(
+            "acq_date",
+            ""
+        )
+
+        if date in grouped:
+
+            grouped[date].append(
+                row
+            )
+
+    for date in dates:
+
+        daily = remove_duplicates(
+            grouped[date]
+        )
+
+        daily = sort_records(
+            daily
+        )
+
+        filename = os.path.join(
+            ARCHIVE_DIR,
+            f"{date}.csv"
+        )
+
+        save_csv(
+            filename,
+            daily
+        )
+
+        print(
+            f"آرشیو {date}: "
+            f"{len(daily)} رکورد"
+        )
+
+
+# ============================================================
+# CLEAN OLD ARCHIVES
+# ============================================================
+
+def clean_old_archives(
+    dates_to_keep
+):
+
+    if not os.path.exists(
+        ARCHIVE_DIR
+    ):
+        return
+
+    valid_names = {
+        f"{date}.csv"
+        for date in dates_to_keep
+    }
+
+    for filename in os.listdir(
+        ARCHIVE_DIR
+    ):
+
+        if not filename.endswith(
+            ".csv"
+        ):
+            continue
+
+        if filename not in valid_names:
+
+            path = os.path.join(
+                ARCHIVE_DIR,
+                filename
+            )
+
+            os.remove(path)
+
+            print(
+                f"حذف آرشیو قدیمی: "
+                f"{filename}"
+            )
+
+
+# ============================================================
+# ARCHIVE INDEX
+# ============================================================
+
+def save_archive_index(
+    dates
+):
+
+    os.makedirs(
+        ARCHIVE_DIR,
+        exist_ok=True
     )
 
-    print()
-    print("=" * 60)
-    print("NASA FIRMS - FARS FIRE SENTINEL")
-    print("=" * 60)
+    index = []
 
-    print(
-        f"کل حریق‌های داخل فارس: "
-        f"{len(records)}"
-    )
+    for date in dates:
 
-    print(
-        f"VIIRS: {viirs_count}"
-    )
+        filename = os.path.join(
+            ARCHIVE_DIR,
+            f"{date}.csv"
+        )
 
-    print(
-        f"MODIS: {modis_count}"
-    )
+        count = 0
 
-    print(
-        f"فایل خروجی: {OUTPUT_FILE}"
-    )
+        if os.path.exists(
+            filename
+        ):
 
-    print("=" * 60)
+            with open(
+                filename,
+                "r",
+                encoding="utf-8-sig"
+            ) as f:
+
+                count = max(
+                    0,
+                    sum(
+                        1
+                        for _ in f
+                    ) - 1
+                )
+
+        index.append(
+            {
+                "date": date,
+                "count": count
+            }
+        )
+
+    with open(
+        ARCHIVE_INDEX,
+        "w",
+        encoding="utf-8"
+    ) as f:
+
+        json.dump(
+            index,
+            f,
+            ensure_ascii=False,
+            indent=2
+        )
 
 
 # ============================================================
@@ -637,41 +780,56 @@ def print_statistics(records):
 
 def main():
 
-    print("=" * 60)
-    print("شروع پایش حریق استان فارس")
-    print("=" * 60)
+    print(
+        "=" * 60
+    )
 
-    # -------------------------------
-    # بارگذاری مرز فارس
-    # -------------------------------
+    print(
+        "FARS FIRE SENTINEL"
+    )
 
-    fars_geometry = load_fars_geometry()
+    print(
+        "=" * 60
+    )
+
+    fars_geometry = (
+        load_fars_geometry()
+    )
+
+    dates = get_date_list()
+
+    start_date = dates[-1]
+
+    print(
+        f"بازه داده: "
+        f"{start_date} تا {dates[0]}"
+    )
 
     all_fires = []
-
-    # -------------------------------
-    # دریافت داده سنجنده‌ها
-    # -------------------------------
 
     for sensor in SENSORS:
 
         try:
 
             records = get_fire_data(
-                sensor
+                sensor,
+                start_date,
+                DAYS_TO_KEEP
             )
 
             for row in records:
 
-                result = process_record(
-                    row,
-                    fars_geometry
+                processed = (
+                    process_record(
+                        row,
+                        fars_geometry
+                    )
                 )
 
-                if result:
+                if processed:
 
                     all_fires.append(
-                        result
+                        processed
                     )
 
         except Exception as e:
@@ -680,58 +838,65 @@ def main():
                 f"خطا در {sensor}: {e}"
             )
 
-    # -------------------------------
-    # مرتب‌سازی
-    # -------------------------------
-
-    all_fires.sort(
-        key=lambda row: (
-            row["acq_date"],
-            row["acq_time"]
-        ),
-        reverse=True
-    )
-
-    # -------------------------------
-    # حذف تکراری
-    # -------------------------------
-
-    before = len(all_fires)
-
     all_fires = remove_duplicates(
         all_fires
     )
 
-    after = len(all_fires)
-
-    print(
-        f"قبل از حذف تکراری: {before}"
+    all_fires = sort_records(
+        all_fires
     )
 
-    print(
-        f"بعد از حذف تکراری: {after}"
+    # آرشیو ۵ روزه
+    save_daily_archives(
+        all_fires,
+        dates
     )
 
-    # -------------------------------
-    # ذخیره CSV
-    # -------------------------------
+    # حذف آرشیو قدیمی
+    clean_old_archives(
+        dates
+    )
+
+    # ساخت index
+    save_archive_index(
+        dates
+    )
+
+    # داده امروز
+    today_records = [
+        row
+        for row in all_fires
+        if row["acq_date"] == dates[0]
+    ]
+
+    today_records = sort_records(
+        today_records
+    )
 
     save_csv(
-        all_fires
+        OUTPUT_FILE,
+        today_records
     )
 
-    # -------------------------------
-    # آمار
-    # -------------------------------
-
-    print_statistics(
-        all_fires
+    print()
+    print(
+        f"حریق امروز: "
+        f"{len(today_records)}"
     )
 
+    print(
+        f"کل داده ۵ روز اخیر: "
+        f"{len(all_fires)}"
+    )
 
-# ============================================================
-# اجرای برنامه
-# ============================================================
+    print(
+        "به‌روزرسانی با موفقیت انجام شد."
+    )
+
+    print(
+        "=" * 60
+    )
+
 
 if __name__ == "__main__":
     main()
