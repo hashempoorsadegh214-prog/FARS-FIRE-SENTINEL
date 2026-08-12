@@ -14,7 +14,6 @@ on:
       - ".github/workflows/update-fires.yml"
 
 jobs:
-
   update-fires:
 
     runs-on: ubuntu-latest
@@ -24,8 +23,17 @@ jobs:
 
     steps:
 
+      # ------------------------------------------
+      # دریافت مخزن
+      # ------------------------------------------
+
       - name: Checkout repository
         uses: actions/checkout@v6
+
+
+      # ------------------------------------------
+      # نصب Python
+      # ------------------------------------------
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -33,10 +41,20 @@ jobs:
           python-version: "3.11"
           cache: "pip"
 
+
+      # ------------------------------------------
+      # نصب وابستگی‌ها
+      # ------------------------------------------
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+
+      # ------------------------------------------
+      # بررسی فایل‌های موردنیاز
+      # ------------------------------------------
 
       - name: Check required files
         run: |
@@ -44,36 +62,77 @@ jobs:
           test -f geoBoundaries-IRN-ADM1.geojson
           test -f requirements.txt
 
+          echo "All required files exist."
+
+
+      # ------------------------------------------
+      # اجرای Python و دریافت FIRMS
+      # ------------------------------------------
+
       - name: Update fire data
         env:
           FIRMS_MAP_KEY: ${{ secrets.FIRMS_MAP_KEY }}
         run: |
           python update_fires.py
 
-      - name: Check output
+
+      # ------------------------------------------
+      # بررسی خروجی
+      # ------------------------------------------
+
+      - name: Check generated files
         run: |
-          echo "Checking files..."
 
-          test -f fires.csv
-          test -f archive/index.json
+          echo "Checking fires.csv..."
 
+          if [ ! -f fires.csv ]; then
+            echo "ERROR: fires.csv was not created."
+            exit 1
+          fi
+
+          echo "fires.csv exists."
+
+          echo "Checking archive..."
+
+          if [ ! -f archive/index.json ]; then
+            echo "ERROR: archive/index.json was not created."
+            exit 1
+          fi
+
+          echo "Archive exists."
+
+          echo ""
           echo "fires.csv:"
           wc -l fires.csv
 
-          echo "Archive files:"
-          ls -la archive/
+          echo ""
+          echo "Archive:"
+          ls -lah archive/
 
-      - name: Commit updated data
+
+      # ------------------------------------------
+      # Commit داده‌ها
+      # ------------------------------------------
+
+      - name: Commit updated fire data
         run: |
+
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add fires.csv
           git add archive/
 
           if git diff --cached --quiet; then
+
             echo "No changes in fire data."
+
           else
-            git commit -m "Update Fars fire archive"
+
+            git commit -m "Update Fars fire data"
+
             git push
+
           fi
