@@ -8,18 +8,10 @@
 
 <title>سامانه برخط پایش حریق اداره کل حفاظت محیط زیست فارس</title>
 
-<!-- =====================================================
-     LEAFLET
-===================================================== -->
-
 <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 >
-
-<!-- =====================================================
-     MARKER CLUSTER
-===================================================== -->
 
 <link
     rel="stylesheet"
@@ -606,91 +598,6 @@ header {
 
 
 /* =========================================================
-   MAP LEGEND - TOP RIGHT
-========================================================= */
-
-.legend {
-
-    background:
-        rgba(255,255,255,.97);
-
-    padding:
-        9px 12px;
-
-    border-radius: 9px;
-
-    border:
-        1px solid #e1e5e8;
-
-    box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.18);
-
-    line-height: 1.75;
-
-    font-size: 11px;
-
-    min-width: 95px;
-
-    direction: rtl;
-
-    text-align: right;
-}
-
-
-.legend-title {
-
-    font-family:
-        "B Titr",
-        Tahoma,
-        Arial,
-        sans-serif;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    color: #455a64;
-
-    margin-bottom: 5px;
-
-    border-bottom:
-        1px solid #e5e8ea;
-
-    padding-bottom: 4px;
-}
-
-
-.legend-item {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    white-space: nowrap;
-}
-
-
-.legend-dot {
-
-    width: 11px;
-
-    height: 11px;
-
-    border-radius: 50%;
-
-    display: inline-block;
-
-    border:
-        1px solid #555;
-
-    flex-shrink: 0;
-}
-
-
-/* =========================================================
    FOOTER
 ========================================================= */
 
@@ -845,18 +752,6 @@ footer {
 
 }
 
-
-/* =========================================================
-   LEAFLET
-========================================================= */
-
-.leaflet-control-zoom a {
-
-    font-family:
-        Arial,
-        sans-serif !important;
-}
-
 </style>
 
 </head>
@@ -873,19 +768,15 @@ footer {
 
     <div class="header-inner">
 
-        <!-- LOGO LEFT -->
-
         <div class="header-logo">
 
             <img
-                src="farslogo.png?v=4"
+                src="farslogo.png?v=5"
                 alt="اداره کل حفاظت محیط زیست فارس"
             >
 
         </div>
 
-
-        <!-- TITLE CENTER -->
 
         <div class="header-title">
 
@@ -927,7 +818,7 @@ footer {
     <div class="card">
 
         <h3>
-            VIIRS
+            وایرس (VIIRS)
         </h3>
 
         <strong id="viirsCount">
@@ -940,7 +831,7 @@ footer {
     <div class="card">
 
         <h3>
-            MODIS
+            مودیس (MODIS)
         </h3>
 
         <strong id="modisCount">
@@ -1027,8 +918,8 @@ footer {
 <footer>
 
     NASA FIRMS |
-    VIIRS |
-    MODIS |
+    وایرس (VIIRS) |
+    مودیس (MODIS) |
     FARS FIRE SENTINEL
 
 </footer>
@@ -1042,10 +933,6 @@ footer {
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
 </script>
 
-
-<!-- =====================================================
-     MARKER CLUSTER
-===================================================== -->
 
 <script
     src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js">
@@ -1378,6 +1265,7 @@ function formatJalaliDate(
         )
 
     );
+
 }
 
 
@@ -1439,6 +1327,7 @@ function formatFullJalaliDate(
     ) {
 
         return dateString;
+
     }
 
     const j =
@@ -1481,6 +1370,7 @@ function formatFullJalaliDate(
         )
 
     );
+
 }
 
 
@@ -1516,14 +1406,15 @@ function formatUTCtime(
 
         +
         ":"
-        +
 
+        +
         text.substring(
             2,
             4
         )
 
     );
+
 }
 
 
@@ -1613,6 +1504,7 @@ function formatIranTime(
 
                 +
                 ":"
+
                 +
 
                 String(
@@ -1621,6 +1513,7 @@ function formatIranTime(
                     2,
                     "0"
                 )
+
             ),
 
         dayOffset:
@@ -1819,9 +1712,7 @@ function loadTextFile(
     .then(
         function(response) {
 
-            if (
-                !response.ok
-            ) {
+            if (!response.ok) {
 
                 throw new Error(
                     "خطا در دریافت فایل"
@@ -1833,7 +1724,6 @@ function loadTextFile(
 
         }
     );
-
 }
 
 
@@ -2145,6 +2035,7 @@ function createPopup(
 
         +
         " , "
+
         +
 
         parseFloat(
@@ -2178,6 +2069,7 @@ function displayFires(
     let latestDate =
         "---";
 
+
     fires.forEach(
         function(fire) {
 
@@ -2201,6 +2093,7 @@ function displayFires(
 
             }
 
+
             const sensor =
                 String(
                     fire.detected_sensor
@@ -2212,6 +2105,7 @@ function displayFires(
                 .trim()
                 .toUpperCase();
 
+
             if (
                 sensor === "VIIRS"
             ) {
@@ -2220,6 +2114,7 @@ function displayFires(
 
             }
 
+
             if (
                 sensor === "MODIS"
             ) {
@@ -2227,6 +2122,7 @@ function displayFires(
                 modis++;
 
             }
+
 
             if (
                 fire.acq_date
@@ -2244,8 +2140,10 @@ function displayFires(
 
             }
 
+
             let color =
                 "#8e24aa";
+
 
             if (
                 sensor === "VIIRS"
@@ -2256,6 +2154,7 @@ function displayFires(
 
             }
 
+
             if (
                 sensor === "MODIS"
             ) {
@@ -2264,6 +2163,7 @@ function displayFires(
                     "#f39c12";
 
             }
+
 
             const marker =
                 L.circleMarker(
@@ -2291,11 +2191,13 @@ function displayFires(
                     }
                 );
 
+
             marker.bindPopup(
                 createPopup(
                     fire
                 )
             );
+
 
             fireLayer.addLayer(
                 marker
@@ -2304,12 +2206,14 @@ function displayFires(
         }
     );
 
+
     document.getElementById(
         "fireCount"
     ).innerText =
         toPersianDigits(
             fires.length
         );
+
 
     document.getElementById(
         "viirsCount"
@@ -2318,6 +2222,7 @@ function displayFires(
             viirs
         );
 
+
     document.getElementById(
         "modisCount"
     ).innerText =
@@ -2325,12 +2230,14 @@ function displayFires(
             modis
         );
 
+
     document.getElementById(
         "fireDate"
     ).innerText =
         formatJalaliDate(
             latestDate
         );
+
 
     document.getElementById(
         "archiveCount"
@@ -2340,6 +2247,7 @@ function displayFires(
         )
         +
         " حریق";
+
 
     if (
         fitBoundary
@@ -2406,13 +2314,16 @@ function loadArchiveIndex() {
                 )
                 .sort();
 
+
             const slider =
                 document.getElementById(
                     "archiveSlider"
                 );
 
+
             slider.min =
                 0;
+
 
             slider.max =
                 Math.max(
@@ -2420,14 +2331,17 @@ function loadArchiveIndex() {
                     0
                 );
 
+
             selectedArchiveIndex =
                 Math.max(
                     archiveDates.length - 1,
                     0
                 );
 
+
             slider.value =
                 selectedArchiveIndex;
+
 
             updateArchiveLabel();
 
@@ -2456,10 +2370,12 @@ function updateArchiveLabel() {
 
     }
 
+
     const date =
         archiveDates[
             selectedArchiveIndex
         ];
+
 
     document.getElementById(
         "dateLabel"
@@ -2485,12 +2401,15 @@ function loadSelectedArchive() {
 
     }
 
+
     const date =
         archiveDates[
             selectedArchiveIndex
         ];
 
+
     updateArchiveLabel();
+
 
     setStatus(
         "در حال دریافت آرشیو "
@@ -2501,6 +2420,7 @@ function loadSelectedArchive() {
         +
         "..."
     );
+
 
     loadFireCSV(
         "archive/"
@@ -2517,6 +2437,7 @@ function loadSelectedArchive() {
                 fires,
                 false
             );
+
 
             setStatus(
                 "آرشیو "
@@ -2538,27 +2459,33 @@ function loadSelectedArchive() {
                 error
             );
 
+
             fireLayer.clearLayers();
+
 
             document.getElementById(
                 "fireCount"
             ).innerText =
                 "۰";
 
+
             document.getElementById(
                 "viirsCount"
             ).innerText =
                 "۰";
+
 
             document.getElementById(
                 "modisCount"
             ).innerText =
                 "۰";
 
+
             document.getElementById(
                 "archiveCount"
             ).innerText =
                 "۰ حریق";
+
 
             setStatus(
                 "برای این روز داده حریق ثبت نشده است."
@@ -2586,6 +2513,7 @@ document.getElementById(
                 10
             );
 
+
         loadSelectedArchive();
 
     }
@@ -2605,15 +2533,19 @@ document.getElementById(
         const button =
             this;
 
+
         button.disabled =
             true;
+
 
         button.innerText =
             "⏳ در حال بارگذاری...";
 
+
         setStatus(
             "در حال دریافت آخرین داده منتشرشده..."
         );
+
 
         loadFireCSV(
             FIRE_FILE
@@ -2626,6 +2558,7 @@ document.getElementById(
                     fires,
                     false
                 );
+
 
                 setStatus(
                     toPersianDigits(
@@ -2645,6 +2578,7 @@ document.getElementById(
                     error
                 );
 
+
                 setStatus(
                     "خطا در دریافت آخرین داده."
                 );
@@ -2658,6 +2592,7 @@ document.getElementById(
                 button.disabled =
                     false;
 
+
                 button.innerText =
                     "🔄 به‌روزرسانی";
 
@@ -2665,74 +2600,6 @@ document.getElementById(
         );
 
     }
-);
-
-
-/* =========================================================
-   MAP LEGEND - TOP RIGHT
-========================================================= */
-
-const legend =
-    L.control({
-        position: "topright"
-    });
-
-
-legend.onAdd =
-    function() {
-
-        const div =
-            L.DomUtil.create(
-                "div",
-                "legend"
-            );
-
-        div.innerHTML =
-
-            "<div class='legend-title'>" +
-            "راهنمای حریق" +
-            "</div>"
-
-            +
-
-            "<div class='legend-item'>" +
-
-            "<span class='legend-dot' " +
-            "style='background:#ef233c'></span>" +
-
-            "VIIRS" +
-
-            "</div>"
-
-            +
-
-            "<div class='legend-item'>" +
-
-            "<span class='legend-dot' " +
-            "style='background:#f39c12'></span>" +
-
-            "MODIS" +
-
-            "</div>"
-
-            +
-
-            "<div class='legend-item'>" +
-
-            "<span class='legend-dot' " +
-            "style='background:#8e24aa'></span>" +
-
-            "نامشخص" +
-
-            "</div>";
-
-        return div;
-
-    };
-
-
-legend.addTo(
-    map
 );
 
 
@@ -2748,21 +2615,26 @@ async function initializeApp() {
             "در حال بارگذاری مرز استان فارس..."
         );
 
+
         await loadBoundary();
+
 
         setStatus(
             "در حال بارگذاری داده‌های حریق..."
         );
+
 
         const currentFires =
             await loadFireCSV(
                 FIRE_FILE
             );
 
+
         displayFires(
             currentFires,
             true
         );
+
 
         setStatus(
             toPersianDigits(
@@ -2772,7 +2644,9 @@ async function initializeApp() {
             " حریق در آخرین داده منتشرشده نمایش داده شد."
         );
 
+
         await loadArchiveIndex();
+
 
         if (
             archiveDates.length > 0
@@ -2781,10 +2655,12 @@ async function initializeApp() {
             selectedArchiveIndex =
                 archiveDates.length - 1;
 
+
             document.getElementById(
                 "archiveSlider"
             ).value =
                 selectedArchiveIndex;
+
 
             updateArchiveLabel();
 
@@ -2799,6 +2675,7 @@ async function initializeApp() {
             error
         );
 
+
         setStatus(
             "خطا: " +
             error.message
@@ -2808,6 +2685,10 @@ async function initializeApp() {
 
 }
 
+
+/* =========================================================
+   START
+========================================================= */
 
 initializeApp();
 
