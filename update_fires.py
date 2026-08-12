@@ -5,13 +5,16 @@ import json
 import requests
 from datetime import datetime
 
+
 # ============================================================
 # تنظیمات
 # ============================================================
 
 API_KEY = os.environ["FIRMS_MAP_KEY"]
 
-# محدوده تقریبی اطراف استان فارس
+BOUNDARY_FILE = "geoBoundaries-IRN-ADM1.geojson"
+OUTPUT_FILE = "fires.csv"
+
 WEST = 50.0
 SOUTH = 27.0
 EAST = 54.5
@@ -19,19 +22,12 @@ NORTH = 31.5
 
 AREA = f"{WEST},{SOUTH},{EAST},{NORTH}"
 
-# سنجنده‌های FIRMS
 SENSORS = [
     "VIIRS_SNPP_NRT",
     "VIIRS_NOAA20_NRT",
     "VIIRS_NOAA21_NRT",
     "MODIS_NRT"
 ]
-
-# فایل مرز دقیق فارس
-BOUNDARY_FILE = "fars.geojson"
-
-# فایل خروجی
-OUTPUT_FILE = "fires.csv"
 
 
 # ============================================================
@@ -50,18 +46,19 @@ def point_in_ring(point, ring):
         xi, yi = ring[i]
         xj, yj = ring[j]
 
-        if (
+        intersect = (
             ((yi > y) != (yj > y))
             and
             (
                 x <
-                (xj - xi)
-                * (y - yi)
-                /
+                (xj - xi) *
+                (y - yi) /
                 ((yj - yi) or 1e-15)
                 + xi
             )
-        ):
+        )
+
+        if intersect:
             inside = not inside
 
         j = i
@@ -102,30 +99,34 @@ def point_in_polygon(lon, lat, polygon):
 # Point in Geometry
 # ============================================================
 
-def point_in_geometry(lon, lat, geometry):
+def point_in_geometry(
+    lon,
+    lat,
+    geometry
+):
 
     if not geometry:
         return False
 
-    geom_type = geometry.get("type")
-    coords = geometry.get("coordinates")
+    geometry_type = geometry.get("type")
+    coordinates = geometry.get("coordinates")
 
-    if not coords:
+    if not coordinates:
         return False
 
     # Polygon
-    if geom_type == "Polygon":
+    if geometry_type == "Polygon":
 
         return point_in_polygon(
             lon,
             lat,
-            coords
+            coordinates
         )
 
     # MultiPolygon
-    if geom_type == "MultiPolygon":
+    if geometry_type == "MultiPolygon":
 
-        for polygon in coords:
+        for polygon in coordinates:
 
             if point_in_polygon(
                 lon,
@@ -140,12 +141,14 @@ def point_in_geometry(lon, lat, geometry):
 
 
 # ============================================================
-# خواندن Geometry فارس
+# پیدا کردن استان فارس از geoBoundaries
 # ============================================================
 
-def load_fars_geometries():
+def load_fars_geometry():
 
-    if not os.path.exists(BOUNDARY_FILE):
+    if not os.path.exists(
+        BOUNDARY_FILE
+    ):
 
         raise FileNotFoundError(
             f"فایل {BOUNDARY_FILE} پیدا نشد."
@@ -159,56 +162,58 @@ def load_fars_geometries():
 
         data = json.load(f)
 
-    geometries = []
+    if data.get("type") != "FeatureCollection":
 
-    # Geometry مستقیم
-    if data.get("type") in (
-        "Polygon",
-        "MultiPolygon"
-    ):
-
-        geometries.append(data)
-
-    # Feature
-    elif data.get("type") == "Feature":
-
-        geometry = data.get("geometry")
-
-        if geometry:
-            geometries.append(geometry)
-
-    # FeatureCollection
-    elif data.get("type") == "FeatureCollection":
-
-        features = data.get(
-            "features",
-            []
+        raise ValueError(
+            "فایل GeoJSON از نوع FeatureCollection نیست."
         )
 
-        for feature in features:
+    features = data.get(
+        "features",
+        []
+    )
+
+    if not features:
+
+        raise ValueError(
+            "هیچ Featureای در فایل GeoJSON پیدا نشد."
+        )
+
+    for feature in features:
+
+        properties = feature.get(
+            "properties",
+            {}
+        )
+
+        shape_name = str(
+            properties.get(
+                "shapeName",
+                ""
+            )
+        ).strip().lower()
+
+        if shape_name == "fars":
 
             geometry = feature.get(
                 "geometry"
             )
 
-            if geometry:
-                geometries.append(
-                    geometry
+            if not geometry:
+
+                raise ValueError(
+                    "Geometry استان فارس وجود ندارد."
                 )
 
-    else:
+            print(
+                "مرز استان فارس با موفقیت پیدا شد."
+            )
 
-        raise ValueError(
-            "ساختار fars.geojson معتبر نیست."
-        )
+            return geometry
 
-    if not geometries:
-
-        raise ValueError(
-            "هیچ Geometry معتبری در fars.geojson پیدا نشد."
-        )
-
-    return geometries
+    raise ValueError(
+        "استان Fars در فایل GeoJSON پیدا نشد."
+    )
 
 
 # ============================================================
@@ -218,19 +223,14 @@ def load_fars_geometries():
 def point_inside_fars(
     lon,
     lat,
-    geometries
+    fars_geometry
 ):
 
-    for geometry in geometries:
-
-        if point_in_geometry(
-            lon,
-            lat,
-            geometry
-        ):
-            return True
-
-    return False
+    return point_in_geometry(
+        lon,
+        lat,
+        fars_geometry
+    )
 
 
 # ============================================================
@@ -314,11 +314,7 @@ def detect_sensor(row):
     if "MODIS" in satellite:
         return "MODIS"
 
-    return (
-        instrument
-        or satellite
-        or "UNKNOWN"
-    )
+    return "UNKNOWN"
 
 
 # ============================================================
@@ -327,7 +323,7 @@ def detect_sensor(row):
 
 def process_record(
     row,
-    fars_geometries
+    fars_geometry
 ):
 
     try:
@@ -348,9 +344,9 @@ def process_record(
 
         return None
 
-    # --------------------------------------------------------
-    # بررسی محدوده تقریبی
-    # --------------------------------------------------------
+    # -------------------------------
+    # محدوده تقریبی
+    # -------------------------------
 
     if not (
         WEST <= lon <= EAST
@@ -360,21 +356,21 @@ def process_record(
 
         return None
 
-    # --------------------------------------------------------
-    # بررسی مرز دقیق فارس
-    # --------------------------------------------------------
+    # -------------------------------
+    # مرز دقیق فارس
+    # -------------------------------
 
     if not point_inside_fars(
         lon,
         lat,
-        fars_geometries
+        fars_geometry
     ):
 
         return None
 
-    # --------------------------------------------------------
-    # اطلاعات پایه
-    # --------------------------------------------------------
+    # -------------------------------
+    # تاریخ
+    # -------------------------------
 
     acq_date = str(
         row.get(
@@ -406,13 +402,12 @@ def process_record(
         day = dt.day
 
     except ValueError:
+
         pass
 
-    sensor = detect_sensor(row)
-
-    # --------------------------------------------------------
+    # -------------------------------
     # خروجی استاندارد
-    # --------------------------------------------------------
+    # -------------------------------
 
     return {
 
@@ -454,7 +449,7 @@ def process_record(
             ).strip(),
 
         "detected_sensor":
-            sensor,
+            detect_sensor(row),
 
         "confidence":
             str(
@@ -525,12 +520,10 @@ def remove_duplicates(records):
                 float(row["latitude"]),
                 5
             ),
-
             round(
                 float(row["longitude"]),
                 5
             ),
-
             row["acq_date"],
             row["acq_time"],
             row["satellite"],
@@ -553,20 +546,27 @@ def remove_duplicates(records):
 def save_csv(records):
 
     fieldnames = [
+
         "latitude",
         "longitude",
+
         "acq_date",
         "acq_time",
+
         "year",
         "month",
         "day",
+
         "satellite",
         "instrument",
         "detected_sensor",
+
         "confidence",
         "frp",
+
         "brightness",
         "daynight",
+
         "scan",
         "track"
     ]
@@ -608,11 +608,12 @@ def print_statistics(records):
 
     print()
     print("=" * 60)
-    print("آمار نهایی حریق استان فارس")
+    print("NASA FIRMS - FARS FIRE SENTINEL")
     print("=" * 60)
 
     print(
-        f"کل حریق‌ها: {len(records)}"
+        f"کل حریق‌های داخل فارس: "
+        f"{len(records)}"
     )
 
     print(
@@ -624,39 +625,33 @@ def print_statistics(records):
     )
 
     print(
-        f"خروجی: {OUTPUT_FILE}"
+        f"فایل خروجی: {OUTPUT_FILE}"
     )
 
     print("=" * 60)
 
 
 # ============================================================
-# Main
+# MAIN
 # ============================================================
 
 def main():
 
-    print()
     print("=" * 60)
-    print("NASA FIRMS - FARS FIRE SENTINEL")
+    print("شروع پایش حریق استان فارس")
     print("=" * 60)
 
-    # --------------------------------------------------------
-    # خواندن مرز
-    # --------------------------------------------------------
+    # -------------------------------
+    # بارگذاری مرز فارس
+    # -------------------------------
 
-    fars_geometries = load_fars_geometries()
-
-    print(
-        f"تعداد Geometryهای مرز فارس: "
-        f"{len(fars_geometries)}"
-    )
+    fars_geometry = load_fars_geometry()
 
     all_fires = []
 
-    # --------------------------------------------------------
-    # دریافت سنجنده‌ها
-    # --------------------------------------------------------
+    # -------------------------------
+    # دریافت داده سنجنده‌ها
+    # -------------------------------
 
     for sensor in SENSORS:
 
@@ -670,7 +665,7 @@ def main():
 
                 result = process_record(
                     row,
-                    fars_geometries
+                    fars_geometry
                 )
 
                 if result:
@@ -685,9 +680,9 @@ def main():
                 f"خطا در {sensor}: {e}"
             )
 
-    # --------------------------------------------------------
+    # -------------------------------
     # مرتب‌سازی
-    # --------------------------------------------------------
+    # -------------------------------
 
     all_fires.sort(
         key=lambda row: (
@@ -697,9 +692,9 @@ def main():
         reverse=True
     )
 
-    # --------------------------------------------------------
+    # -------------------------------
     # حذف تکراری
-    # --------------------------------------------------------
+    # -------------------------------
 
     before = len(all_fires)
 
@@ -709,26 +704,25 @@ def main():
 
     after = len(all_fires)
 
-    print()
     print(
-        f"رکورد قبل از حذف تکراری: {before}"
+        f"قبل از حذف تکراری: {before}"
     )
 
     print(
-        f"رکورد نهایی: {after}"
+        f"بعد از حذف تکراری: {after}"
     )
 
-    # --------------------------------------------------------
-    # ساخت CSV
-    # --------------------------------------------------------
+    # -------------------------------
+    # ذخیره CSV
+    # -------------------------------
 
     save_csv(
         all_fires
     )
 
-    # --------------------------------------------------------
+    # -------------------------------
     # آمار
-    # --------------------------------------------------------
+    # -------------------------------
 
     print_statistics(
         all_fires
