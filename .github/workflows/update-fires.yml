@@ -14,6 +14,7 @@ on:
       - ".github/workflows/update-fires.yml"
 
 jobs:
+
   update-fires:
 
     runs-on: ubuntu-latest
@@ -39,13 +40,9 @@ jobs:
 
       - name: Check required files
         run: |
-          echo "Checking repository files..."
-
           test -f update_fires.py
           test -f geoBoundaries-IRN-ADM1.geojson
           test -f requirements.txt
-
-          echo "All required files exist."
 
       - name: Update fire data
         env:
@@ -53,33 +50,30 @@ jobs:
         run: |
           python update_fires.py
 
-      - name: Check generated CSV
+      - name: Check output
         run: |
-          echo "Checking fires.csv..."
+          echo "Checking files..."
 
-          if [ ! -f fires.csv ]; then
-            echo "ERROR: fires.csv was not created."
-            exit 1
-          fi
+          test -f fires.csv
+          test -f archive/index.json
 
-          echo "fires.csv successfully created."
-
-          echo "Number of lines:"
+          echo "fires.csv:"
           wc -l fires.csv
 
-          echo "First 10 rows:"
-          head -n 10 fires.csv
+          echo "Archive files:"
+          ls -la archive/
 
-      - name: Commit updated fire data
+      - name: Commit updated data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add fires.csv
+          git add archive/
 
           if git diff --cached --quiet; then
-            echo "No changes in fires.csv."
+            echo "No changes in fire data."
           else
-            git commit -m "Update Fars fire data"
+            git commit -m "Update Fars fire archive"
             git push
           fi
