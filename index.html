@@ -7,12 +7,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>
-    سامانه برخط پایش حریق اداره کل حفاظت محیط زیست فارس
+سامانه برخط پایش حریق اداره کل حفاظت محیط زیست فارس
 </title>
 
 <!-- =====================================================
      LEAFLET
-====================================================== -->
+===================================================== -->
 
 <link
     rel="stylesheet"
@@ -42,18 +42,14 @@
 
 html,
 body {
-
     width: 100%;
     min-height: 100%;
-
     margin: 0;
-
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 body {
-
     font-family:
         Tahoma,
         Arial,
@@ -75,7 +71,6 @@ body {
 ========================================================= */
 
 header {
-
     background:
         linear-gradient(
             135deg,
@@ -85,41 +80,25 @@ header {
 
     color: #2b2b2b;
 
-    padding:
-        10px 20px;
+    padding: 10px 20px;
 
     box-shadow:
-        0 3px 14px
-        rgba(0,0,0,.12);
+        0 3px 14px rgba(0,0,0,.12);
 
     border-bottom:
-        1px solid
-        rgba(255,255,255,.55);
+        1px solid rgba(255,255,255,.55);
 }
 
-
 .header-inner {
+    max-width: 1450px;
+    height: 100px;
+    margin: auto;
 
-    max-width:
-        1450px;
+    position: relative;
 
-    height:
-        100px;
-
-    margin:
-        auto;
-
-    position:
-        relative;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -128,48 +107,29 @@ header {
 ========================================================= */
 
 .header-logo {
+    position: absolute;
 
-    position:
-        absolute;
-
-    left:
-        0;
-
-    top:
-        50%;
+    left: 0;
+    top: 50%;
 
     transform:
         translateY(-50%);
 
-    display:
-        flex;
-
-    align-items:
-        center;
+    display: flex;
+    align-items: center;
 }
 
-
 .header-logo img {
+    height: 62px;
+    width: auto;
+    max-width: 220px;
 
-    height:
-        62px;
-
-    width:
-        auto;
-
-    max-width:
-        220px;
-
-    object-fit:
-        contain;
-
-    display:
-        block;
+    object-fit: contain;
+    display: block;
 
     filter:
         drop-shadow(
-            0 2px 3px
-            rgba(0,0,0,.12)
+            0 2px 3px rgba(0,0,0,.12)
         );
 }
 
@@ -179,22 +139,13 @@ header {
 ========================================================= */
 
 .header-title {
-
-    width:
-        100%;
-
-    padding:
-        0 240px;
-
-    text-align:
-        center;
+    width: 100%;
+    padding: 0 240px;
+    text-align: center;
 }
 
-
 .header-title h1 {
-
-    margin:
-        0;
+    margin: 0;
 
     font-family:
         "B Titr",
@@ -202,30 +153,20 @@ header {
         Arial,
         sans-serif;
 
-    font-size:
-        27px;
+    font-size: 27px;
+    font-weight: bold;
 
-    font-weight:
-        bold;
+    line-height: 1.7;
 
-    line-height:
-        1.7;
-
-    color:
-        #242424;
+    color: #242424;
 }
 
-
 .header-title p {
+    margin: 3px 0 0;
 
-    margin:
-        3px 0 0;
+    font-size: 13px;
 
-    font-size:
-        13px;
-
-    color:
-        #4c4c4c;
+    color: #4c4c4c;
 }
 
 
@@ -234,54 +175,39 @@ header {
 ========================================================= */
 
 .stats {
+    max-width: 1450px;
 
-    max-width:
-        1450px;
+    margin: 10px auto 7px;
+    padding: 0 15px;
 
-    margin:
-        10px auto 7px;
-
-    padding:
-        0 15px;
-
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
-    gap:
-        8px;
+    gap: 8px;
 }
 
-
 .card {
-
     background:
         rgba(255,255,255,.97);
 
     border:
         1px solid #e6e9ed;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
-    padding:
-        7px 10px;
+    padding: 7px 10px;
 
-    text-align:
-        center;
+    text-align: center;
 
     box-shadow:
         0 3px 10px
         rgba(38,50,56,.06);
 }
 
-
 .card h3 {
-
-    margin:
-        0 0 3px;
+    margin: 0 0 3px;
 
     font-family:
         "B Titr",
@@ -289,27 +215,19 @@ header {
         Arial,
         sans-serif;
 
-    font-size:
-        11px;
+    font-size: 11px;
 
-    font-weight:
-        bold;
+    font-weight: bold;
 
-    color:
-        #65727d;
+    color: #65727d;
 }
 
-
 .card strong {
+    font-size: 18px;
 
-    font-size:
-        18px;
+    font-weight: bold;
 
-    font-weight:
-        bold;
-
-    color:
-        #d35400;
+    color: #d35400;
 }
 
 
@@ -318,9 +236,7 @@ header {
 ========================================================= */
 
 .controls {
-
-    max-width:
-        1450px;
+    max-width: 1450px;
 
     margin:
         0 auto 7px;
@@ -334,24 +250,20 @@ header {
     border:
         1px solid #e3e7eb;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
     box-shadow:
         0 3px 10px
         rgba(38,50,56,.06);
 
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
         auto auto 1fr auto auto;
 
-    align-items:
-        center;
+    align-items: center;
 
-    gap:
-        9px;
+    gap: 9px;
 }
 
 
@@ -360,29 +272,22 @@ header {
 ========================================================= */
 
 .update-button {
+    border: none;
 
-    border:
-        none;
+    border-radius: 7px;
 
-    border-radius:
-        7px;
-
-    padding:
-        7px 12px;
+    padding: 7px 12px;
 
     font-family:
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size:
-        11px;
+    font-size: 11px;
 
-    font-weight:
-        bold;
+    font-weight: bold;
 
-    color:
-        white;
+    color: white;
 
     background:
         linear-gradient(
@@ -395,17 +300,14 @@ header {
         0 3px 7px
         rgba(211,84,0,.20);
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
     transition:
         transform .18s ease,
         box-shadow .18s ease;
 }
 
-
 .update-button:hover {
-
     transform:
         translateY(-1px);
 
@@ -414,43 +316,33 @@ header {
         rgba(211,84,0,.28);
 }
 
-
 .update-button:disabled {
+    opacity: .65;
 
-    opacity:
-        .65;
+    cursor: wait;
 
-    cursor:
-        wait;
-
-    transform:
-        none;
+    transform: none;
 }
 
 
 /* =========================================================
-   ARCHIVE TITLE
+   ARCHIVE
 ========================================================= */
 
 .archive-title {
-
     font-family:
         "B Titr",
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size:
-        11px;
+    font-size: 11px;
 
-    font-weight:
-        bold;
+    font-weight: bold;
 
-    color:
-        #455a64;
+    color: #455a64;
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 }
 
 
@@ -459,18 +351,12 @@ header {
 ========================================================= */
 
 .archive-slider {
+    width: 100%;
 
-    width:
-        100%;
+    height: 5px;
 
-    height:
-        5px;
-
-    appearance:
-        none;
-
-    -webkit-appearance:
-        none;
+    appearance: none;
+    -webkit-appearance: none;
 
     background:
         linear-gradient(
@@ -479,72 +365,48 @@ header {
             #e46f19
         );
 
-    border-radius:
-        20px;
+    border-radius: 20px;
 
-    outline:
-        none;
+    outline: none;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 }
-
 
 .archive-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
 
-    -webkit-appearance:
-        none;
+    width: 15px;
+    height: 15px;
 
-    appearance:
-        none;
+    border-radius: 50%;
 
-    width:
-        15px;
-
-    height:
-        15px;
-
-    border-radius:
-        50%;
-
-    background:
-        #ffffff;
+    background: #fff;
 
     border:
         3px solid #d35400;
 
     box-shadow:
-        0 1px 4px
-        rgba(0,0,0,.20);
+        0 1px 4px rgba(0,0,0,.20);
 
-    cursor:
-        grab;
+    cursor: grab;
 }
 
-
 .archive-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
 
-    width:
-        15px;
+    border-radius: 50%;
 
-    height:
-        15px;
-
-    border-radius:
-        50%;
-
-    background:
-        #ffffff;
+    background: #fff;
 
     border:
         3px solid #d35400;
 
     box-shadow:
-        0 1px 4px
-        rgba(0,0,0,.20);
+        0 1px 4px rgba(0,0,0,.20);
 
-    cursor:
-        grab;
+    cursor: grab;
 }
 
 
@@ -553,27 +415,20 @@ header {
 ========================================================= */
 
 #dateLabel {
+    min-width: 115px;
 
-    min-width:
-        115px;
+    padding: 5px 8px;
 
-    padding:
-        5px 8px;
+    text-align: center;
 
-    text-align:
-        center;
-
-    background:
-        #fff7ef;
+    background: #fff7ef;
 
     border:
         1px solid #f2c7a6;
 
-    border-radius:
-        7px;
+    border-radius: 7px;
 
-    color:
-        #c45108;
+    color: #c45108;
 
     font-family:
         "B Titr",
@@ -581,44 +436,40 @@ header {
         Arial,
         sans-serif;
 
-    font-size:
-        10px;
+    font-size: 10px;
 
-    font-weight:
-        bold;
+    font-weight: bold;
 }
 
-
 #archiveCount {
+    white-space: nowrap;
 
-    white-space:
-        nowrap;
+    color: #60727d;
 
-    color:
-        #60727d;
-
-    font-size:
-        10px;
+    font-size: 10px;
 }
 
 
 /* =========================================================
-   LAST UPDATE
+   LAST UPDATE TIMER
 ========================================================= */
 
 #lastUpdate {
-
-    text-align:
-        center;
-
-    font-size:
-        11px;
-
-    color:
-        #60727d;
+    max-width: 1450px;
 
     margin:
-        2px 0 6px;
+        2px auto 4px;
+
+    padding:
+        0 15px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    color: #60727d;
 }
 
 
@@ -627,9 +478,7 @@ header {
 ========================================================= */
 
 #status {
-
-    max-width:
-        1450px;
+    max-width: 1450px;
 
     margin:
         0 auto 6px;
@@ -637,14 +486,11 @@ header {
     padding:
         0 15px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    color:
-        #60727d;
+    color: #60727d;
 
-    font-size:
-        11px;
+    font-size: 11px;
 }
 
 
@@ -653,21 +499,16 @@ header {
 ========================================================= */
 
 #map {
+    max-width: 1450px;
 
-    max-width:
-        1450px;
-
-    height:
-        680px;
+    height: 680px;
 
     margin:
         0 auto 14px;
 
-    border-radius:
-        14px;
+    border-radius: 14px;
 
-    overflow:
-        hidden;
+    overflow: hidden;
 
     border:
         1px solid #dfe4e8;
@@ -683,18 +524,13 @@ header {
 ========================================================= */
 
 .popup {
+    direction: rtl;
 
-    direction:
-        rtl;
+    text-align: right;
 
-    text-align:
-        right;
+    min-width: 255px;
 
-    min-width:
-        255px;
-
-    line-height:
-        1.95;
+    line-height: 1.95;
 
     font-family:
         Tahoma,
@@ -702,9 +538,7 @@ header {
         sans-serif;
 }
 
-
 .popup h3 {
-
     margin:
         0 0 8px;
 
@@ -714,11 +548,9 @@ header {
         Arial,
         sans-serif;
 
-    color:
-        #d35400;
+    color: #d35400;
 
-    font-size:
-        16px;
+    font-size: 16px;
 }
 
 
@@ -727,7 +559,6 @@ header {
 ========================================================= */
 
 .legend {
-
     background:
         rgba(255,255,255,.97);
 
@@ -760,9 +591,7 @@ header {
         right;
 }
 
-
 .legend-title {
-
     font-family:
         "B Titr",
         Tahoma,
@@ -788,9 +617,7 @@ header {
         1px solid #e5e8ea;
 }
 
-
 .legend-item {
-
     display:
         flex;
 
@@ -804,9 +631,7 @@ header {
         nowrap;
 }
 
-
 .legend-dot {
-
     width:
         11px;
 
@@ -832,7 +657,6 @@ header {
 ========================================================= */
 
 footer {
-
     background:
         linear-gradient(
             135deg,
@@ -841,7 +665,7 @@ footer {
         );
 
     color:
-        #ffffff;
+        #fff;
 
     text-align:
         center;
@@ -855,59 +679,46 @@ footer {
 
 
 /* =========================================================
-   RESPONSIVE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 900px) {
 
     .stats {
-
         grid-template-columns:
             repeat(2, 1fr);
     }
 
-
     .controls {
-
         grid-template-columns:
             1fr 1fr;
     }
 
-
     .archive-slider {
-
         grid-column:
             1 / -1;
     }
 
-
     #dateLabel {
-
         min-width:
             0;
     }
-
 }
 
 
 @media (max-width: 650px) {
 
     header {
-
         padding:
             8px 10px;
     }
 
-
     .header-inner {
-
         height:
             150px;
     }
 
-
     .header-logo {
-
         left:
             50%;
 
@@ -918,37 +729,27 @@ footer {
             translateX(-50%);
     }
 
-
     .header-logo img {
-
         height:
             50px;
     }
 
-
     .header-title {
-
         padding:
             60px 7px 0;
     }
 
-
     .header-title h1 {
-
         font-size:
             18px;
     }
 
-
     .header-title p {
-
         font-size:
             11px;
     }
 
-
     .stats {
-
         grid-template-columns:
             1fr 1fr;
 
@@ -959,9 +760,7 @@ footer {
             8px;
     }
 
-
     .controls {
-
         margin:
             8px;
 
@@ -972,9 +771,7 @@ footer {
             1fr 1fr;
     }
 
-
     #map {
-
         height:
             540px;
 
@@ -997,7 +794,7 @@ footer {
 
 <!-- =====================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
 <header>
 
@@ -1006,7 +803,7 @@ footer {
         <div class="header-logo">
 
             <img
-                src="farslogo.png?v=7"
+                src="farslogo.png?v=8"
                 alt="اداره کل حفاظت محیط زیست فارس"
             >
 
@@ -1033,7 +830,7 @@ footer {
 
 <!-- =====================================================
      STATISTICS
-===================================================== -->
+========================================================= -->
 
 <div class="stats">
 
@@ -1093,7 +890,7 @@ footer {
 
 <!-- =====================================================
      CONTROLS
-===================================================== -->
+========================================================= -->
 
 <div class="controls">
 
@@ -1135,17 +932,17 @@ footer {
 
 
 <!-- =====================================================
-     LAST UPDATE TIMER
-===================================================== -->
+     LAST UPDATE
+========================================================= -->
 
 <div id="lastUpdate">
-    آخرین به‌روزرسانی: در حال دریافت...
+    آخرین به‌روزرسانی: در انتظار اطلاعات...
 </div>
 
 
 <!-- =====================================================
      STATUS
-===================================================== -->
+========================================================= -->
 
 <div id="status">
     در حال بارگذاری سامانه...
@@ -1154,14 +951,14 @@ footer {
 
 <!-- =====================================================
      MAP
-===================================================== -->
+========================================================= -->
 
 <div id="map"></div>
 
 
 <!-- =====================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer>
 
@@ -1175,7 +972,7 @@ footer {
 
 <!-- =====================================================
      LEAFLET
-===================================================== -->
+========================================================= -->
 
 <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
@@ -1262,31 +1059,24 @@ map.addLayer(
    VARIABLES
 ========================================================= */
 
-let farsBoundaryLayer =
-    null;
+let farsBoundaryLayer = null;
 
-let archiveDates =
-    [];
+let archiveDates = [];
 
-let selectedArchiveIndex =
-    0;
+let selectedArchiveIndex = 0;
 
-let lastUpdateTimestamp =
-    null;
+let lastUpdateTimestamp = null;
 
 
 /* =========================================================
    STATUS
 ========================================================= */
 
-function setStatus(
-    text
-) {
+function setStatus(text) {
 
     document.getElementById(
         "status"
-    ).innerText =
-        text;
+    ).innerText = text;
 }
 
 
@@ -1294,30 +1084,18 @@ function setStatus(
    PERSIAN DIGITS
 ========================================================= */
 
-function toPersianDigits(
-    value
-) {
+function toPersianDigits(value) {
 
     return String(value)
-
         .replace(/0/g, "۰")
-
         .replace(/1/g, "۱")
-
         .replace(/2/g, "۲")
-
         .replace(/3/g, "۳")
-
         .replace(/4/g, "۴")
-
         .replace(/5/g, "۵")
-
         .replace(/6/g, "۶")
-
         .replace(/7/g, "۷")
-
         .replace(/8/g, "۸")
-
         .replace(/9/g, "۹");
 }
 
@@ -1333,7 +1111,6 @@ function gregorianToJalali(
 ) {
 
     const gdm = [
-
         0,
         31,
         59,
@@ -1356,21 +1133,17 @@ function gregorianToJalali(
         gy > 1600
     ) {
 
-        jy =
-            979;
+        jy = 979;
 
-        gy -=
-            1600;
+        gy -= 1600;
 
     }
 
     else {
 
-        jy =
-            0;
+        jy = 0;
 
-        gy -=
-            621;
+        gy -= 621;
     }
 
 
@@ -1381,37 +1154,24 @@ function gregorianToJalali(
 
 
     let days =
-
         365 * gy
-
         +
-
         Math.floor(
             (gy2 + 3) / 4
         )
-
         -
-
         Math.floor(
             (gy2 + 99) / 100
         )
-
         +
-
         Math.floor(
             (gy2 + 399) / 400
         )
-
         -
-
         80
-
         +
-
         gd
-
         +
-
         gdm[
             gm - 1
         ];
@@ -1506,8 +1266,7 @@ function formatJalaliDate(
 ) {
 
     if (
-        !dateString
-        ||
+        !dateString ||
         dateString === "---"
     ) {
 
@@ -1550,7 +1309,6 @@ function formatJalaliDate(
 
 
     return toPersianDigits(
-
         j[0]
         +
         "/"
@@ -1583,7 +1341,6 @@ function getJalaliMonth(
 ) {
 
     const months = [
-
         "فروردین",
         "اردیبهشت",
         "خرداد",
@@ -1660,22 +1417,17 @@ function formatFullJalaliDate(
 
 
     return (
-
         toPersianDigits(
             j[2]
         )
-
         +
         " "
-
         +
         getJalaliMonth(
             j[1]
         )
-
         +
         " "
-
         +
         toPersianDigits(
             j[0]
@@ -1715,7 +1467,6 @@ function formatUTCtime(
 
 
     return toPersianDigits(
-
         text.substring(
             0,
             2
@@ -1744,12 +1495,8 @@ function formatIranTime(
     ) {
 
         return {
-
-            time:
-                "---",
-
-            dayOffset:
-                0
+            time: "---",
+            dayOffset: 0
         };
     }
 
@@ -1819,21 +1566,16 @@ function formatIranTime(
     return {
 
         time:
-
             toPersianDigits(
-
                 String(
                     iranHour
                 ).padStart(
                     2,
                     "0"
                 )
-
                 +
                 ":"
-
                 +
-
                 String(
                     iranMinute
                 ).padStart(
@@ -1895,31 +1637,24 @@ function addOneDay(
 
             date.getUTCFullYear(),
 
-            date.getUTCMonth()
-            +
-            1,
+            date.getUTCMonth() + 1,
 
             date.getUTCDate()
         );
 
 
     return (
-
         toPersianDigits(
             j[2]
         )
-
         +
         " "
-
         +
         getJalaliMonth(
             j[1]
         )
-
         +
         " "
-
         +
         toPersianDigits(
             j[0]
@@ -1929,7 +1664,7 @@ function addOneDay(
 
 
 /* =========================================================
-   CSV PARSER
+   CSV
 ========================================================= */
 
 function parseCSV(
@@ -1980,8 +1715,7 @@ function parseCSV(
         );
 
 
-    const records =
-        [];
+    const records = [];
 
 
     for (
@@ -2002,8 +1736,7 @@ function parseCSV(
             lines[i].split(",");
 
 
-        const row =
-            {};
+        const row = {};
 
 
         for (
@@ -2015,17 +1748,9 @@ function parseCSV(
             row[
                 headers[j]
             ] =
-
-                values[j]
-                !== undefined
-
-                ?
-
-                values[j].trim()
-
-                :
-
-                "";
+                values[j] !== undefined
+                ? values[j].trim()
+                : "";
         }
 
 
@@ -2054,7 +1779,6 @@ function loadTextFile(
 
 
     return fetch(
-
         url
         +
         separator
@@ -2062,7 +1786,6 @@ function loadTextFile(
         "v="
         +
         Date.now()
-
     )
 
     .then(
@@ -2073,7 +1796,7 @@ function loadTextFile(
             ) {
 
                 throw new Error(
-                    "خطا در دریافت فایل"
+                    "فایل دریافت نشد"
                 );
             }
 
@@ -2103,8 +1826,7 @@ function loadBoundary() {
                 );
 
 
-            let fars =
-                null;
+            let fars = null;
 
 
             data.features.forEach(
@@ -2176,8 +1898,7 @@ function loadBoundary() {
 
 
             const bounds =
-                farsBoundaryLayer
-                .getBounds();
+                farsBoundaryLayer.getBounds();
 
 
             if (
@@ -2262,11 +1983,9 @@ function createPopup(
         "<div class='popup'>"
 
         +
-
         "<h3>🔥 حریق استان فارس</h3>"
 
         +
-
         "<b>سنجنده:</b> "
         +
         (
@@ -2276,11 +1995,9 @@ function createPopup(
         )
 
         +
-
         "<br>"
 
         +
-
         "<b>ماهواره:</b> "
         +
         (
@@ -2290,21 +2007,17 @@ function createPopup(
         )
 
         +
-
         "<br>"
 
         +
-
         "<b>تاریخ ایران:</b> "
         +
         localDate
 
         +
-
         "<br>"
 
         +
-
         "<b>تاریخ UTC:</b> "
         +
         (
@@ -2314,21 +2027,17 @@ function createPopup(
         )
 
         +
-
         "<br>"
 
         +
-
         "<b>ساعت ایران:</b> "
         +
         iranTime.time
 
         +
-
         "<br>"
 
         +
-
         "<b>ساعت UTC:</b> "
         +
         formatUTCtime(
@@ -2336,11 +2045,9 @@ function createPopup(
         )
 
         +
-
         "<br>"
 
         +
-
         "<b>FRP:</b> "
         +
         (
@@ -2352,11 +2059,9 @@ function createPopup(
         " MW"
 
         +
-
         "<br>"
 
         +
-
         "<b>Confidence:</b> "
         +
         (
@@ -2366,11 +2071,9 @@ function createPopup(
         )
 
         +
-
         "<br>"
 
         +
-
         "<b>Brightness:</b> "
         +
         (
@@ -2380,11 +2083,9 @@ function createPopup(
         )
 
         +
-
         "<br>"
 
         +
-
         "<b>روز/شب:</b> "
         +
         (
@@ -2394,31 +2095,24 @@ function createPopup(
         )
 
         +
-
         "<br>"
 
         +
-
         "<b>مختصات:</b> "
-
         +
-
         parseFloat(
             fire.latitude
         ).toFixed(5)
 
         +
-
         " , "
 
         +
-
         parseFloat(
             fire.longitude
         ).toFixed(5)
 
         +
-
         "</div>"
     );
 }
@@ -2436,13 +2130,8 @@ function displayFires(
     fireLayer.clearLayers();
 
 
-    let viirs =
-        0;
-
-
-    let modis =
-        0;
-
+    let viirs = 0;
+    let modis = 0;
 
     let latestDate =
         "---";
@@ -2575,6 +2264,7 @@ function displayFires(
             fireLayer.addLayer(
                 marker
             );
+
         }
     );
 
@@ -2614,11 +2304,9 @@ function displayFires(
     document.getElementById(
         "archiveCount"
     ).innerText =
-
         toPersianDigits(
             fires.length
         )
-
         +
         " حریق";
 
@@ -2630,8 +2318,7 @@ function displayFires(
     ) {
 
         const bounds =
-            farsBoundaryLayer
-            .getBounds();
+            farsBoundaryLayer.getBounds();
 
 
         if (
@@ -2676,13 +2363,11 @@ function loadArchiveIndex() {
                 index
                 .map(
                     function(item) {
-
                         return item.date;
                     }
                 )
                 .filter(
                     function(date) {
-
                         return !!date;
                     }
                 )
@@ -2701,18 +2386,14 @@ function loadArchiveIndex() {
 
             slider.max =
                 Math.max(
-                    archiveDates.length
-                    -
-                    1,
+                    archiveDates.length - 1,
                     0
                 );
 
 
             selectedArchiveIndex =
                 Math.max(
-                    archiveDates.length
-                    -
-                    1,
+                    archiveDates.length - 1,
                     0
                 );
 
@@ -2930,13 +2611,10 @@ document.getElementById(
 
 
                 setStatus(
-
                     toPersianDigits(
                         fires.length
                     )
-
                     +
-
                     " حریق در آخرین داده منتشرشده یافت شد."
                 );
 
@@ -2975,12 +2653,11 @@ document.getElementById(
 
 
 /* =========================================================
-   LEGEND - TOP RIGHT
+   LEGEND
 ========================================================= */
 
 const legend =
     L.control({
-
         position:
             "topright"
     });
@@ -2999,49 +2676,19 @@ legend.onAdd =
         div.innerHTML =
 
             "<div class='legend-title'>" +
+            "راهنمای حریق" +
+            "</div>" +
 
-            "راهنمای حریق"
+            "<div class='legend-item'>" +
+            "<span class='legend-dot' " +
+            "style='background:#ef233c'></span>" +
+            "وایرس (VIIRS)" +
+            "</div>" +
 
-            +
-
-            "</div>"
-
-            +
-
-            "<div class='legend-item'>"
-
-            +
-
-            "<span class='legend-dot' "
-
-            +
-            "style='background:#ef233c'></span>"
-
-            +
-
-            "وایرس (VIIRS)"
-
-            +
-
-            "</div>"
-
-            +
-
-            "<div class='legend-item'>"
-
-            +
-
-            "<span class='legend-dot' "
-
-            +
-            "style='background:#f39c12'></span>"
-
-            +
-
-            "مودیس (MODIS)"
-
-            +
-
+            "<div class='legend-item'>" +
+            "<span class='legend-dot' " +
+            "style='background:#f39c12'></span>" +
+            "مودیس (MODIS)" +
             "</div>";
 
 
@@ -3055,7 +2702,7 @@ legend.addTo(
 
 
 /* =========================================================
-   LAST UPDATE
+   UPDATE TIMER
 ========================================================= */
 
 function loadUpdateInfo() {
@@ -3073,12 +2720,28 @@ function loadUpdateInfo() {
                 );
 
 
-            lastUpdateTimestamp =
+            const timestamp =
                 Number(
                     info.updated_at_timestamp
+                );
+
+
+            if (
+                !Number.isFinite(
+                    timestamp
                 )
-                *
-                1000;
+                ||
+                timestamp <= 0
+            ) {
+
+                throw new Error(
+                    "timestamp نامعتبر است."
+                );
+            }
+
+
+            lastUpdateTimestamp =
+                timestamp * 1000;
 
 
             updateLastUpdateLabel();
@@ -3089,7 +2752,7 @@ function loadUpdateInfo() {
         function(error) {
 
             console.error(
-                "Update info:",
+                "Update info error:",
                 error
             );
 
@@ -3097,18 +2760,30 @@ function loadUpdateInfo() {
             document.getElementById(
                 "lastUpdate"
             ).innerText =
-
-                "آخرین به‌روزرسانی: نامشخص";
+                "آخرین به‌روزرسانی: در انتظار اولین اجرای موفق";
         }
     );
 }
 
 
+/* =========================================================
+   TIMER LABEL
+========================================================= */
+
 function updateLastUpdateLabel() {
+
+    const element =
+        document.getElementById(
+            "lastUpdate"
+        );
+
 
     if (
         !lastUpdateTimestamp
     ) {
+
+        element.innerText =
+            "آخرین به‌روزرسانی: در انتظار اطلاعات";
 
         return;
     }
@@ -3129,9 +2804,28 @@ function updateLastUpdateLabel() {
         );
 
 
+    const days =
+        Math.floor(
+            totalSeconds /
+            86400
+        );
+
+
+    const hours =
+        Math.floor(
+            (
+                totalSeconds % 86400
+            ) /
+            3600
+        );
+
+
     const minutes =
         Math.floor(
-            totalSeconds / 60
+            (
+                totalSeconds % 3600
+            ) /
+            60
         );
 
 
@@ -3139,53 +2833,89 @@ function updateLastUpdateLabel() {
         totalSeconds % 60;
 
 
-    let text;
+    let text =
+        "آخرین به‌روزرسانی: ";
 
 
     if (
-        minutes === 0
+        days > 0
     ) {
 
-        text =
-
-            "آخرین به‌روزرسانی: "
-
+        text +=
+            toPersianDigits(
+                days
+            )
             +
+            " روز ";
 
+        text +=
+            toPersianDigits(
+                hours
+            )
+            +
+            " ساعت پیش";
+
+    }
+
+    else if (
+        hours > 0
+    ) {
+
+        text +=
+            toPersianDigits(
+                hours
+            )
+            +
+            " ساعت ";
+
+        text +=
+            toPersianDigits(
+                minutes
+            )
+            +
+            " دقیقه پیش";
+
+    }
+
+    else if (
+        minutes > 0
+    ) {
+
+        text +=
+            toPersianDigits(
+                minutes
+            )
+            +
+            " دقیقه ";
+
+        text +=
             toPersianDigits(
                 seconds
             )
-
             +
-
             " ثانیه پیش";
 
     }
 
     else {
 
-        text =
-
-            "آخرین به‌روزرسانی: "
-
-            +
-
+        text +=
             toPersianDigits(
-                minutes
+                seconds
             )
-
             +
-
-            " دقیقه پیش";
+            " ثانیه پیش";
     }
 
 
-    document.getElementById(
-        "lastUpdate"
-    ).innerText =
+    element.innerText =
         text;
 }
 
+
+/* =========================================================
+   TIMER
+========================================================= */
 
 loadUpdateInfo();
 
@@ -3230,13 +2960,10 @@ async function initializeApp() {
 
 
         setStatus(
-
             toPersianDigits(
                 currentFires.length
             )
-
             +
-
             " حریق در آخرین داده منتشرشده نمایش داده شد."
         );
 
@@ -3249,9 +2976,7 @@ async function initializeApp() {
         ) {
 
             selectedArchiveIndex =
-                archiveDates.length
-                -
-                1;
+                archiveDates.length - 1;
 
 
             document.getElementById(
