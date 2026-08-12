@@ -6,15 +6,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>سامانه پایش حریق اداره کل حفاظت محیط زیست استان فارس</title>
+    <title>سامانه پایش حریق استان فارس</title>
 
-    <!-- Leaflet -->
+    <!-- =====================================================
+         Leaflet
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     >
 
-    <!-- Marker Cluster -->
+    <!-- =====================================================
+         Marker Cluster
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
@@ -32,116 +38,365 @@
         }
 
         body {
+
             margin: 0;
-            font-family: Tahoma, Arial, sans-serif;
+
+            font-family:
+                Tahoma,
+                Arial,
+                sans-serif;
+
             background: #f4f6f8;
+
+            color: #222;
         }
 
+
+        /* =================================================
+           Header
+        ================================================= */
+
         header {
+
             background: #b71c1c;
+
             color: white;
+
             text-align: center;
-            padding: 18px;
+
+            padding: 18px 12px;
         }
 
         header h1 {
+
             margin: 0;
+
             font-size: 25px;
         }
 
         header p {
+
             margin: 8px 0 0;
+
             font-size: 14px;
         }
 
+
+        /* =================================================
+           Stats
+        ================================================= */
+
         .stats {
+
             display: flex;
+
             justify-content: center;
+
             gap: 12px;
+
             padding: 15px;
+
             flex-wrap: wrap;
         }
 
+
         .card {
+
             background: white;
+
             min-width: 150px;
-            padding: 14px 25px;
+
+            padding: 13px 22px;
+
             text-align: center;
+
             border-radius: 10px;
-            box-shadow: 0 2px 7px rgba(0,0,0,.12);
+
+            box-shadow:
+                0 2px 7px rgba(0,0,0,.12);
         }
 
+
         .card h3 {
-            margin: 0 0 8px;
+
+            margin: 0 0 7px;
+
             font-size: 13px;
+
             color: #555;
         }
 
+
         .card strong {
-            font-size: 24px;
+
+            font-size: 23px;
+
             color: #d32f2f;
         }
 
-        #status {
-            text-align: center;
-            padding: 8px 10px 12px;
-            color: #555;
+
+        /* =================================================
+           Controls
+        ================================================= */
+
+        .controls {
+
+            background: white;
+
+            margin: 0 15px 12px;
+
+            padding: 14px 18px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 7px rgba(0,0,0,.10);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
         }
+
+
+        .update-button {
+
+            background: #b71c1c;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            padding: 9px 17px;
+
+            font-family: inherit;
+
+            cursor: pointer;
+
+            font-size: 13px;
+        }
+
+
+        .update-button:hover {
+
+            background: #8e0000;
+        }
+
+
+        .update-button:disabled {
+
+            background: #999;
+
+            cursor: wait;
+        }
+
+
+        .archive-title {
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        .archive-slider {
+
+            flex: 1;
+
+            min-width: 220px;
+        }
+
+
+        #dateLabel {
+
+            min-width: 125px;
+
+            text-align: center;
+
+            font-weight: bold;
+
+            color: #b71c1c;
+        }
+
+
+        #archiveCount {
+
+            color: #555;
+
+            font-size: 13px;
+
+            white-space: nowrap;
+        }
+
+
+        /* =================================================
+           Status
+        ================================================= */
+
+        #status {
+
+            text-align: center;
+
+            padding: 5px 15px 12px;
+
+            color: #555;
+
+            font-size: 13px;
+        }
+
+
+        /* =================================================
+           Map
+        ================================================= */
 
         #map {
+
             height: 620px;
+
             margin: 0 15px 15px;
+
             border-radius: 10px;
+
             overflow: hidden;
-            box-shadow: 0 2px 7px rgba(0,0,0,.15);
+
+            box-shadow:
+                0 2px 7px rgba(0,0,0,.15);
         }
 
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 13px;
+
+        /* =================================================
+           Popup
+        ================================================= */
+
+        .popup {
+
+            direction: rtl;
+
+            text-align: right;
+
+            min-width: 245px;
+
+            line-height: 1.9;
+        }
+
+
+        .popup h3 {
+
+            margin: 0 0 8px;
+
+            color: #b71c1c;
+        }
+
+
+        /* =================================================
+           Legend
+        ================================================= */
+
+        .legend {
+
+            background: white;
+
+            padding: 9px 12px;
+
+            border-radius: 7px;
+
+            box-shadow:
+                0 1px 5px rgba(0,0,0,.25);
+
+            line-height: 1.8;
+
             font-size: 12px;
         }
 
-        .popup {
-            direction: rtl;
-            text-align: right;
-            line-height: 1.9;
-            min-width: 250px;
+
+        .legend-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
         }
 
-        .popup h3 {
-            margin: 0 0 8px;
-            color: #b71c1c;
+
+        .legend-dot {
+
+            width: 12px;
+
+            height: 12px;
+
+            border-radius: 50%;
+
+            display: inline-block;
+
+            border: 1px solid #555;
         }
 
-        .boundary-label {
-            background: white;
-            border: 2px solid #d32f2f;
-            color: #b71c1c;
-            font-weight: bold;
-            padding: 5px 9px;
-            border-radius: 6px;
-            box-shadow: 0 1px 4px rgba(0,0,0,.25);
-            white-space: nowrap;
+
+        /* =================================================
+           Footer
+        ================================================= */
+
+        footer {
+
+            background: #222;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 13px;
+
+            font-size: 12px;
         }
+
+
+        /* =================================================
+           Mobile
+        ================================================= */
 
         @media (max-width: 700px) {
 
             header h1 {
+
                 font-size: 19px;
             }
 
-            #map {
-                height: 500px;
-                margin: 0 8px 10px;
+
+            .controls {
+
+                margin:
+                    0 8px 10px;
             }
 
+
+            #map {
+
+                height: 500px;
+
+                margin:
+                    0 8px 10px;
+            }
+
+
             .card {
+
                 min-width: 130px;
+
                 padding: 10px;
             }
+
+
+            .archive-title {
+
+                width: 100%;
+            }
+
         }
 
     </style>
@@ -152,56 +407,155 @@
 <body>
 
 
+<!-- =====================================================
+     Header
+===================================================== -->
+
 <header>
 
-    <h1>🔥سامانه پایش حریق اداره کل حفاظت محیط زیست استان فارس🔥</h1>
+    <h1>
+        🔥 سامانه پایش حریق استان فارس
+    </h1>
 
     <p>
-       
+        پایش حریق با داده‌های NASA FIRMS
     </p>
 
 </header>
 
 
 <!-- =====================================================
-     آمار
+     Statistics
 ===================================================== -->
 
 <div class="stats">
 
     <div class="card">
-        <h3>کل حریق‌ها</h3>
-        <strong id="fireCount">0</strong>
+
+        <h3>
+            کل حریق‌ها
+        </h3>
+
+        <strong id="fireCount">
+            0
+        </strong>
+
     </div>
 
-    <div class="card">
-        <h3>VIIRS</h3>
-        <strong id="viirsCount">0</strong>
-    </div>
 
     <div class="card">
-        <h3>MODIS</h3>
-        <strong id="modisCount">0</strong>
+
+        <h3>
+            VIIRS
+        </h3>
+
+        <strong id="viirsCount">
+            0
+        </strong>
+
     </div>
 
+
     <div class="card">
-        <h3>آخرین تاریخ</h3>
-        <strong id="fireDate">---</strong>
+
+        <h3>
+            MODIS
+        </h3>
+
+        <strong id="modisCount">
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="card">
+
+        <h3>
+            تاریخ انتخابی
+        </h3>
+
+        <strong id="fireDate">
+            ---
+        </strong>
+
     </div>
 
 </div>
 
+
+<!-- =====================================================
+     Controls
+===================================================== -->
+
+<div class="controls">
+
+    <button
+        id="updateButton"
+        class="update-button"
+        type="button"
+    >
+        🔄 به‌روزرسانی
+    </button>
+
+
+    <span class="archive-title">
+        آرشیو:
+    </span>
+
+
+    <input
+        id="archiveSlider"
+        class="archive-slider"
+        type="range"
+        min="0"
+        max="0"
+        value="0"
+        step="1"
+    >
+
+
+    <span id="dateLabel">
+        ---
+    </span>
+
+
+    <span id="archiveCount">
+        ---
+    </span>
+
+</div>
+
+
+<!-- =====================================================
+     Status
+===================================================== -->
 
 <div id="status">
-    در حال دریافت داده‌های حریق...
+
+    در حال دریافت اطلاعات...
+
 </div>
 
+
+<!-- =====================================================
+     Map
+===================================================== -->
 
 <div id="map"></div>
 
 
+<!-- =====================================================
+     Footer
+===================================================== -->
+
 <footer>
-    NASA FIRMS | VIIRS | MODIS | FARS FIRE SENTINEL
+
+    NASA FIRMS |
+    VIIRS |
+    MODIS |
+    FARS FIRE SENTINEL
+
 </footer>
 
 
@@ -209,20 +563,24 @@
      Leaflet
 ===================================================== -->
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
 
 
 <!-- =====================================================
      Marker Cluster
 ===================================================== -->
 
-<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script
+    src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js">
+</script>
 
 
 <script>
 
 /* =========================================================
-   تنظیمات
+   فایل‌ها
 ========================================================= */
 
 const FIRE_FILE =
@@ -231,9 +589,12 @@ const FIRE_FILE =
 const BOUNDARY_FILE =
     "geoBoundaries-IRN-ADM1.geojson";
 
+const ARCHIVE_INDEX =
+    "archive/index.json";
+
 
 /* =========================================================
-   ایجاد نقشه
+   نقشه
 ========================================================= */
 
 const map =
@@ -243,16 +604,15 @@ const map =
 L.tileLayer(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     {
+
         maxZoom: 18,
+
         attribution:
             "© OpenStreetMap contributors"
+
     }
 ).addTo(map);
 
-
-/* =========================================================
-   مرکز اولیه فارس
-========================================================= */
 
 map.setView(
     [29.6, 52.5],
@@ -278,8 +638,8 @@ const fireLayer =
 
         maxClusterRadius:
             30
-
     });
+
 
 map.addLayer(
     fireLayer
@@ -287,7 +647,7 @@ map.addLayer(
 
 
 /* =========================================================
-   لایه مرز فارس
+   لایه مرز
 ========================================================= */
 
 let farsBoundaryLayer =
@@ -295,23 +655,16 @@ let farsBoundaryLayer =
 
 
 /* =========================================================
-   وضعیت
+   آرشیو
 ========================================================= */
 
-function setStatus(
-    text
-) {
+let archiveDates = [];
 
-    document.getElementById(
-        "status"
-    ).innerText =
-        text;
-
-}
+let selectedArchiveIndex = 0;
 
 
 /* =========================================================
-   تبدیل اعداد انگلیسی به فارسی
+   توابع کمکی
 ========================================================= */
 
 function toPersianDigits(
@@ -319,42 +672,52 @@ function toPersianDigits(
 ) {
 
     return String(value)
+
         .replace(
             /0/g,
             "۰"
         )
+
         .replace(
             /1/g,
             "۱"
         )
+
         .replace(
             /2/g,
             "۲"
         )
+
         .replace(
             /3/g,
             "۳"
         )
+
         .replace(
             /4/g,
             "۴"
         )
+
         .replace(
             /5/g,
             "۵"
         )
+
         .replace(
             /6/g,
             "۶"
         )
+
         .replace(
             /7/g,
             "۷"
         )
+
         .replace(
             /8/g,
             "۸"
         )
+
         .replace(
             /9/g,
             "۹"
@@ -363,7 +726,7 @@ function toPersianDigits(
 
 
 /* =========================================================
-   تبدیل میلادی به شمسی
+   میلادی → شمسی
 ========================================================= */
 
 function gregorianToJalali(
@@ -387,18 +750,24 @@ function gregorianToJalali(
         334
     ];
 
+
     let jy;
+
 
     if (
         gy > 1600
     ) {
 
         jy = 979;
+
         gy -= 1600;
 
-    } else {
+    }
+
+    else {
 
         jy = 0;
+
         gy -= 621;
 
     }
@@ -439,8 +808,7 @@ function gregorianToJalali(
         );
 
 
-    days %=
-        12053;
+    days %= 12053;
 
 
     jy +=
@@ -450,8 +818,7 @@ function gregorianToJalali(
         );
 
 
-    days %=
-        1461;
+    days %= 1461;
 
 
     if (
@@ -462,6 +829,7 @@ function gregorianToJalali(
             Math.floor(
                 (days - 1) / 365
             );
+
 
         days =
             (days - 1) % 365;
@@ -483,17 +851,21 @@ function gregorianToJalali(
                 days / 31
             );
 
+
         jd =
             1 +
-            (days % 31);
+            days % 31;
 
-    } else {
+    }
+
+    else {
 
         jm =
             7 +
             Math.floor(
                 (days - 186) / 30
             );
+
 
         jd =
             1 +
@@ -509,12 +881,11 @@ function gregorianToJalali(
         jm,
         jd
     ];
-
 }
 
 
 /* =========================================================
-   فرمت تاریخ شمسی
+   فرمت شمسی
 ========================================================= */
 
 function formatJalaliDate(
@@ -522,7 +893,8 @@ function formatJalaliDate(
 ) {
 
     if (
-        !dateString
+        !dateString ||
+        dateString === "---"
     ) {
 
         return "---";
@@ -533,7 +905,6 @@ function formatJalaliDate(
         String(
             dateString
         )
-        .trim()
         .split("-");
 
 
@@ -578,7 +949,7 @@ function formatJalaliDate(
     }
 
 
-    const jalali =
+    const j =
         gregorianToJalali(
             gy,
             gm,
@@ -586,78 +957,73 @@ function formatJalaliDate(
         );
 
 
-    const result =
-
-        jalali[0] +
+    return toPersianDigits(
+        j[0] +
         "/" +
         String(
-            jalali[1]
+            j[1]
         ).padStart(
             2,
             "0"
         ) +
         "/" +
         String(
-            jalali[2]
+            j[2]
         ).padStart(
             2,
             "0"
-        );
-
-
-    return toPersianDigits(
-        result
+        )
     );
-
 }
 
 
 /* =========================================================
-   نام ماه شمسی
+   نام ماه
 ========================================================= */
 
-function getPersianMonth(
+function getJalaliMonth(
     month
 ) {
 
     const months = [
+
         "فروردین",
+
         "اردیبهشت",
+
         "خرداد",
+
         "تیر",
+
         "مرداد",
+
         "شهریور",
+
         "مهر",
+
         "آبان",
+
         "آذر",
+
         "دی",
+
         "بهمن",
+
         "اسفند"
     ];
 
 
-    if (
-        month < 1 ||
-        month > 12
-    ) {
-
-        return "";
-
-    }
-
-
     return months[
         month - 1
-    ];
-
+    ] || "";
 }
 
 
 /* =========================================================
-   تاریخ کامل شمسی
+   تاریخ کامل فارسی
 ========================================================= */
 
-function formatJalaliFullDate(
+function formatFullJalaliDate(
     dateString
 ) {
 
@@ -670,11 +1036,7 @@ function formatJalaliFullDate(
 
 
     const parts =
-        String(
-            dateString
-        )
-        .trim()
-        .split("-");
+        dateString.split("-");
 
 
     if (
@@ -682,67 +1044,187 @@ function formatJalaliFullDate(
     ) {
 
         return dateString;
-
     }
 
 
-    const gy =
+    const j =
+        gregorianToJalali(
+
+            parseInt(
+                parts[0],
+                10
+            ),
+
+            parseInt(
+                parts[1],
+                10
+            ),
+
+            parseInt(
+                parts[2],
+                10
+            )
+        );
+
+
+    return (
+
+        toPersianDigits(
+            j[2]
+        )
+
+        +
+        " "
+
+        +
+        getJalaliMonth(
+            j[1]
+        )
+
+        +
+        " "
+
+        +
+        toPersianDigits(
+            j[0]
+        )
+
+    );
+}
+
+
+/* =========================================================
+   تبدیل ساعت FIRMS از UTC به ایران
+========================================================= */
+
+function formatIranTime(
+    acqTime,
+    acqDate
+) {
+
+    if (
+        acqTime === null ||
+        acqTime === undefined ||
+        acqTime === ""
+    ) {
+
+        return "---";
+    }
+
+
+    let timeText =
+        String(acqTime)
+        .trim();
+
+
+    timeText =
+        timeText.replace(
+            /\D/g,
+            ""
+        );
+
+
+    timeText =
+        timeText.padStart(
+            4,
+            "0"
+        );
+
+
+    let hour =
         parseInt(
-            parts[0],
+            timeText.substring(
+                0,
+                2
+            ),
             10
         );
 
-    const gm =
-        parseInt(
-            parts[1],
-            10
-        );
 
-    const gd =
+    let minute =
         parseInt(
-            parts[2],
+            timeText.substring(
+                2,
+                4
+            ),
             10
         );
 
 
     if (
-        isNaN(gy) ||
-        isNaN(gm) ||
-        isNaN(gd)
+        isNaN(hour) ||
+        isNaN(minute)
     ) {
 
-        return dateString;
-
+        return "---";
     }
 
 
-    const jalali =
-        gregorianToJalali(
-            gy,
-            gm,
-            gd
+    /*
+       FIRMS = UTC
+       ایران = UTC + 3:30
+    */
+
+    let totalMinutes =
+        hour * 60 +
+        minute +
+        210;
+
+
+    let dayOffset =
+        Math.floor(
+            totalMinutes / 1440
         );
 
 
-    return (
-        toPersianDigits(
-            jalali[2]
-        ) +
-        " " +
-        getPersianMonth(
-            jalali[1]
-        ) +
-        " " +
-        toPersianDigits(
-            jalali[0]
-        )
-    );
+    totalMinutes =
+        totalMinutes % 1440;
 
+
+    const iranHour =
+        Math.floor(
+            totalMinutes / 60
+        );
+
+
+    const iranMinute =
+        totalMinutes % 60;
+
+
+    const timeString =
+
+        String(
+            iranHour
+        ).padStart(
+            2,
+            "0"
+        )
+
+        +
+
+        ":"
+
+        +
+
+        String(
+            iranMinute
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return {
+        time: toPersianDigits(
+            timeString
+        ),
+        dayOffset: dayOffset
+    };
 }
 
 
 /* =========================================================
-   خواندن CSV
+   CSV Parser
 ========================================================= */
 
 function parseCSV(
@@ -751,11 +1233,11 @@ function parseCSV(
 
     text =
         text
-            .replace(
-                /^\uFEFF/,
-                ""
-            )
-            .trim();
+        .replace(
+            /^\uFEFF/,
+            ""
+        )
+        .trim();
 
 
     if (
@@ -763,7 +1245,6 @@ function parseCSV(
     ) {
 
         return [];
-
     }
 
 
@@ -778,25 +1259,24 @@ function parseCSV(
     ) {
 
         return [];
-
     }
 
 
     const headers =
         lines[0]
-            .split(",")
-            .map(
-                function(header) {
+        .split(",")
+        .map(
+            function(h) {
 
-                    return header
-                        .trim()
-                        .toLowerCase();
+                return h
+                    .trim()
+                    .toLowerCase();
 
-                }
-            );
+            }
+        );
 
 
-    const data = [];
+    const result = [];
 
 
     for (
@@ -810,7 +1290,6 @@ function parseCSV(
         ) {
 
             continue;
-
         }
 
 
@@ -837,23 +1316,21 @@ function parseCSV(
         }
 
 
-        data.push(
+        result.push(
             row
         );
-
     }
 
 
-    return data;
-
+    return result;
 }
 
 
 /* =========================================================
-   نمایش مرز فارس
+   مرز فارس
 ========================================================= */
 
-function loadFarsBoundary() {
+function loadBoundary() {
 
     return fetch(
         BOUNDARY_FILE +
@@ -869,46 +1346,20 @@ function loadFarsBoundary() {
             ) {
 
                 throw new Error(
-                    "فایل GeoJSON مرز پیدا نشد."
+                    "فایل مرز فارس پیدا نشد."
                 );
-
             }
 
-            return response.json();
 
+            return response.json();
         }
     )
 
     .then(
         function(data) {
 
-            if (
-                data.type !==
-                "FeatureCollection"
-            ) {
-
-                throw new Error(
-                    "ساختار GeoJSON معتبر نیست."
-                );
-
-            }
-
-
-            if (
-                !Array.isArray(
-                    data.features
-                ) ||
-                data.features.length === 0
-            ) {
-
-                throw new Error(
-                    "هیچ Featureای در GeoJSON پیدا نشد."
-                );
-
-            }
-
-
-            let fars = null;
+            let fars =
+                null;
 
 
             data.features.forEach(
@@ -936,7 +1387,6 @@ function loadFarsBoundary() {
                             feature;
 
                     }
-
                 }
             );
 
@@ -946,16 +1396,19 @@ function loadFarsBoundary() {
             ) {
 
                 throw new Error(
-                    "استان Fars در GeoJSON پیدا نشد."
+                    "استان فارس در GeoJSON پیدا نشد."
                 );
-
             }
 
 
-            console.log(
-                "Fars boundary found:",
-                fars
-            );
+            if (
+                farsBoundaryLayer
+            ) {
+
+                map.removeLayer(
+                    farsBoundaryLayer
+                );
+            }
 
 
             farsBoundaryLayer =
@@ -966,7 +1419,7 @@ function loadFarsBoundary() {
                         style: {
 
                             color:
-                                "#e00000",
+                                "#ff0000",
 
                             weight:
                                 4,
@@ -978,8 +1431,7 @@ function loadFarsBoundary() {
                                 "#ff0000",
 
                             fillOpacity:
-                                0.05
-
+                                0.04
                         }
 
                     }
@@ -989,8 +1441,7 @@ function loadFarsBoundary() {
 
 
             const bounds =
-                farsBoundaryLayer
-                    .getBounds();
+                farsBoundaryLayer.getBounds();
 
 
             if (
@@ -1001,49 +1452,15 @@ function loadFarsBoundary() {
                     bounds,
                     {
                         padding:
-                            [20, 20]
+                            [20,20]
                     }
                 );
-
             }
 
 
-            const center =
-                bounds.getCenter();
-
-
-            L.marker(
-                center,
-                {
-
-                    icon:
-                        L.divIcon({
-
-                            className:
-                                "boundary-label",
-
-                            html:
-                                "",
-
-                            iconSize:
-                                [85, 30],
-
-                            iconAnchor:
-                                [42, 15]
-
-                        })
-
-                }
-            ).addTo(
-                map
-            );
-
-
             return fars;
-
         }
     );
-
 }
 
 
@@ -1051,11 +1468,18 @@ function loadFarsBoundary() {
    دریافت CSV
 ========================================================= */
 
-function loadFireData() {
+function loadCSV(
+    url
+) {
 
     return fetch(
-        FIRE_FILE +
-        "?v=" +
+        url +
+        (
+            url.includes("?")
+            ? "&"
+            : "?"
+        ) +
+        "v=" +
         Date.now()
     )
 
@@ -1067,58 +1491,281 @@ function loadFireData() {
             ) {
 
                 throw new Error(
-                    "fires.csv پیدا نشد."
+                    "فایل داده پیدا نشد."
                 );
-
             }
 
-            return response.text();
 
+            return response.text();
         }
     )
 
     .then(
-        function(csvText) {
+        function(text) {
 
-            console.log(
-                "CSV:",
-                csvText
+            return parseCSV(
+                text
             );
-
-
-            const fires =
-                parseCSV(
-                    csvText
-                );
-
-
-            console.log(
-                "Parsed fires:",
-                fires
-            );
-
-
-            if (
-                fires.length === 0
-            ) {
-
-                throw new Error(
-                    "هیچ رکوردی در fires.csv پیدا نشد."
-                );
-
-            }
-
-
-            return fires;
-
         }
     );
-
 }
 
 
 /* =========================================================
-   نمایش حریق‌ها
+   Popup
+========================================================= */
+
+function createPopup(
+    fire
+) {
+
+    const iranTime =
+        formatIranTime(
+            fire.acq_time,
+            fire.acq_date
+        );
+
+
+    let localDate =
+        formatFullJalaliDate(
+            fire.acq_date
+        );
+
+
+    /*
+       اگر تبدیل UTC به ایران از نیمه شب عبور کرد،
+       تاریخ نمایش را یک روز جلو می‌بریم.
+    */
+
+    if (
+        iranTime.dayOffset === 1
+    ) {
+
+        localDate =
+            addOneDayJalali(
+                fire.acq_date
+            );
+    }
+
+
+    return (
+
+        "<div class='popup'>" +
+
+        "<h3>🔥 حریق استان فارس</h3>" +
+
+        "<b>سنجنده:</b> " +
+        (
+            fire.detected_sensor ||
+            "---"
+        ) +
+
+        "<br>" +
+
+        "<b>ماهواره:</b> " +
+        (
+            fire.satellite ||
+            "---"
+        ) +
+
+        "<br>" +
+
+        "<b>تاریخ ایران:</b> " +
+        localDate +
+
+        "<br>" +
+
+        "<b>تاریخ UTC:</b> " +
+        (
+            fire.acq_date ||
+            "---"
+        ) +
+
+        "<br>" +
+
+        "<b>ساعت ایران:</b> " +
+        iranTime.time +
+
+        "<br>" +
+
+        "<b>ساعت UTC:</b> " +
+        formatUTCtime(
+            fire.acq_time
+        ) +
+
+        "<br>" +
+
+        "<b>FRP:</b> " +
+        (
+            fire.frp ||
+            "---"
+        ) +
+        " MW" +
+
+        "<br>" +
+
+        "<b>Confidence:</b> " +
+        (
+            fire.confidence ||
+            "---"
+        ) +
+
+        "<br>" +
+
+        "<b>Brightness:</b> " +
+        (
+            fire.brightness ||
+            "---"
+        ) +
+
+        "<br>" +
+
+        "<b>روز/شب:</b> " +
+        (
+            fire.daynight ||
+            "---"
+        ) +
+
+        "<br>" +
+
+        "<b>مختصات:</b> " +
+        parseFloat(
+            fire.latitude
+        ).toFixed(5) +
+
+        " , " +
+
+        parseFloat(
+            fire.longitude
+        ).toFixed(5) +
+
+        "</div>"
+    );
+}
+
+
+/* =========================================================
+   ساعت UTC
+========================================================= */
+
+function formatUTCtime(
+    value
+) {
+
+    if (
+        !value
+    ) {
+
+        return "---";
+    }
+
+
+    let text =
+        String(value)
+        .replace(
+            /\D/g,
+            ""
+        )
+        .padStart(
+            4,
+            "0"
+        );
+
+
+    return toPersianDigits(
+        text.substring(
+            0,
+            2
+        ) +
+        ":" +
+        text.substring(
+            2,
+            4
+        )
+    );
+}
+
+
+/* =========================================================
+   یک روز به تاریخ اضافه کن
+========================================================= */
+
+function addOneDayJalali(
+    dateString
+) {
+
+    const parts =
+        dateString.split("-");
+
+
+    const date =
+        new Date(
+            Date.UTC(
+                parseInt(
+                    parts[0],
+                    10
+                ),
+
+                parseInt(
+                    parts[1],
+                    10
+                ) - 1,
+
+                parseInt(
+                    parts[2],
+                    10
+                )
+            )
+        );
+
+
+    date.setUTCDate(
+        date.getUTCDate() + 1
+    );
+
+
+    const gy =
+        date.getUTCFullYear();
+
+
+    const gm =
+        date.getUTCMonth() + 1;
+
+
+    const gd =
+        date.getUTCDate();
+
+
+    const j =
+        gregorianToJalali(
+            gy,
+            gm,
+            gd
+        );
+
+
+    return (
+        toPersianDigits(
+            j[2]
+        )
+        +
+        " "
+        +
+        getJalaliMonth(
+            j[1]
+        )
+        +
+        " "
+        +
+        toPersianDigits(
+            j[0]
+        )
+    );
+}
+
+
+/* =========================================================
+   نمایش حریق
 ========================================================= */
 
 function displayFires(
@@ -1128,9 +1775,15 @@ function displayFires(
     fireLayer.clearLayers();
 
 
-    let viirs = 0;
-    let modis = 0;
-    let latestDate = "---";
+    let viirs =
+        0;
+
+    let modis =
+        0;
+
+
+    let latestDate =
+        "---";
 
 
     fires.forEach(
@@ -1154,7 +1807,6 @@ function displayFires(
             ) {
 
                 return;
-
             }
 
 
@@ -1173,7 +1825,6 @@ function displayFires(
             ) {
 
                 viirs++;
-
             }
 
 
@@ -1182,7 +1833,6 @@ function displayFires(
             ) {
 
                 modis++;
-
             }
 
 
@@ -1197,7 +1847,6 @@ function displayFires(
 
                 latestDate =
                     fire.acq_date;
-
             }
 
 
@@ -1211,7 +1860,6 @@ function displayFires(
 
                 fillColor =
                     "#ff1744";
-
             }
 
 
@@ -1221,13 +1869,15 @@ function displayFires(
 
                 fillColor =
                     "#ff9800";
-
             }
 
 
             const marker =
                 L.circleMarker(
-                    [lat, lon],
+                    [
+                        lat,
+                        lon
+                    ],
                     {
 
                         radius:
@@ -1244,99 +1894,14 @@ function displayFires(
 
                         weight:
                             2
-
                     }
                 );
 
 
-            const popup =
-
-                "<div class='popup'>" +
-
-                "<h3>🔥 حریق استان فارس</h3>" +
-
-                "<b>سنجنده:</b> " +
-                (
-                    fire.detected_sensor ||
-                    "---"
-                ) +
-
-                "<br>" +
-
-                "<b>ماهواره:</b> " +
-                (
-                    fire.satellite ||
-                    "---"
-                ) +
-
-                "<br>" +
-
-                "<b>تاریخ:</b> " +
-                formatJalaliFullDate(
-                    fire.acq_date
-                ) +
-
-                "<br>" +
-
-                "<b>تاریخ میلادی:</b> " +
-                (
-                    fire.acq_date ||
-                    "---"
-                ) +
-
-                "<br>" +
-
-                "<b>ساعت:</b> " +
-                (
-                    fire.acq_time ||
-                    "---"
-                ) +
-
-                "<br>" +
-
-                "<b>FRP:</b> " +
-                (
-                    fire.frp ||
-                    "---"
-                ) +
-                " MW" +
-
-                "<br>" +
-
-                "<b>Confidence:</b> " +
-                (
-                    fire.confidence ||
-                    "---"
-                ) +
-
-                "<br>" +
-
-                "<b>Brightness:</b> " +
-                (
-                    fire.brightness ||
-                    "---"
-                ) +
-
-                "<br>" +
-
-                "<b>روز/شب:</b> " +
-                (
-                    fire.daynight ||
-                    "---"
-                ) +
-
-                "<br>" +
-
-                "<b>مختصات:</b> " +
-                lat.toFixed(5) +
-                " , " +
-                lon.toFixed(5) +
-
-                "</div>";
-
-
             marker.bindPopup(
-                popup
+                createPopup(
+                    fire
+                )
             );
 
 
@@ -1380,37 +1945,442 @@ function displayFires(
         );
 
 
-    setStatus(
+    document.getElementById(
+        "archiveCount"
+    ).innerText =
         toPersianDigits(
             fires.length
         ) +
-        " حریق از NASA FIRMS دریافت شد."
-    );
+        " حریق";
 
+
+    const layers =
+        fireLayer.getLayers();
+
+
+    if (
+        layers.length > 0
+    ) {
+
+        const bounds =
+            L.featureGroup(
+                layers
+            ).getBounds();
+
+
+        if (
+            bounds.isValid()
+        ) {
+
+            map.fitBounds(
+                bounds,
+                {
+                    padding:
+                        [30,30]
+                }
+            );
+        }
+    }
 }
 
 
 /* =========================================================
-   اجرای اصلی
+   بارگذاری آرشیو
+========================================================= */
+
+function loadArchiveIndex() {
+
+    return fetch(
+        ARCHIVE_INDEX +
+        "?v=" +
+        Date.now()
+    )
+
+    .then(
+        function(response) {
+
+            if (
+                !response.ok
+            ) {
+
+                throw new Error(
+                    "آرشیو پیدا نشد."
+                );
+            }
+
+
+            return response.json();
+        }
+    )
+
+    .then(
+        function(index) {
+
+            /*
+               قدیمی → جدید
+            */
+
+            archiveDates =
+                index
+                .map(
+                    function(item) {
+                        return item.date;
+                    }
+                )
+                .sort();
+
+
+            const slider =
+                document.getElementById(
+                    "archiveSlider"
+                );
+
+
+            slider.min =
+                0;
+
+
+            slider.max =
+                Math.max(
+                    0,
+                    archiveDates.length - 1
+                );
+
+
+            selectedArchiveIndex =
+                archiveDates.length - 1;
+
+
+            slider.value =
+                selectedArchiveIndex;
+
+
+            updateArchiveLabel();
+
+
+            return archiveDates;
+        }
+    );
+}
+
+
+/* =========================================================
+   برچسب اسلایدر
+========================================================= */
+
+function updateArchiveLabel() {
+
+    if (
+        archiveDates.length === 0
+    ) {
+
+        document.getElementById(
+            "dateLabel"
+        ).innerText =
+            "---";
+
+        return;
+    }
+
+
+    const date =
+        archiveDates[
+            selectedArchiveIndex
+        ];
+
+
+    document.getElementById(
+        "dateLabel"
+    ).innerText =
+        formatFullJalaliDate(
+            date
+        );
+}
+
+
+/* =========================================================
+   بارگذاری روز انتخاب‌شده
+========================================================= */
+
+function loadSelectedArchive() {
+
+    if (
+        archiveDates.length === 0
+    ) {
+
+        return;
+    }
+
+
+    const date =
+        archiveDates[
+            selectedArchiveIndex
+        ];
+
+
+    updateArchiveLabel();
+
+
+    setStatus(
+        "در حال دریافت آرشیو " +
+        formatFullJalaliDate(
+            date
+        ) +
+        "..."
+    );
+
+
+    const url =
+        "archive/" +
+        date +
+        ".csv";
+
+
+    loadCSV(
+        url
+    )
+
+    .then(
+        function(fires) {
+
+            displayFires(
+                fires
+            );
+
+
+            setStatus(
+                "آرشیو " +
+                formatFullJalaliDate(
+                    date
+                ) +
+                " نمایش داده شد."
+            );
+        }
+    )
+
+    .catch(
+        function(error) {
+
+            fireLayer.clearLayers();
+
+
+            document.getElementById(
+                "fireCount"
+            ).innerText =
+                "۰";
+
+
+            document.getElementById(
+                "viirsCount"
+            ).innerText =
+                "۰";
+
+
+            document.getElementById(
+                "modisCount"
+            ).innerText =
+                "۰";
+
+
+            document.getElementById(
+                "archiveCount"
+            ).innerText =
+                "۰ حریق";
+
+
+            setStatus(
+                "برای این روز داده‌ای ثبت نشده است."
+            );
+
+
+            console.error(
+                error
+            );
+        }
+    );
+}
+
+
+/* =========================================================
+   تغییر اسلایدر
+========================================================= */
+
+document.getElementById(
+    "archiveSlider"
+).addEventListener(
+    "input",
+    function() {
+
+        selectedArchiveIndex =
+            parseInt(
+                this.value,
+                10
+            );
+
+
+        loadSelectedArchive();
+    }
+);
+
+
+/* =========================================================
+   دکمه به‌روزرسانی دستی
+========================================================= */
+
+document.getElementById(
+    "updateButton"
+).addEventListener(
+    "click",
+    function() {
+
+        const button =
+            this;
+
+
+        button.disabled =
+            true;
+
+
+        button.innerText =
+            "⏳ در حال به‌روزرسانی...";
+
+
+        setStatus(
+            "در حال بررسی آخرین داده..."
+        );
+
+
+        /*
+           GitHub Pages نمی‌تواند
+           Python را اجرا کند.
+
+           بنابراین این دکمه فقط
+           آخرین فایل منتشرشده را
+           دوباره دریافت می‌کند.
+        */
+
+        loadCSV(
+            FIRE_FILE
+        )
+
+        .then(
+            function(fires) {
+
+                displayFires(
+                    fires
+                );
+
+
+                setStatus(
+                    "آخرین داده موجود با موفقیت بارگذاری شد."
+                );
+            }
+        )
+
+        .catch(
+            function(error) {
+
+                setStatus(
+                    "خطا در دریافت داده."
+                );
+
+
+                console.error(
+                    error
+                );
+            }
+        )
+
+        .finally(
+            function() {
+
+                button.disabled =
+                    false;
+
+
+                button.innerText =
+                    "🔄 به‌روزرسانی";
+            }
+        );
+    }
+);
+
+
+/* =========================================================
+   Legend
+========================================================= */
+
+const legend =
+    L.control({
+        position:
+            "bottomleft"
+    });
+
+
+legend.onAdd =
+    function() {
+
+        const div =
+            L.DomUtil.create(
+                "div",
+                "legend"
+            );
+
+
+        div.innerHTML =
+
+            "<b>راهنمای حریق</b>" +
+
+            "<div class='legend-item'>" +
+
+            "<span class='legend-dot' " +
+            "style='background:#ff1744'></span>" +
+
+            "VIIRS" +
+
+            "</div>" +
+
+            "<div class='legend-item'>" +
+
+            "<span class='legend-dot' " +
+            "style='background:#ff9800'></span>" +
+
+            "MODIS" +
+
+            "</div>";
+
+
+        return div;
+    };
+
+
+legend.addTo(
+    map
+);
+
+
+/* =========================================================
+   شروع سیستم
 ========================================================= */
 
 Promise.all(
     [
-        loadFarsBoundary(),
-        loadFireData()
+
+        loadBoundary(),
+
+        loadArchiveIndex()
+
     ]
 )
 
 .then(
-    function(results) {
+    function() {
 
-        const fires =
-            results[1];
+        /*
+           آخرین روز = امروز
+        */
 
-
-        displayFires(
-            fires
-        );
+        loadSelectedArchive();
 
     }
 )
@@ -1419,16 +2389,14 @@ Promise.all(
     function(error) {
 
         console.error(
-            "FARS FIRE SENTINEL ERROR:",
             error
         );
 
 
         setStatus(
-            "خطا: " +
+            "خطا در بارگذاری سامانه: " +
             error.message
         );
-
     }
 );
 
