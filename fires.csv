@@ -1,1 +1,2 @@
 ﻿latitude,longitude,acq_date,acq_time,year,month,day,satellite,instrument,detected_sensor,confidence,frp,brightness,daynight,scan,track
+29.47268,52.54506,2026-08-12,610,2026,8,12,Terra,MODIS,MODIS,47,57.72,325.5,D,3.45,1.75
