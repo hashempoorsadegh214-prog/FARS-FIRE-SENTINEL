@@ -108,7 +108,7 @@
             direction: rtl;
             text-align: right;
             line-height: 1.9;
-            min-width: 240px;
+            min-width: 250px;
         }
 
         .popup h3 {
@@ -124,6 +124,7 @@
             padding: 5px 9px;
             border-radius: 6px;
             box-shadow: 0 1px 4px rgba(0,0,0,.25);
+            white-space: nowrap;
         }
 
         @media (max-width: 700px) {
@@ -221,24 +222,30 @@
 <script>
 
 /* =========================================================
-   تنظیمات فایل‌ها
+   تنظیمات
 ========================================================= */
 
-const FIRE_FILE = "fires.csv";
-const BOUNDARY_FILE = "geoBoundaries-IRN-ADM1.geojson";
+const FIRE_FILE =
+    "fires.csv";
+
+const BOUNDARY_FILE =
+    "geoBoundaries-IRN-ADM1.geojson";
 
 
 /* =========================================================
    ایجاد نقشه
 ========================================================= */
 
-const map = L.map("map");
+const map =
+    L.map("map");
+
 
 L.tileLayer(
     "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
     {
         maxZoom: 18,
-        attribution: "© OpenStreetMap contributors"
+        attribution:
+            "© OpenStreetMap contributors"
     }
 ).addTo(map);
 
@@ -259,31 +266,477 @@ map.setView(
 
 const fireLayer =
     L.markerClusterGroup({
-        showCoverageOnHover: false,
-        spiderfyOnMaxZoom: true,
-        disableClusteringAtZoom: 12,
-        maxClusterRadius: 30
+
+        showCoverageOnHover:
+            false,
+
+        spiderfyOnMaxZoom:
+            true,
+
+        disableClusteringAtZoom:
+            12,
+
+        maxClusterRadius:
+            30
+
     });
 
-map.addLayer(fireLayer);
+map.addLayer(
+    fireLayer
+);
 
 
 /* =========================================================
    لایه مرز فارس
 ========================================================= */
 
-let farsBoundaryLayer = null;
+let farsBoundaryLayer =
+    null;
 
 
 /* =========================================================
    وضعیت
 ========================================================= */
 
-function setStatus(text) {
+function setStatus(
+    text
+) {
 
     document.getElementById(
         "status"
-    ).innerText = text;
+    ).innerText =
+        text;
+
+}
+
+
+/* =========================================================
+   تبدیل اعداد انگلیسی به فارسی
+========================================================= */
+
+function toPersianDigits(
+    value
+) {
+
+    return String(value)
+        .replace(
+            /0/g,
+            "۰"
+        )
+        .replace(
+            /1/g,
+            "۱"
+        )
+        .replace(
+            /2/g,
+            "۲"
+        )
+        .replace(
+            /3/g,
+            "۳"
+        )
+        .replace(
+            /4/g,
+            "۴"
+        )
+        .replace(
+            /5/g,
+            "۵"
+        )
+        .replace(
+            /6/g,
+            "۶"
+        )
+        .replace(
+            /7/g,
+            "۷"
+        )
+        .replace(
+            /8/g,
+            "۸"
+        )
+        .replace(
+            /9/g,
+            "۹"
+        );
+}
+
+
+/* =========================================================
+   تبدیل میلادی به شمسی
+========================================================= */
+
+function gregorianToJalali(
+    gy,
+    gm,
+    gd
+) {
+
+    const gdm = [
+        0,
+        31,
+        59,
+        90,
+        120,
+        151,
+        181,
+        212,
+        243,
+        273,
+        304,
+        334
+    ];
+
+    let jy;
+
+    if (
+        gy > 1600
+    ) {
+
+        jy = 979;
+        gy -= 1600;
+
+    } else {
+
+        jy = 0;
+        gy -= 621;
+
+    }
+
+
+    const gy2 =
+        gm > 2
+        ? gy + 1
+        : gy;
+
+
+    let days =
+        365 * gy
+        +
+        Math.floor(
+            (gy2 + 3) / 4
+        )
+        -
+        Math.floor(
+            (gy2 + 99) / 100
+        )
+        +
+        Math.floor(
+            (gy2 + 399) / 400
+        )
+        -
+        80
+        +
+        gd
+        +
+        gdm[gm - 1];
+
+
+    jy +=
+        33 *
+        Math.floor(
+            days / 12053
+        );
+
+
+    days %=
+        12053;
+
+
+    jy +=
+        4 *
+        Math.floor(
+            days / 1461
+        );
+
+
+    days %=
+        1461;
+
+
+    if (
+        days > 365
+    ) {
+
+        jy +=
+            Math.floor(
+                (days - 1) / 365
+            );
+
+        days =
+            (days - 1) % 365;
+
+    }
+
+
+    let jm;
+    let jd;
+
+
+    if (
+        days < 186
+    ) {
+
+        jm =
+            1 +
+            Math.floor(
+                days / 31
+            );
+
+        jd =
+            1 +
+            (days % 31);
+
+    } else {
+
+        jm =
+            7 +
+            Math.floor(
+                (days - 186) / 30
+            );
+
+        jd =
+            1 +
+            (
+                (days - 186) % 30
+            );
+
+    }
+
+
+    return [
+        jy,
+        jm,
+        jd
+    ];
+
+}
+
+
+/* =========================================================
+   فرمت تاریخ شمسی
+========================================================= */
+
+function formatJalaliDate(
+    dateString
+) {
+
+    if (
+        !dateString
+    ) {
+
+        return "---";
+    }
+
+
+    const parts =
+        String(
+            dateString
+        )
+        .trim()
+        .split("-");
+
+
+    if (
+        parts.length !== 3
+    ) {
+
+        return dateString;
+
+    }
+
+
+    const gy =
+        parseInt(
+            parts[0],
+            10
+        );
+
+
+    const gm =
+        parseInt(
+            parts[1],
+            10
+        );
+
+
+    const gd =
+        parseInt(
+            parts[2],
+            10
+        );
+
+
+    if (
+        isNaN(gy) ||
+        isNaN(gm) ||
+        isNaN(gd)
+    ) {
+
+        return dateString;
+
+    }
+
+
+    const jalali =
+        gregorianToJalali(
+            gy,
+            gm,
+            gd
+        );
+
+
+    const result =
+
+        jalali[0] +
+        "/" +
+        String(
+            jalali[1]
+        ).padStart(
+            2,
+            "0"
+        ) +
+        "/" +
+        String(
+            jalali[2]
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    return toPersianDigits(
+        result
+    );
+
+}
+
+
+/* =========================================================
+   نام ماه شمسی
+========================================================= */
+
+function getPersianMonth(
+    month
+) {
+
+    const months = [
+        "فروردین",
+        "اردیبهشت",
+        "خرداد",
+        "تیر",
+        "مرداد",
+        "شهریور",
+        "مهر",
+        "آبان",
+        "آذر",
+        "دی",
+        "بهمن",
+        "اسفند"
+    ];
+
+
+    if (
+        month < 1 ||
+        month > 12
+    ) {
+
+        return "";
+
+    }
+
+
+    return months[
+        month - 1
+    ];
+
+}
+
+
+/* =========================================================
+   تاریخ کامل شمسی
+========================================================= */
+
+function formatJalaliFullDate(
+    dateString
+) {
+
+    if (
+        !dateString
+    ) {
+
+        return "---";
+    }
+
+
+    const parts =
+        String(
+            dateString
+        )
+        .trim()
+        .split("-");
+
+
+    if (
+        parts.length !== 3
+    ) {
+
+        return dateString;
+
+    }
+
+
+    const gy =
+        parseInt(
+            parts[0],
+            10
+        );
+
+    const gm =
+        parseInt(
+            parts[1],
+            10
+        );
+
+    const gd =
+        parseInt(
+            parts[2],
+            10
+        );
+
+
+    if (
+        isNaN(gy) ||
+        isNaN(gm) ||
+        isNaN(gd)
+    ) {
+
+        return dateString;
+
+    }
+
+
+    const jalali =
+        gregorianToJalali(
+            gy,
+            gm,
+            gd
+        );
+
+
+    return (
+        toPersianDigits(
+            jalali[2]
+        ) +
+        " " +
+        getPersianMonth(
+            jalali[1]
+        ) +
+        " " +
+        toPersianDigits(
+            jalali[0]
+        )
+    );
 
 }
 
@@ -292,35 +745,59 @@ function setStatus(text) {
    خواندن CSV
 ========================================================= */
 
-function parseCSV(text) {
+function parseCSV(
+    text
+) {
 
-    text = text
-        .replace(/^\uFEFF/, "")
-        .trim();
+    text =
+        text
+            .replace(
+                /^\uFEFF/,
+                ""
+            )
+            .trim();
 
-    if (!text) {
+
+    if (
+        !text
+    ) {
+
         return [];
+
     }
+
 
     const lines =
-        text.split(/\r?\n/);
+        text.split(
+            /\r?\n/
+        );
 
-    if (lines.length < 2) {
+
+    if (
+        lines.length < 2
+    ) {
+
         return [];
+
     }
+
 
     const headers =
         lines[0]
             .split(",")
-            .map(function(header) {
+            .map(
+                function(header) {
 
-                return header
-                    .trim()
-                    .toLowerCase();
+                    return header
+                        .trim()
+                        .toLowerCase();
 
-            });
+                }
+            );
+
 
     const data = [];
+
 
     for (
         let i = 1;
@@ -328,14 +805,21 @@ function parseCSV(text) {
         i++
     ) {
 
-        if (!lines[i].trim()) {
+        if (
+            !lines[i].trim()
+        ) {
+
             continue;
+
         }
+
 
         const values =
             lines[i].split(",");
 
+
         const row = {};
+
 
         for (
             let j = 0;
@@ -343,221 +827,228 @@ function parseCSV(text) {
             j++
         ) {
 
-            row[headers[j]] =
+            row[
+                headers[j]
+            ] =
                 values[j] !== undefined
                 ? values[j].trim()
                 : "";
 
         }
 
-        data.push(row);
+
+        data.push(
+            row
+        );
+
     }
 
+
     return data;
+
 }
 
 
 /* =========================================================
-   نمایش مرز استان فارس
+   نمایش مرز فارس
 ========================================================= */
 
 function loadFarsBoundary() {
 
-    setStatus(
-        "در حال دریافت مرز استان فارس..."
-    );
-
     return fetch(
-        BOUNDARY_FILE + "?v=" + Date.now()
+        BOUNDARY_FILE +
+        "?v=" +
+        Date.now()
     )
 
-    .then(function(response) {
+    .then(
+        function(response) {
 
-        if (!response.ok) {
+            if (
+                !response.ok
+            ) {
 
-            throw new Error(
-                "فایل GeoJSON مرز پیدا نشد."
-            );
-        }
-
-        return response.json();
-    })
-
-    .then(function(data) {
-
-        if (
-            data.type !==
-            "FeatureCollection"
-        ) {
-
-            throw new Error(
-                "ساختار GeoJSON معتبر نیست."
-            );
-        }
-
-        if (
-            !Array.isArray(data.features) ||
-            data.features.length === 0
-        ) {
-
-            throw new Error(
-                "هیچ استان در GeoJSON پیدا نشد."
-            );
-        }
-
-
-        /* =============================================
-           پیدا کردن فارس
-        ============================================= */
-
-        let fars = null;
-
-        data.features.forEach(
-            function(feature) {
-
-                const properties =
-                    feature.properties || {};
-
-                const name =
-                    String(
-                        properties.shapeName ||
-                        ""
-                    )
-                    .trim()
-                    .toLowerCase();
-
-                if (
-                    name === "fars"
-                ) {
-
-                    fars = feature;
-
-                }
+                throw new Error(
+                    "فایل GeoJSON مرز پیدا نشد."
+                );
 
             }
-        );
 
-
-        if (!fars) {
-
-            throw new Error(
-                "استان Fars در GeoJSON پیدا نشد."
-            );
+            return response.json();
 
         }
+    )
+
+    .then(
+        function(data) {
+
+            if (
+                data.type !==
+                "FeatureCollection"
+            ) {
+
+                throw new Error(
+                    "ساختار GeoJSON معتبر نیست."
+                );
+
+            }
 
 
-        console.log(
-            "Fars boundary found:",
-            fars
-        );
+            if (
+                !Array.isArray(
+                    data.features
+                ) ||
+                data.features.length === 0
+            ) {
+
+                throw new Error(
+                    "هیچ Featureای در GeoJSON پیدا نشد."
+                );
+
+            }
 
 
-        /* =============================================
-           حذف مرز قبلی
-        ============================================= */
-
-        if (
-            farsBoundaryLayer
-        ) {
-
-            map.removeLayer(
-                farsBoundaryLayer
-            );
-
-        }
+            let fars = null;
 
 
-        /* =============================================
-           رسم مرز
-        ============================================= */
+            data.features.forEach(
+                function(feature) {
 
-        farsBoundaryLayer =
-            L.geoJSON(
-                fars,
-                {
+                    const properties =
+                        feature.properties ||
+                        {};
 
-                    style: {
 
-                        color: "#e00000",
+                    const name =
+                        String(
+                            properties.shapeName ||
+                            ""
+                        )
+                        .trim()
+                        .toLowerCase();
 
-                        weight: 4,
 
-                        opacity: 1,
+                    if (
+                        name === "fars"
+                    ) {
 
-                        fillColor: "#ff0000",
-
-                        fillOpacity: 0.05
+                        fars =
+                            feature;
 
                     }
 
                 }
-            ).addTo(map);
-
-
-        /* =============================================
-           زوم روی فارس
-        ============================================= */
-
-        const boundaryBounds =
-            farsBoundaryLayer.getBounds();
-
-
-        if (
-            boundaryBounds.isValid()
-        ) {
-
-            map.fitBounds(
-                boundaryBounds,
-                {
-                    padding: [
-                        20,
-                        20
-                    ]
-                }
             );
 
-        }
 
+            if (
+                !fars
+            ) {
 
-        /* =============================================
-           برچسب فارس
-        ============================================= */
+                throw new Error(
+                    "استان Fars در GeoJSON پیدا نشد."
+                );
 
-        const center =
-            boundaryBounds.getCenter();
-
-
-        L.marker(
-            center,
-            {
-                icon:
-                    L.divIcon({
-                        className:
-                            "boundary-label",
-
-                        html:
-                            "استان فارس",
-
-                        iconSize:
-                            [80, 28],
-
-                        iconAnchor:
-                            [40, 14]
-                    })
             }
-        ).addTo(map);
 
 
-        return fars;
+            console.log(
+                "Fars boundary found:",
+                fars
+            );
 
-    });
+
+            farsBoundaryLayer =
+                L.geoJSON(
+                    fars,
+                    {
+
+                        style: {
+
+                            color:
+                                "#e00000",
+
+                            weight:
+                                4,
+
+                            opacity:
+                                1,
+
+                            fillColor:
+                                "#ff0000",
+
+                            fillOpacity:
+                                0.05
+
+                        }
+
+                    }
+                ).addTo(
+                    map
+                );
+
+
+            const bounds =
+                farsBoundaryLayer
+                    .getBounds();
+
+
+            if (
+                bounds.isValid()
+            ) {
+
+                map.fitBounds(
+                    bounds,
+                    {
+                        padding:
+                            [20, 20]
+                    }
+                );
+
+            }
+
+
+            const center =
+                bounds.getCenter();
+
+
+            L.marker(
+                center,
+                {
+
+                    icon:
+                        L.divIcon({
+
+                            className:
+                                "boundary-label",
+
+                            html:
+                                "استان فارس",
+
+                            iconSize:
+                                [85, 30],
+
+                            iconAnchor:
+                                [42, 15]
+
+                        })
+
+                }
+            ).addTo(
+                map
+            );
+
+
+            return fars;
+
+        }
+    );
 
 }
 
 
 /* =========================================================
-   دریافت داده‌های حریق
+   دریافت CSV
 ========================================================= */
 
 function loadFireData() {
@@ -568,50 +1059,60 @@ function loadFireData() {
         Date.now()
     )
 
-    .then(function(response) {
+    .then(
+        function(response) {
 
-        if (!response.ok) {
+            if (
+                !response.ok
+            ) {
 
-            throw new Error(
-                "fires.csv پیدا نشد."
-            );
+                throw new Error(
+                    "fires.csv پیدا نشد."
+                );
+
+            }
+
+            return response.text();
 
         }
+    )
 
-        return response.text();
+    .then(
+        function(csvText) {
 
-    })
-
-    .then(function(csvText) {
-
-        console.log(
-            "CSV:",
-            csvText
-        );
-
-        const fires =
-            parseCSV(
+            console.log(
+                "CSV:",
                 csvText
             );
 
-        console.log(
-            "Parsed fires:",
-            fires
-        );
 
-        if (
-            fires.length === 0
-        ) {
+            const fires =
+                parseCSV(
+                    csvText
+                );
 
-            throw new Error(
-                "هیچ رکوردی در fires.csv پیدا نشد."
+
+            console.log(
+                "Parsed fires:",
+                fires
             );
 
+
+            if (
+                fires.length === 0
+            ) {
+
+                throw new Error(
+                    "هیچ رکوردی در fires.csv پیدا نشد."
+                );
+
+            }
+
+
+            return fires;
+
         }
-
-        return fires;
-
-    });
+    );
 
 }
 
@@ -620,9 +1121,12 @@ function loadFireData() {
    نمایش حریق‌ها
 ========================================================= */
 
-function displayFires(fires) {
+function displayFires(
+    fires
+) {
 
     fireLayer.clearLayers();
+
 
     let viirs = 0;
     let modis = 0;
@@ -636,6 +1140,7 @@ function displayFires(fires) {
                 parseFloat(
                     fire.latitude
                 );
+
 
             const lon =
                 parseFloat(
@@ -696,10 +1201,6 @@ function displayFires(fires) {
             }
 
 
-            /* =========================================
-               رنگ نقطه
-            ========================================= */
-
             let fillColor =
                 "#8e24aa";
 
@@ -724,33 +1225,29 @@ function displayFires(fires) {
             }
 
 
-            /* =========================================
-               Marker
-            ========================================= */
-
             const marker =
                 L.circleMarker(
                     [lat, lon],
                     {
 
-                        radius: 9,
+                        radius:
+                            9,
 
-                        color: "#700000",
+                        color:
+                            "#700000",
 
                         fillColor:
                             fillColor,
 
-                        fillOpacity: 0.95,
+                        fillOpacity:
+                            0.95,
 
-                        weight: 2
+                        weight:
+                            2
 
                     }
                 );
 
-
-            /* =========================================
-               Popup
-            ========================================= */
 
             const popup =
 
@@ -775,6 +1272,13 @@ function displayFires(fires) {
                 "<br>" +
 
                 "<b>تاریخ:</b> " +
+                formatJalaliFullDate(
+                    fire.acq_date
+                ) +
+
+                "<br>" +
+
+                "<b>تاریخ میلادی:</b> " +
                 (
                     fire.acq_date ||
                     "---"
@@ -815,7 +1319,7 @@ function displayFires(fires) {
 
                 "<br>" +
 
-                "<b>Day/Night:</b> " +
+                "<b>روز/شب:</b> " +
                 (
                     fire.daynight ||
                     "---"
@@ -844,126 +1348,92 @@ function displayFires(fires) {
     );
 
 
-    /* =====================================================
-       آمار
-    ===================================================== */
-
     document.getElementById(
         "fireCount"
     ).innerText =
-        fires.length;
+        toPersianDigits(
+            fires.length
+        );
 
 
     document.getElementById(
         "viirsCount"
     ).innerText =
-        viirs;
+        toPersianDigits(
+            viirs
+        );
 
 
     document.getElementById(
         "modisCount"
     ).innerText =
-        modis;
+        toPersianDigits(
+            modis
+        );
 
 
     document.getElementById(
         "fireDate"
     ).innerText =
-        latestDate;
+        formatJalaliDate(
+            latestDate
+        );
 
 
-    /* =====================================================
-       زوم روی حریق
-    ===================================================== */
-
-    const fireMarkers =
-        fireLayer.getLayers();
-
-
-    if (
-        fireMarkers.length > 0
-    ) {
-
-        const fireBounds =
-            L.featureGroup(
-                fireMarkers
-            ).getBounds();
-
-
-        if (
-            fireBounds.isValid()
-        ) {
-
-            /*
-             * فقط در صورتی روی حریق زوم می‌کنیم
-             * که مرز فارس قبلاً موجود نباشد.
-             */
-
-            if (
-                !farsBoundaryLayer
-            ) {
-
-                map.fitBounds(
-                    fireBounds,
-                    {
-                        padding: [
-                            40,
-                            40
-                        ]
-                    }
-                );
-
-            }
-
-        }
-
-    }
+    setStatus(
+        toPersianDigits(
+            fires.length
+        ) +
+        " حریق از NASA FIRMS دریافت شد."
+    );
 
 }
 
 
 /* =========================================================
-   شروع برنامه
+   اجرای اصلی
 ========================================================= */
 
-Promise.all([
-    loadFarsBoundary(),
-    loadFireData()
-])
+Promise.all(
+    [
+        loadFarsBoundary(),
+        loadFireData()
+    ]
+)
 
-.then(function(results) {
+.then(
+    function(results) {
 
-    const fires =
-        results[1];
-
-    displayFires(
-        fires
-    );
-
-
-    setStatus(
-        fires.length +
-        " حریق از NASA FIRMS دریافت شد."
-    );
-
-})
-
-.catch(function(error) {
-
-    console.error(
-        "FARS FIRE SENTINEL ERROR:",
-        error
-    );
+        const fires =
+            results[1];
 
 
-    setStatus(
-        "خطا: " +
-        error.message
-    );
+        displayFires(
+            fires
+        );
 
-});
+    }
+)
+
+.catch(
+    function(error) {
+
+        console.error(
+            "FARS FIRE SENTINEL ERROR:",
+            error
+        );
+
+
+        setStatus(
+            "خطا: " +
+            error.message
+        );
+
+    }
+);
 
 </script>
 
 </body>
+
 </html>
