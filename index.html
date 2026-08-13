@@ -2,13 +2,10 @@
 <html lang="fa" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-سامانه برخط پایش حریق اداره کل حفاظت محیط زیست فارس
-</title>
+<title>سامانه برخط پایش حریق اداره کل حفاظت محیط زیست فارس</title>
 
 <link
     rel="stylesheet"
@@ -28,7 +25,7 @@
 <style>
 
 /* =========================================================
-   GENERAL
+   RESET
 ========================================================= */
 
 * {
@@ -38,25 +35,18 @@
 html,
 body {
     margin: 0;
+    padding: 0;
     width: 100%;
     min-height: 100%;
-
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 body {
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-
+    font-family: Tahoma, Arial, sans-serif;
     background: #f1f4f6;
     color: #263238;
-
-    transition:
-        background .3s ease,
-        color .3s ease;
+    transition: background .3s ease, color .3s ease;
 }
 
 
@@ -65,153 +55,87 @@ body {
 ========================================================= */
 
 header {
+    width: 100%;
     height: 78px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e97b2f,
-            #f1a15c
-        );
-
-    box-shadow:
-        0 3px 15px
-        rgba(0,0,0,.18);
-
+    background: linear-gradient(135deg, #e97b2f, #f1a15c);
+    box-shadow: 0 3px 15px rgba(0,0,0,.18);
     position: relative;
-    z-index: 1000;
+    z-index: 3000;
 }
 
 .header-inner {
+    width: 100%;
     max-width: 1500px;
     height: 100%;
-    margin: auto;
-
+    margin: 0 auto;
     padding: 0 15px;
-
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    position: relative;
 }
 
 .header-logo {
     position: absolute;
     left: 15px;
     top: 50%;
-
-    transform:
-        translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .header-logo img {
     height: 50px;
     width: auto;
-
     max-width: 190px;
-
     display: block;
-
     object-fit: contain;
-
-    filter:
-        drop-shadow(
-            0 2px 3px
-            rgba(0,0,0,.22)
-        );
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,.22));
 }
 
 .header-title {
-    max-width: 720px;
-
-    padding: 0 90px;
-
+    width: 100%;
+    max-width: 800px;
+    padding: 0 110px;
     text-align: center;
 }
 
 .header-title h1 {
     margin: 0;
-
-    font-family:
-        "B Titr",
-        Tahoma,
-        Arial,
-        sans-serif;
-
+    font-family: "B Titr", Tahoma, Arial, sans-serif;
     font-size: 22px;
-
     line-height: 1.5;
-
-    color: #ffffff;
+    color: #fff;
 }
 
 .header-title p {
     margin: 2px 0 0;
-
     font-size: 11px;
-
-    color:
-        rgba(255,255,255,.9);
+    color: rgba(255,255,255,.92);
 }
 
 .header-actions {
     position: absolute;
-
     right: 15px;
     top: 50%;
-
-    transform:
-        translateY(-50%);
-
+    transform: translateY(-50%);
     display: flex;
-
     gap: 6px;
 }
 
 .header-btn {
     width: 36px;
     height: 36px;
-
     border: none;
     border-radius: 9px;
-
-    background:
-        rgba(255,255,255,.16);
-
-    color: #ffffff;
-
+    background: rgba(255,255,255,.16);
+    color: #fff;
     font-size: 18px;
-
     cursor: pointer;
-
-    transition:
-        background .2s ease,
-        transform .2s ease;
+    transition: background .2s ease, transform .2s ease;
 }
 
 .header-btn:hover {
-    background:
-        rgba(255,255,255,.28);
-
-    transform:
-        translateY(-1px);
-}
-
-
-/* =========================================================
-   MAP WRAPPER
-========================================================= */
-
-.map-wrapper {
-    position: relative;
-
-    max-width: 1500px;
-
-    margin: 10px auto 0;
-
-    padding:
-        0 10px;
+    background: rgba(255,255,255,.28);
+    transform: translateY(-1px);
 }
 
 
@@ -219,96 +143,66 @@ header {
    MAP
 ========================================================= */
 
+.map-wrapper {
+    width: 100%;
+    max-width: 1500px;
+    margin: 10px auto 0;
+    padding: 0 10px;
+    position: relative;
+}
+
 #map {
     width: 100%;
-
-    height:
-        calc(100vh - 105px);
-
+    height: calc(100vh - 105px);
     min-height: 560px;
-
     border-radius: 14px;
-
     overflow: hidden;
-
-    border:
-        1px solid #d9dee2;
-
-    box-shadow:
-        0 5px 24px
-        rgba(0,0,0,.13);
+    border: 1px solid #d9dee2;
+    box-shadow: 0 5px 24px rgba(0,0,0,.13);
 }
 
 
 /* =========================================================
-   MODE PANEL
+   SIDE PANEL
 ========================================================= */
 
 .side-panel {
     position: absolute;
-
     top: 18px;
     right: 24px;
-
     width: 195px;
+    padding: 8px;
+    z-index: 2000;
 
-    background:
-        rgba(255,255,255,.96);
-
-    border:
-        1px solid #dde2e6;
-
+    background: rgba(255,255,255,.97);
+    border: 1px solid #dde2e6;
     border-radius: 12px;
 
-    box-shadow:
-        0 6px 20px
-        rgba(0,0,0,.18);
-
-    padding: 8px;
-
-    z-index: 900;
-
-    backdrop-filter:
-        blur(8px);
+    box-shadow: 0 6px 20px rgba(0,0,0,.18);
+    backdrop-filter: blur(8px);
 }
 
 .mode-btn {
     width: 100%;
-
     min-height: 36px;
 
     border: none;
-
     border-radius: 8px;
 
-    padding:
-        8px 10px;
-
+    padding: 8px 10px;
     margin-bottom: 6px;
 
-    background:
-        #f2f4f6;
+    background: #f2f4f6;
+    color: #37474f;
 
-    color:
-        #37474f;
-
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-
+    font-family: Tahoma, Arial, sans-serif;
     font-size: 11px;
-
     font-weight: bold;
 
     cursor: pointer;
-
     text-align: right;
 
-    transition:
-        background .2s ease,
-        color .2s ease,
-        transform .2s ease;
+    transition: .2s ease;
 }
 
 .mode-btn:last-child {
@@ -316,85 +210,75 @@ header {
 }
 
 .mode-btn:hover {
-    transform:
-        translateX(-2px);
+    background: #e9ecef;
+    transform: translateX(-2px);
 }
 
 .mode-btn.active {
-    background:
-        linear-gradient(
-            135deg,
-            #e46f19,
-            #c94c00
-        );
-
-    color:
-        #ffffff;
+    color: #fff;
+    background: linear-gradient(135deg, #e46f19, #c94c00);
 }
 
 
 /* =========================================================
-   UPDATE PANEL
-   بالای اسلایدر
+   UPDATE PANEL - ABOVE SLIDER
 ========================================================= */
 
 .update-panel {
     position: absolute;
-
     left: 24px;
-    bottom: 96px;
+    bottom: 98px;
 
     width: 300px;
+    min-height: 64px;
 
-    z-index: 900;
+    z-index: 2500;
 
-    background:
-        rgba(255,255,255,.96);
+    background: #ffffff;
+    border: 1px solid #d6dce1;
+    border-radius: 12px;
 
-    border:
-        1px solid #dde2e6;
+    box-shadow: 0 6px 20px rgba(0,0,0,.20);
 
-    border-radius: 11px;
+    padding: 9px 12px;
 
-    box-shadow:
-        0 5px 18px
-        rgba(0,0,0,.16);
-
-    padding:
-        8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     text-align: center;
 
-    backdrop-filter:
-        blur(8px);
+    overflow: visible;
 }
 
 .update-title {
-    font-family:
-        "B Titr",
-        Tahoma,
-        Arial,
-        sans-serif;
+    width: 100%;
+    margin: 0 0 4px 0;
 
-    font-size:
-        10px;
+    font-family: "B Titr", Tahoma, Arial, sans-serif;
+    font-size: 10px;
+    line-height: 1.5;
 
-    color:
-        #60727d;
-
-    margin-bottom:
-        2px;
+    color: #60727d;
 }
 
 #updateInfo {
-    font-size:
-        11px;
+    display: block;
+    width: 100%;
+    min-height: 18px;
 
-    font-weight:
-        bold;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.7;
+    font-weight: bold;
 
-    color:
-        #c45108;
+    color: #c45108;
+    text-align: center;
+
+    white-space: nowrap;
+    visibility: visible;
+    opacity: 1;
 }
 
 
@@ -404,30 +288,22 @@ header {
 
 .slider-drawer {
     position: absolute;
-
     left: 24px;
     bottom: 20px;
 
     width: 300px;
 
-    background:
-        rgba(255,255,255,.96);
+    z-index: 2400;
 
-    border:
-        1px solid #dde2e6;
-
+    background: rgba(255,255,255,.97);
+    border: 1px solid #dde2e6;
     border-radius: 12px;
 
-    box-shadow:
-        0 6px 20px
-        rgba(0,0,0,.18);
-
-    z-index: 900;
+    box-shadow: 0 6px 20px rgba(0,0,0,.18);
 
     overflow: hidden;
 
-    transition:
-        width .3s ease;
+    transition: width .3s ease;
 }
 
 .slider-drawer.closed {
@@ -435,18 +311,15 @@ header {
 }
 
 .slider-content {
-    padding:
-        10px 12px;
+    padding: 10px 12px;
 }
 
 .slider-drawer.closed .slider-content {
-    display:
-        none;
+    display: none;
 }
 
 .slider-toggle {
     position: absolute;
-
     right: 8px;
     top: 8px;
 
@@ -454,144 +327,85 @@ header {
     height: 30px;
 
     border: none;
-
     border-radius: 7px;
 
-    background:
-        #eef1f3;
+    background: #eef1f3;
+    color: #37474f;
 
     cursor: pointer;
-
     font-size: 15px;
 
-    z-index: 2;
+    z-index: 5;
 }
 
 .slider-title {
-    padding-right:
-        38px;
+    padding-right: 38px;
+    margin-bottom: 9px;
 
-    margin-bottom:
-        9px;
-
-    font-family:
-        "B Titr",
-        Tahoma,
-        Arial,
-        sans-serif;
-
-    font-size:
-        11px;
-
-    color:
-        #455a64;
+    font-family: "B Titr", Tahoma, Arial, sans-serif;
+    font-size: 11px;
+    color: #455a64;
 }
 
 #archiveSlider {
-    width:
-        100%;
+    width: 100%;
+    height: 5px;
 
-    height:
-        5px;
+    appearance: none;
+    -webkit-appearance: none;
 
-    appearance:
-        none;
+    background: linear-gradient(
+        90deg,
+        #f4b183,
+        #e46f19
+    );
 
-    -webkit-appearance:
-        none;
-
-    background:
-        linear-gradient(
-            90deg,
-            #f4b183,
-            #e46f19
-        );
-
-    border-radius:
-        20px;
-
-    outline:
-        none;
-
-    cursor:
-        pointer;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
 }
 
 #archiveSlider::-webkit-slider-thumb {
-    -webkit-appearance:
-        none;
+    -webkit-appearance: none;
+    appearance: none;
 
-    appearance:
-        none;
+    width: 16px;
+    height: 16px;
 
-    width:
-        16px;
+    border-radius: 50%;
 
-    height:
-        16px;
+    background: #fff;
+    border: 3px solid #d35400;
 
-    border-radius:
-        50%;
-
-    background:
-        #ffffff;
-
-    border:
-        3px solid #d35400;
-
-    box-shadow:
-        0 1px 5px
-        rgba(0,0,0,.25);
+    box-shadow: 0 1px 5px rgba(0,0,0,.25);
 }
 
 #archiveSlider::-moz-range-thumb {
-    width:
-        16px;
+    width: 16px;
+    height: 16px;
 
-    height:
-        16px;
+    border-radius: 50%;
 
-    border-radius:
-        50%;
+    background: #fff;
+    border: 3px solid #d35400;
 
-    background:
-        #ffffff;
-
-    border:
-        3px solid #d35400;
-
-    box-shadow:
-        0 1px 5px
-        rgba(0,0,0,.25);
+    box-shadow: 0 1px 5px rgba(0,0,0,.25);
 }
 
 .slider-date {
-    margin-top:
-        8px;
+    margin-top: 8px;
+    padding: 5px;
 
-    padding:
-        5px;
+    text-align: center;
 
-    text-align:
-        center;
+    font-size: 10px;
+    font-weight: bold;
 
-    font-size:
-        10px;
+    color: #c45108;
 
-    font-weight:
-        bold;
-
-    color:
-        #c45108;
-
-    background:
-        #fff7ef;
-
-    border:
-        1px solid #f2c7a6;
-
-    border-radius:
-        7px;
+    background: #fff7ef;
+    border: 1px solid #f2c7a6;
+    border-radius: 7px;
 }
 
 
@@ -600,57 +414,34 @@ header {
 ========================================================= */
 
 .legend {
-    background:
-        rgba(255,255,255,.96);
+    background: rgba(255,255,255,.97);
 
-    padding:
-        8px 10px;
+    padding: 8px 10px;
 
-    border:
-        1px solid #e1e5e8;
+    border: 1px solid #e1e5e8;
+    border-radius: 9px;
 
-    border-radius:
-        9px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.18);
 
-    box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.18);
-
-    font-size:
-        10px;
+    font-size: 10px;
 }
 
 .legend-title {
-    font-weight:
-        bold;
-
-    margin-bottom:
-        5px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .legend-item {
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .legend-dot {
-    width:
-        10px;
-
-    height:
-        10px;
-
-    border-radius:
-        50%;
-
-    border:
-        1px solid #555;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #555;
 }
 
 
@@ -659,36 +450,22 @@ header {
 ========================================================= */
 
 .popup {
-    direction:
-        rtl;
+    direction: rtl;
+    text-align: right;
 
-    text-align:
-        right;
+    width: 265px;
+    max-width: 85vw;
 
-    min-width:
-        250px;
+    line-height: 1.9;
 
-    max-width:
-        300px;
-
-    line-height:
-        1.9;
-
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
+    font-family: Tahoma, Arial, sans-serif;
+    font-size: 12px;
 }
 
 .popup h3 {
-    margin:
-        0 0 7px;
-
-    color:
-        #d35400;
-
-    font-size:
-        15px;
+    margin: 0 0 7px;
+    color: #d35400;
+    font-size: 15px;
 }
 
 
@@ -697,68 +474,50 @@ header {
 ========================================================= */
 
 body.night {
-    background:
-        #121820;
-
-    color:
-        #e8edf1;
+    background: #121820;
+    color: #e8edf1;
 }
 
 body.night .side-panel,
 body.night .slider-drawer,
 body.night .update-panel {
-    background:
-        rgba(26,32,40,.96);
-
-    border-color:
-        #39434d;
-
-    color:
-        #e8edf1;
+    background: rgba(26,32,40,.97);
+    border-color: #39434d;
 }
 
 body.night .mode-btn {
-    background:
-        #252d36;
-
-    color:
-        #dbe3e8;
+    background: #252d36;
+    color: #dbe3e8;
 }
 
 body.night .mode-btn:hover {
-    background:
-        #303a45;
+    background: #303a45;
 }
 
 body.night .slider-title {
-    color:
-        #dbe3e8;
+    color: #dbe3e8;
 }
 
 body.night .slider-date {
-    background:
-        #29231e;
-
-    border-color:
-        #6b4a2b;
-
-    color:
-        #f5b879;
+    background: #29231e;
+    border-color: #6b4a2b;
+    color: #f5b879;
 }
 
 body.night .update-title {
-    color:
-        #b9c5cd;
+    color: #b9c5cd;
 }
 
 body.night #updateInfo {
-    color:
-        #f5b879;
+    display: block;
+    color: #ffd08a;
+    visibility: visible;
+    opacity: 1;
 }
 
-body.night #map {
-    border-color:
-        #36404a;
+body.night .slider-toggle {
+    background: #303943;
+    color: #e8edf1;
 }
 
 
@@ -769,40 +528,30 @@ body.night #map {
 @media (max-width: 900px) {
 
     .header-title {
-        padding:
-            0 120px;
+        padding: 0 120px;
     }
 
     .header-title h1 {
-        font-size:
-            18px;
+        font-size: 18px;
     }
 
     .side-panel {
-        width:
-            175px;
-
-        right:
-            18px;
+        right: 18px;
+        width: 175px;
     }
 
     .update-panel,
     .slider-drawer {
-        width:
-            270px;
-
-        left:
-            18px;
+        left: 18px;
+        width: 270px;
     }
 
     .update-panel {
-        bottom:
-            92px;
+        bottom: 92px;
     }
 
     .slider-drawer {
-        bottom:
-            18px;
+        bottom: 18px;
     }
 }
 
@@ -814,206 +563,136 @@ body.night #map {
 @media (max-width: 600px) {
 
     header {
-        height:
-            auto;
-
-        min-height:
-            86px;
+        height: 86px;
     }
 
     .header-inner {
-        min-height:
-            86px;
-
-        padding:
-            8px 10px;
+        min-height: 86px;
+        padding: 8px 10px;
     }
 
     .header-logo {
-        left:
-            8px;
-
-        top:
-            50%;
+        left: 8px;
     }
 
     .header-logo img {
-        height:
-            38px;
-
-        max-width:
-            85px;
+        height: 38px;
+        max-width: 82px;
     }
 
     .header-title {
-        width:
-            100%;
-
-        padding:
-            0 68px;
+        width: 100%;
+        padding: 0 68px;
     }
 
     .header-title h1 {
-        font-size:
-            14px;
-
-        line-height:
-            1.5;
+        font-size: 14px;
+        line-height: 1.5;
     }
 
     .header-title p {
-        display:
-            none;
+        display: none;
     }
 
     .header-actions {
-        right:
-            8px;
-
-        gap:
-            4px;
+        right: 8px;
+        gap: 4px;
     }
 
     .header-btn {
-        width:
-            30px;
-
-        height:
-            30px;
-
-        font-size:
-            14px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
     }
 
 
     .map-wrapper {
-        margin-top:
-            6px;
-
-        padding:
-            0 5px;
+        margin-top: 6px;
+        padding: 0 5px;
     }
 
     #map {
-        height:
-            calc(100vh - 98px);
-
-        min-height:
-            520px;
-
-        border-radius:
-            10px;
+        height: calc(100vh - 98px);
+        min-height: 520px;
+        border-radius: 10px;
     }
 
 
     /* پنل سه گزینه */
+
     .side-panel {
-        top:
-            10px;
+        top: 10px;
+        right: 10px;
 
-        right:
-            10px;
+        width: min(165px, calc(100% - 20px));
 
-        width:
-            min(165px, calc(100% - 20px));
-
-        padding:
-            6px;
-
-        border-radius:
-            10px;
+        padding: 6px;
+        border-radius: 10px;
     }
 
     .mode-btn {
-        min-height:
-            34px;
-
-        padding:
-            7px 8px;
-
-        margin-bottom:
-            5px;
-
-        font-size:
-            10px;
+        min-height: 34px;
+        padding: 7px 8px;
+        margin-bottom: 5px;
+        font-size: 10px;
     }
 
 
-    /* تایمر بالای اسلایدر */
+    /* تایمر */
+
     .update-panel {
-        left:
-            10px;
+        left: 10px;
+        bottom: 120px;
 
-        bottom:
-            118px;
+        width: min(235px, calc(100% - 20px));
+        min-height: 60px;
 
-        width:
-            min(225px, calc(100% - 20px));
+        padding: 7px 8px;
 
-        padding:
-            7px 9px;
-
-        border-radius:
-            9px;
+        border-radius: 10px;
     }
 
     .update-title {
-        font-size:
-            9px;
+        font-size: 9px;
     }
 
     #updateInfo {
-        font-size:
-            10px;
+        font-size: 10px;
+        white-space: normal;
+        word-break: keep-all;
     }
 
 
     /* اسلایدر */
+
     .slider-drawer {
-        left:
-            10px;
+        left: 10px;
+        bottom: 10px;
 
-        bottom:
-            10px;
+        width: min(235px, calc(100% - 20px));
 
-        width:
-            min(225px, calc(100% - 20px));
-
-        border-radius:
-            10px;
-    }
-
-    .slider-drawer.closed {
-        width:
-            42px;
+        border-radius: 10px;
     }
 
     .slider-content {
-        padding:
-            9px 10px;
+        padding: 9px 10px;
     }
 
     .slider-title {
-        font-size:
-            10px;
-
-        padding-right:
-            34px;
+        font-size: 10px;
     }
 
     .slider-date {
-        font-size:
-            9px;
+        font-size: 9px;
     }
 
 
-    /* راهنمای نقشه */
-    .leaflet-control-container
-    .legend {
-        font-size:
-            9px;
-    }
+    /* Popup */
 
+    .popup {
+        width: min(260px, 70vw);
+        font-size: 11px;
+    }
 }
 
 
@@ -1024,55 +703,42 @@ body.night #map {
 @media (max-width: 390px) {
 
     .header-logo img {
-        height:
-            34px;
-
-        max-width:
-            72px;
+        height: 34px;
+        max-width: 72px;
     }
 
     .header-title {
-        padding:
-            0 60px;
+        padding: 0 58px;
     }
 
     .header-title h1 {
-        font-size:
-            12px;
+        font-size: 12px;
     }
 
     .header-btn {
-        width:
-            28px;
-
-        height:
-            28px;
+        width: 28px;
+        height: 28px;
     }
 
     .side-panel {
-        width:
-            145px;
+        width: 145px;
     }
 
     .mode-btn {
-        font-size:
-            9px;
+        font-size: 9px;
     }
 
     .update-panel,
     .slider-drawer {
-        width:
-            calc(100% - 20px);
+        width: calc(100% - 20px);
     }
 
     .update-panel {
-        bottom:
-            116px;
+        bottom: 118px;
     }
 }
 
 </style>
-
 </head>
 
 
@@ -1087,48 +753,48 @@ body.night #map {
 
 <div class="header-inner">
 
-<div class="header-logo">
+    <div class="header-logo">
 
-<img
-    src="farslogo.png?v=14"
-    alt="اداره کل حفاظت محیط زیست فارس"
->
+        <img
+            src="farslogo.png?v=15"
+            alt="اداره کل حفاظت محیط زیست فارس"
+        >
 
-</div>
-
-
-<div class="header-title">
-
-<h1>
-سامانه برخط پایش حریق اداره کل حفاظت محیط زیست فارس
-</h1>
-
-<p>
-پایش برخط حریق با داده‌های NASA FIRMS
-</p>
-
-</div>
+    </div>
 
 
-<div class="header-actions">
+    <div class="header-title">
 
-<button
-    id="nightToggle"
-    class="header-btn"
-    title="حالت شب"
->
-🌙
-</button>
+        <h1>
+            سامانه برخط پایش حریق اداره کل حفاظت محیط زیست فارس
+        </h1>
 
-<button
-    id="refreshButton"
-    class="header-btn"
-    title="به‌روزرسانی"
->
-↻
-</button>
+        <p>
+            پایش برخط حریق با داده‌های NASA FIRMS
+        </p>
 
-</div>
+    </div>
+
+
+    <div class="header-actions">
+
+        <button
+            id="nightToggle"
+            class="header-btn"
+            title="حالت شب"
+        >
+            🌙
+        </button>
+
+        <button
+            id="refreshButton"
+            class="header-btn"
+            title="به‌روزرسانی"
+        >
+            ↻
+        </button>
+
+    </div>
 
 </div>
 
@@ -1141,108 +807,107 @@ body.night #map {
 
 <div class="map-wrapper">
 
-
-<div id="map"></div>
-
-
-<!-- =====================================================
-     MODE PANEL
-========================================================= -->
-
-<div class="side-panel">
-
-<button
-    class="mode-btn active"
-    data-mode="today"
->
-🔥 حریق‌های امروز
-</button>
+    <div id="map"></div>
 
 
-<button
-    class="mode-btn"
-    data-mode="24h"
->
-⏱ حریق‌های ۲۴ ساعت گذشته
-</button>
+    <!-- ================================================
+         MODE PANEL
+    ================================================= -->
+
+    <div class="side-panel">
+
+        <button
+            class="mode-btn active"
+            data-mode="today"
+        >
+            🔥 حریق‌های امروز
+        </button>
 
 
-<button
-    class="mode-btn"
-    data-mode="5days"
->
-📅 حریق‌های ۵ روز گذشته
-</button>
-
-</div>
+        <button
+            class="mode-btn"
+            data-mode="24h"
+        >
+            ⏱ حریق‌های ۲۴ ساعت گذشته
+        </button>
 
 
-<!-- =====================================================
-     UPDATE PANEL
-     بالای اسلایدر
-========================================================= -->
+        <button
+            class="mode-btn"
+            data-mode="5days"
+        >
+            📅 حریق‌های ۵ روز گذشته
+        </button>
 
-<div
-    id="updatePanel"
-    class="update-panel"
->
-
-<div class="update-title">
-وضعیت به‌روزرسانی سامانه
-</div>
-
-<div id="updateInfo">
-آخرین به‌روزرسانی: در انتظار اطلاعات
-</div>
-
-</div>
+    </div>
 
 
-<!-- =====================================================
-     SLIDER DRAWER
-========================================================= -->
+    <!-- ================================================
+         UPDATE PANEL
+         بالای اسلایدر
+    ================================================= -->
 
-<div
-    id="sliderDrawer"
-    class="slider-drawer"
->
+    <div
+        id="updatePanel"
+        class="update-panel"
+    >
 
-<button
-    id="sliderToggle"
-    class="slider-toggle"
-    title="باز و بسته کردن آرشیو"
->
-◀
-</button>
+        <div class="update-title">
+            وضعیت به‌روزرسانی سامانه
+        </div>
 
+        <div id="updateInfo">
+            آخرین به‌روزرسانی: در انتظار اطلاعات
+        </div>
 
-<div class="slider-content">
-
-<div class="slider-title">
-آرشیو روزانه
-</div>
+    </div>
 
 
-<input
-    id="archiveSlider"
-    type="range"
-    min="0"
-    max="0"
-    value="0"
-    step="1"
->
+    <!-- ================================================
+         SLIDER
+    ================================================= -->
+
+    <div
+        id="sliderDrawer"
+        class="slider-drawer"
+    >
+
+        <button
+            id="sliderToggle"
+            class="slider-toggle"
+            title="باز و بسته کردن آرشیو"
+        >
+            ◀
+        </button>
 
 
-<div
-    id="sliderDate"
-    class="slider-date"
->
----
-</div>
+        <div class="slider-content">
 
-</div>
+            <div class="slider-title">
+                آرشیو روزانه
+            </div>
 
-</div>
+
+            <input
+                id="archiveSlider"
+                type="range"
+                min="0"
+                max="0"
+                value="0"
+                step="1"
+            >
+
+
+            <div
+                id="sliderDate"
+                class="slider-date"
+            >
+                ---
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -1251,13 +916,9 @@ body.night #map {
      LEAFLET
 ========================================================= -->
 
-<script
-src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-</script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<script
-src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js">
-</script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
 
 <script>
@@ -1288,9 +949,7 @@ const lightTile =
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
-            maxZoom:
-                18,
-
+            maxZoom: 18,
             attribution:
                 "© OpenStreetMap contributors"
         }
@@ -1301,18 +960,14 @@ const darkTile =
     L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
         {
-            maxZoom:
-                19,
-
+            maxZoom: 19,
             attribution:
                 "© OpenStreetMap © CARTO"
         }
     );
 
 
-lightTile.addTo(
-    map
-);
+lightTile.addTo(map);
 
 
 map.setView(
@@ -1325,23 +980,17 @@ map.setView(
    VARIABLES
 ========================================================= */
 
-let farsBoundaryLayer =
-    null;
+let farsBoundaryLayer = null;
 
-let archiveDates =
-    [];
+let archiveDates = [];
 
-let allFires =
-    [];
+let allFires = [];
 
-let currentMode =
-    "today";
+let currentMode = "today";
 
-let selectedArchiveIndex =
-    0;
+let selectedArchiveIndex = 0;
 
-let lastUpdateTimestamp =
-    null;
+let lastUpdateTimestamp = null;
 
 
 /* =========================================================
@@ -1351,17 +1000,14 @@ let lastUpdateTimestamp =
 const fireLayer =
     L.markerClusterGroup({
 
-        showCoverageOnHover:
-            false,
+        showCoverageOnHover: false,
 
-        spiderfyOnMaxZoom:
-            true,
+        spiderfyOnMaxZoom: true,
 
-        disableClusteringAtZoom:
-            12,
+        disableClusteringAtZoom: 12,
 
-        maxClusterRadius:
-            30
+        maxClusterRadius: 30
+
     });
 
 
@@ -1374,9 +1020,7 @@ map.addLayer(
    PERSIAN DIGITS
 ========================================================= */
 
-function toPersianDigits(
-    value
-) {
+function toPersianDigits(value) {
 
     return String(value)
         .replace(/0/g, "۰")
@@ -1419,81 +1063,51 @@ function gregorianToJalali(
 
     let jy;
 
-    if (
-        gy > 1600
-    ) {
+    if (gy > 1600) {
 
-        jy =
-            979;
-
-        gy -=
-            1600;
+        jy = 979;
+        gy -= 1600;
 
     } else {
 
-        jy =
-            0;
-
-        gy -=
-            621;
+        jy = 0;
+        gy -= 621;
     }
 
     const gy2 =
         gm > 2
-        ?
-        gy + 1
-        :
-        gy;
+        ? gy + 1
+        : gy;
 
     let days =
         365 * gy
         +
-        Math.floor(
-            (gy2 + 3) / 4
-        )
+        Math.floor((gy2 + 3) / 4)
         -
-        Math.floor(
-            (gy2 + 99) / 100
-        )
+        Math.floor((gy2 + 99) / 100)
         +
-        Math.floor(
-            (gy2 + 399) / 400
-        )
+        Math.floor((gy2 + 399) / 400)
         -
         80
         +
         gd
         +
-        gdm[
-            gm - 1
-        ];
+        gdm[gm - 1];
 
     jy +=
-        33 *
-        Math.floor(
-            days / 12053
-        );
+        33 * Math.floor(days / 12053);
 
-    days %=
-        12053;
+    days %= 12053;
 
     jy +=
-        4 *
-        Math.floor(
-            days / 1461
-        );
+        4 * Math.floor(days / 1461);
 
-    days %=
-        1461;
+    days %= 1461;
 
-    if (
-        days > 365
-    ) {
+    if (days > 365) {
 
         jy +=
-            Math.floor(
-                (days - 1) / 365
-            );
+            Math.floor((days - 1) / 365);
 
         days =
             (days - 1) % 365;
@@ -1502,33 +1116,21 @@ function gregorianToJalali(
     let jm;
     let jd;
 
-    if (
-        days < 186
-    ) {
+    if (days < 186) {
 
         jm =
-            1 +
-            Math.floor(
-                days / 31
-            );
+            1 + Math.floor(days / 31);
 
         jd =
-            1 +
-            days % 31;
+            1 + days % 31;
 
     } else {
 
         jm =
-            7 +
-            Math.floor(
-                (days - 186) / 30
-            );
+            7 + Math.floor((days - 186) / 30);
 
         jd =
-            1 +
-            (
-                (days - 186) % 30
-            );
+            1 + ((days - 186) % 30);
     }
 
     return [
@@ -1540,29 +1142,19 @@ function gregorianToJalali(
 
 
 /* =========================================================
-   JALALI FULL DATE
+   JALALI DATE
 ========================================================= */
 
-function jalaliFullDate(
-    dateString
-) {
+function jalaliFullDate(dateString) {
 
-    if (
-        !dateString
-    ) {
-
+    if (!dateString) {
         return "---";
     }
 
     const parts =
-        String(
-            dateString
-        ).split("-");
+        String(dateString).split("-");
 
-    if (
-        parts.length !== 3
-    ) {
-
+    if (parts.length !== 3) {
         return dateString;
     }
 
@@ -1574,7 +1166,6 @@ function jalaliFullDate(
         );
 
     const months = [
-
         "فروردین",
         "اردیبهشت",
         "خرداد",
@@ -1590,21 +1181,15 @@ function jalaliFullDate(
     ];
 
     return (
-        toPersianDigits(
-            j[2]
-        )
+        toPersianDigits(j[2])
         +
         " "
         +
-        months[
-            j[1] - 1
-        ]
+        months[j[1] - 1]
         +
         " "
         +
-        toPersianDigits(
-            j[0]
-        )
+        toPersianDigits(j[0])
     );
 }
 
@@ -1613,16 +1198,12 @@ function jalaliFullDate(
    LOAD TEXT
 ========================================================= */
 
-async function loadText(
-    url
-) {
+async function loadText(url) {
 
     const separator =
         url.includes("?")
-        ?
-        "&"
-        :
-        "?";
+        ? "&"
+        : "?";
 
     const response =
         await fetch(
@@ -1635,14 +1216,10 @@ async function loadText(
             Date.now()
         );
 
-    if (
-        !response.ok
-    ) {
+    if (!response.ok) {
 
         throw new Error(
-            "خطا در دریافت "
-            +
-            url
+            "خطا در دریافت " + url
         );
     }
 
@@ -1651,51 +1228,37 @@ async function loadText(
 
 
 /* =========================================================
-   CSV
+   CSV PARSER
 ========================================================= */
 
-function parseCSV(
-    text
-) {
+function parseCSV(text) {
 
     text =
         text
-        .replace(
-            /^\uFEFF/,
-            ""
-        )
+        .replace(/^\uFEFF/, "")
         .trim();
 
-    if (
-        !text
-    ) {
-
+    if (!text) {
         return [];
     }
 
     const lines =
-        text.split(
-            /\r?\n/
-        );
+        text.split(/\r?\n/);
 
-    if (
-        lines.length < 2
-    ) {
-
+    if (lines.length < 2) {
         return [];
     }
 
     const headers =
         lines[0]
         .split(",")
-        .map(
-            function(value) {
+        .map(function(value) {
 
-                return value
-                    .trim()
-                    .toLowerCase();
-            }
-        );
+            return value
+                .trim()
+                .toLowerCase();
+
+        });
 
     const rows = [];
 
@@ -1705,10 +1268,7 @@ function parseCSV(
         i++
     ) {
 
-        if (
-            !lines[i].trim()
-        ) {
-
+        if (!lines[i].trim()) {
             continue;
         }
 
@@ -1723,19 +1283,13 @@ function parseCSV(
             j++
         ) {
 
-            row[
-                headers[j]
-            ] =
+            row[headers[j]] =
                 values[j] !== undefined
-                ?
-                values[j].trim()
-                :
-                "";
+                ? values[j].trim()
+                : "";
         }
 
-        rows.push(
-            row
-        );
+        rows.push(row);
     }
 
     return rows;
@@ -1754,12 +1308,9 @@ async function loadBoundary() {
         );
 
     const data =
-        JSON.parse(
-            text
-        );
+        JSON.parse(text);
 
-    let fars =
-        null;
+    let fars = null;
 
     data.features.forEach(
         function(feature) {
@@ -1773,19 +1324,13 @@ async function loadBoundary() {
                 .trim()
                 .toLowerCase();
 
-            if (
-                name === "fars"
-            ) {
-
-                fars =
-                    feature;
+            if (name === "fars") {
+                fars = feature;
             }
         }
     );
 
-    if (
-        !fars
-    ) {
+    if (!fars) {
 
         throw new Error(
             "استان فارس پیدا نشد."
@@ -1797,36 +1342,23 @@ async function loadBoundary() {
             fars,
             {
                 style: {
-                    color:
-                        "#ef5350",
-
-                    weight:
-                        3,
-
-                    opacity:
-                        .95,
-
-                    fillOpacity:
-                        .02
+                    color: "#ef5350",
+                    weight: 3,
+                    opacity: .95,
+                    fillOpacity: .02
                 }
             }
-        ).addTo(
-            map
-        );
+        ).addTo(map);
 
     const bounds =
-        farsBoundaryLayer
-        .getBounds();
+        farsBoundaryLayer.getBounds();
 
-    if (
-        bounds.isValid()
-    ) {
+    if (bounds.isValid()) {
 
         map.fitBounds(
             bounds,
             {
-                padding:
-                    [20,20]
+                padding: [20,20]
             }
         );
     }
@@ -1834,7 +1366,7 @@ async function loadBoundary() {
 
 
 /* =========================================================
-   ARCHIVE INDEX
+   LOAD ARCHIVE INDEX
 ========================================================= */
 
 async function loadArchiveIndex() {
@@ -1845,21 +1377,16 @@ async function loadArchiveIndex() {
         );
 
     const index =
-        JSON.parse(
-            text
-        );
+        JSON.parse(text);
 
     archiveDates =
         index
-        .map(
-            function(item) {
+        .map(function(item) {
 
-                return item.date;
-            }
-        )
-        .filter(
-            Boolean
-        )
+            return item.date;
+
+        })
+        .filter(Boolean)
         .sort();
 
     const slider =
@@ -1867,8 +1394,7 @@ async function loadArchiveIndex() {
             "archiveSlider"
         );
 
-    slider.min =
-        0;
+    slider.min = 0;
 
     slider.max =
         Math.max(
@@ -1890,13 +1416,12 @@ async function loadArchiveIndex() {
 
 
 /* =========================================================
-   LOAD ALL ARCHIVES
+   LOAD ALL ARCHIVE FILES
 ========================================================= */
 
 async function loadAllArchives() {
 
-    allFires =
-        [];
+    allFires = [];
 
     for (
         const date of archiveDates
@@ -1914,9 +1439,7 @@ async function loadAllArchives() {
                 );
 
             const rows =
-                parseCSV(
-                    text
-                );
+                parseCSV(text);
 
             rows.forEach(
                 function(row) {
@@ -1924,15 +1447,11 @@ async function loadAllArchives() {
                     row.archive_date =
                         date;
 
-                    allFires.push(
-                        row
-                    );
+                    allFires.push(row);
                 }
             );
 
-        } catch (
-            error
-        ) {
+        } catch (error) {
 
             console.warn(
                 "Archive unavailable:",
@@ -1944,7 +1463,7 @@ async function loadAllArchives() {
 
 
 /* =========================================================
-   TODAY IRAN
+   TODAY IRAN DATE
 ========================================================= */
 
 function getTodayIranDate() {
@@ -1953,17 +1472,10 @@ function getTodayIranDate() {
         new Intl.DateTimeFormat(
             "en-CA",
             {
-                timeZone:
-                    "Asia/Tehran",
-
-                year:
-                    "numeric",
-
-                month:
-                    "2-digit",
-
-                day:
-                    "2-digit"
+                timeZone: "Asia/Tehran",
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
             }
         );
 
@@ -1974,12 +1486,10 @@ function getTodayIranDate() {
 
 
 /* =========================================================
-   FIRMS UTC DATE TIME
+   FIRMS UTC DATETIME
 ========================================================= */
 
-function getFireUTCDateTime(
-    fire
-) {
+function getFireUTCDateTime(fire) {
 
     if (
         !fire.acq_date
@@ -1994,64 +1504,41 @@ function getFireUTCDateTime(
         String(
             fire.acq_time
         )
-        .replace(
-            /\D/g,
-            ""
-        )
-        .padStart(
-            4,
-            "0"
-        );
+        .replace(/\D/g, "")
+        .padStart(4, "0");
 
     let hour =
         parseInt(
-            text.substring(
-                0,
-                2
-            ),
+            text.substring(0,2),
             10
         );
 
     let minute =
         parseInt(
-            text.substring(
-                2,
-                4
-            ),
+            text.substring(2,4),
             10
         );
 
-    if (
-        hour > 23
-    ) {
-
-        hour %=
-            24;
+    if (hour > 23) {
+        hour %= 24;
     }
 
-    if (
-        minute > 59
-    ) {
-
-        minute =
-            0;
+    if (minute > 59) {
+        minute = 0;
     }
 
     const parts =
         fire.acq_date.split("-");
 
-    if (
-        parts.length !== 3
-    ) {
-
+    if (parts.length !== 3) {
         return null;
     }
 
     return new Date(
         Date.UTC(
-            parseInt(parts[0], 10),
-            parseInt(parts[1], 10) - 1,
-            parseInt(parts[2], 10),
+            parseInt(parts[0],10),
+            parseInt(parts[1],10) - 1,
+            parseInt(parts[2],10),
             hour,
             minute,
             0
@@ -2061,16 +1548,12 @@ function getFireUTCDateTime(
 
 
 /* =========================================================
-   IRAN TIME
+   IRAN TIME 24 HOUR
 ========================================================= */
 
-function getIranTime24(
-    fire
-) {
+function getIranTime24(fire) {
 
-    if (
-        fire.iran_time
-    ) {
+    if (fire.iran_time) {
 
         return format24Hour(
             fire.iran_time
@@ -2082,51 +1565,35 @@ function getIranTime24(
             fire
         );
 
-    if (
-        !utcDate
-    ) {
-
+    if (!utcDate) {
         return "---";
     }
 
-    const iranMillis =
-        utcDate.getTime()
-        +
-        (
-            3.5
-            *
-            60
-            *
-            60
-            *
-            1000
-        );
-
     const iranDate =
         new Date(
-            iranMillis
+            utcDate.getTime()
+            +
+            (
+                3.5
+                *
+                60
+                *
+                60
+                *
+                1000
+            )
         );
 
     return (
-
         String(
             iranDate.getUTCHours()
-        ).padStart(
-            2,
-            "0"
-        )
-
+        ).padStart(2, "0")
         +
         ":"
-
         +
-
         String(
             iranDate.getUTCMinutes()
-        ).padStart(
-            2,
-            "0"
-        )
+        ).padStart(2, "0")
     );
 }
 
@@ -2135,77 +1602,39 @@ function getIranTime24(
    FORMAT 24 HOUR
 ========================================================= */
 
-function format24Hour(
-    value
-) {
+function format24Hour(value) {
 
     let text =
-        String(
-            value
-        )
-        .replace(
-            /\D/g,
-            ""
-        )
-        .padStart(
-            4,
-            "0"
-        );
+        String(value)
+        .replace(/\D/g, "")
+        .padStart(4, "0");
 
     let hour =
         parseInt(
-            text.substring(
-                0,
-                2
-            ),
+            text.substring(0,2),
             10
         );
 
     let minute =
         parseInt(
-            text.substring(
-                2,
-                4
-            ),
+            text.substring(2,4),
             10
         );
 
-    if (
-        hour > 23
-    ) {
-
-        hour %=
-            24;
+    if (hour > 23) {
+        hour %= 24;
     }
 
-    if (
-        minute > 59
-    ) {
-
-        minute =
-            0;
+    if (minute > 59) {
+        minute = 0;
     }
 
     return (
-
-        String(
-            hour
-        ).padStart(
-            2,
-            "0"
-        )
-
+        String(hour).padStart(2, "0")
         +
         ":"
-
         +
-
-        String(
-            minute
-        ).padStart(
-            2,
-            "0"
-        )
+        String(minute).padStart(2, "0")
     );
 }
 
@@ -2214,21 +1643,17 @@ function format24Hour(
    FILTER
 ========================================================= */
 
-function getFilteredFires(
-    mode
-) {
+function getFilteredFires(mode) {
 
     const now =
         new Date();
 
 
-    /* -----------------------------------------
+    /* -----------------------------------------------------
        امروز
-    ----------------------------------------- */
+    ----------------------------------------------------- */
 
-    if (
-        mode === "today"
-    ) {
+    if (mode === "today") {
 
         const todayIran =
             getTodayIranDate();
@@ -2242,8 +1667,7 @@ function getFilteredFires(
                     fire.archive_date;
 
                 if (
-                    fireDate !==
-                    todayIran
+                    fireDate !== todayIran
                 ) {
 
                     return false;
@@ -2254,10 +1678,7 @@ function getFilteredFires(
                         fire
                     );
 
-                if (
-                    !fireUTC
-                ) {
-
+                if (!fireUTC) {
                     return false;
                 }
 
@@ -2271,13 +1692,11 @@ function getFilteredFires(
     }
 
 
-    /* -----------------------------------------
+    /* -----------------------------------------------------
        24 ساعت گذشته
-    ----------------------------------------- */
+    ----------------------------------------------------- */
 
-    if (
-        mode === "24h"
-    ) {
+    if (mode === "24h") {
 
         const start =
             new Date(
@@ -2302,10 +1721,7 @@ function getFilteredFires(
                         fire
                     );
 
-                if (
-                    !fireUTC
-                ) {
-
+                if (!fireUTC) {
                     return false;
                 }
 
@@ -2313,26 +1729,20 @@ function getFilteredFires(
                     fireUTC.getTime();
 
                 return (
-                    time
-                    >=
-                    start.getTime()
+                    time >= start.getTime()
                     &&
-                    time
-                    <=
-                    now.getTime()
+                    time <= now.getTime()
                 );
             }
         );
     }
 
 
-    /* -----------------------------------------
+    /* -----------------------------------------------------
        5 روز گذشته
-    ----------------------------------------- */
+    ----------------------------------------------------- */
 
-    if (
-        mode === "5days"
-    ) {
+    if (mode === "5days") {
 
         const start =
             new Date(
@@ -2359,10 +1769,7 @@ function getFilteredFires(
                         fire
                     );
 
-                if (
-                    !fireUTC
-                ) {
-
+                if (!fireUTC) {
                     return false;
                 }
 
@@ -2370,13 +1777,9 @@ function getFilteredFires(
                     fireUTC.getTime();
 
                 return (
-                    time
-                    >=
-                    start.getTime()
+                    time >= start.getTime()
                     &&
-                    time
-                    <=
-                    now.getTime()
+                    time <= now.getTime()
                 );
             }
         );
@@ -2388,12 +1791,10 @@ function getFilteredFires(
 
 
 /* =========================================================
-   DISPLAY
+   DISPLAY FIRES
 ========================================================= */
 
-function displayFires(
-    fires
-) {
+function displayFires(fires) {
 
     fireLayer.clearLayers();
 
@@ -2433,18 +1834,12 @@ function displayFires(
             let color =
                 "#8e24aa";
 
-            if (
-                sensor === "VIIRS"
-            ) {
-
+            if (sensor === "VIIRS") {
                 color =
                     "#ef233c";
             }
 
-            if (
-                sensor === "MODIS"
-            ) {
-
+            if (sensor === "MODIS") {
                 color =
                     "#f39c12";
             }
@@ -2456,28 +1851,16 @@ function displayFires(
                         lon
                     ],
                     {
-
-                        radius:
-                            8,
-
-                        color:
-                            "#6d1a00",
-
-                        fillColor:
-                            color,
-
-                        fillOpacity:
-                            .95,
-
-                        weight:
-                            2
+                        radius: 8,
+                        color: "#6d1a00",
+                        fillColor: color,
+                        fillOpacity: .95,
+                        weight: 2
                     }
                 );
 
             marker.bindPopup(
-                createPopup(
-                    fire
-                )
+                createPopup(fire)
             );
 
             fireLayer.addLayer(
@@ -2492,9 +1875,7 @@ function displayFires(
    POPUP
 ========================================================= */
 
-function createPopup(
-    fire
-) {
+function createPopup(fire) {
 
     const iranDate =
         fire.iran_date
@@ -2505,38 +1886,28 @@ function createPopup(
 
     const iranTime =
         toPersianDigits(
-            getIranTime24(
-                fire
-            )
+            getIranTime24(fire)
         );
 
-    let dayNight =
-        "---";
-
-    const dn =
+    const dayNightCode =
         String(
             fire.daynight
             ||
             ""
         ).toUpperCase();
 
-    if (
-        dn === "D"
-    ) {
+    let dayNight =
+        "---";
 
-        dayNight =
-            "روز";
+    if (dayNightCode === "D") {
+        dayNight = "روز";
+    }
 
-    } else if (
-        dn === "N"
-    ) {
-
-        dayNight =
-            "شب";
+    if (dayNightCode === "N") {
+        dayNight = "شب";
     }
 
     return (
-
         "<div class='popup'>"
 
         +
@@ -2595,10 +1966,10 @@ function createPopup(
         "<br>"
 
         +
-        "<b>ساعت UTC:</b> "
+        "<b>تاریخ UTC:</b> "
         +
         (
-            fire.acq_time
+            fire.acq_date
             ||
             "---"
         )
@@ -2607,10 +1978,10 @@ function createPopup(
         "<br>"
 
         +
-        "<b>تاریخ UTC:</b> "
+        "<b>ساعت UTC:</b> "
         +
         (
-            fire.acq_date
+            fire.acq_time
             ||
             "---"
         )
@@ -2667,9 +2038,7 @@ function createPopup(
    APPLY MODE
 ========================================================= */
 
-function applyMode(
-    mode
-) {
+function applyMode(mode) {
 
     currentMode =
         mode;
@@ -2698,7 +2067,7 @@ function applyMode(
 
 
 /* =========================================================
-   MODE BUTTONS
+   MODE EVENTS
 ========================================================= */
 
 document.querySelectorAll(
@@ -2725,18 +2094,6 @@ document.querySelectorAll(
 
 function updateSliderDate() {
 
-    if (
-        archiveDates.length === 0
-    ) {
-
-        document.getElementById(
-            "sliderDate"
-        ).innerText =
-            "---";
-
-        return;
-    }
-
     const date =
         archiveDates[
             selectedArchiveIndex
@@ -2745,14 +2102,16 @@ function updateSliderDate() {
     document.getElementById(
         "sliderDate"
     ).innerText =
-        jalaliFullDate(
-            date
-        );
+        date
+        ?
+        jalaliFullDate(date)
+        :
+        "---";
 }
 
 
 /* =========================================================
-   SLIDER
+   SLIDER EVENT
 ========================================================= */
 
 document.getElementById(
@@ -2784,8 +2143,7 @@ document.getElementById(
                         fire.archive_date;
 
                     return (
-                        date ===
-                        selectedDate
+                        date === selectedDate
                     );
                 }
             );
@@ -2798,7 +2156,7 @@ document.getElementById(
 
 
 /* =========================================================
-   DRAWER
+   SLIDER OPEN/CLOSE
 ========================================================= */
 
 document.getElementById(
@@ -2820,10 +2178,8 @@ document.getElementById(
             drawer.classList.contains(
                 "closed"
             )
-            ?
-            "▶"
-            :
-            "◀";
+            ? "▶"
+            : "◀";
     }
 );
 
@@ -2847,9 +2203,7 @@ document.getElementById(
                 "night"
             );
 
-        if (
-            isNight
-        ) {
+        if (isNight) {
 
             map.removeLayer(
                 lightTile
@@ -2896,7 +2250,7 @@ document.getElementById(
 
 
 /* =========================================================
-   RESTORE NIGHT
+   RESTORE NIGHT MODE
 ========================================================= */
 
 if (
@@ -2927,7 +2281,7 @@ if (
 
 
 /* =========================================================
-   UPDATE INFO
+   LOAD UPDATE INFO
 ========================================================= */
 
 async function loadUpdateInfo() {
@@ -2940,9 +2294,7 @@ async function loadUpdateInfo() {
             );
 
         const info =
-            JSON.parse(
-                text
-            );
+            JSON.parse(text);
 
         const timestamp =
             Number(
@@ -2950,9 +2302,7 @@ async function loadUpdateInfo() {
             );
 
         if (
-            !Number.isFinite(
-                timestamp
-            )
+            !Number.isFinite(timestamp)
             ||
             timestamp <= 0
         ) {
@@ -2967,9 +2317,7 @@ async function loadUpdateInfo() {
 
         updateUpdateLabel();
 
-    } catch (
-        error
-    ) {
+    } catch (error) {
 
         document.getElementById(
             "updateInfo"
@@ -2985,9 +2333,19 @@ async function loadUpdateInfo() {
 
 function updateUpdateLabel() {
 
-    if (
-        !lastUpdateTimestamp
-    ) {
+    const element =
+        document.getElementById(
+            "updateInfo"
+        );
+
+    if (!element) {
+        return;
+    }
+
+    if (!lastUpdateTimestamp) {
+
+        element.innerText =
+            "آخرین به‌روزرسانی: در انتظار اطلاعات";
 
         return;
     }
@@ -3014,21 +2372,14 @@ function updateUpdateLabel() {
     const remainder =
         seconds % 60;
 
-    document.getElementById(
-        "updateInfo"
-    ).innerText =
-
+    element.innerText =
         "آخرین به‌روزرسانی: "
         +
-        toPersianDigits(
-            minutes
-        )
+        toPersianDigits(minutes)
         +
         " دقیقه و "
         +
-        toPersianDigits(
-            remainder
-        )
+        toPersianDigits(remainder)
         +
         " ثانیه پیش";
 }
@@ -3040,7 +2391,7 @@ setInterval(
 
 
 /* =========================================================
-   REFRESH
+   MANUAL REFRESH
 ========================================================= */
 
 document.getElementById(
@@ -3051,6 +2402,49 @@ document.getElementById(
 
         location.reload();
     }
+);
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+const legend =
+    L.control({
+        position: "topright"
+    });
+
+
+legend.onAdd =
+    function() {
+
+        const div =
+            L.DomUtil.create(
+                "div",
+                "legend"
+            );
+
+        div.innerHTML =
+            "<div class='legend-title'>راهنمای حریق</div>" +
+
+            "<div class='legend-item'>" +
+            "<span class='legend-dot' " +
+            "style='background:#ef233c'></span>" +
+            "وایرس (VIIRS)" +
+            "</div>" +
+
+            "<div class='legend-item'>" +
+            "<span class='legend-dot' " +
+            "style='background:#f39c12'></span>" +
+            "مودیس (MODIS)" +
+            "</div>";
+
+        return div;
+    };
+
+
+legend.addTo(
+    map
 );
 
 
@@ -3068,15 +2462,11 @@ async function initializeApp() {
 
         await loadAllArchives();
 
-        applyMode(
-            "today"
-        );
+        applyMode("today");
 
         loadUpdateInfo();
 
-    } catch (
-        error
-    ) {
+    } catch (error) {
 
         console.error(
             "FARS FIRE SENTINEL:",
@@ -3091,10 +2481,13 @@ async function initializeApp() {
 }
 
 
+/* =========================================================
+   START
+========================================================= */
+
 initializeApp();
 
 </script>
 
 </body>
-
 </html>
