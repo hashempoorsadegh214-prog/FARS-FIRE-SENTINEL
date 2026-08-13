@@ -38,15 +38,22 @@
 html,
 body {
     margin: 0;
+    width: 100%;
     min-height: 100%;
+
     overflow-x: hidden;
     overflow-y: auto;
 }
 
 body {
-    font-family: Tahoma, Arial, sans-serif;
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
     background: #f1f4f6;
     color: #263238;
+
     transition:
         background .3s ease,
         color .3s ease;
@@ -68,7 +75,8 @@ header {
         );
 
     box-shadow:
-        0 3px 15px rgba(0,0,0,.18);
+        0 3px 15px
+        rgba(0,0,0,.18);
 
     position: relative;
     z-index: 1000;
@@ -77,8 +85,9 @@ header {
 .header-inner {
     max-width: 1500px;
     height: 100%;
-
     margin: auto;
+
+    padding: 0 15px;
 
     display: flex;
     align-items: center;
@@ -89,25 +98,35 @@ header {
 
 .header-logo {
     position: absolute;
-
     left: 15px;
     top: 50%;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
 }
 
 .header-logo img {
     height: 50px;
     width: auto;
+
+    max-width: 190px;
+
     display: block;
+
+    object-fit: contain;
 
     filter:
         drop-shadow(
-            0 2px 3px rgba(0,0,0,.22)
+            0 2px 3px
+            rgba(0,0,0,.22)
         );
 }
 
 .header-title {
+    max-width: 720px;
+
+    padding: 0 90px;
+
     text-align: center;
 }
 
@@ -121,14 +140,19 @@ header {
         sans-serif;
 
     font-size: 22px;
+
+    line-height: 1.5;
+
     color: #ffffff;
 }
 
 .header-title p {
-    margin: 1px 0 0;
+    margin: 2px 0 0;
 
     font-size: 11px;
-    color: rgba(255,255,255,.9);
+
+    color:
+        rgba(255,255,255,.9);
 }
 
 .header-actions {
@@ -137,9 +161,11 @@ header {
     right: 15px;
     top: 50%;
 
-    transform: translateY(-50%);
+    transform:
+        translateY(-50%);
 
     display: flex;
+
     gap: 6px;
 }
 
@@ -182,9 +208,10 @@ header {
 
     max-width: 1500px;
 
-    margin: 12px auto 0;
+    margin: 10px auto 0;
 
-    padding: 0 10px;
+    padding:
+        0 10px;
 }
 
 
@@ -193,20 +220,23 @@ header {
 ========================================================= */
 
 #map {
-    height: calc(100vh - 110px);
+    width: 100%;
+
+    height:
+        calc(100vh - 105px);
 
     min-height: 560px;
-
-    width: 100%;
 
     border-radius: 14px;
 
     overflow: hidden;
 
-    border: 1px solid #d9dee2;
+    border:
+        1px solid #d9dee2;
 
     box-shadow:
-        0 5px 24px rgba(0,0,0,.13);
+        0 5px 24px
+        rgba(0,0,0,.13);
 }
 
 
@@ -220,17 +250,19 @@ header {
     top: 18px;
     right: 24px;
 
-    width: 190px;
+    width: 195px;
 
     background:
         rgba(255,255,255,.96);
 
-    border: 1px solid #dde2e6;
+    border:
+        1px solid #dde2e6;
 
     border-radius: 12px;
 
     box-shadow:
-        0 6px 20px rgba(0,0,0,.18);
+        0 6px 20px
+        rgba(0,0,0,.18);
 
     padding: 8px;
 
@@ -243,17 +275,22 @@ header {
 .mode-btn {
     width: 100%;
 
+    min-height: 36px;
+
     border: none;
 
     border-radius: 8px;
 
-    padding: 9px 10px;
+    padding:
+        8px 10px;
 
     margin-bottom: 6px;
 
-    background: #f2f4f6;
+    background:
+        #f2f4f6;
 
-    color: #37474f;
+    color:
+        #37474f;
 
     font-family:
         Tahoma,
@@ -281,9 +318,6 @@ header {
 .mode-btn:hover {
     transform:
         translateX(-2px);
-
-    background:
-        #e9ecef;
 }
 
 .mode-btn.active {
@@ -296,6 +330,71 @@ header {
 
     color:
         #ffffff;
+}
+
+
+/* =========================================================
+   UPDATE PANEL
+   بالای اسلایدر
+========================================================= */
+
+.update-panel {
+    position: absolute;
+
+    left: 24px;
+    bottom: 96px;
+
+    width: 300px;
+
+    z-index: 900;
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid #dde2e6;
+
+    border-radius: 11px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.16);
+
+    padding:
+        8px 12px;
+
+    text-align: center;
+
+    backdrop-filter:
+        blur(8px);
+}
+
+.update-title {
+    font-family:
+        "B Titr",
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    font-size:
+        10px;
+
+    color:
+        #60727d;
+
+    margin-bottom:
+        2px;
+}
+
+#updateInfo {
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    color:
+        #c45108;
 }
 
 
@@ -314,12 +413,14 @@ header {
     background:
         rgba(255,255,255,.96);
 
-    border: 1px solid #dde2e6;
+    border:
+        1px solid #dde2e6;
 
     border-radius: 12px;
 
     box-shadow:
-        0 6px 20px rgba(0,0,0,.18);
+        0 6px 20px
+        rgba(0,0,0,.18);
 
     z-index: 900;
 
@@ -334,11 +435,13 @@ header {
 }
 
 .slider-content {
-    padding: 10px 12px;
+    padding:
+        10px 12px;
 }
 
 .slider-drawer.closed .slider-content {
-    display: none;
+    display:
+        none;
 }
 
 .slider-toggle {
@@ -354,37 +457,48 @@ header {
 
     border-radius: 7px;
 
-    background: #eef1f3;
+    background:
+        #eef1f3;
 
     cursor: pointer;
 
     font-size: 15px;
+
+    z-index: 2;
 }
 
 .slider-title {
+    padding-right:
+        38px;
+
+    margin-bottom:
+        9px;
+
     font-family:
         "B Titr",
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size: 11px;
+    font-size:
+        11px;
 
     color:
         #455a64;
-
-    margin-bottom: 8px;
-
-    padding-right: 35px;
 }
 
 #archiveSlider {
-    width: 100%;
+    width:
+        100%;
 
-    height: 5px;
+    height:
+        5px;
 
-    appearance: none;
-    -webkit-appearance: none;
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
 
     background:
         linear-gradient(
@@ -393,117 +507,91 @@ header {
             #e46f19
         );
 
-    border-radius: 20px;
+    border-radius:
+        20px;
 
-    outline: none;
+    outline:
+        none;
 
-    cursor: pointer;
+    cursor:
+        pointer;
 }
 
 #archiveSlider::-webkit-slider-thumb {
-    -webkit-appearance: none;
+    -webkit-appearance:
+        none;
 
-    width: 16px;
-    height: 16px;
+    appearance:
+        none;
 
-    border-radius: 50%;
+    width:
+        16px;
 
-    background: #ffffff;
+    height:
+        16px;
 
-    border: 3px solid #d35400;
+    border-radius:
+        50%;
+
+    background:
+        #ffffff;
+
+    border:
+        3px solid #d35400;
 
     box-shadow:
-        0 1px 5px rgba(0,0,0,.25);
+        0 1px 5px
+        rgba(0,0,0,.25);
 }
 
 #archiveSlider::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
+    width:
+        16px;
 
-    border-radius: 50%;
+    height:
+        16px;
 
-    background: #ffffff;
+    border-radius:
+        50%;
 
-    border: 3px solid #d35400;
+    background:
+        #ffffff;
+
+    border:
+        3px solid #d35400;
 
     box-shadow:
-        0 1px 5px rgba(0,0,0,.25);
+        0 1px 5px
+        rgba(0,0,0,.25);
 }
 
 .slider-date {
-    margin-top: 8px;
+    margin-top:
+        8px;
 
-    text-align: center;
+    padding:
+        5px;
 
-    font-size: 10px;
+    text-align:
+        center;
 
-    font-weight: bold;
+    font-size:
+        10px;
 
-    color: #c45108;
+    font-weight:
+        bold;
 
-    background: #fff7ef;
-
-    border: 1px solid #f2c7a6;
-
-    border-radius: 7px;
-
-    padding: 5px;
-}
-
-
-/* =========================================================
-   UPDATE INFO
-========================================================= */
-
-.update-info {
-    position: absolute;
-
-    left: 24px;
-    top: 18px;
-
-    z-index: 900;
+    color:
+        #c45108;
 
     background:
-        rgba(255,255,255,.92);
+        #fff7ef;
 
-    padding: 6px 10px;
+    border:
+        1px solid #f2c7a6;
 
-    border-radius: 8px;
-
-    font-size: 10px;
-
-    color: #60727d;
-
-    box-shadow:
-        0 3px 10px rgba(0,0,0,.12);
-}
-
-
-/* =========================================================
-   POPUP
-========================================================= */
-
-.popup {
-    direction: rtl;
-
-    text-align: right;
-
-    min-width: 250px;
-
-    line-height: 1.95;
-
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-}
-
-.popup h3 {
-    margin: 0 0 7px;
-
-    color: #d35400;
-
-    font-size: 15px;
+    border-radius:
+        7px;
 }
 
 
@@ -515,39 +603,92 @@ header {
     background:
         rgba(255,255,255,.96);
 
-    padding: 8px 10px;
+    padding:
+        8px 10px;
 
-    border: 1px solid #e1e5e8;
+    border:
+        1px solid #e1e5e8;
 
-    border-radius: 9px;
+    border-radius:
+        9px;
 
     box-shadow:
-        0 3px 12px rgba(0,0,0,.18);
+        0 3px 12px
+        rgba(0,0,0,.18);
 
-    font-size: 10px;
+    font-size:
+        10px;
 }
 
 .legend-title {
-    font-weight: bold;
+    font-weight:
+        bold;
 
-    margin-bottom: 5px;
+    margin-bottom:
+        5px;
 }
 
 .legend-item {
-    display: flex;
+    display:
+        flex;
 
-    align-items: center;
+    align-items:
+        center;
 
-    gap: 6px;
+    gap:
+        6px;
 }
 
 .legend-dot {
-    width: 10px;
-    height: 10px;
+    width:
+        10px;
 
-    border-radius: 50%;
+    height:
+        10px;
 
-    border: 1px solid #555;
+    border-radius:
+        50%;
+
+    border:
+        1px solid #555;
+}
+
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+.popup {
+    direction:
+        rtl;
+
+    text-align:
+        right;
+
+    min-width:
+        250px;
+
+    max-width:
+        300px;
+
+    line-height:
+        1.9;
+
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+}
+
+.popup h3 {
+    margin:
+        0 0 7px;
+
+    color:
+        #d35400;
+
+    font-size:
+        15px;
 }
 
 
@@ -556,49 +697,113 @@ header {
 ========================================================= */
 
 body.night {
-    background: #121820;
-    color: #e8edf1;
+    background:
+        #121820;
+
+    color:
+        #e8edf1;
 }
 
 body.night .side-panel,
 body.night .slider-drawer,
-body.night .update-info {
-
+body.night .update-panel {
     background:
         rgba(26,32,40,.96);
 
-    border-color: #39434d;
+    border-color:
+        #39434d;
 
-    color: #e8edf1;
+    color:
+        #e8edf1;
 }
 
 body.night .mode-btn {
-    background: #252d36;
-    color: #dbe3e8;
+    background:
+        #252d36;
+
+    color:
+        #dbe3e8;
 }
 
 body.night .mode-btn:hover {
-    background: #303a45;
+    background:
+        #303a45;
 }
 
 body.night .slider-title {
-    color: #dbe3e8;
+    color:
+        #dbe3e8;
 }
 
 body.night .slider-date {
-    background: #29231e;
+    background:
+        #29231e;
 
-    border-color: #6b4a2b;
+    border-color:
+        #6b4a2b;
 
-    color: #f5b879;
+    color:
+        #f5b879;
 }
 
-body.night .update-info {
-    color: #c5ced5;
+body.night .update-title {
+    color:
+        #b9c5cd;
+}
+
+body.night #updateInfo {
+    color:
+        #f5b879;
 }
 
 body.night #map {
-    border-color: #36404a;
+    border-color:
+        #36404a;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .header-title {
+        padding:
+            0 120px;
+    }
+
+    .header-title h1 {
+        font-size:
+            18px;
+    }
+
+    .side-panel {
+        width:
+            175px;
+
+        right:
+            18px;
+    }
+
+    .update-panel,
+    .slider-drawer {
+        width:
+            270px;
+
+        left:
+            18px;
+    }
+
+    .update-panel {
+        bottom:
+            92px;
+    }
+
+    .slider-drawer {
+        bottom:
+            18px;
+    }
 }
 
 
@@ -606,102 +811,263 @@ body.night #map {
    MOBILE
 ========================================================= */
 
-@media (max-width: 850px) {
-
-    .header-title h1 {
-        font-size: 17px;
-    }
-
-    .header-title p {
-        font-size: 9px;
-    }
-
-    .side-panel {
-        top: 16px;
-        right: 18px;
-        width: 165px;
-    }
-
-    .slider-drawer {
-        left: 18px;
-        bottom: 15px;
-        width: 250px;
-    }
-}
-
-
 @media (max-width: 600px) {
 
     header {
-        height: 70px;
+        height:
+            auto;
+
+        min-height:
+            86px;
     }
 
     .header-inner {
-        padding: 0 10px;
+        min-height:
+            86px;
+
+        padding:
+            8px 10px;
     }
 
     .header-logo {
-        left: 8px;
+        left:
+            8px;
+
+        top:
+            50%;
     }
 
     .header-logo img {
-        height: 40px;
+        height:
+            38px;
+
+        max-width:
+            85px;
     }
 
     .header-title {
-        padding: 0 70px;
+        width:
+            100%;
+
+        padding:
+            0 68px;
     }
 
     .header-title h1 {
-        font-size: 14px;
+        font-size:
+            14px;
+
+        line-height:
+            1.5;
     }
 
     .header-title p {
-        display: none;
+        display:
+            none;
     }
 
     .header-actions {
-        right: 8px;
+        right:
+            8px;
+
+        gap:
+            4px;
     }
 
     .header-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 15px;
+        width:
+            30px;
+
+        height:
+            30px;
+
+        font-size:
+            14px;
     }
 
+
     .map-wrapper {
-        margin-top: 8px;
-        padding: 0 5px;
+        margin-top:
+            6px;
+
+        padding:
+            0 5px;
     }
 
     #map {
-        height: calc(100vh - 88px);
-        min-height: 520px;
-        border-radius: 10px;
+        height:
+            calc(100vh - 98px);
+
+        min-height:
+            520px;
+
+        border-radius:
+            10px;
     }
 
+
+    /* پنل سه گزینه */
     .side-panel {
-        width: 145px;
-        right: 12px;
-        top: 12px;
+        top:
+            10px;
+
+        right:
+            10px;
+
+        width:
+            min(165px, calc(100% - 20px));
+
+        padding:
+            6px;
+
+        border-radius:
+            10px;
     }
 
     .mode-btn {
-        font-size: 10px;
-        padding: 8px;
+        min-height:
+            34px;
+
+        padding:
+            7px 8px;
+
+        margin-bottom:
+            5px;
+
+        font-size:
+            10px;
     }
 
+
+    /* تایمر بالای اسلایدر */
+    .update-panel {
+        left:
+            10px;
+
+        bottom:
+            118px;
+
+        width:
+            min(225px, calc(100% - 20px));
+
+        padding:
+            7px 9px;
+
+        border-radius:
+            9px;
+    }
+
+    .update-title {
+        font-size:
+            9px;
+    }
+
+    #updateInfo {
+        font-size:
+            10px;
+    }
+
+
+    /* اسلایدر */
     .slider-drawer {
-        left: 12px;
-        bottom: 12px;
-        width: 210px;
+        left:
+            10px;
+
+        bottom:
+            10px;
+
+        width:
+            min(225px, calc(100% - 20px));
+
+        border-radius:
+            10px;
     }
 
-    .update-info {
-        left: 12px;
-        top: 12px;
-        font-size: 9px;
+    .slider-drawer.closed {
+        width:
+            42px;
+    }
+
+    .slider-content {
+        padding:
+            9px 10px;
+    }
+
+    .slider-title {
+        font-size:
+            10px;
+
+        padding-right:
+            34px;
+    }
+
+    .slider-date {
+        font-size:
+            9px;
+    }
+
+
+    /* راهنمای نقشه */
+    .leaflet-control-container
+    .legend {
+        font-size:
+            9px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 390px) {
+
+    .header-logo img {
+        height:
+            34px;
+
+        max-width:
+            72px;
+    }
+
+    .header-title {
+        padding:
+            0 60px;
+    }
+
+    .header-title h1 {
+        font-size:
+            12px;
+    }
+
+    .header-btn {
+        width:
+            28px;
+
+        height:
+            28px;
+    }
+
+    .side-panel {
+        width:
+            145px;
+    }
+
+    .mode-btn {
+        font-size:
+            9px;
+    }
+
+    .update-panel,
+    .slider-drawer {
+        width:
+            calc(100% - 20px);
+    }
+
+    .update-panel {
+        bottom:
+            116px;
     }
 }
 
@@ -713,6 +1079,10 @@ body.night #map {
 <body>
 
 
+<!-- =====================================================
+     HEADER
+========================================================= -->
+
 <header>
 
 <div class="header-inner">
@@ -720,7 +1090,7 @@ body.night #map {
 <div class="header-logo">
 
 <img
-    src="farslogo.png?v=13"
+    src="farslogo.png?v=14"
     alt="اداره کل حفاظت محیط زیست فارس"
 >
 
@@ -765,11 +1135,19 @@ body.night #map {
 </header>
 
 
+<!-- =====================================================
+     MAP
+========================================================= -->
+
 <div class="map-wrapper">
 
 
 <div id="map"></div>
 
+
+<!-- =====================================================
+     MODE PANEL
+========================================================= -->
 
 <div class="side-panel">
 
@@ -780,12 +1158,14 @@ body.night #map {
 🔥 حریق‌های امروز
 </button>
 
+
 <button
     class="mode-btn"
     data-mode="24h"
 >
 ⏱ حریق‌های ۲۴ ساعت گذشته
 </button>
+
 
 <button
     class="mode-btn"
@@ -797,13 +1177,30 @@ body.night #map {
 </div>
 
 
+<!-- =====================================================
+     UPDATE PANEL
+     بالای اسلایدر
+========================================================= -->
+
 <div
-    id="updateInfo"
-    class="update-info"
+    id="updatePanel"
+    class="update-panel"
 >
+
+<div class="update-title">
+وضعیت به‌روزرسانی سامانه
+</div>
+
+<div id="updateInfo">
 آخرین به‌روزرسانی: در انتظار اطلاعات
 </div>
 
+</div>
+
+
+<!-- =====================================================
+     SLIDER DRAWER
+========================================================= -->
 
 <div
     id="sliderDrawer"
@@ -818,11 +1215,13 @@ body.night #map {
 ◀
 </button>
 
+
 <div class="slider-content">
 
 <div class="slider-title">
 آرشیو روزانه
 </div>
+
 
 <input
     id="archiveSlider"
@@ -832,6 +1231,7 @@ body.night #map {
     value="0"
     step="1"
 >
+
 
 <div
     id="sliderDate"
@@ -846,6 +1246,10 @@ body.night #map {
 
 </div>
 
+
+<!-- =====================================================
+     LEAFLET
+========================================================= -->
 
 <script
 src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
@@ -884,7 +1288,9 @@ const lightTile =
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
-            maxZoom: 18,
+            maxZoom:
+                18,
+
             attribution:
                 "© OpenStreetMap contributors"
         }
@@ -895,14 +1301,18 @@ const darkTile =
     L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
         {
-            maxZoom: 19,
+            maxZoom:
+                19,
+
             attribution:
                 "© OpenStreetMap © CARTO"
         }
     );
 
 
-lightTile.addTo(map);
+lightTile.addTo(
+    map
+);
 
 
 map.setView(
@@ -915,12 +1325,23 @@ map.setView(
    VARIABLES
 ========================================================= */
 
-let farsBoundaryLayer = null;
-let archiveDates = [];
-let allFires = [];
-let currentMode = "today";
-let selectedArchiveIndex = 0;
-let lastUpdateTimestamp = null;
+let farsBoundaryLayer =
+    null;
+
+let archiveDates =
+    [];
+
+let allFires =
+    [];
+
+let currentMode =
+    "today";
+
+let selectedArchiveIndex =
+    0;
+
+let lastUpdateTimestamp =
+    null;
 
 
 /* =========================================================
@@ -930,13 +1351,17 @@ let lastUpdateTimestamp = null;
 const fireLayer =
     L.markerClusterGroup({
 
-        showCoverageOnHover: false,
+        showCoverageOnHover:
+            false,
 
-        spiderfyOnMaxZoom: true,
+        spiderfyOnMaxZoom:
+            true,
 
-        disableClusteringAtZoom: 12,
+        disableClusteringAtZoom:
+            12,
 
-        maxClusterRadius: 30
+        maxClusterRadius:
+            30
     });
 
 
@@ -949,7 +1374,9 @@ map.addLayer(
    PERSIAN DIGITS
 ========================================================= */
 
-function toPersianDigits(value) {
+function toPersianDigits(
+    value
+) {
 
     return String(value)
         .replace(/0/g, "۰")
@@ -992,48 +1419,81 @@ function gregorianToJalali(
 
     let jy;
 
-    if (gy > 1600) {
-        jy = 979;
-        gy -= 1600;
+    if (
+        gy > 1600
+    ) {
+
+        jy =
+            979;
+
+        gy -=
+            1600;
+
     } else {
-        jy = 0;
-        gy -= 621;
+
+        jy =
+            0;
+
+        gy -=
+            621;
     }
 
     const gy2 =
         gm > 2
-        ? gy + 1
-        : gy;
+        ?
+        gy + 1
+        :
+        gy;
 
     let days =
         365 * gy
         +
-        Math.floor((gy2 + 3) / 4)
+        Math.floor(
+            (gy2 + 3) / 4
+        )
         -
-        Math.floor((gy2 + 99) / 100)
+        Math.floor(
+            (gy2 + 99) / 100
+        )
         +
-        Math.floor((gy2 + 399) / 400)
+        Math.floor(
+            (gy2 + 399) / 400
+        )
         -
         80
         +
         gd
         +
-        gdm[gm - 1];
+        gdm[
+            gm - 1
+        ];
 
     jy +=
-        33 * Math.floor(days / 12053);
+        33 *
+        Math.floor(
+            days / 12053
+        );
 
-    days %= 12053;
+    days %=
+        12053;
 
     jy +=
-        4 * Math.floor(days / 1461);
+        4 *
+        Math.floor(
+            days / 1461
+        );
 
-    days %= 1461;
+    days %=
+        1461;
 
-    if (days > 365) {
+    if (
+        days > 365
+    ) {
 
         jy +=
-            Math.floor((days - 1) / 365);
+            Math.floor(
+                (days - 1) / 365
+            );
 
         days =
             (days - 1) % 365;
@@ -1042,21 +1502,33 @@ function gregorianToJalali(
     let jm;
     let jd;
 
-    if (days < 186) {
+    if (
+        days < 186
+    ) {
 
         jm =
-            1 + Math.floor(days / 31);
+            1 +
+            Math.floor(
+                days / 31
+            );
 
         jd =
-            1 + days % 31;
+            1 +
+            days % 31;
 
     } else {
 
         jm =
-            7 + Math.floor((days - 186) / 30);
+            7 +
+            Math.floor(
+                (days - 186) / 30
+            );
 
         jd =
-            1 + ((days - 186) % 30);
+            1 +
+            (
+                (days - 186) % 30
+            );
     }
 
     return [
@@ -1071,16 +1543,26 @@ function gregorianToJalali(
    JALALI FULL DATE
 ========================================================= */
 
-function jalaliFullDate(dateString) {
+function jalaliFullDate(
+    dateString
+) {
 
-    if (!dateString) {
+    if (
+        !dateString
+    ) {
+
         return "---";
     }
 
     const parts =
-        String(dateString).split("-");
+        String(
+            dateString
+        ).split("-");
 
-    if (parts.length !== 3) {
+    if (
+        parts.length !== 3
+    ) {
+
         return dateString;
     }
 
@@ -1092,6 +1574,7 @@ function jalaliFullDate(dateString) {
         );
 
     const months = [
+
         "فروردین",
         "اردیبهشت",
         "خرداد",
@@ -1107,15 +1590,21 @@ function jalaliFullDate(dateString) {
     ];
 
     return (
-        toPersianDigits(j[2])
+        toPersianDigits(
+            j[2]
+        )
         +
         " "
         +
-        months[j[1] - 1]
+        months[
+            j[1] - 1
+        ]
         +
         " "
         +
-        toPersianDigits(j[0])
+        toPersianDigits(
+            j[0]
+        )
     );
 }
 
@@ -1124,12 +1613,16 @@ function jalaliFullDate(dateString) {
    LOAD TEXT
 ========================================================= */
 
-async function loadText(url) {
+async function loadText(
+    url
+) {
 
     const separator =
         url.includes("?")
-        ? "&"
-        : "?";
+        ?
+        "&"
+        :
+        "?";
 
     const response =
         await fetch(
@@ -1142,9 +1635,14 @@ async function loadText(url) {
             Date.now()
         );
 
-    if (!response.ok) {
+    if (
+        !response.ok
+    ) {
+
         throw new Error(
-            "خطا در دریافت " + url
+            "خطا در دریافت "
+            +
+            url
         );
     }
 
@@ -1156,21 +1654,34 @@ async function loadText(url) {
    CSV
 ========================================================= */
 
-function parseCSV(text) {
+function parseCSV(
+    text
+) {
 
     text =
         text
-        .replace(/^\uFEFF/, "")
+        .replace(
+            /^\uFEFF/,
+            ""
+        )
         .trim();
 
-    if (!text) {
+    if (
+        !text
+    ) {
+
         return [];
     }
 
     const lines =
-        text.split(/\r?\n/);
+        text.split(
+            /\r?\n/
+        );
 
-    if (lines.length < 2) {
+    if (
+        lines.length < 2
+    ) {
+
         return [];
     }
 
@@ -1179,6 +1690,7 @@ function parseCSV(text) {
         .split(",")
         .map(
             function(value) {
+
                 return value
                     .trim()
                     .toLowerCase();
@@ -1193,7 +1705,10 @@ function parseCSV(text) {
         i++
     ) {
 
-        if (!lines[i].trim()) {
+        if (
+            !lines[i].trim()
+        ) {
+
             continue;
         }
 
@@ -1208,13 +1723,19 @@ function parseCSV(text) {
             j++
         ) {
 
-            row[headers[j]] =
+            row[
+                headers[j]
+            ] =
                 values[j] !== undefined
-                ? values[j].trim()
-                : "";
+                ?
+                values[j].trim()
+                :
+                "";
         }
 
-        rows.push(row);
+        rows.push(
+            row
+        );
     }
 
     return rows;
@@ -1222,7 +1743,7 @@ function parseCSV(text) {
 
 
 /* =========================================================
-   BOUNDARY
+   LOAD BOUNDARY
 ========================================================= */
 
 async function loadBoundary() {
@@ -1233,9 +1754,12 @@ async function loadBoundary() {
         );
 
     const data =
-        JSON.parse(text);
+        JSON.parse(
+            text
+        );
 
-    let fars = null;
+    let fars =
+        null;
 
     data.features.forEach(
         function(feature) {
@@ -1249,13 +1773,20 @@ async function loadBoundary() {
                 .trim()
                 .toLowerCase();
 
-            if (name === "fars") {
-                fars = feature;
+            if (
+                name === "fars"
+            ) {
+
+                fars =
+                    feature;
             }
         }
     );
 
-    if (!fars) {
+    if (
+        !fars
+    ) {
+
         throw new Error(
             "استان فارس پیدا نشد."
         );
@@ -1266,22 +1797,36 @@ async function loadBoundary() {
             fars,
             {
                 style: {
-                    color: "#ef5350",
-                    weight: 3,
-                    opacity: .95,
-                    fillOpacity: .02
+                    color:
+                        "#ef5350",
+
+                    weight:
+                        3,
+
+                    opacity:
+                        .95,
+
+                    fillOpacity:
+                        .02
                 }
             }
-        ).addTo(map);
+        ).addTo(
+            map
+        );
 
     const bounds =
-        farsBoundaryLayer.getBounds();
+        farsBoundaryLayer
+        .getBounds();
 
-    if (bounds.isValid()) {
+    if (
+        bounds.isValid()
+    ) {
+
         map.fitBounds(
             bounds,
             {
-                padding: [20,20]
+                padding:
+                    [20,20]
             }
         );
     }
@@ -1300,16 +1845,21 @@ async function loadArchiveIndex() {
         );
 
     const index =
-        JSON.parse(text);
+        JSON.parse(
+            text
+        );
 
     archiveDates =
         index
         .map(
             function(item) {
+
                 return item.date;
             }
         )
-        .filter(Boolean)
+        .filter(
+            Boolean
+        )
         .sort();
 
     const slider =
@@ -1317,7 +1867,8 @@ async function loadArchiveIndex() {
             "archiveSlider"
         );
 
-    slider.min = 0;
+    slider.min =
+        0;
 
     slider.max =
         Math.max(
@@ -1339,12 +1890,13 @@ async function loadArchiveIndex() {
 
 
 /* =========================================================
-   LOAD 5 DAYS
+   LOAD ALL ARCHIVES
 ========================================================= */
 
 async function loadAllArchives() {
 
-    allFires = [];
+    allFires =
+        [];
 
     for (
         const date of archiveDates
@@ -1362,7 +1914,9 @@ async function loadAllArchives() {
                 );
 
             const rows =
-                parseCSV(text);
+                parseCSV(
+                    text
+                );
 
             rows.forEach(
                 function(row) {
@@ -1370,11 +1924,15 @@ async function loadAllArchives() {
                     row.archive_date =
                         date;
 
-                    allFires.push(row);
+                    allFires.push(
+                        row
+                    );
                 }
             );
 
-        } catch (error) {
+        } catch (
+            error
+        ) {
 
             console.warn(
                 "Archive unavailable:",
@@ -1386,7 +1944,7 @@ async function loadAllArchives() {
 
 
 /* =========================================================
-   TODAY IN IRAN
+   TODAY IRAN
 ========================================================= */
 
 function getTodayIranDate() {
@@ -1395,10 +1953,17 @@ function getTodayIranDate() {
         new Intl.DateTimeFormat(
             "en-CA",
             {
-                timeZone: "Asia/Tehran",
-                year: "numeric",
-                month: "2-digit",
-                day: "2-digit"
+                timeZone:
+                    "Asia/Tehran",
+
+                year:
+                    "numeric",
+
+                month:
+                    "2-digit",
+
+                day:
+                    "2-digit"
             }
         );
 
@@ -1409,59 +1974,84 @@ function getTodayIranDate() {
 
 
 /* =========================================================
-   FIRMS UTC DATETIME
-   این تابع مبنای اصلی 24 ساعت گذشته است.
+   FIRMS UTC DATE TIME
 ========================================================= */
 
-function getFireUTCDateTime(fire) {
+function getFireUTCDateTime(
+    fire
+) {
 
     if (
         !fire.acq_date
         ||
         !fire.acq_time
     ) {
+
         return null;
     }
 
-    let timeText =
+    let text =
         String(
             fire.acq_time
         )
-        .replace(/\D/g, "")
-        .padStart(4, "0");
+        .replace(
+            /\D/g,
+            ""
+        )
+        .padStart(
+            4,
+            "0"
+        );
 
     let hour =
         parseInt(
-            timeText.substring(0,2),
+            text.substring(
+                0,
+                2
+            ),
             10
         );
 
     let minute =
         parseInt(
-            timeText.substring(2,4),
+            text.substring(
+                2,
+                4
+            ),
             10
         );
 
-    if (hour > 23) {
-        hour = hour % 24;
+    if (
+        hour > 23
+    ) {
+
+        hour %=
+            24;
     }
 
-    if (minute > 59) {
-        minute = 0;
+    if (
+        minute > 59
+    ) {
+
+        minute =
+            0;
     }
 
-    const dateParts =
+    const parts =
         fire.acq_date.split("-");
 
-    if (dateParts.length !== 3) {
+    if (
+        parts.length !== 3
+    ) {
+
         return null;
     }
 
     return new Date(
         Date.UTC(
-            parseInt(dateParts[0],10),
-            parseInt(dateParts[1],10) - 1,
-            parseInt(dateParts[2],10),
+            parseInt(parts[0], 10),
+            parseInt(parts[1], 10) - 1,
+            parseInt(parts[2], 10),
             hour,
             minute,
             0
@@ -1471,10 +2061,12 @@ function getFireUTCDateTime(fire) {
 
 
 /* =========================================================
-   FIRMS UTC → IRAN DISPLAY TIME
+   IRAN TIME
 ========================================================= */
 
-function getIranTime24(fire) {
+function getIranTime24(
+    fire
+) {
 
     if (
         fire.iran_time
@@ -1490,7 +2082,10 @@ function getIranTime24(fire) {
             fire
         );
 
-    if (!utcDate) {
+    if (
+        !utcDate
+    ) {
+
         return "---";
     }
 
@@ -1513,90 +2108,127 @@ function getIranTime24(fire) {
         );
 
     return (
+
         String(
             iranDate.getUTCHours()
-        ).padStart(2,"0")
+        ).padStart(
+            2,
+            "0"
+        )
+
         +
         ":"
+
         +
+
         String(
             iranDate.getUTCMinutes()
-        ).padStart(2,"0")
+        ).padStart(
+            2,
+            "0"
+        )
     );
 }
 
 
 /* =========================================================
-   24H FORMAT
+   FORMAT 24 HOUR
 ========================================================= */
 
-function format24Hour(value) {
+function format24Hour(
+    value
+) {
 
     let text =
-        String(value)
-        .replace(/\D/g,"")
-        .padStart(4,"0");
+        String(
+            value
+        )
+        .replace(
+            /\D/g,
+            ""
+        )
+        .padStart(
+            4,
+            "0"
+        );
 
     let hour =
         parseInt(
-            text.substring(0,2),
+            text.substring(
+                0,
+                2
+            ),
             10
         );
 
     let minute =
         parseInt(
-            text.substring(2,4),
+            text.substring(
+                2,
+                4
+            ),
             10
         );
 
-    if (hour > 23) {
-        hour %= 24;
+    if (
+        hour > 23
+    ) {
+
+        hour %=
+            24;
     }
 
-    if (minute > 59) {
-        minute = 0;
+    if (
+        minute > 59
+    ) {
+
+        minute =
+            0;
     }
 
     return (
-        String(hour).padStart(2,"0")
+
+        String(
+            hour
+        ).padStart(
+            2,
+            "0"
+        )
+
         +
         ":"
+
         +
-        String(minute).padStart(2,"0")
+
+        String(
+            minute
+        ).padStart(
+            2,
+            "0"
+        )
     );
 }
 
 
 /* =========================================================
-   CURRENT IRAN DATETIME
+   FILTER
 ========================================================= */
 
-function getNowIranAsUTCEquivalent() {
+function getFilteredFires(
+    mode
+) {
 
     const now =
         new Date();
 
-    return new Date(
-        now.getTime()
-    );
-}
 
+    /* -----------------------------------------
+       امروز
+    ----------------------------------------- */
 
-/* =========================================================
-   FILTER DATA
-========================================================= */
-
-function getFilteredFires(mode) {
-
-    const now =
-        getNowIranAsUTCEquivalent();
-
-    /* -----------------------------------------------------
-       امروز:
-       تاریخ iran_date باید برابر تاریخ امروز ایران باشد
-       ----------------------------------------------------- */
-
-    if (mode === "today") {
+    if (
+        mode === "today"
+    ) {
 
         const todayIran =
             getTodayIranDate();
@@ -1604,15 +2236,16 @@ function getFilteredFires(mode) {
         return allFires.filter(
             function(fire) {
 
-                const fireIranDate =
+                const fireDate =
                     fire.iran_date
                     ||
                     fire.archive_date;
 
                 if (
-                    fireIranDate !==
+                    fireDate !==
                     todayIran
                 ) {
+
                     return false;
                 }
 
@@ -1621,7 +2254,10 @@ function getFilteredFires(mode) {
                         fire
                     );
 
-                if (!fireUTC) {
+                if (
+                    !fireUTC
+                ) {
+
                     return false;
                 }
 
@@ -1635,11 +2271,13 @@ function getFilteredFires(mode) {
     }
 
 
-    /* -----------------------------------------------------
-       دقیقاً 24 ساعت گذشته
-       ----------------------------------------------------- */
+    /* -----------------------------------------
+       24 ساعت گذشته
+    ----------------------------------------- */
 
-    if (mode === "24h") {
+    if (
+        mode === "24h"
+    ) {
 
         const start =
             new Date(
@@ -1664,19 +2302,22 @@ function getFilteredFires(mode) {
                         fire
                     );
 
-                if (!fireUTC) {
+                if (
+                    !fireUTC
+                ) {
+
                     return false;
                 }
 
-                const timestamp =
+                const time =
                     fireUTC.getTime();
 
                 return (
-                    timestamp
+                    time
                     >=
                     start.getTime()
                     &&
-                    timestamp
+                    time
                     <=
                     now.getTime()
                 );
@@ -1685,11 +2326,13 @@ function getFilteredFires(mode) {
     }
 
 
-    /* -----------------------------------------------------
+    /* -----------------------------------------
        5 روز گذشته
-       ----------------------------------------------------- */
+    ----------------------------------------- */
 
-    if (mode === "5days") {
+    if (
+        mode === "5days"
+    ) {
 
         const start =
             new Date(
@@ -1716,19 +2359,22 @@ function getFilteredFires(mode) {
                         fire
                     );
 
-                if (!fireUTC) {
+                if (
+                    !fireUTC
+                ) {
+
                     return false;
                 }
 
-                const timestamp =
+                const time =
                     fireUTC.getTime();
 
                 return (
-                    timestamp
+                    time
                     >=
                     start.getTime()
                     &&
-                    timestamp
+                    time
                     <=
                     now.getTime()
                 );
@@ -1742,7 +2388,7 @@ function getFilteredFires(mode) {
 
 
 /* =========================================================
-   DISPLAY FIRES
+   DISPLAY
 ========================================================= */
 
 function displayFires(
@@ -1769,6 +2415,7 @@ function displayFires(
                 ||
                 isNaN(lon)
             ) {
+
                 return;
             }
 
@@ -1789,6 +2436,7 @@ function displayFires(
             if (
                 sensor === "VIIRS"
             ) {
+
                 color =
                     "#ef233c";
             }
@@ -1796,6 +2444,7 @@ function displayFires(
             if (
                 sensor === "MODIS"
             ) {
+
                 color =
                     "#f39c12";
             }
@@ -1807,11 +2456,21 @@ function displayFires(
                         lon
                     ],
                     {
-                        radius: 8,
-                        color: "#6d1a00",
-                        fillColor: color,
-                        fillOpacity: .95,
-                        weight: 2
+
+                        radius:
+                            8,
+
+                        color:
+                            "#6d1a00",
+
+                        fillColor:
+                            color,
+
+                        fillOpacity:
+                            .95,
+
+                        weight:
+                            2
                     }
                 );
 
@@ -1854,32 +2513,27 @@ function createPopup(
     let dayNight =
         "---";
 
-    if (
+    const dn =
         String(
             fire.daynight
             ||
             ""
-        ).toUpperCase()
-        ===
-        "D"
+        ).toUpperCase();
+
+    if (
+        dn === "D"
     ) {
+
         dayNight =
             "روز";
-    }
 
-    else if (
-        String(
-            fire.daynight
-            ||
-            ""
-        ).toUpperCase()
-        ===
-        "N"
+    } else if (
+        dn === "N"
     ) {
+
         dayNight =
             "شب";
     }
-
 
     return (
 
@@ -1991,18 +2645,6 @@ function createPopup(
         "<br>"
 
         +
-        "<b>Brightness:</b> "
-        +
-        (
-            fire.brightness
-            ||
-            "---"
-        )
-
-        +
-        "<br>"
-
-        +
         "<b>مختصات:</b> "
         +
         parseFloat(
@@ -2022,7 +2664,7 @@ function createPopup(
 
 
 /* =========================================================
-   MODE
+   APPLY MODE
 ========================================================= */
 
 function applyMode(
@@ -2178,8 +2820,10 @@ document.getElementById(
             drawer.classList.contains(
                 "closed"
             )
-            ? "▶"
-            : "◀";
+            ?
+            "▶"
+            :
+            "◀";
     }
 );
 
@@ -2252,7 +2896,7 @@ document.getElementById(
 
 
 /* =========================================================
-   RESTORE NIGHT MODE
+   RESTORE NIGHT
 ========================================================= */
 
 if (
@@ -2283,7 +2927,7 @@ if (
 
 
 /* =========================================================
-   UPDATE TIMER
+   UPDATE INFO
 ========================================================= */
 
 async function loadUpdateInfo() {
@@ -2323,7 +2967,9 @@ async function loadUpdateInfo() {
 
         updateUpdateLabel();
 
-    } catch (error) {
+    } catch (
+        error
+    ) {
 
         document.getElementById(
             "updateInfo"
@@ -2333,11 +2979,16 @@ async function loadUpdateInfo() {
 }
 
 
+/* =========================================================
+   UPDATE TIMER
+========================================================= */
+
 function updateUpdateLabel() {
 
     if (
         !lastUpdateTimestamp
     ) {
+
         return;
     }
 
@@ -2369,15 +3020,18 @@ function updateUpdateLabel() {
 
         "آخرین به‌روزرسانی: "
         +
-        toPersianDigits(minutes)
+        toPersianDigits(
+            minutes
+        )
         +
         " دقیقه و "
         +
-        toPersianDigits(remainder)
+        toPersianDigits(
+            remainder
+        )
         +
         " ثانیه پیش";
 }
-
 
 setInterval(
     updateUpdateLabel,
@@ -2420,7 +3074,9 @@ async function initializeApp() {
 
         loadUpdateInfo();
 
-    } catch (error) {
+    } catch (
+        error
+    ) {
 
         console.error(
             "FARS FIRE SENTINEL:",
@@ -2431,8 +3087,6 @@ async function initializeApp() {
             "updateInfo"
         ).innerText =
             "خطا در بارگذاری سامانه";
-
-        console.error(error);
     }
 }
 
