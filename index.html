@@ -2,21 +2,14 @@
 <html lang="fa" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>
-سامانه پایش برخط حریق
-</title>
+<title>سامانه پایش برخط حریق</title>
 
 <meta
     name="description"
-    content="سامانه پایش برخط حریق استان فارس با استفاده از داده‌های ماهواره‌ای NASA FIRMS و سنجنده‌های VIIRS و MODIS."
+    content="سامانه پایش برخط حریق استان فارس با استفاده از داده‌های NASA FIRMS."
 >
 
 <link
@@ -25,10 +18,6 @@
 >
 
 <style>
-
-/* =====================================================
-   BASE
-===================================================== */
 
 * {
     box-sizing: border-box;
@@ -44,88 +33,42 @@ body {
 }
 
 body {
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-
-    background:
-        #eef2f5;
-
-    color:
-        #263238;
+    font-family: Tahoma, Arial, sans-serif;
+    background: #eef2f5;
+    color: #263238;
 }
 
 
-/* =====================================================
+/* =========================
    HEADER
-===================================================== */
+========================= */
 
 header {
-
-    height:
-        74px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #e9782c,
-            #f2ae70
-        );
-
-    box-shadow:
-        0 2px 12px
-        rgba(0,0,0,.18);
-
-    position:
-        relative;
-
-    z-index:
-        5000;
+    height: 74px;
+    background: linear-gradient(135deg, #e9782c, #f2ae70);
+    box-shadow: 0 2px 12px rgba(0,0,0,.18);
+    position: relative;
+    z-index: 5000;
 }
 
 .header-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
 
-    width:
-        100%;
-
-    height:
-        100%;
-
-    position:
-        relative;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-
-/* =====================================================
-   TITLE
-===================================================== */
-
 .title {
-
-    width:
-        100%;
-
-    text-align:
-        center;
-
-    padding:
-        0 100px;
+    width: 100%;
+    text-align: center;
+    padding: 0 100px;
 }
 
 .title h1 {
-
-    margin:
-        0;
+    margin: 0;
 
     font-family:
         "B Titr",
@@ -133,221 +76,125 @@ header {
         Arial,
         sans-serif;
 
-    font-size:
-        23px;
-
-    line-height:
-        1.5;
-
-    color:
-        #ffffff;
+    font-size: 23px;
+    line-height: 1.5;
+    color: #ffffff;
 }
 
 .title p {
-
-    margin:
-        2px 0 0;
-
-    font-size:
-        10px;
-
-    color:
-        rgba(255,255,255,.9);
+    margin: 2px 0 0;
+    font-size: 10px;
+    color: rgba(255,255,255,.9);
 }
 
-
-/* =====================================================
-   HEADER BUTTONS
-===================================================== */
-
 .header-buttons {
+    position: absolute;
 
-    position:
-        absolute;
+    right: 15px;
+    top: 50%;
 
-    right:
-        15px;
+    transform: translateY(-50%);
 
-    top:
-        50%;
-
-    transform:
-        translateY(-50%);
-
-    display:
-        flex;
-
-    gap:
-        6px;
+    display: flex;
+    gap: 6px;
 }
 
 .header-button {
+    width: 34px;
+    height: 34px;
 
-    width:
-        34px;
+    border: none;
+    border-radius: 8px;
 
-    height:
-        34px;
+    background: rgba(255,255,255,.18);
+    color: #ffffff;
 
-    border:
-        none;
-
-    border-radius:
-        8px;
-
-    background:
-        rgba(255,255,255,.18);
-
-    color:
-        #ffffff;
-
-    cursor:
-        pointer;
-
-    font-size:
-        17px;
-
-    transition:
-        .2s ease;
-}
-
-.header-button:hover {
-
-    background:
-        rgba(255,255,255,.30);
+    cursor: pointer;
+    font-size: 17px;
 }
 
 
-/* =====================================================
+/* =========================
    MAP
-===================================================== */
+========================= */
 
 #map {
+    position: absolute;
 
-    position:
-        absolute;
+    top: 84px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
 
-    top:
-        84px;
-
-    left:
-        10px;
-
-    right:
-        10px;
-
-    bottom:
-        10px;
-
-    border-radius:
-        12px;
-
-    overflow:
-        hidden;
+    border-radius: 12px;
+    overflow: hidden;
 
     box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.13);
+        0 5px 20px rgba(0,0,0,.13);
 
     border:
         1px solid #d7dde1;
 }
 
 
-/* =====================================================
+/* =========================
    MODE PANEL
-===================================================== */
+========================= */
 
 .mode-panel {
+    position: absolute;
 
-    position:
-        absolute;
+    top: 95px;
+    right: 22px;
 
-    top:
-        95px;
+    width: 190px;
 
-    right:
-        22px;
+    z-index: 4000;
 
-    width:
-        190px;
+    padding: 7px;
 
-    z-index:
-        4000;
-
-    padding:
-        7px;
-
-    background:
-        rgba(255,255,255,.96);
+    background: rgba(255,255,255,.96);
 
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        10px;
+    border-radius: 10px;
 
     box-shadow:
-        0 5px 16px
-        rgba(0,0,0,.18);
+        0 5px 16px rgba(0,0,0,.18);
 }
 
 .mode-button {
+    width: 100%;
 
-    width:
-        100%;
+    border: none;
 
-    border:
-        none;
+    background: #f1f3f5;
+    color: #344047;
 
-    background:
-        #f1f3f5;
+    border-radius: 7px;
 
-    color:
-        #344047;
+    padding: 9px 10px;
+    margin-bottom: 5px;
 
-    border-radius:
-        7px;
-
-    padding:
-        9px 10px;
-
-    margin-bottom:
-        5px;
-
-    text-align:
-        right;
+    text-align: right;
 
     font-family:
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size:
-        11px;
+    font-size: 11px;
+    font-weight: bold;
 
-    font-weight:
-        bold;
-
-    cursor:
-        pointer;
-
-    transition:
-        .2s ease;
+    cursor: pointer;
 }
 
 .mode-button:last-child {
-    margin-bottom:
-        0;
-}
-
-.mode-button:hover {
-    background:
-        #e7eaed;
+    margin-bottom: 0;
 }
 
 .mode-button.active {
-
     background:
         linear-gradient(
             135deg,
@@ -355,320 +202,207 @@ header {
             #c84c00
         );
 
-    color:
-        #ffffff;
+    color: #ffffff;
 }
 
 
-/* =====================================================
+/* =========================
    LEGEND
-===================================================== */
+========================= */
 
 .legend-box {
+    position: absolute;
 
-    position:
-        absolute;
+    top: 95px;
+    left: 50%;
 
-    top:
-        95px;
+    transform: translateX(-50%);
 
-    left:
-        50%;
+    z-index: 4000;
 
-    transform:
-        translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 14px;
 
-    z-index:
-        4000;
+    padding: 7px 12px;
 
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        14px;
-
-    padding:
-        7px 12px;
-
-    background:
-        rgba(255,255,255,.96);
+    background: rgba(255,255,255,.96);
 
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
     box-shadow:
-        0 4px 14px
-        rgba(0,0,0,.16);
+        0 4px 14px rgba(0,0,0,.16);
 
-    font-size:
-        10px;
-
-    white-space:
-        nowrap;
+    font-size: 10px;
+    white-space: nowrap;
 }
 
 .legend-title {
-    font-weight:
-        bold;
+    font-weight: bold;
 }
 
 .legend-item {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .legend-dot {
+    width: 10px;
+    height: 10px;
 
-    width:
-        10px;
-
-    height:
-        10px;
-
-    border-radius:
-        50%;
-
-    border:
-        1px solid #555;
+    border-radius: 50%;
+    border: 1px solid #555;
 }
 
 
-/* =====================================================
-   UPDATE BOX
-===================================================== */
+/* =========================
+   UPDATE
+========================= */
 
 .update-box {
+    position: absolute;
 
-    position:
-        absolute;
+    right: 22px;
+    bottom: 20px;
 
-    right:
-        22px;
+    z-index: 4000;
 
-    bottom:
-        20px;
+    width: 270px;
 
-    z-index:
-        4000;
+    padding: 8px 12px;
 
-    width:
-        270px;
+    text-align: center;
 
-    padding:
-        8px 12px;
-
-    text-align:
-        center;
-
-    background:
-        rgba(255,255,255,.96);
+    background: rgba(255,255,255,.96);
 
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
     box-shadow:
-        0 5px 16px
-        rgba(0,0,0,.18);
+        0 5px 16px rgba(0,0,0,.18);
 }
 
 .update-title {
-
-    font-size:
-        9px;
-
-    color:
-        #6b7780;
-
-    margin-bottom:
-        3px;
+    font-size: 9px;
+    color: #6b7780;
+    margin-bottom: 3px;
 }
 
 #updateInfo {
-
-    font-size:
-        10px;
-
-    font-weight:
-        bold;
-
-    color:
-        #c45108;
+    font-size: 10px;
+    font-weight: bold;
+    color: #c45108;
 }
 
 
-/* =====================================================
+/* =========================
    SLIDER
-===================================================== */
+========================= */
 
 .slider-box {
+    position: absolute;
 
-    position:
-        absolute;
+    left: 22px;
+    bottom: 20px;
 
-    left:
-        22px;
+    z-index: 4000;
 
-    bottom:
-        20px;
+    width: 300px;
 
-    z-index:
-        4000;
+    padding: 9px 12px;
 
-    width:
-        300px;
-
-    padding:
-        9px 12px;
-
-    background:
-        rgba(255,255,255,.96);
+    background: rgba(255,255,255,.96);
 
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
     box-shadow:
-        0 5px 16px
-        rgba(0,0,0,.18);
+        0 5px 16px rgba(0,0,0,.18);
 }
 
 .slider-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    margin-bottom:
-        7px;
+    margin-bottom: 7px;
 }
 
 .slider-title {
-
-    font-size:
-        10px;
-
-    font-weight:
-        bold;
-
-    color:
-        #455a64;
+    font-size: 10px;
+    font-weight: bold;
+    color: #455a64;
 }
 
 .slider-date {
-
-    font-size:
-        9px;
-
-    font-weight:
-        bold;
-
-    color:
-        #c45108;
+    font-size: 9px;
+    font-weight: bold;
+    color: #c45108;
 }
 
 #archiveSlider {
-    width:
-        100%;
+    width: 100%;
 }
 
 
-/* =====================================================
+/* =========================
    POPUP
-===================================================== */
+========================= */
 
 .fire-popup {
+    width: 260px;
 
-    width:
-        260px;
-
-    direction:
-        rtl;
-
-    text-align:
-        right;
+    direction: rtl;
+    text-align: right;
 
     font-family:
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size:
-        12px;
-
-    line-height:
-        1.9;
+    font-size: 12px;
+    line-height: 1.9;
 }
 
 .fire-popup h3 {
+    margin: 0 0 7px;
 
-    margin:
-        0 0 7px;
-
-    color:
-        #d35400;
-
-    font-size:
-        15px;
+    color: #d35400;
+    font-size: 15px;
 }
 
 .fire-popup .row {
-
     border-bottom:
         1px solid #edf0f2;
 
-    padding:
-        2px 0;
+    padding: 2px 0;
 }
 
 .fire-popup .label {
-    font-weight:
-        bold;
+    font-weight: bold;
 }
 
 
-/* =====================================================
-   NIGHT MODE
-===================================================== */
+/* =========================
+   NIGHT
+========================= */
 
 body.night {
-    background:
-        #121820;
+    background: #121820;
 }
 
-body.night
-.mode-panel,
-
-body.night
-.legend-box,
-
-body.night
-.update-box,
-
-body.night
-.slider-box {
+body.night .mode-panel,
+body.night .legend-box,
+body.night .update-box,
+body.night .slider-box {
 
     background:
         rgba(26,32,40,.96);
@@ -680,19 +414,12 @@ body.night
         #e8edf1;
 }
 
-body.night
-.mode-button {
-
-    background:
-        #252d36;
-
-    color:
-        #dbe3e8;
+body.night .mode-button {
+    background: #252d36;
+    color: #dbe3e8;
 }
 
-body.night
-.mode-button.active {
-
+body.night .mode-button.active {
     background:
         linear-gradient(
             135deg,
@@ -700,283 +427,144 @@ body.night
             #c84c00
         );
 
-    color:
-        #ffffff;
+    color: #ffffff;
 }
 
-body.night
-.slider-title,
-
-body.night
-.legend-title {
-
-    color:
-        #dbe3e8;
+body.night .slider-title,
+body.night .legend-title {
+    color: #dbe3e8;
 }
 
-body.night
-.slider-date,
-
-body.night
-#updateInfo {
-
-    color:
-        #ffd08a;
+body.night .slider-date,
+body.night #updateInfo {
+    color: #ffd08a;
 }
 
 
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
 @media (max-width: 700px) {
 
     header {
-        height:
-            80px;
+        height: 80px;
     }
 
     .title {
-        padding:
-            0 65px;
+        padding: 0 65px;
     }
 
     .title h1 {
-        font-size:
-            15px;
+        font-size: 15px;
     }
 
     .title p {
-        display:
-            none;
+        display: none;
     }
 
     .header-buttons {
-        right:
-            8px;
+        right: 8px;
     }
 
     .header-button {
-
-        width:
-            30px;
-
-        height:
-            30px;
-
-        font-size:
-            14px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
     }
-
 
     #map {
-
-        top:
-            88px;
-
-        left:
-            5px;
-
-        right:
-            5px;
-
-        bottom:
-            5px;
-
-        border-radius:
-            9px;
+        top: 88px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 9px;
     }
 
-
     .mode-panel {
-
-        top:
-            99px;
-
-        right:
-            12px;
-
-        width:
-            155px;
+        top: 99px;
+        right: 12px;
+        width: 155px;
     }
 
     .mode-button {
-
-        font-size:
-            9px;
-
-        padding:
-            8px;
+        font-size: 9px;
+        padding: 8px;
     }
 
-
     .legend-box {
-
-        top:
-            99px;
-
-        left:
-            10px;
-
-        transform:
-            none;
+        top: 99px;
+        left: 10px;
+        transform: none;
 
         max-width:
             calc(100% - 185px);
 
-        white-space:
-            normal;
+        white-space: normal;
+        flex-wrap: wrap;
+        justify-content: center;
 
-        flex-wrap:
-            wrap;
+        gap: 7px;
 
-        justify-content:
-            center;
-
-        gap:
-            7px;
-
-        font-size:
-            8px;
-
-        padding:
-            5px 7px;
+        font-size: 8px;
+        padding: 5px 7px;
     }
 
     .legend-title {
-
-        width:
-            100%;
-
-        text-align:
-            center;
+        width: 100%;
+        text-align: center;
     }
 
-
     .update-box {
-
-        right:
-            10px;
-
-        bottom:
-            10px;
+        right: 10px;
+        bottom: 10px;
 
         width:
             calc(50% - 15px);
 
-        min-width:
-            135px;
+        min-width: 135px;
 
-        padding:
-            7px;
+        padding: 7px;
     }
 
     .update-title {
-        font-size:
-            8px;
+        font-size: 8px;
     }
 
     #updateInfo {
-        font-size:
-            8px;
-
-        line-height:
-            1.6;
+        font-size: 8px;
+        line-height: 1.6;
     }
 
-
     .slider-box {
-
-        left:
-            10px;
-
-        bottom:
-            10px;
+        left: 10px;
+        bottom: 10px;
 
         width:
             calc(50% - 15px);
 
-        min-width:
-            135px;
+        min-width: 135px;
 
-        padding:
-            7px;
+        padding: 7px;
     }
 
     .slider-head {
-
-        display:
-            block;
-
-        text-align:
-            center;
+        display: block;
+        text-align: center;
     }
 
     .slider-title {
-        font-size:
-            9px;
+        font-size: 9px;
     }
 
     .slider-date {
-
-        margin-top:
-            3px;
-
-        font-size:
-            8px;
+        margin-top: 3px;
+        font-size: 8px;
     }
-
 
     .fire-popup {
-
-        width:
-            235px;
-
-        font-size:
-            10px;
-    }
-}
-
-
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-
-@media (max-width: 390px) {
-
-    .title {
-        padding:
-            0 55px;
-    }
-
-    .title h1 {
-        font-size:
-            12px;
-    }
-
-    .mode-panel {
-        width:
-            135px;
-    }
-
-    .mode-button {
-        font-size:
-            8px;
-    }
-
-    .legend-box {
-        max-width:
-            calc(100% - 160px);
-    }
-
-    .update-box,
-    .slider-box {
-
-        width:
-            calc(50% - 12px);
-
-        min-width:
-            120px;
+        width: 235px;
+        font-size: 10px;
     }
 }
 
@@ -988,14 +576,9 @@ body.night
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header>
 
 <div class="header-inner">
-
 
     <div class="title">
 
@@ -1020,7 +603,6 @@ body.night
             🌙
         </button>
 
-
         <button
             id="refreshButton"
             class="header-button"
@@ -1036,16 +618,8 @@ body.night
 </header>
 
 
-<!-- =====================================================
-     MAP
-===================================================== -->
-
 <div id="map"></div>
 
-
-<!-- =====================================================
-     MODES
-===================================================== -->
 
 <div class="mode-panel">
 
@@ -1056,14 +630,12 @@ body.night
         🔥 حریق‌های امروز
     </button>
 
-
     <button
         class="mode-button"
         data-mode="24h"
     >
         ⏱ حریق‌های ۲۴ ساعت گذشته
     </button>
-
 
     <button
         class="mode-button"
@@ -1075,16 +647,11 @@ body.night
 </div>
 
 
-<!-- =====================================================
-     LEGEND
-===================================================== -->
-
 <div class="legend-box">
 
     <span class="legend-title">
         راهنما
     </span>
-
 
     <span class="legend-item">
 
@@ -1096,7 +663,6 @@ body.night
         VIIRS
 
     </span>
-
 
     <span class="legend-item">
 
@@ -1112,10 +678,6 @@ body.night
 </div>
 
 
-<!-- =====================================================
-     UPDATE
-===================================================== -->
-
 <div class="update-box">
 
     <div class="update-title">
@@ -1128,10 +690,6 @@ body.night
 
 </div>
 
-
-<!-- =====================================================
-     SLIDER
-===================================================== -->
 
 <div class="slider-box">
 
@@ -1149,7 +707,6 @@ body.night
         </span>
 
     </div>
-
 
     <input
         id="archiveSlider"
@@ -1172,33 +729,23 @@ body.night
    FILES
 ===================================================== */
 
-const BOUNDARY_FILE =
-    "fars.geojson";
-
-const ARCHIVE_INDEX =
-    "archive/index.json";
-
-const UPDATE_INFO =
-    "update-info.json";
+const BOUNDARY_FILE = "fars.geojson";
+const ARCHIVE_INDEX = "archive/index.json";
+const UPDATE_INFO = "update-info.json";
 
 
 /* =====================================================
    MAP
 ===================================================== */
 
-const map =
-    L.map(
-        "map"
-    );
+const map = L.map("map");
 
 
 const lightMap =
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
-            maxZoom:
-                18,
-
+            maxZoom: 18,
             attribution:
                 "© OpenStreetMap contributors"
         }
@@ -1209,24 +756,30 @@ const darkMap =
     L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
         {
-            maxZoom:
-                19,
-
+            maxZoom: 19,
             attribution:
                 "© OpenStreetMap © CARTO"
         }
     );
 
 
-lightMap.addTo(
-    map
-);
+lightMap.addTo(map);
 
 
-/*
-    شروع اولیه نقشه
-    بعد از بارگذاری مرز اصلاح می‌شود
-*/
+/* =====================================================
+   LAYER ORDER
+===================================================== */
+
+map.createPane("farsPane");
+map.getPane("farsPane").style.zIndex = 450;
+
+map.createPane("firePane");
+map.getPane("firePane").style.zIndex = 500;
+
+
+/* =====================================================
+   START VIEW
+===================================================== */
 
 map.setView(
     [29.6, 52.5],
@@ -1238,89 +791,33 @@ map.setView(
    VARIABLES
 ===================================================== */
 
-let boundaryLayer =
-    null;
+let boundaryLayer = null;
+let archiveDates = [];
+let fires = [];
+let updateTimestamp = null;
 
-let archiveDates =
-    [];
-
-let fires =
-    [];
-
-let updateTimestamp =
-    null;
-
-
-/* =====================================================
-   FIRE LAYER
-===================================================== */
 
 const fireLayer =
-    L.layerGroup()
-    .addTo(
-        map
-    );
+    L.layerGroup().addTo(map);
 
 
 /* =====================================================
    PERSIAN DIGITS
 ===================================================== */
 
-function fa(
-    value
-) {
+function fa(value) {
 
     return String(value)
-
-        .replace(
-            /0/g,
-            "۰"
-        )
-
-        .replace(
-            /1/g,
-            "۱"
-        )
-
-        .replace(
-            /2/g,
-            "۲"
-        )
-
-        .replace(
-            /3/g,
-            "۳"
-        )
-
-        .replace(
-            /4/g,
-            "۴"
-        )
-
-        .replace(
-            /5/g,
-            "۵"
-        )
-
-        .replace(
-            /6/g,
-            "۶"
-        )
-
-        .replace(
-            /7/g,
-            "۷"
-        )
-
-        .replace(
-            /8/g,
-            "۸"
-        )
-
-        .replace(
-            /9/g,
-            "۹"
-        );
+        .replace(/0/g,"۰")
+        .replace(/1/g,"۱")
+        .replace(/2/g,"۲")
+        .replace(/3/g,"۳")
+        .replace(/4/g,"۴")
+        .replace(/5/g,"۵")
+        .replace(/6/g,"۶")
+        .replace(/7/g,"۷")
+        .replace(/8/g,"۸")
+        .replace(/9/g,"۹");
 }
 
 
@@ -1335,130 +832,69 @@ function gregorianToJalali(
 ) {
 
     const gdm = [
-
-        0,
-        31,
-        59,
-        90,
-        120,
-        151,
-        181,
-        212,
-        243,
-        273,
-        304,
-        334
+        0,31,59,90,120,151,
+        181,212,243,273,304,334
     ];
-
 
     let jy;
 
-
-    if (
-        gy > 1600
-    ) {
-
-        jy =
-            979;
-
-        gy -=
-            1600;
-
+    if (gy > 1600) {
+        jy = 979;
+        gy -= 1600;
     } else {
-
-        jy =
-            0;
-
-        gy -=
-            621;
+        jy = 0;
+        gy -= 621;
     }
-
 
     const gy2 =
         gm > 2
-        ?
-        gy + 1
-        :
-        gy;
-
+        ? gy + 1
+        : gy;
 
     let days =
         365 * gy
         +
-        Math.floor(
-            (gy2 + 3) / 4
-        )
+        Math.floor((gy2 + 3) / 4)
         -
-        Math.floor(
-            (gy2 + 99) / 100
-        )
+        Math.floor((gy2 + 99) / 100)
         +
-        Math.floor(
-            (gy2 + 399) / 400
-        )
+        Math.floor((gy2 + 399) / 400)
         -
         80
         +
         gd
         +
-        gdm[
-            gm - 1
-        ];
-
+        gdm[gm - 1];
 
     jy +=
-        33 *
-        Math.floor(
-            days / 12053
-        );
+        33 * Math.floor(days / 12053);
 
-
-    days %=
-        12053;
-
+    days %= 12053;
 
     jy +=
-        4 *
-        Math.floor(
-            days / 1461
-        );
+        4 * Math.floor(days / 1461);
 
+    days %= 1461;
 
-    days %=
-        1461;
-
-
-    if (
-        days > 365
-    ) {
+    if (days > 365) {
 
         jy +=
-            Math.floor(
-                (days - 1) / 365
-            );
+            Math.floor((days - 1) / 365);
 
         days =
             (days - 1) % 365;
     }
 
-
     let jm;
     let jd;
 
-
-    if (
-        days < 186
-    ) {
+    if (days < 186) {
 
         jm =
-            1 +
-            Math.floor(
-                days / 31
-            );
+            1 + Math.floor(days / 31);
 
         jd =
-            1 +
-            days % 31;
+            1 + days % 31;
 
     } else {
 
@@ -1470,11 +906,8 @@ function gregorianToJalali(
 
         jd =
             1 +
-            (
-                (days - 186) % 30
-            );
+            ((days - 186) % 30);
     }
-
 
     return [
         jy,
@@ -1488,54 +921,27 @@ function gregorianToJalali(
    SHAMSI DATE
 ===================================================== */
 
-function shamsiDate(
-    dateString
-) {
+function shamsiDate(dateString) {
 
-    if (
-        !dateString
-    ) {
-
+    if (!dateString) {
         return "---";
     }
 
-
     const p =
-        String(
-            dateString
-        ).split("-");
+        String(dateString).split("-");
 
-
-    if (
-        p.length !== 3
-    ) {
-
+    if (p.length !== 3) {
         return dateString;
     }
 
-
     const j =
         gregorianToJalali(
-
-            parseInt(
-                p[0],
-                10
-            ),
-
-            parseInt(
-                p[1],
-                10
-            ),
-
-            parseInt(
-                p[2],
-                10
-            )
+            parseInt(p[0],10),
+            parseInt(p[1],10),
+            parseInt(p[2],10)
         );
 
-
     const months = [
-
         "فروردین",
         "اردیبهشت",
         "خرداد",
@@ -1550,121 +956,75 @@ function shamsiDate(
         "اسفند"
     ];
 
-
     return (
-
-        fa(
-            j[2]
-        )
-
+        fa(j[2])
         +
         " "
-
         +
-        months[
-            j[1] - 1
-        ]
-
+        months[j[1] - 1]
         +
         " "
-
         +
-        fa(
-            j[0]
-        )
+        fa(j[0])
     );
 }
 
 
 /* =====================================================
-   GET TEXT
+   LOAD TEXT
 ===================================================== */
 
-async function getText(
-    url
-) {
+async function getText(url) {
 
     const response =
         await fetch(
-            url
-            +
-            "?v="
-            +
+            url +
+            "?v=" +
             Date.now()
         );
 
-
-    if (
-        !response.ok
-    ) {
+    if (!response.ok) {
 
         throw new Error(
-            "فایل دریافت نشد: "
-            +
-            url
+            "خطا در دریافت: " + url
         );
     }
-
 
     return await response.text();
 }
 
 
 /* =====================================================
-   CSV PARSER
+   CSV
 ===================================================== */
 
-function parseCSV(
-    text
-) {
+function parseCSV(text) {
 
     text =
         text
-        .replace(
-            /^\uFEFF/,
-            ""
-        )
+        .replace(/^\uFEFF/,"")
         .trim();
 
-
-    if (
-        !text
-    ) {
-
+    if (!text) {
         return [];
     }
-
 
     const lines =
-        text.split(
-            /\r?\n/
-        );
+        text.split(/\r?\n/);
 
-
-    if (
-        lines.length < 2
-    ) {
-
+    if (lines.length < 2) {
         return [];
     }
-
 
     const headers =
         lines[0]
         .split(",")
         .map(
-            function(value) {
-
-                return value
-                    .trim()
-                    .toLowerCase();
-            }
+            h =>
+                h.trim().toLowerCase()
         );
 
-
-    const result =
-        [];
-
+    const result = [];
 
     for (
         let i = 1;
@@ -1672,21 +1032,14 @@ function parseCSV(
         i++
     ) {
 
-        if (
-            !lines[i].trim()
-        ) {
-
+        if (!lines[i].trim()) {
             continue;
         }
-
 
         const values =
             lines[i].split(",");
 
-
-        const row =
-            {};
-
+        const row = {};
 
         for (
             let j = 0;
@@ -1694,70 +1047,64 @@ function parseCSV(
             j++
         ) {
 
-            row[
-                headers[j]
-            ] =
+            row[headers[j]] =
                 values[j] !== undefined
-                ?
-                values[j].trim()
-                :
-                "";
+                ? values[j].trim()
+                : "";
         }
 
-
-        result.push(
-            row
-        );
+        result.push(row);
     }
-
 
     return result;
 }
 
 
 /* =====================================================
-   1. LOAD BOUNDARY FIRST
+   LOAD FARS BOUNDARY
 ===================================================== */
 
-async function loadBoundaryFirst() {
+async function loadBoundary() {
 
     const text =
         await getText(
             BOUNDARY_FILE
         );
 
-
     const data =
-        JSON.parse(
-            text
-        );
-
+        JSON.parse(text);
 
     if (
-        !data
-        ||
-        !data.features
-        ||
-        !Array.isArray(
-            data.features
-        )
+        data.type !==
+        "FeatureCollection"
     ) {
 
         throw new Error(
-            "ساختار fars.geojson معتبر نیست."
+            "fars.geojson باید FeatureCollection باشد."
         );
     }
 
+    if (
+        !Array.isArray(
+            data.features
+        )
+        ||
+        data.features.length === 0
+    ) {
 
-    /*
-       فایل fars.geojson باید فقط فارس را داشته باشد.
-       بنابراین کل FeatureCollection را نمایش می‌دهیم.
-    */
+        throw new Error(
+            "fars.geojson خالی است."
+        );
+    }
+
 
     boundaryLayer =
         L.geoJSON(
             data,
             {
+
+                pane:
+                    "farsPane",
 
                 style:
                     function() {
@@ -1765,24 +1112,23 @@ async function loadBoundaryFirst() {
                         return {
 
                             color:
-                                "#e53935",
+                                "#ff0000",
 
                             weight:
-                                3,
+                                4,
 
                             opacity:
                                 1,
 
                             fillColor:
-                                "#e53935",
+                                "#ff0000",
 
                             fillOpacity:
-                                0.04
+                                0.02
                         };
                     }
             }
-        )
-        .addTo(
+        ).addTo(
             map
         );
 
@@ -1800,23 +1146,21 @@ async function loadBoundaryFirst() {
             bounds,
             {
                 padding:
-                    [
-                        20,
-                        20
-                    ]
+                    [20,20]
             }
         );
     }
 
 
     console.log(
-        "مرز فارس با موفقیت بارگذاری شد."
+        "Fars boundary loaded:",
+        bounds.toBBoxString()
     );
 }
 
 
 /* =====================================================
-   2. LOAD ARCHIVE INDEX
+   ARCHIVE INDEX
 ===================================================== */
 
 async function loadArchiveIndex() {
@@ -1826,39 +1170,24 @@ async function loadArchiveIndex() {
             ARCHIVE_INDEX
         );
 
-
     const index =
-        JSON.parse(
-            text
-        );
-
+        JSON.parse(text);
 
     archiveDates =
         index
-
-            .map(
-                function(item) {
-
-                    return item.date;
-                }
-            )
-
-            .filter(
-                Boolean
-            )
-
-            .sort();
-
+        .map(
+            item =>
+                item.date
+        )
+        .filter(Boolean)
+        .sort();
 
     const slider =
         document.getElementById(
             "archiveSlider"
         );
 
-
-    slider.min =
-        0;
-
+    slider.min = 0;
 
     slider.max =
         Math.max(
@@ -1866,27 +1195,23 @@ async function loadArchiveIndex() {
             0
         );
 
-
     slider.value =
         Math.max(
             archiveDates.length - 1,
             0
         );
 
-
     updateSliderDate();
 }
 
 
 /* =====================================================
-   3. LOAD FIRE ARCHIVES
+   LOAD ARCHIVES
 ===================================================== */
 
 async function loadArchives() {
 
-    fires =
-        [];
-
+    fires = [];
 
     for (
         const date
@@ -1898,36 +1223,25 @@ async function loadArchives() {
 
             const text =
                 await getText(
-                    "archive/"
-                    +
-                    date
-                    +
+                    "archive/" +
+                    date +
                     ".csv"
                 );
 
-
             const rows =
-                parseCSV(
-                    text
-                );
-
+                parseCSV(text);
 
             rows.forEach(
-                function(row) {
+                row => {
 
                     row.archive_date =
                         date;
 
-
-                    fires.push(
-                        row
-                    );
+                    fires.push(row);
                 }
             );
 
-        } catch (
-            error
-        ) {
+        } catch (error) {
 
             console.warn(
                 "آرشیو موجود نیست:",
@@ -1947,7 +1261,6 @@ function todayIranDate() {
     return new Intl.DateTimeFormat(
         "en-CA",
         {
-
             timeZone:
                 "Asia/Tehran",
 
@@ -1967,93 +1280,48 @@ function todayIranDate() {
 
 
 /* =====================================================
-   FIRMS UTC DATETIME
+   FIRMS UTC
 ===================================================== */
 
-function fireUTCDateTime(
-    fire
-) {
+function fireUTCDateTime(fire) {
 
     if (
-        !fire.acq_date
-        ||
+        !fire.acq_date ||
         !fire.acq_time
     ) {
 
         return null;
     }
 
-
     const parts =
-        fire.acq_date.split(
-            "-"
-        );
-
-
-    if (
-        parts.length !== 3
-    ) {
-
-        return null;
-    }
-
+        fire.acq_date.split("-");
 
     const time =
         String(
             fire.acq_time
         )
-        .replace(
-            /\D/g,
-            ""
-        )
-        .padStart(
-            4,
-            "0"
-        );
-
+        .replace(/\D/g,"")
+        .padStart(4,"0");
 
     const hour =
         parseInt(
-            time.substring(
-                0,
-                2
-            ),
+            time.substring(0,2),
             10
         );
-
 
     const minute =
         parseInt(
-            time.substring(
-                2,
-                4
-            ),
+            time.substring(2,4),
             10
         );
 
-
     return new Date(
         Date.UTC(
-
-            parseInt(
-                parts[0],
-                10
-            ),
-
-            parseInt(
-                parts[1],
-                10
-            ) - 1,
-
-            parseInt(
-                parts[2],
-                10
-            ),
-
+            parseInt(parts[0],10),
+            parseInt(parts[1],10) - 1,
+            parseInt(parts[2],10),
             hour,
-
             minute,
-
             0
         )
     );
@@ -2061,12 +1329,10 @@ function fireUTCDateTime(
 
 
 /* =====================================================
-   IRAN TIME 24H
+   IRAN TIME
 ===================================================== */
 
-function iranTime(
-    fire
-) {
+function iranTime(fire) {
 
     if (
         fire.iran_time
@@ -2077,161 +1343,86 @@ function iranTime(
         );
     }
 
-
     const utc =
         fireUTCDateTime(
             fire
         );
 
-
-    if (
-        !utc
-    ) {
-
+    if (!utc) {
         return "---";
     }
 
-
     const iran =
         new Date(
-
             utc.getTime()
             +
-            (
-                3.5
-                *
-                60
-                *
-                60
-                *
-                1000
-            )
+            3.5 * 60 * 60 * 1000
         );
 
-
     return (
-
         String(
             iran.getUTCHours()
-        ).padStart(
-            2,
-            "0"
-        )
-
+        ).padStart(2,"0")
         +
         ":"
-
         +
-
         String(
             iran.getUTCMinutes()
-        ).padStart(
-            2,
-            "0"
-        )
+        ).padStart(2,"0")
     );
 }
 
 
 /* =====================================================
-   FORMAT 24H
+   TIME FORMAT
 ===================================================== */
 
-function format24(
-    value
-) {
+function format24(value) {
 
-    const text =
-        String(
-            value
-        )
-        .replace(
-            /\D/g,
-            ""
-        )
-        .padStart(
-            4,
-            "0"
-        );
-
+    const t =
+        String(value)
+        .replace(/\D/g,"")
+        .padStart(4,"0");
 
     let hour =
         parseInt(
-            text.substring(
-                0,
-                2
-            ),
+            t.substring(0,2),
             10
         );
-
 
     let minute =
         parseInt(
-            text.substring(
-                2,
-                4
-            ),
+            t.substring(2,4),
             10
         );
 
-
-    if (
-        hour > 23
-    ) {
-
-        hour %=
-            24;
+    if (hour > 23) {
+        hour %= 24;
     }
 
-
-    if (
-        minute > 59
-    ) {
-
-        minute =
-            0;
+    if (minute > 59) {
+        minute = 0;
     }
-
 
     return (
-
-        String(
-            hour
-        ).padStart(
-            2,
-            "0"
-        )
-
+        String(hour).padStart(2,"0")
         +
         ":"
-
         +
-
-        String(
-            minute
-        ).padStart(
-            2,
-            "0"
-        )
+        String(minute).padStart(2,"0")
     );
 }
 
 
 /* =====================================================
-   FILTER FIRES
+   FILTER
 ===================================================== */
 
-function filteredFires(
-    mode
-) {
+function filteredFires(mode) {
 
     const now =
         new Date();
 
-
-    /* --------------------------------------------------
-       TODAY
-    -------------------------------------------------- */
 
     if (
         mode === "today"
@@ -2240,44 +1431,30 @@ function filteredFires(
         const today =
             todayIranDate();
 
-
         return fires.filter(
-            function(fire) {
+            fire => {
 
                 const date =
                     fire.iran_date
                     ||
                     fire.archive_date;
 
-
                 const time =
                     fireUTCDateTime(
                         fire
                     );
 
-
                 return (
-
-                    date ===
-                    today
-
+                    date === today
                     &&
-
                     time
-
                     &&
-
-                    time <=
-                    now
+                    time <= now
                 );
             }
         );
     }
 
-
-    /* --------------------------------------------------
-       24 HOURS
-    -------------------------------------------------- */
 
     if (
         mode === "24h"
@@ -2285,52 +1462,30 @@ function filteredFires(
 
         const start =
             new Date(
-
                 now.getTime()
                 -
-                (
-                    24
-                    *
-                    60
-                    *
-                    60
-                    *
-                    1000
-                )
+                24 * 60 * 60 * 1000
             );
 
-
         return fires.filter(
-            function(fire) {
+            fire => {
 
                 const time =
                     fireUTCDateTime(
                         fire
                     );
 
-
                 return (
-
                     time
-
                     &&
-
-                    time >=
-                    start
-
+                    time >= start
                     &&
-
-                    time <=
-                    now
+                    time <= now
                 );
             }
         );
     }
 
-
-    /* --------------------------------------------------
-       5 DAYS
-    -------------------------------------------------- */
 
     if (
         mode === "5days"
@@ -2338,45 +1493,25 @@ function filteredFires(
 
         const start =
             new Date(
-
                 now.getTime()
                 -
-                (
-                    5
-                    *
-                    24
-                    *
-                    60
-                    *
-                    60
-                    *
-                    1000
-                )
+                5 * 24 * 60 * 60 * 1000
             );
 
-
         return fires.filter(
-            function(fire) {
+            fire => {
 
                 const time =
                     fireUTCDateTime(
                         fire
                     );
 
-
                 return (
-
                     time
-
                     &&
-
-                    time >=
-                    start
-
+                    time >= start
                     &&
-
-                    time <=
-                    now
+                    time <= now
                 );
             }
         );
@@ -2388,40 +1523,32 @@ function filteredFires(
 
 
 /* =====================================================
-   DISPLAY FIRES
+   FIRE MARKERS
 ===================================================== */
 
-function showFires(
-    list
-) {
+function showFires(list) {
 
     fireLayer.clearLayers();
 
-
     list.forEach(
-        function(fire) {
+        fire => {
 
             const lat =
                 parseFloat(
                     fire.latitude
                 );
 
-
             const lon =
                 parseFloat(
                     fire.longitude
                 );
 
-
             if (
-                isNaN(lat)
-                ||
+                isNaN(lat) ||
                 isNaN(lon)
             ) {
-
                 return;
             }
-
 
             const sensor =
                 String(
@@ -2434,36 +1561,30 @@ function showFires(
                 .trim()
                 .toUpperCase();
 
-
             let color =
                 "#8e24aa";
-
 
             if (
                 sensor === "VIIRS"
             ) {
-
                 color =
                     "#ef233c";
             }
 
-
             if (
                 sensor === "MODIS"
             ) {
-
                 color =
                     "#f39c12";
             }
 
-
             const marker =
                 L.circleMarker(
-                    [
-                        lat,
-                        lon
-                    ],
+                    [lat,lon],
                     {
+
+                        pane:
+                            "firePane",
 
                         radius:
                             8,
@@ -2482,13 +1603,11 @@ function showFires(
                     }
                 );
 
-
             marker.bindPopup(
                 popupContent(
                     fire
                 )
             );
-
 
             marker.addTo(
                 fireLayer
@@ -2502,9 +1621,7 @@ function showFires(
    POPUP
 ===================================================== */
 
-function popupContent(
-    fire
-) {
+function popupContent(fire) {
 
     const date =
         fire.iran_date
@@ -2515,14 +1632,12 @@ function popupContent(
         ||
         "---";
 
-
     const time =
         fa(
             iranTime(
                 fire
             )
         );
-
 
     const code =
         String(
@@ -2533,133 +1648,81 @@ function popupContent(
         .trim()
         .toUpperCase();
 
-
     let dayNight =
         "---";
-
 
     if (
         code === "D"
     ) {
-
         dayNight =
             "روز";
     }
 
-
     if (
         code === "N"
     ) {
-
         dayNight =
             "شب";
     }
-
 
     return `
 
 <div class="fire-popup">
 
-    <h3>
-        🔥 حریق استان فارس
-    </h3>
-
+    <h3>🔥 حریق استان فارس</h3>
 
     <div class="row">
-        <span class="label">
-            سنجنده:
-        </span>
-
+        <span class="label">سنجنده:</span>
         ${fire.detected_sensor || fire.instrument || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            ماهواره:
-        </span>
-
+        <span class="label">ماهواره:</span>
         ${fire.satellite || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            تاریخ ایران:
-        </span>
-
+        <span class="label">تاریخ ایران:</span>
         ${shamsiDate(date)}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            ساعت ایران:
-        </span>
-
+        <span class="label">ساعت ایران:</span>
         ${time}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            روز/شب:
-        </span>
-
+        <span class="label">روز/شب:</span>
         ${dayNight}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            تاریخ UTC:
-        </span>
-
+        <span class="label">تاریخ UTC:</span>
         ${fire.acq_date || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            ساعت UTC:
-        </span>
-
+        <span class="label">ساعت UTC:</span>
         ${fire.acq_time || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            FRP:
-        </span>
-
+        <span class="label">FRP:</span>
         ${fire.frp || "---"} MW
     </div>
 
-
     <div class="row">
-        <span class="label">
-            Confidence:
-        </span>
-
+        <span class="label">Confidence:</span>
         ${fire.confidence || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            Brightness:
-        </span>
-
+        <span class="label">Brightness:</span>
         ${fire.brightness || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            مختصات:
-        </span>
-
+        <span class="label">مختصات:</span>
         ${coordinate(fire.latitude)}
         ,
         ${coordinate(fire.longitude)}
@@ -2675,62 +1738,39 @@ function popupContent(
    COORDINATE
 ===================================================== */
 
-function coordinate(
-    value
-) {
+function coordinate(value) {
 
     const number =
-        parseFloat(
-            value
-        );
+        parseFloat(value);
 
-
-    if (
-        isNaN(number)
-    ) {
-
-        return "---";
-    }
-
-
-    return number.toFixed(
-        5
-    );
+    return isNaN(number)
+        ? "---"
+        : number.toFixed(5);
 }
 
 
 /* =====================================================
-   APPLY MODE
+   MODE
 ===================================================== */
 
-function applyMode(
-    mode
-) {
-
-    const list =
-        filteredFires(
-            mode
-        );
-
+function applyMode(mode) {
 
     showFires(
-        list
+        filteredFires(
+            mode
+        )
     );
-
 
     document
         .querySelectorAll(
             ".mode-button"
         )
         .forEach(
-            function(button) {
+            button => {
 
                 button.classList.toggle(
                     "active",
-
-                    button.dataset.mode
-                    ===
-                    mode
+                    button.dataset.mode === mode
                 );
             }
         );
@@ -2746,7 +1786,7 @@ document
         ".mode-button"
     )
     .forEach(
-        function(button) {
+        button => {
 
             button.addEventListener(
                 "click",
@@ -2762,7 +1802,7 @@ document
 
 
 /* =====================================================
-   SLIDER DATE
+   SLIDER
 ===================================================== */
 
 function updateSliderDate() {
@@ -2772,36 +1812,25 @@ function updateSliderDate() {
             "archiveSlider"
         );
 
-
     const index =
         parseInt(
             slider.value,
             10
         );
 
-
     const date =
-        archiveDates[
-            index
-        ];
-
+        archiveDates[index];
 
     document.getElementById(
         "sliderDate"
     ).innerText =
         date
         ?
-        shamsiDate(
-            date
-        )
+        shamsiDate(date)
         :
         "---";
 }
 
-
-/* =====================================================
-   SLIDER
-===================================================== */
 
 document
     .getElementById(
@@ -2817,34 +1846,26 @@ document
                     10
                 );
 
-
             const date =
-                archiveDates[
-                    index
-                ];
-
+                archiveDates[index];
 
             updateSliderDate();
 
-
             const list =
                 fires.filter(
-                    function(fire) {
+                    fire => {
 
                         const fireDate =
                             fire.iran_date
                             ||
                             fire.archive_date;
 
-
                         return (
-                            fireDate
-                            ===
+                            fireDate ===
                             date
                         );
                     }
                 );
-
 
             showFires(
                 list
@@ -2854,7 +1875,7 @@ document
 
 
 /* =====================================================
-   NIGHT MODE
+   NIGHT
 ===================================================== */
 
 document
@@ -2869,30 +1890,23 @@ document
                 "night"
             );
 
-
             const night =
                 document.body.classList.contains(
                     "night"
                 );
 
-
-            if (
-                night
-            ) {
+            if (night) {
 
                 map.removeLayer(
                     lightMap
                 );
 
-
                 darkMap.addTo(
                     map
                 );
 
-
                 this.innerText =
                     "☀️";
-
 
                 localStorage.setItem(
                     "fars-night",
@@ -2905,15 +1919,12 @@ document
                     darkMap
                 );
 
-
                 lightMap.addTo(
                     map
                 );
 
-
                 this.innerText =
                     "🌙";
-
 
                 localStorage.setItem(
                     "fars-night",
@@ -2924,32 +1935,23 @@ document
     );
 
 
-/* =====================================================
-   RESTORE NIGHT MODE
-===================================================== */
-
 if (
     localStorage.getItem(
         "fars-night"
-    )
-    ===
-    "1"
+    ) === "1"
 ) {
 
     document.body.classList.add(
         "night"
     );
 
-
     map.removeLayer(
         lightMap
     );
 
-
     darkMap.addTo(
         map
     );
-
 
     document.getElementById(
         "nightButton"
@@ -2971,18 +1973,15 @@ async function loadUpdateInfo() {
                 UPDATE_INFO
             );
 
-
         const data =
             JSON.parse(
                 text
             );
 
-
         const timestamp =
             Number(
                 data.updated_at_timestamp
             );
-
 
         if (
             !Number.isFinite(
@@ -2995,16 +1994,12 @@ async function loadUpdateInfo() {
             );
         }
 
-
         updateTimestamp =
             timestamp * 1000;
 
-
         updateTimer();
 
-    } catch (
-        error
-    ) {
+    } catch (error) {
 
         document.getElementById(
             "updateInfo"
@@ -3015,7 +2010,7 @@ async function loadUpdateInfo() {
 
 
 /* =====================================================
-   UPDATE TIMER
+   TIMER
 ===================================================== */
 
 function updateTimer() {
@@ -3024,7 +2019,6 @@ function updateTimer() {
         document.getElementById(
             "updateInfo"
         );
-
 
     if (
         !updateTimestamp
@@ -3035,7 +2029,6 @@ function updateTimer() {
 
         return;
     }
-
 
     const totalSeconds =
         Math.max(
@@ -3051,39 +2044,23 @@ function updateTimer() {
             )
         );
 
-
     const minutes =
         Math.floor(
             totalSeconds / 60
         );
 
-
     const seconds =
         totalSeconds % 60;
 
-
     element.innerText =
-
         "آخرین به‌روزرسانی: "
-
         +
-
-        fa(
-            minutes
-        )
-
+        fa(minutes)
         +
-
         " دقیقه و "
-
         +
-
-        fa(
-            seconds
-        )
-
+        fa(seconds)
         +
-
         " ثانیه پیش";
 }
 
@@ -3113,97 +2090,81 @@ document
 
 /* =====================================================
    INITIALIZE
-   ترتیب:
-   1. مرز
-   2. آرشیو
-   3. داده‌های حریق
-   4. نمایش حریق
 ===================================================== */
 
 async function initialize() {
 
-    /* -----------------------------------------------
-       مرحله ۱: مرز فارس
-    ----------------------------------------------- */
+    /*
+       اول مرز
+    */
 
     try {
 
-        await loadBoundaryFirst();
+        await loadBoundary();
 
-    } catch (
-        error
-    ) {
+    } catch (error) {
 
         console.error(
-            "خطا در بارگذاری مرز:",
+            "مرز:",
             error
         );
     }
 
 
-    /* -----------------------------------------------
-       مرحله ۲: فهرست آرشیو
-    ----------------------------------------------- */
+    /*
+       بعد آرشیو
+    */
 
     try {
 
         await loadArchiveIndex();
 
-    } catch (
-        error
-    ) {
+    } catch (error) {
 
         console.error(
-            "خطا در archive/index.json:",
+            "Archive index:",
             error
         );
     }
 
 
-    /* -----------------------------------------------
-       مرحله ۳: داده‌های حریق
-    ----------------------------------------------- */
+    /*
+       بعد داده‌های حریق
+    */
 
     try {
 
         await loadArchives();
 
-    } catch (
-        error
-    ) {
+    } catch (error) {
 
         console.error(
-            "خطا در آرشیو حریق:",
+            "Archives:",
             error
         );
     }
 
 
-    /* -----------------------------------------------
-       مرحله ۴: نمایش حریق‌های امروز
-    ----------------------------------------------- */
+    /*
+       نمایش امروز
+    */
 
     applyMode(
         "today"
     );
 
 
-    /* -----------------------------------------------
-       مرحله ۵: تایمر
-    ----------------------------------------------- */
+    /*
+       تایمر
+    */
 
     loadUpdateInfo();
 }
 
-
-/* =====================================================
-   START
-===================================================== */
 
 initialize();
 
 </script>
 
 </body>
-
 </html>
