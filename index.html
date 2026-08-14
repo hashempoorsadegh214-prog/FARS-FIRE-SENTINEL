@@ -4,20 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>
-سامانه پایش برخط حریق
-</title>
-
-<meta
-    name="description"
-    content="سامانه پایش برخط حریق استان فارس با استفاده از داده‌های NASA FIRMS."
->
+<title>سامانه پایش برخط حریق</title>
 
 <link
     rel="stylesheet"
@@ -27,8 +16,20 @@
 <style>
 
 /* =====================================================
-   BASE
+   تنظیمات اصلی
 ===================================================== */
+
+:root {
+    --orange: #e36f19;
+    --orange-dark: #c45108;
+    --orange-light: #fff3e8;
+    --red: #ff1744;
+    --yellow: #ff9800;
+    --border: #dce2e6;
+    --text: #263238;
+    --muted: #6b7780;
+    --panel: rgba(255,255,255,.96);
+}
 
 * {
     box-sizing: border-box;
@@ -36,25 +37,27 @@
 
 html,
 body {
-    margin: 0;
-    padding: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
     overflow: hidden;
 }
 
 body {
     font-family: Tahoma, Arial, sans-serif;
     background: #eef2f5;
-    color: #263238;
+    color: var(--text);
 }
 
 
 /* =====================================================
-   HEADER
+   هدر
 ===================================================== */
 
 header {
+    position: relative;
+    z-index: 5000;
+
     height: 74px;
 
     background:
@@ -66,26 +69,18 @@ header {
 
     box-shadow:
         0 2px 12px rgba(0,0,0,.18);
-
-    position: relative;
-    z-index: 5000;
 }
 
-.header-inner {
-    width: 100%;
+.header-content {
     height: 100%;
-
-    position: relative;
 
     display: flex;
     align-items: center;
     justify-content: center;
-}
 
-.title {
-    width: 100%;
     text-align: center;
-    padding: 0 120px;
+
+    padding: 0 110px;
 }
 
 .title h1 {
@@ -98,61 +93,53 @@ header {
         sans-serif;
 
     font-size: 23px;
-    line-height: 1.5;
-
-    color: #ffffff;
+    color: #fff;
 }
 
 .title p {
     margin: 2px 0 0;
-
     font-size: 10px;
     color: rgba(255,255,255,.9);
 }
 
 
 /* =====================================================
-   HEADER BUTTONS
+   دکمه‌های هدر
 ===================================================== */
 
 .header-buttons {
     position: absolute;
-
-    right: 12px;
     top: 50%;
+    right: 12px;
 
     transform: translateY(-50%);
 
     display: flex;
-    align-items: center;
     gap: 5px;
 }
 
-.header-button {
+.header-btn {
     width: 35px;
     height: 35px;
 
-    border: none;
+    border: 0;
     border-radius: 8px;
 
-    background:
-        rgba(255,255,255,.18);
-
-    color: #ffffff;
-
-    cursor: pointer;
+    background: rgba(255,255,255,.18);
+    color: #fff;
 
     font-size: 16px;
+
+    cursor: pointer;
 }
 
-.header-button:hover {
-    background:
-        rgba(255,255,255,.30);
+.header-btn:hover {
+    background: rgba(255,255,255,.30);
 }
 
 
 /* =====================================================
-   MAP
+   نقشه
 ===================================================== */
 
 #map {
@@ -163,19 +150,18 @@ header {
     right: 10px;
     bottom: 10px;
 
-    border-radius: 12px;
     overflow: hidden;
+
+    border: 1px solid #d7dde1;
+    border-radius: 12px;
 
     box-shadow:
         0 5px 20px rgba(0,0,0,.13);
-
-    border:
-        1px solid #d7dde1;
 }
 
 
 /* =====================================================
-   MODE PANEL
+   پنل فیلتر
 ===================================================== */
 
 .mode-panel {
@@ -190,12 +176,9 @@ header {
 
     padding: 7px;
 
-    background:
-        rgba(255,255,255,.96);
+    background: var(--panel);
 
-    border:
-        1px solid #dce2e6;
-
+    border: 1px solid var(--border);
     border-radius: 10px;
 
     box-shadow:
@@ -204,25 +187,23 @@ header {
 
 
 /* =====================================================
-   FIRE COUNT
+   تعداد رخداد
 ===================================================== */
 
 .fire-count {
     width: 100%;
 
-    padding: 8px;
     margin-bottom: 6px;
+    padding: 8px;
 
     text-align: center;
 
-    background: #fff3e8;
+    background: var(--orange-light);
 
-    border:
-        1px solid #f2c7a5;
-
+    border: 1px solid #f2c7a5;
     border-radius: 7px;
 
-    color: #c45108;
+    color: var(--orange-dark);
 
     font-size: 11px;
     font-weight: bold;
@@ -237,56 +218,51 @@ header {
 
 
 /* =====================================================
-   MODE BUTTON
+   دکمه‌های فیلتر
 ===================================================== */
 
-.mode-button {
+.mode-btn {
     width: 100%;
 
-    border: none;
+    margin-bottom: 5px;
+    padding: 9px 10px;
+
+    border: 0;
+    border-radius: 7px;
 
     background: #f1f3f5;
     color: #344047;
 
-    border-radius: 7px;
-
-    padding: 9px 10px;
-    margin-bottom: 5px;
-
-    text-align: right;
-
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-
+    font-family: Tahoma, Arial, sans-serif;
     font-size: 11px;
     font-weight: bold;
+
+    text-align: right;
 
     cursor: pointer;
 }
 
-.mode-button:last-child {
+.mode-btn:last-child {
     margin-bottom: 0;
 }
 
-.mode-button.active {
+.mode-btn.active {
     background:
         linear-gradient(
             135deg,
-            #e36f19,
+            var(--orange),
             #c84c00
         );
 
-    color: #ffffff;
+    color: #fff;
 }
 
 
 /* =====================================================
-   SENSOR LEGEND
+   سنجنده
 ===================================================== */
 
-.legend-box {
+.sensor-box {
     position: absolute;
 
     top: 95px;
@@ -302,12 +278,9 @@ header {
 
     padding: 7px 12px;
 
-    background:
-        rgba(255,255,255,.96);
+    background: var(--panel);
 
-    border:
-        1px solid #dce2e6;
-
+    border: 1px solid var(--border);
     border-radius: 9px;
 
     box-shadow:
@@ -317,29 +290,28 @@ header {
     white-space: nowrap;
 }
 
-.legend-title {
+.sensor-title {
     font-weight: bold;
 }
 
-.legend-item {
+.sensor-item {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.legend-dot {
+.sensor-dot {
     width: 10px;
     height: 10px;
 
     border-radius: 50%;
 
-    border:
-        1px solid #555;
+    border: 1px solid #555;
 }
 
 
 /* =====================================================
-   UPDATE PANEL
+   پنل وضعیت
 ===================================================== */
 
 .update-box {
@@ -348,47 +320,41 @@ header {
     right: 10px;
     bottom: 10px;
 
-    z-index: 4000;
-
     width: 300px;
+
+    z-index: 4000;
 
     padding: 8px 12px;
 
-    text-align: center;
+    background: var(--panel);
 
-    background:
-        rgba(255,255,255,.96);
-
-    border:
-        1px solid #dce2e6;
-
+    border: 1px solid var(--border);
     border-radius: 9px;
 
     box-shadow:
         0 5px 16px rgba(0,0,0,.18);
+
+    text-align: center;
 }
 
 .update-title {
-    font-size: 10px;
-
-    color: #6b7780;
-
     margin-bottom: 4px;
+
+    font-size: 10px;
+    color: var(--muted);
 }
 
 .update-row {
     font-size: 10px;
-
     font-weight: bold;
-
     line-height: 1.8;
 
-    color: #c45108;
+    color: var(--orange-dark);
 }
 
 
 /* =====================================================
-   SLIDER
+   اسلایدر
 ===================================================== */
 
 .slider-box {
@@ -397,28 +363,20 @@ header {
     left: 22px;
     bottom: 20px;
 
-    z-index: 4000;
-
     width: 330px;
+
+    z-index: 4000;
 
     padding: 10px 14px;
 
-    background:
-        rgba(255,255,255,.96);
+    background: var(--panel);
 
-    border:
-        1px solid #dce2e6;
-
+    border: 1px solid var(--border);
     border-radius: 9px;
 
     box-shadow:
         0 5px 16px rgba(0,0,0,.18);
 }
-
-
-/* =====================================================
-   SLIDER HEAD
-===================================================== */
 
 .slider-head {
     display: flex;
@@ -436,24 +394,24 @@ header {
     color: #455a64;
 }
 
+.slider-date-box {
+    text-align: left;
+}
+
 .slider-date {
     font-size: 11px;
     font-weight: bold;
-    color: #c45108;
 
-    text-align: left;
+    color: var(--orange-dark);
 }
 
 .slider-count {
+    margin-top: 3px;
+
     font-size: 10px;
     font-weight: bold;
+
     color: #546e7a;
-
-    margin-top: 3px;
-}
-
-.slider-date-block {
-    text-align: left;
 }
 
 #archiveSlider {
@@ -463,7 +421,7 @@ header {
 
 
 /* =====================================================
-   POPUP
+   Popup
 ===================================================== */
 
 .fire-popup {
@@ -490,10 +448,10 @@ header {
 }
 
 .fire-popup .row {
+    padding: 2px 0;
+
     border-bottom:
         1px solid #edf0f2;
-
-    padding: 2px 0;
 }
 
 .fire-popup .label {
@@ -502,26 +460,26 @@ header {
 
 
 /* =====================================================
-   NIGHT MODE
+   حالت شب
 ===================================================== */
 
 body.night {
     background: #121820;
 }
 
-body.night .mode-panel,
-body.night .legend-box,
-body.night .update-box,
-body.night .slider-box {
+body.night
+.mode-panel,
+body.night
+.sensor-box,
+body.night
+.update-box,
+body.night
+.slider-box {
+    background: rgba(26,32,40,.96);
 
-    background:
-        rgba(26,32,40,.96);
+    border-color: #3a4650;
 
-    border-color:
-        #3a4650;
-
-    color:
-        #e8edf1;
+    color: #e8edf1;
 }
 
 body.night .fire-count {
@@ -534,24 +492,24 @@ body.night .fire-count-number {
     color: #ffb36b;
 }
 
-body.night .mode-button {
+body.night .mode-btn {
     background: #252d36;
     color: #dbe3e8;
 }
 
-body.night .mode-button.active {
+body.night .mode-btn.active {
     background:
         linear-gradient(
             135deg,
-            #e36f19,
+            var(--orange),
             #c84c00
         );
 
-    color: #ffffff;
+    color: #fff;
 }
 
 body.night .slider-title,
-body.night .legend-title {
+body.night .sensor-title {
     color: #dbe3e8;
 }
 
@@ -563,7 +521,7 @@ body.night .update-row {
 
 
 /* =====================================================
-   MOBILE
+   موبایل
 ===================================================== */
 
 @media (max-width: 700px) {
@@ -572,8 +530,9 @@ body.night .update-row {
         height: 80px;
     }
 
-    .title {
-        padding: 0 100px 0 70px;
+    .header-content {
+        padding:
+            0 100px 0 65px;
     }
 
     .title h1 {
@@ -589,7 +548,7 @@ body.night .update-row {
         gap: 4px;
     }
 
-    .header-button {
+    .header-btn {
         width: 29px;
         height: 29px;
         font-size: 13px;
@@ -607,24 +566,25 @@ body.night .update-row {
     .mode-panel {
         top: 99px;
         right: 12px;
+
         width: 155px;
     }
 
     .fire-count {
-        font-size: 9px;
         padding: 6px;
+        font-size: 9px;
     }
 
     .fire-count-number {
         font-size: 15px;
     }
 
-    .mode-button {
-        font-size: 9px;
+    .mode-btn {
         padding: 8px;
+        font-size: 9px;
     }
 
-    .legend-box {
+    .sensor-box {
         top: 99px;
         left: 10px;
 
@@ -633,19 +593,19 @@ body.night .update-row {
         max-width:
             calc(100% - 185px);
 
-        white-space: normal;
-
         flex-wrap: wrap;
         justify-content: center;
 
         gap: 7px;
 
+        padding: 5px 7px;
+
         font-size: 8px;
 
-        padding: 5px 7px;
+        white-space: normal;
     }
 
-    .legend-title {
+    .sensor-title {
         width: 100%;
         text-align: center;
     }
@@ -679,7 +639,9 @@ body.night .update-row {
 
     .slider-head {
         display: block;
+
         text-align: center;
+
         margin-bottom: 7px;
     }
 
@@ -687,7 +649,7 @@ body.night .update-row {
         font-size: 10px;
     }
 
-    .slider-date-block {
+    .slider-date-box {
         margin-top: 3px;
         text-align: center;
     }
@@ -720,17 +682,19 @@ body.night .update-row {
 
 <header>
 
-<div class="header-inner">
+    <div class="header-content">
 
-    <div class="title">
+        <div class="title">
 
-        <h1>
-            سامانه پایش برخط حریق
-        </h1>
+            <h1>
+                سامانه پایش برخط حریق
+            </h1>
 
-        <p>
-            پایش برخط حریق با داده‌های NASA FIRMS
-        </p>
+            <p>
+                پایش برخط حریق با داده‌های NASA FIRMS
+            </p>
+
+        </div>
 
     </div>
 
@@ -738,34 +702,30 @@ body.night .update-row {
     <div class="header-buttons">
 
         <button
-            id="excel24Button"
-            class="header-button"
+            id="excelBtn"
+            class="header-btn"
             title="گزارش Excel حریق‌های ۲۴ ساعت گذشته"
         >
             📊
         </button>
 
-
         <button
-            id="nightButton"
-            class="header-button"
+            id="nightBtn"
+            class="header-btn"
             title="حالت شب"
         >
             🌙
         </button>
 
-
         <button
-            id="refreshButton"
-            class="header-button"
+            id="refreshBtn"
+            class="header-btn"
             title="بازخوانی"
         >
             ↻
         </button>
 
     </div>
-
-</div>
 
 </header>
 
@@ -802,7 +762,7 @@ body.night .update-row {
 
 
     <button
-        class="mode-button active"
+        class="mode-btn active"
         data-mode="24h"
     >
         🔥 حریق‌های ۲۴ ساعت گذشته
@@ -810,7 +770,7 @@ body.night .update-row {
 
 
     <button
-        class="mode-button"
+        class="mode-btn"
         data-mode="5days"
     >
         📅 حریق‌های ۵ روز گذشته
@@ -820,21 +780,21 @@ body.night .update-row {
 
 
 <!-- =====================================================
-     SENSOR
+     SENSOR PANEL
 ===================================================== -->
 
-<div class="legend-box">
+<div class="sensor-box">
 
-    <span class="legend-title">
+    <span class="sensor-title">
         سنجنده
     </span>
 
 
-    <span class="legend-item">
+    <span class="sensor-item">
 
         <span
-            class="legend-dot"
-            style="background:#ef233c"
+            class="sensor-dot"
+            style="background:#ff1744"
         ></span>
 
         VIIRS
@@ -842,11 +802,11 @@ body.night .update-row {
     </span>
 
 
-    <span class="legend-item">
+    <span class="sensor-item">
 
         <span
-            class="legend-dot"
-            style="background:#f39c12"
+            class="sensor-dot"
+            style="background:#ff9800"
         ></span>
 
         MODIS
@@ -868,15 +828,15 @@ body.night .update-row {
 
 
     <div
-        id="firmsAge"
+        id="sensorAge"
         class="update-row"
     >
-        آخرین دریافت داده FIRMS: در انتظار اطلاعات
+        آخرین مشاهده سنجنده: در انتظار اطلاعات
     </div>
 
 
     <div
-        id="updateInfo"
+        id="systemAge"
         class="update-row"
     >
         آخرین به‌روزرسانی سامانه: در انتظار اطلاعات
@@ -898,7 +858,7 @@ body.night .update-row {
         </span>
 
 
-        <div class="slider-date-block">
+        <div class="slider-date-box">
 
             <div
                 id="sliderDate"
@@ -932,137 +892,71 @@ body.night .update-row {
 </div>
 
 
-<script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 
 <script>
 
 /* =====================================================
-   FILES
+   CONFIG
 ===================================================== */
 
-const BOUNDARY_FILE =
-    "fars.geojson";
+const CONFIG = {
 
-const ARCHIVE_INDEX =
-    "archive/index.json";
+    boundary:
+        "fars.geojson",
 
-const UPDATE_INFO =
-    "update-info.json";
+    archiveIndex:
+        "archive/index.json",
+
+    updateInfo:
+        "update-info.json"
+
+};
 
 
 /* =====================================================
-   MAP
+   STATE
 ===================================================== */
 
-const map =
-    L.map("map");
+const state = {
 
+    map:
+        null,
 
-const lightMap =
-    L.tileLayer(
-        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        {
-            maxZoom:
-                18,
+    boundaryLayer:
+        null,
 
-            attribution:
-                "© OpenStreetMap contributors"
-        }
-    );
+    fireLayer:
+        null,
 
+    archiveDates:
+        [],
 
-const darkMap =
-    L.tileLayer(
-        "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-        {
-            maxZoom:
-                19,
+    archiveHeaders:
+        [],
 
-            attribution:
-                "© OpenStreetMap © CARTO"
-        }
-    );
+    fires:
+        [],
 
+    mode:
+        "24h",
 
-lightMap.addTo(
-    map
-);
+    systemTimestamp:
+        null
+
+};
 
 
 /* =====================================================
-   PANES
+   ابزارهای عمومی
 ===================================================== */
 
-map.createPane(
-    "farsPane"
-);
-
-map.getPane(
-    "farsPane"
-).style.zIndex =
-    450;
+const $ = id =>
+    document.getElementById(id);
 
 
-map.createPane(
-    "firePane"
-);
-
-map.getPane(
-    "firePane"
-).style.zIndex =
-    500;
-
-
-map.setView(
-    [29.6,52.5],
-    8
-);
-
-
-/* =====================================================
-   VARIABLES
-===================================================== */
-
-let boundaryLayer =
-    null;
-
-let archiveDates =
-    [];
-
-let fires =
-    [];
-
-let archiveHeaders =
-    [];
-
-let updateTimestamp =
-    null;
-
-let currentMode =
-    "24h";
-
-
-/* =====================================================
-   FIRE LAYER
-===================================================== */
-
-const fireLayer =
-    L.layerGroup()
-    .addTo(
-        map
-    );
-
-
-/* =====================================================
-   PERSIAN DIGITS
-===================================================== */
-
-function fa(
-    value
-) {
+function fa(value) {
 
     return String(value)
 
@@ -1076,11 +970,128 @@ function fa(
         .replace(/7/g,"۷")
         .replace(/8/g,"۸")
         .replace(/9/g,"۹");
+
+}
+
+
+async function fetchText(url) {
+
+    const response =
+        await fetch(
+            url +
+            "?v=" +
+            Date.now()
+        );
+
+    if (
+        !response.ok
+    ) {
+
+        throw new Error(
+            "فایل دریافت نشد: " +
+            url
+        );
+
+    }
+
+    return await response.text();
+
 }
 
 
 /* =====================================================
-   GREGORIAN TO JALALI
+   CSV
+===================================================== */
+
+function parseCSV(text) {
+
+    text =
+        text
+            .replace(
+                /^\uFEFF/,
+                ""
+            )
+            .trim();
+
+    if (!text) {
+
+        return {
+            headers: [],
+            rows: []
+        };
+
+    }
+
+
+    const lines =
+        text.split(
+            /\r?\n/
+        );
+
+
+    const headers =
+        lines[0]
+            .split(",")
+            .map(
+                h =>
+                    h.trim().toLowerCase()
+            );
+
+
+    const rows = [];
+
+
+    for (
+        let i = 1;
+        i < lines.length;
+        i++
+    ) {
+
+        if (
+            !lines[i].trim()
+        ) {
+
+            continue;
+
+        }
+
+
+        const values =
+            lines[i].split(",");
+
+
+        const row = {};
+
+
+        headers.forEach(
+            (header,index) => {
+
+                row[header] =
+                    values[index] !== undefined
+                    ?
+                    values[index].trim()
+                    :
+                    "";
+
+            }
+        );
+
+
+        rows.push(row);
+
+    }
+
+
+    return {
+        headers,
+        rows
+    };
+
+}
+
+
+/* =====================================================
+   تبدیل تاریخ
 ===================================================== */
 
 function gregorianToJalali(
@@ -1094,26 +1105,24 @@ function gregorianToJalali(
         181,212,243,273,304,334
     ];
 
+
     let jy;
+
 
     if (
         gy > 1600
     ) {
 
-        jy =
-            979;
-
-        gy -=
-            1600;
+        jy = 979;
+        gy -= 1600;
 
     } else {
 
-        jy =
-            0;
+        jy = 0;
+        gy -= 621;
 
-        gy -=
-            621;
     }
+
 
     const gy2 =
         gm > 2
@@ -1121,6 +1130,7 @@ function gregorianToJalali(
         gy + 1
         :
         gy;
+
 
     let days =
         365 * gy
@@ -1141,7 +1151,10 @@ function gregorianToJalali(
         +
         gd
         +
-        gdm[gm - 1];
+        gdm[
+            gm - 1
+        ];
+
 
     jy +=
         33 *
@@ -1149,8 +1162,10 @@ function gregorianToJalali(
             days / 12053
         );
 
+
     days %=
         12053;
+
 
     jy +=
         4 *
@@ -1158,8 +1173,10 @@ function gregorianToJalali(
             days / 1461
         );
 
+
     days %=
         1461;
+
 
     if (
         days > 365
@@ -1170,12 +1187,16 @@ function gregorianToJalali(
                 (days - 1) / 365
             );
 
+
         days =
             (days - 1) % 365;
+
     }
+
 
     let jm;
     let jd;
+
 
     if (
         days < 186
@@ -1186,6 +1207,7 @@ function gregorianToJalali(
             Math.floor(
                 days / 31
             );
+
 
         jd =
             1 +
@@ -1199,68 +1221,52 @@ function gregorianToJalali(
                 (days - 186) / 30
             );
 
+
         jd =
             1 +
             (
                 (days - 186) % 30
             );
+
     }
+
 
     return [
         jy,
         jm,
         jd
     ];
+
 }
 
 
-/* =====================================================
-   SHAMSI DATE
-===================================================== */
+function shamsiDate(date) {
 
-function shamsiDate(
-    dateString
-) {
-
-    if (
-        !dateString
-    ) {
-
+    if (!date) {
         return "---";
     }
 
-    const p =
-        String(
-            dateString
-        ).split(
-            "-"
-        );
+
+    const parts =
+        String(date).split("-");
+
 
     if (
-        p.length !== 3
+        parts.length !== 3
     ) {
 
-        return dateString;
+        return date;
+
     }
+
 
     const j =
         gregorianToJalali(
-
-            parseInt(
-                p[0],
-                10
-            ),
-
-            parseInt(
-                p[1],
-                10
-            ),
-
-            parseInt(
-                p[2],
-                10
-            )
+            Number(parts[0]),
+            Number(parts[1]),
+            Number(parts[2])
         );
+
 
     const months = [
 
@@ -1276,421 +1282,39 @@ function shamsiDate(
         "دی",
         "بهمن",
         "اسفند"
+
     ];
 
+
     return (
-
-        fa(
-            j[2]
-        )
-        +
-        " "
-        +
-        months[
-            j[1] - 1
-        ]
-        +
-        " "
-        +
-        fa(
-            j[0]
-        )
+        fa(j[2]) +
+        " " +
+        months[j[1]-1] +
+        " " +
+        fa(j[0])
     );
+
 }
 
 
 /* =====================================================
-   GET TEXT
+   زمان
 ===================================================== */
 
-async function getText(
-    url
-) {
-
-    const response =
-        await fetch(
-            url
-            +
-            "?v="
-            +
-            Date.now()
-        );
-
+function fireUTCDateTime(fire) {
 
     if (
-        !response.ok
-    ) {
-
-        throw new Error(
-            "فایل دریافت نشد: "
-            +
-            url
-        );
-    }
-
-
-    return await response.text();
-}
-
-
-/* =====================================================
-   CSV PARSER
-===================================================== */
-
-function parseCSV(
-    text
-) {
-
-    text =
-        text
-        .replace(
-            /^\uFEFF/,
-            ""
-        )
-        .trim();
-
-
-    if (
-        !text
-    ) {
-
-        return {
-            headers:
-                [],
-
-            rows:
-                []
-        };
-    }
-
-
-    const lines =
-        text.split(
-            /\r?\n/
-        );
-
-
-    const headers =
-        lines[0]
-        .split(",")
-        .map(
-            function(h) {
-
-                return h
-                    .trim()
-                    .toLowerCase();
-            }
-        );
-
-
-    const rows =
-        [];
-
-
-    for (
-        let i = 1;
-        i < lines.length;
-        i++
-    ) {
-
-        if (
-            !lines[i].trim()
-        ) {
-
-            continue;
-        }
-
-
-        const values =
-            lines[i].split(",");
-
-
-        const row =
-            {};
-
-
-        for (
-            let j = 0;
-            j < headers.length;
-            j++
-        ) {
-
-            row[
-                headers[j]
-            ] =
-                values[j] !== undefined
-                ?
-                values[j].trim()
-                :
-                "";
-        }
-
-
-        rows.push(
-            row
-        );
-    }
-
-
-    return {
-
-        headers:
-            headers,
-
-        rows:
-            rows
-    };
-}
-
-
-/* =====================================================
-   BOUNDARY
-===================================================== */
-
-async function loadBoundary() {
-
-    try {
-
-        const text =
-            await getText(
-                BOUNDARY_FILE
-            );
-
-
-        const data =
-            JSON.parse(
-                text
-            );
-
-
-        boundaryLayer =
-            L.geoJSON(
-                data,
-                {
-
-                    pane:
-                        "farsPane",
-
-                    style:
-                        function() {
-
-                            return {
-
-                                color:
-                                    "#ff0000",
-
-                                weight:
-                                    4,
-
-                                opacity:
-                                    1,
-
-                                fillColor:
-                                    "#ff0000",
-
-                                fillOpacity:
-                                    .02
-                            };
-                        }
-                }
-            )
-            .addTo(
-                map
-            );
-
-
-        const bounds =
-            boundaryLayer
-            .getBounds();
-
-
-        if (
-            bounds.isValid()
-        ) {
-
-            map.fitBounds(
-                bounds,
-                {
-                    padding:
-                        [
-                            20,
-                            20
-                        ]
-                }
-            );
-        }
-
-
-    } catch (
-        error
-    ) {
-
-        console.error(
-            "خطای مرز:",
-            error
-        );
-    }
-}
-
-
-/* =====================================================
-   ARCHIVE INDEX
-===================================================== */
-
-async function loadArchiveIndex() {
-
-    const text =
-        await getText(
-            ARCHIVE_INDEX
-        );
-
-
-    const index =
-        JSON.parse(
-            text
-        );
-
-
-    archiveDates =
-        index
-
-            .map(
-                function(item) {
-
-                    return item.date;
-                }
-            )
-
-            .filter(
-                Boolean
-            )
-
-            .sort();
-
-
-    const slider =
-        document.getElementById(
-            "archiveSlider"
-        );
-
-
-    slider.min =
-        0;
-
-
-    slider.max =
-        Math.max(
-            archiveDates.length - 1,
-            0
-        );
-
-
-    slider.value =
-        Math.max(
-            archiveDates.length - 1,
-            0
-        );
-
-
-    updateSliderDisplay();
-}
-
-
-/* =====================================================
-   LOAD ARCHIVES
-===================================================== */
-
-async function loadArchives() {
-
-    fires =
-        [];
-
-    archiveHeaders =
-        [];
-
-
-    for (
-        const date
-        of
-        archiveDates
-    ) {
-
-        try {
-
-            const text =
-                await getText(
-                    "archive/"
-                    +
-                    date
-                    +
-                    ".csv"
-                );
-
-
-            const parsed =
-                parseCSV(
-                    text
-                );
-
-
-            if (
-                archiveHeaders.length === 0
-            ) {
-
-                archiveHeaders =
-                    parsed.headers.slice();
-            }
-
-
-            parsed.rows.forEach(
-                function(row) {
-
-                    row.archive_date =
-                        date;
-
-
-                    fires.push(
-                        row
-                    );
-                }
-            );
-
-
-        } catch (
-            error
-        ) {
-
-            console.warn(
-                "آرشیو پیدا نشد:",
-                date
-            );
-        }
-    }
-}
-
-
-/* =====================================================
-   FIRMS DATETIME
-===================================================== */
-
-function fireUTCDateTime(
-    fire
-) {
-
-    if (
-        !fire.acq_date
-        ||
+        !fire.acq_date ||
         !fire.acq_time
     ) {
 
         return null;
+
     }
 
 
-    const parts =
-        fire.acq_date.split(
-            "-"
-        );
+    const date =
+        fire.acq_date.split("-");
 
 
     const time =
@@ -1708,61 +1332,38 @@ function fireUTCDateTime(
 
 
     return new Date(
-
         Date.UTC(
 
-            parseInt(
-                parts[0],
-                10
+            Number(date[0]),
+            Number(date[1]) - 1,
+            Number(date[2]),
+
+            Number(
+                time.slice(0,2)
             ),
 
-            parseInt(
-                parts[1],
-                10
-            ) - 1,
-
-            parseInt(
-                parts[2],
-                10
-            ),
-
-            parseInt(
-                time.substring(
-                    0,
-                    2
-                ),
-                10
-            ),
-
-            parseInt(
-                time.substring(
-                    2,
-                    4
-                ),
-                10
+            Number(
+                time.slice(2,4)
             ),
 
             0
+
         )
     );
+
 }
 
 
-/* =====================================================
-   IRAN TIME
-===================================================== */
-
-function iranTime(
-    fire
-) {
+function iranTime(fire) {
 
     if (
         fire.iran_time
     ) {
 
-        return format24(
+        return formatTime(
             fire.iran_time
         );
+
     }
 
 
@@ -1772,25 +1373,19 @@ function iranTime(
         );
 
 
-    if (
-        !utc
-    ) {
-
+    if (!utc) {
         return "---";
     }
 
 
     const iran =
         new Date(
-
             utc.getTime()
             +
-            (
-                3.5 *
-                60 *
-                60 *
-                1000
-            )
+            3.5 *
+            60 *
+            60 *
+            1000
         );
 
 
@@ -1804,7 +1399,6 @@ function iranTime(
         )
 
         +
-
         ":"
 
         +
@@ -1815,22 +1409,16 @@ function iranTime(
             2,
             "0"
         )
+
     );
+
 }
 
 
-/* =====================================================
-   FORMAT 24H
-===================================================== */
-
-function format24(
-    value
-) {
+function formatTime(value) {
 
     const t =
-        String(
-            value
-        )
+        String(value)
         .replace(
             /\D/g,
             ""
@@ -1841,76 +1429,18 @@ function format24(
         );
 
 
-    let hour =
-        parseInt(
-            t.substring(
-                0,
-                2
-            ),
-            10
-        );
-
-
-    let minute =
-        parseInt(
-            t.substring(
-                2,
-                4
-            ),
-            10
-        );
-
-
-    if (
-        hour > 23
-    ) {
-
-        hour %=
-            24;
-    }
-
-
-    if (
-        minute > 59
-    ) {
-
-        minute =
-            0;
-    }
-
-
     return (
-
-        String(
-            hour
-        ).padStart(
-            2,
-            "0"
-        )
-
+        t.slice(0,2)
         +
-
         ":"
-
         +
-
-        String(
-            minute
-        ).padStart(
-            2,
-            "0"
-        )
+        t.slice(2,4)
     );
+
 }
 
 
-/* =====================================================
-   DAY / NIGHT / DAWN
-===================================================== */
-
-function getDayNightLabel(
-    fire
-) {
+function getTimeLabel(fire) {
 
     const time =
         iranTime(
@@ -1919,22 +1449,18 @@ function getDayNightLabel(
 
 
     if (
-        !time
-        ||
+        !time ||
         time === "---"
     ) {
 
         return "---";
+
     }
 
 
     const hour =
-        parseInt(
-            time.substring(
-                0,
-                2
-            ),
-            10
+        Number(
+            time.slice(0,2)
         );
 
 
@@ -1943,13 +1469,13 @@ function getDayNightLabel(
     ) {
 
         return "بامداد";
+
     }
 
 
     const code =
         String(
-            fire.daynight
-            ||
+            fire.daynight ||
             ""
         )
         .trim()
@@ -1961,6 +1487,7 @@ function getDayNightLabel(
     ) {
 
         return "روز";
+
     }
 
 
@@ -1969,20 +1496,281 @@ function getDayNightLabel(
     ) {
 
         return "شب";
+
     }
 
 
     return "---";
+
 }
 
 
 /* =====================================================
-   FILTER
+   سنجنده
 ===================================================== */
 
-function filteredFires(
-    mode
-) {
+function getSensor(fire) {
+
+    const explicit =
+        String(
+            fire.detected_sensor ||
+            ""
+        )
+        .trim()
+        .toUpperCase();
+
+
+    if (
+        explicit.includes("VIIRS")
+    ) {
+
+        return "VIIRS";
+
+    }
+
+
+    if (
+        explicit.includes("MODIS")
+    ) {
+
+        return "MODIS";
+
+    }
+
+
+    const instrument =
+        String(
+            fire.instrument ||
+            ""
+        )
+        .trim()
+        .toUpperCase();
+
+
+    if (
+        instrument.includes("VIIRS")
+    ) {
+
+        return "VIIRS";
+
+    }
+
+
+    if (
+        instrument.includes("MODIS")
+    ) {
+
+        return "MODIS";
+
+    }
+
+
+    return "UNKNOWN";
+
+}
+
+
+function sensorColor(sensor) {
+
+    if (
+        sensor === "VIIRS"
+    ) {
+
+        return "#ff1744";
+
+    }
+
+
+    if (
+        sensor === "MODIS"
+    ) {
+
+        return "#ff9800";
+
+    }
+
+
+    return "#8e24aa";
+
+}
+
+
+/* =====================================================
+   مرز
+===================================================== */
+
+async function loadBoundary() {
+
+    const text =
+        await fetchText(
+            CONFIG.boundary
+        );
+
+
+    const geojson =
+        JSON.parse(
+            text
+        );
+
+
+    state.boundaryLayer =
+        L.geoJSON(
+            geojson,
+            {
+                style: {
+                    color: "#ff0000",
+                    weight: 4,
+                    opacity: 1,
+                    fillColor: "#ff0000",
+                    fillOpacity: .02
+                }
+            }
+        )
+        .addTo(
+            state.map
+        );
+
+
+    const bounds =
+        state.boundaryLayer
+            .getBounds();
+
+
+    if (
+        bounds.isValid()
+    ) {
+
+        state.map.fitBounds(
+            bounds,
+            {
+                padding: [20,20]
+            }
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   آرشیو
+===================================================== */
+
+async function loadArchiveIndex() {
+
+    const text =
+        await fetchText(
+            CONFIG.archiveIndex
+        );
+
+
+    const index =
+        JSON.parse(
+            text
+        );
+
+
+    state.archiveDates =
+        index
+            .map(
+                item => item.date
+            )
+            .filter(Boolean)
+            .sort();
+
+
+    const slider =
+        $("archiveSlider");
+
+
+    slider.min = 0;
+
+    slider.max =
+        Math.max(
+            state.archiveDates.length - 1,
+            0
+        );
+
+
+    slider.value =
+        Math.max(
+            state.archiveDates.length - 1,
+            0
+        );
+
+}
+
+
+async function loadArchives() {
+
+    state.fires = [];
+
+    state.archiveHeaders = [];
+
+
+    for (
+        const date
+        of
+        state.archiveDates
+    ) {
+
+        try {
+
+            const text =
+                await fetchText(
+                    `archive/${date}.csv`
+                );
+
+
+            const parsed =
+                parseCSV(
+                    text
+                );
+
+
+            if (
+                state.archiveHeaders.length === 0
+            ) {
+
+                state.archiveHeaders =
+                    parsed.headers.slice();
+
+            }
+
+
+            parsed.rows.forEach(
+                row => {
+
+                    row.archive_date =
+                        date;
+
+                    state.fires.push(
+                        row
+                    );
+
+                }
+            );
+
+
+        } catch (error) {
+
+            console.warn(
+                "آرشیو موجود نیست:",
+                date
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   فیلتر زمانی
+===================================================== */
+
+function getFilteredFires(mode) {
 
     const now =
         new Date();
@@ -1998,20 +1786,17 @@ function filteredFires(
 
     const start =
         new Date(
-
             now.getTime()
             -
-            (
-                hours *
-                60 *
-                60 *
-                1000
-            )
+            hours *
+            60 *
+            60 *
+            1000
         );
 
 
-    return fires.filter(
-        function(fire) {
+    return state.fires.filter(
+        fire => {
 
             const time =
                 fireUTCDateTime(
@@ -2020,166 +1805,109 @@ function filteredFires(
 
 
             return (
-
-                time
-                &&
-                time >= start
-                &&
+                time &&
+                time >= start &&
                 time <= now
             );
+
         }
     );
+
 }
 
 
 /* =====================================================
-   SHOW FIRES
+   نمایش روی نقشه
 ===================================================== */
 
-function showFires(
-    list
-) {
+function renderFires(fires) {
 
-    fireLayer.clearLayers();
+    state.fireLayer.clearLayers();
 
 
-    list.forEach(
-        function(fire) {
+    fires.forEach(
+        fire => {
 
             const lat =
-                parseFloat(
+                Number(
                     fire.latitude
                 );
 
 
             const lon =
-                parseFloat(
+                Number(
                     fire.longitude
                 );
 
 
             if (
-                isNaN(lat)
-                ||
-                isNaN(lon)
+                !Number.isFinite(lat) ||
+                !Number.isFinite(lon)
             ) {
 
                 return;
+
             }
 
 
             const sensor =
-                String(
-                    fire.detected_sensor
-                    ||
-                    fire.instrument
-                    ||
-                    ""
-                )
-                .trim()
-                .toUpperCase();
-
-
-            let color =
-                "#8e24aa";
-
-
-            if (
-                sensor ===
-                "VIIRS"
-            ) {
-
-                color =
-                    "#ef233c";
-            }
-
-
-            if (
-                sensor ===
-                "MODIS"
-            ) {
-
-                color =
-                    "#f39c12";
-            }
+                getSensor(
+                    fire
+                );
 
 
             const marker =
                 L.circleMarker(
-                    [
-                        lat,
-                        lon
-                    ],
+                    [lat,lon],
                     {
-
-                        pane:
-                            "firePane",
-
-                        radius:
-                            8,
+                        radius: 8,
 
                         color:
-                            "#6b1a00",
+                            "#6d0000",
+
+                        weight: 2,
 
                         fillColor:
-                            color,
+                            sensorColor(
+                                sensor
+                            ),
 
-                        fillOpacity:
-                            .95,
-
-                        weight:
-                            2
+                        fillOpacity: .95
                     }
                 );
 
 
             marker.bindPopup(
-                popupContent(
-                    fire
+                createPopup(
+                    fire,
+                    sensor
                 )
             );
 
 
             marker.addTo(
-                fireLayer
+                state.fireLayer
             );
+
         }
     );
+
 }
 
 
 /* =====================================================
-   FIRE COUNT
+   Popup
 ===================================================== */
 
-function updateFireCount(
-    count
-) {
-
-    document.getElementById(
-        "fireCount"
-    ).innerText =
-        fa(
-            count
-        );
-}
-
-
-/* =====================================================
-   POPUP
-===================================================== */
-
-function popupContent(
-    fire
+function createPopup(
+    fire,
+    sensor
 ) {
 
     const date =
-        fire.iran_date
-        ||
-        fire.archive_date
-        ||
-        fire.acq_date
-        ||
+        fire.iran_date ||
+        fire.archive_date ||
+        fire.acq_date ||
         "---";
 
 
@@ -2191,221 +1919,130 @@ function popupContent(
         🔥 حریق استان فارس
     </h3>
 
-
     <div class="row">
-        <span class="label">
-            سنجنده:
-        </span>
-
-        ${fire.detected_sensor || fire.instrument || "---"}
+        <span class="label">سنجنده:</span>
+        ${sensor}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            ماهواره:
-        </span>
-
+        <span class="label">ماهواره:</span>
         ${fire.satellite || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            تاریخ ایران:
-        </span>
-
+        <span class="label">تاریخ ایران:</span>
         ${shamsiDate(date)}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            ساعت ایران:
-        </span>
-
+        <span class="label">ساعت ایران:</span>
         ${fa(iranTime(fire))}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            زمان:
-        </span>
-
-        ${getDayNightLabel(fire)}
+        <span class="label">زمان:</span>
+        ${getTimeLabel(fire)}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            تاریخ UTC:
-        </span>
-
+        <span class="label">تاریخ UTC:</span>
         ${fire.acq_date || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            ساعت UTC:
-        </span>
-
+        <span class="label">ساعت UTC:</span>
         ${fire.acq_time || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            FRP:
-        </span>
-
+        <span class="label">FRP:</span>
         ${fire.frp || "---"} MW
     </div>
 
-
     <div class="row">
-        <span class="label">
-            Confidence:
-        </span>
-
+        <span class="label">Confidence:</span>
         ${fire.confidence || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            Brightness:
-        </span>
-
+        <span class="label">Brightness:</span>
         ${fire.brightness || "---"}
     </div>
 
-
     <div class="row">
-        <span class="label">
-            مختصات:
-        </span>
-
-        ${coordinate(fire.latitude)}
-        ,
-        ${coordinate(fire.longitude)}
+        <span class="label">مختصات:</span>
+        ${Number(fire.latitude).toFixed(5)}
+        ،
+        ${Number(fire.longitude).toFixed(5)}
     </div>
 
 </div>
 
 `;
+
 }
 
 
 /* =====================================================
-   COORDINATE
+   حالت فعلی
 ===================================================== */
 
-function coordinate(
-    value
-) {
+function applyMode(mode) {
 
-    const number =
-        parseFloat(
-            value
-        );
-
-
-    return isNaN(number)
-        ?
-        "---"
-        :
-        number.toFixed(
-            5
-        );
-}
-
-
-/* =====================================================
-   APPLY MODE
-===================================================== */
-
-function applyMode(
-    mode
-) {
-
-    currentMode =
+    state.mode =
         mode;
 
 
-    const list =
-        filteredFires(
+    const fires =
+        getFilteredFires(
             mode
         );
 
 
-    showFires(
-        list
+    renderFires(
+        fires
     );
 
 
-    updateFireCount(
-        list.length
-    );
+    $("fireCount")
+        .textContent =
+            fa(
+                fires.length
+            );
 
 
     document
         .querySelectorAll(
-            ".mode-button"
+            ".mode-btn"
         )
         .forEach(
-            function(button) {
+            button => {
 
                 button.classList.toggle(
                     "active",
-                    button.dataset.mode === mode
+
+                    button.dataset.mode ===
+                    mode
                 );
+
             }
         );
+
 }
 
 
 /* =====================================================
-   MODE BUTTONS
+   تعداد یک روز آرشیو
 ===================================================== */
 
-document
-    .querySelectorAll(
-        ".mode-button"
-    )
-    .forEach(
-        function(button) {
+function getArchiveFires(date) {
 
-            button.addEventListener(
-                "click",
-                function() {
-
-                    applyMode(
-                        this.dataset.mode
-                    );
-                }
-            );
-        }
-    );
-
-
-/* =====================================================
-   ARCHIVE DATE + COUNT
-===================================================== */
-
-function getArchiveDateRows(
-    date
-) {
-
-    return fires.filter(
-        function(fire) {
+    return state.fires.filter(
+        fire => {
 
             const fireDate =
-                fire.iran_date
-                ||
-                fire.archive_date
-                ||
+                fire.iran_date ||
+                fire.archive_date ||
                 fire.acq_date;
 
 
@@ -2413,129 +2050,87 @@ function getArchiveDateRows(
                 fireDate ===
                 date
             );
+
         }
     );
+
 }
 
 
-function updateSliderDisplay() {
+/* =====================================================
+   نمایش تاریخ اسلایدر
+===================================================== */
+
+function updateSlider() {
 
     const slider =
-        document.getElementById(
-            "archiveSlider"
-        );
+        $("archiveSlider");
 
 
     const index =
-        parseInt(
-            slider.value,
-            10
+        Number(
+            slider.value
         );
 
 
     const date =
-        archiveDates[
+        state.archiveDates[
             index
         ];
 
 
-    const count =
-        date
-        ?
-        getArchiveDateRows(
+    if (!date) {
+
+        $("sliderDate")
+            .textContent =
+                "---";
+
+
+        $("sliderCount")
+            .textContent =
+                "تعداد رخداد: ۰";
+
+
+        return;
+
+    }
+
+
+    const dailyFires =
+        getArchiveFires(
             date
-        ).length
-        :
-        0;
-
-
-    document.getElementById(
-        "sliderDate"
-    ).innerText =
-
-        date
-        ?
-        shamsiDate(
-            date
-        )
-        :
-        "---";
-
-
-    document.getElementById(
-        "sliderCount"
-    ).innerText =
-
-        "تعداد رخداد: "
-        +
-        fa(
-            count
         );
+
+
+    $("sliderDate")
+        .textContent =
+            shamsiDate(
+                date
+            );
+
+
+    $("sliderCount")
+        .textContent =
+            "تعداد رخداد: " +
+            fa(
+                dailyFires.length
+            );
+
 }
 
 
 /* =====================================================
-   SLIDER
+   آخرین مشاهده سنجنده
 ===================================================== */
 
-document
-    .getElementById(
-        "archiveSlider"
-    )
-    .addEventListener(
-        "input",
-        function() {
-
-            const index =
-                parseInt(
-                    this.value,
-                    10
-                );
-
-
-            const date =
-                archiveDates[
-                    index
-                ];
-
-
-            updateSliderDisplay();
-
-
-            const list =
-                date
-                ?
-                getArchiveDateRows(
-                    date
-                )
-                :
-                [];
-
-
-            showFires(
-                list
-            );
-
-
-            updateFireCount(
-                list.length
-            );
-        }
-    );
-
-
-/* =====================================================
-   LATEST FIRMS DETECTION
-===================================================== */
-
-function getLatestFirmsDate() {
+function getLatestSensorObservation() {
 
     let latest =
         null;
 
 
-    fires.forEach(
-        function(fire) {
+    state.fires.forEach(
+        fire => {
 
             const time =
                 fireUTCDateTime(
@@ -2548,68 +2143,66 @@ function getLatestFirmsDate() {
             ) {
 
                 return;
+
             }
 
 
             if (
-                latest === null
-                ||
-                time >
-                latest
+                latest === null ||
+                time > latest
             ) {
 
                 latest =
                     time;
+
             }
+
         }
     );
 
 
     return latest;
+
 }
 
 
 /* =====================================================
-   AGE TEXT
+   اختلاف زمانی
 ===================================================== */
 
-function ageText(
-    timestamp
-) {
+function ageText(timestamp) {
 
-    if (
-        !timestamp
-    ) {
+    if (!timestamp) {
 
         return "در انتظار اطلاعات";
+
     }
 
 
-    const elapsed =
+    const seconds =
         Math.max(
             0,
-            Date.now()
-            -
-            timestamp
-        );
-
-
-    const totalSeconds =
-        Math.floor(
-            elapsed / 1000
+            Math.floor(
+                (
+                    Date.now() -
+                    timestamp
+                )
+                /
+                1000
+            )
         );
 
 
     const days =
         Math.floor(
-            totalSeconds / 86400
+            seconds / 86400
         );
 
 
     const hours =
         Math.floor(
             (
-                totalSeconds % 86400
+                seconds % 86400
             )
             /
             3600
@@ -2619,15 +2212,15 @@ function ageText(
     const minutes =
         Math.floor(
             (
-                totalSeconds % 3600
+                seconds % 3600
             )
             /
             60
         );
 
 
-    const seconds =
-        totalSeconds %
+    const sec =
+        seconds %
         60;
 
 
@@ -2636,15 +2229,12 @@ function ageText(
     ) {
 
         return (
-
-            fa(days)
-            +
-            " روز و "
-            +
-            fa(hours)
-            +
+            fa(days) +
+            " روز و " +
+            fa(hours) +
             " ساعت پیش"
         );
+
     }
 
 
@@ -2653,78 +2243,74 @@ function ageText(
     ) {
 
         return (
-
-            fa(hours)
-            +
-            " ساعت و "
-            +
-            fa(minutes)
-            +
+            fa(hours) +
+            " ساعت و " +
+            fa(minutes) +
             " دقیقه پیش"
         );
+
     }
 
 
     return (
-
-        fa(minutes)
-        +
-        " دقیقه و "
-        +
-        fa(seconds)
-        +
+        fa(minutes) +
+        " دقیقه و " +
+        fa(sec) +
         " ثانیه پیش"
     );
+
 }
 
 
 /* =====================================================
-   FIRMS AGE
+   بروزرسانی پنل وضعیت
 ===================================================== */
 
-function updateFirmsAge() {
-
-    const element =
-        document.getElementById(
-            "firmsAge"
-        );
-
+function updateStatusPanel() {
 
     const latest =
-        getLatestFirmsDate();
+        getLatestSensorObservation();
 
 
-    if (
-        !latest
-    ) {
+    if (latest) {
 
-        element.innerText =
-            "آخرین دریافت داده FIRMS: در انتظار اطلاعات";
+        $("sensorAge")
+            .textContent =
+                "آخرین مشاهده سنجنده: " +
+                ageText(
+                    latest.getTime()
+                );
 
-        return;
     }
 
 
-    element.innerText =
-        "آخرین دریافت داده FIRMS: "
-        +
-        ageText(
-            latest.getTime()
-        );
+    if (
+        state.systemTimestamp
+    ) {
+
+        $("systemAge")
+            .textContent =
+                "آخرین به‌روزرسانی سامانه: " +
+                ageText(
+                    state.systemTimestamp
+                );
+
+    }
+
 }
 
 
 /* =====================================================
-   SYSTEM UPDATE
+   اطلاعات update-info
 ===================================================== */
 
-async function loadUpdateInfo() {
+async function loadSystemUpdate() {
 
     try {
 
         const text =
-            await getText(
-                UPDATE_INFO
+            await fetchText(
+                CONFIG.updateInfo
             );
 
 
@@ -2741,323 +2327,172 @@ async function loadUpdateInfo() {
 
 
         if (
-            !Number.isFinite(
+            Number.isFinite(
                 timestamp
             )
         ) {
 
-            throw new Error(
-                "timestamp نامعتبر"
-            );
+            state.systemTimestamp =
+                timestamp *
+                1000;
+
         }
 
 
-        updateTimestamp =
-            timestamp *
-            1000;
+    } catch (error) {
 
+        console.warn(
+            "update-info دریافت نشد:",
+            error
+        );
 
-        updateSystemAge();
-
-
-    } catch (
-        error
-    ) {
-
-        document.getElementById(
-            "updateInfo"
-        ).innerText =
-            "آخرین به‌روزرسانی سامانه: نامشخص";
     }
+
 }
 
 
 /* =====================================================
-   SYSTEM AGE
+   Excel
 ===================================================== */
 
-function updateSystemAge() {
-
-    const element =
-        document.getElementById(
-            "updateInfo"
-        );
-
-
-    if (
-        !updateTimestamp
-    ) {
-
-        element.innerText =
-            "آخرین به‌روزرسانی سامانه: در انتظار اطلاعات";
-
-        return;
-    }
-
-
-    element.innerText =
-        "آخرین به‌روزرسانی سامانه: "
-        +
-        ageText(
-            updateTimestamp
-        );
-}
-
-
-/* =====================================================
-   EXCEL XML ESCAPE
-===================================================== */
-
-function escapeXml(
-    value
-) {
+function escapeXml(value) {
 
     return String(
-
-        value === undefined
-        ||
-        value === null
-        ?
-        ""
-        :
-        value
-
+        value ?? ""
     )
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&apos;");
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&apos;"
-        );
 }
 
 
-/* =====================================================
-   EXCEL EXPORT
-===================================================== */
+function exportExcel24h() {
 
-function export24HoursToExcel() {
-
-    const list =
-        filteredFires(
+    const fires =
+        getFilteredFires(
             "24h"
         );
 
 
     if (
-        list.length === 0
+        fires.length === 0
     ) {
 
         alert(
-            "در ۲۴ ساعت گذشته داده‌ای برای گزارش وجود ندارد."
+            "در ۲۴ ساعت گذشته داده‌ای وجود ندارد."
         );
 
         return;
+
     }
 
 
-    let headers =
-        archiveHeaders.slice();
-
-
-    if (
-        headers.length === 0
-    ) {
-
-        headers =
-            Object.keys(
-                list[0]
-            )
-            .filter(
-                function(key) {
-
-                    return (
-                        key !==
-                        "archive_date"
-                    );
-                }
-            );
-    }
+    const headers =
+        state.archiveHeaders.length
+        ?
+        state.archiveHeaders
+        :
+        Object.keys(
+            fires[0]
+        ).filter(
+            key =>
+                key !==
+                "archive_date"
+        );
 
 
     let xml =
 
-        '<?xml version="1.0"?>'
+        '<?xml version="1.0"?>' +
 
-        +
+        '<Workbook ' +
 
-        '<Workbook '
+        'xmlns="urn:schemas-microsoft-com:office:spreadsheet" ' +
 
-        +
+        'xmlns:o="urn:schemas-microsoft-com:office:office" ' +
 
-        'xmlns="urn:schemas-microsoft-com:office:spreadsheet" '
+        'xmlns:x="urn:schemas-microsoft-com:office:excel" ' +
 
-        +
+        'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">' +
 
-        'xmlns:o="urn:schemas-microsoft-com:office:office" '
+        '<Styles>' +
 
-        +
+        '<Style ss:ID="Header">' +
 
-        'xmlns:x="urn:schemas-microsoft-com:office:excel" '
+        '<Font ss:Bold="1"/>' +
 
-        +
+        '<Interior ss:Color="#E8F0F5" Pattern="Solid"/>' +
 
-        'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">'
+        '</Style>' +
 
-        +
+        '</Styles>' +
 
-        '<Styles>'
-
-        +
-
-        '<Style ss:ID="Header">'
-
-        +
-
-        '<Font ss:Bold="1"/>'
-
-        +
-
-        '<Interior ss:Color="#E8F0F5" Pattern="Solid"/>'
-
-        +
-
-        '</Style>'
-
-        +
-
-        '</Styles>'
-
-        +
-
-        '<Worksheet ss:Name="Fire_24H">'
-
-        +
+        '<Worksheet ss:Name="Fire_24H">' +
 
         '<Table>';
 
 
     xml +=
-        '<Row>';
+        "<Row>";
 
 
     headers.forEach(
-        function(header) {
+        header => {
 
             xml +=
-
-                '<Cell ss:StyleID="Header">'
-
-                +
-
-                '<Data ss:Type="String">'
-
-                +
-
+                '<Cell ss:StyleID="Header">' +
+                '<Data ss:Type="String">' +
                 escapeXml(
                     header
-                )
+                ) +
+                "</Data>" +
+                "</Cell>";
 
-                +
-
-                '</Data>'
-
-                +
-
-                '</Cell>';
         }
     );
 
 
     xml +=
-        '</Row>';
+        "</Row>";
 
 
-    list.forEach(
-        function(fire) {
+    fires.forEach(
+        fire => {
 
             xml +=
-                '<Row>';
+                "<Row>";
 
 
             headers.forEach(
-                function(header) {
-
-                    const value =
-                        fire[header] !== undefined
-                        &&
-                        fire[header] !== null
-
-                        ?
-
-                        fire[header]
-
-                        :
-
-                        "";
-
+                header => {
 
                     xml +=
-
-                        '<Cell>'
-
-                        +
-
-                        '<Data ss:Type="String">'
-
-                        +
-
+                        "<Cell>" +
+                        '<Data ss:Type="String">' +
                         escapeXml(
-                            value
-                        )
+                            fire[header]
+                        ) +
+                        "</Data>" +
+                        "</Cell>";
 
-                        +
-
-                        '</Data>'
-
-                        +
-
-                        '</Cell>';
                 }
             );
 
 
             xml +=
-                '</Row>';
+                "</Row>";
+
         }
     );
 
 
     xml +=
-
-        '</Table>'
-
-        +
-
-        '</Worksheet>'
-
-        +
-
-        '</Workbook>';
+        "</Table>" +
+        "</Worksheet>" +
+        "</Workbook>";
 
 
     const blob =
@@ -3082,78 +2517,35 @@ function export24HoursToExcel() {
         );
 
 
-    link.href =
-        url;
-
-
     const now =
         new Date();
 
 
-    const year =
-        now.getFullYear();
-
-
-    const month =
+    const filename =
+        "fires_24h_" +
+        now.getFullYear() +
         String(
             now.getMonth() + 1
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const day =
+        ).padStart(2,"0") +
         String(
             now.getDate()
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const hour =
+        ).padStart(2,"0") +
+        "_" +
         String(
             now.getHours()
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const minute =
+        ).padStart(2,"0") +
         String(
             now.getMinutes()
-        ).padStart(
-            2,
-            "0"
-        );
+        ).padStart(2,"0") +
+        ".xls";
+
+
+    link.href =
+        url;
 
 
     link.download =
-
-        "fires_24h_"
-
-        +
-        year
-
-        +
-        month
-
-        +
-        day
-
-        +
-        "_"
-
-        +
-        hour
-
-        +
-        minute
-
-        +
-        ".xls";
+        filename;
 
 
     document.body.appendChild(
@@ -3164,290 +2556,340 @@ function export24HoursToExcel() {
     link.click();
 
 
-    document.body.removeChild(
-        link
-    );
+    link.remove();
 
 
     setTimeout(
-        function() {
-
+        () => {
             URL.revokeObjectURL(
                 url
             );
-
         },
         1000
     );
+
 }
 
 
 /* =====================================================
-   EXCEL BUTTON
+   حالت شب
 ===================================================== */
 
-document
-    .getElementById(
-        "excel24Button"
-    )
-    .addEventListener(
-        "click",
-        function() {
+function toggleNight() {
 
-            export24HoursToExcel();
-
-        }
-    );
+    const night =
+        document.body
+            .classList
+            .toggle(
+                "night"
+            );
 
 
-/* =====================================================
-   NIGHT MODE
-===================================================== */
+    if (night) {
 
-document
-    .getElementById(
-        "nightButton"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            document.body
-                .classList
-                .toggle(
-                    "night"
-                );
-
-
-            const night =
-                document.body
-                .classList
-                .contains(
-                    "night"
-                );
-
-
-            if (
-                night
-            ) {
-
-                map.removeLayer(
-                    lightMap
-                );
-
-
-                darkMap.addTo(
-                    map
-                );
-
-
-                this.innerText =
-                    "☀️";
-
-
-                localStorage.setItem(
-                    "fars-night",
-                    "1"
-                );
-
-
-            } else {
-
-                map.removeLayer(
-                    darkMap
-                );
-
-
-                lightMap.addTo(
-                    map
-                );
-
-
-                this.innerText =
-                    "🌙";
-
-
-                localStorage.setItem(
-                    "fars-night",
-                    "0"
-                );
-            }
-        }
-    );
-
-
-/* =====================================================
-   RESTORE NIGHT
-===================================================== */
-
-if (
-    localStorage.getItem(
-        "fars-night"
-    )
-    ===
-    "1"
-) {
-
-    document.body
-        .classList
-        .add(
-            "night"
+        state.map.removeLayer(
+            state.lightMap
         );
 
 
-    map.removeLayer(
-        lightMap
-    );
+        state.darkMap.addTo(
+            state.map
+        );
 
 
-    darkMap.addTo(
-        map
-    );
+        $("nightBtn")
+            .textContent =
+                "☀️";
 
 
-    document.getElementById(
-        "nightButton"
-    ).innerText =
-        "☀️";
+        localStorage.setItem(
+            "fars-night",
+            "1"
+        );
+
+    } else {
+
+        state.map.removeLayer(
+            state.darkMap
+        );
+
+
+        state.lightMap.addTo(
+            state.map
+        );
+
+
+        $("nightBtn")
+            .textContent =
+                "🌙";
+
+
+        localStorage.setItem(
+            "fars-night",
+            "0"
+        );
+
+    }
+
 }
 
 
 /* =====================================================
-   REFRESH
+   راه‌اندازی نقشه
 ===================================================== */
 
-document
-    .getElementById(
-        "refreshButton"
-    )
-    .addEventListener(
-        "click",
-        function() {
+function createMap() {
 
-            location.reload();
+    state.map =
+        L.map(
+            "map"
+        );
 
-        }
+
+    state.lightMap =
+        L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+                maxZoom: 18,
+                attribution:
+                    "© OpenStreetMap contributors"
+            }
+        )
+        .addTo(
+            state.map
+        );
+
+
+    state.darkMap =
+        L.tileLayer(
+            "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+            {
+                maxZoom: 19,
+                attribution:
+                    "© OpenStreetMap © CARTO"
+            }
+        );
+
+
+    state.fireLayer =
+        L.layerGroup()
+            .addTo(
+                state.map
+            );
+
+
+    state.map.setView(
+        [29.6,52.5],
+        8
     );
 
-
-/* =====================================================
-   TIMERS
-===================================================== */
-
-setInterval(
-    function() {
-
-        updateFirmsAge();
-
-        updateSystemAge();
-
-    },
-    1000
-);
+}
 
 
 /* =====================================================
-   INITIALIZE
+   رویدادها
 ===================================================== */
 
-async function initialize() {
+function bindEvents() {
 
-    /*
-       ۱. مرز
-    */
+    document
+        .querySelectorAll(
+            ".mode-btn"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        applyMode(
+                            button.dataset.mode
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+    $("archiveSlider")
+        .addEventListener(
+            "input",
+            () => {
+
+                updateSlider();
+
+                const index =
+                    Number(
+                        $("archiveSlider").value
+                    );
+
+                const date =
+                    state.archiveDates[
+                        index
+                    ];
+
+
+                if (date) {
+
+                    const fires =
+                        getArchiveFires(
+                            date
+                        );
+
+
+                    renderFires(
+                        fires
+                    );
+
+
+                    $("fireCount")
+                        .textContent =
+                            fa(
+                                fires.length
+                            );
+
+                }
+
+            }
+        );
+
+
+    $("excelBtn")
+        .addEventListener(
+            "click",
+            exportExcel24h
+        );
+
+
+    $("nightBtn")
+        .addEventListener(
+            "click",
+            toggleNight
+        );
+
+
+    $("refreshBtn")
+        .addEventListener(
+            "click",
+            () => location.reload()
+        );
+
+}
+
+
+/* =====================================================
+   حالت شب ذخیره‌شده
+===================================================== */
+
+function restoreNight() {
+
+    if (
+        localStorage.getItem(
+            "fars-night"
+        )
+        ===
+        "1"
+    ) {
+
+        document.body
+            .classList
+            .add(
+                "night"
+            );
+
+
+        state.map.removeLayer(
+            state.lightMap
+        );
+
+
+        state.darkMap.addTo(
+            state.map
+        );
+
+
+        $("nightBtn")
+            .textContent =
+                "☀️";
+
+    }
+
+}
+
+
+/* =====================================================
+   اجرای اصلی
+===================================================== */
+
+async function init() {
 
     try {
+
+        createMap();
+
+        bindEvents();
 
         await loadBoundary();
 
-    } catch (
-        error
-    ) {
-
-        console.error(
-            "Boundary:",
-            error
-        );
-    }
-
-
-    /*
-       ۲. آرشیو
-    */
-
-    try {
-
         await loadArchiveIndex();
-
-    } catch (
-        error
-    ) {
-
-        console.error(
-            "Archive index:",
-            error
-        );
-    }
-
-
-    /*
-       ۳. داده‌ها
-    */
-
-    try {
 
         await loadArchives();
 
-    } catch (
-        error
-    ) {
+        await loadSystemUpdate();
+
+        applyMode(
+            "24h"
+        );
+
+        updateSlider();
+
+        updateStatusPanel();
+
+        restoreNight();
+
+
+    } catch (error) {
 
         console.error(
-            "Archives:",
+            "سامانه:",
             error
         );
+
+
+        $("sensorAge")
+            .textContent =
+                "خطا در دریافت اطلاعات";
+
+
+        $("systemAge")
+            .textContent =
+                error.message;
+
     }
 
-
-    /*
-       ۴. نمایش ۲۴ ساعت
-    */
-
-    applyMode(
-        "24h"
-    );
-
-
-    /*
-       ۵. نمایش تاریخ و تعداد آرشیو
-    */
-
-    updateSliderDisplay();
-
-
-    /*
-       ۶. آخرین دریافت داده
-    */
-
-    updateFirmsAge();
-
-
-    /*
-       ۷. آخرین به‌روزرسانی سامانه
-    */
-
-    loadUpdateInfo();
 }
+
+
+/* =====================================================
+   تایمر
+===================================================== */
+
+setInterval(
+    updateStatusPanel,
+    1000
+);
 
 
 /* =====================================================
    START
 ===================================================== */
 
-initialize();
+init();
 
 </script>
 
 </body>
-
 </html>
