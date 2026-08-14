@@ -69,7 +69,8 @@ body {
 
 header {
 
-    height: 74px;
+    height:
+        74px;
 
     background:
         linear-gradient(
@@ -88,7 +89,6 @@ header {
     z-index:
         5000;
 }
-
 
 .header-inner {
 
@@ -183,6 +183,9 @@ header {
 
     gap:
         5px;
+
+    align-items:
+        center;
 }
 
 
@@ -211,6 +214,9 @@ header {
 
     font-size:
         16px;
+
+    transition:
+        .2s ease;
 }
 
 
@@ -506,7 +512,6 @@ header {
 
 /* =====================================================
    UPDATE PANEL
-   جای آن همان پایین سمت راست است
 ===================================================== */
 
 .update-box {
@@ -524,7 +529,7 @@ header {
         4000;
 
     width:
-        290px;
+        300px;
 
     padding:
         8px 12px;
@@ -845,7 +850,7 @@ body.night
     .title {
 
         padding:
-            0 65px;
+            0 100px 0 70px;
     }
 
 
@@ -1110,6 +1115,19 @@ body.night
 
     <div class="header-buttons">
 
+        <!-- Excel -->
+
+        <button
+            id="excel24Button"
+            class="header-button"
+            title="گزارش Excel حریق‌های ۲۴ ساعت گذشته"
+        >
+            📊
+        </button>
+
+
+        <!-- Night -->
+
         <button
             id="nightButton"
             class="header-button"
@@ -1118,6 +1136,8 @@ body.night
             🌙
         </button>
 
+
+        <!-- Refresh -->
 
         <button
             id="refreshButton"
@@ -1148,8 +1168,6 @@ body.night
 <div class="mode-panel">
 
 
-    <!-- تعداد رخداد -->
-
     <div class="fire-count">
 
         رخدادهای شناسایی‌شده
@@ -1168,8 +1186,6 @@ body.night
     </div>
 
 
-    <!-- 24 HOURS -->
-
     <button
         class="mode-button active"
         data-mode="24h"
@@ -1177,8 +1193,6 @@ body.night
         🔥 حریق‌های ۲۴ ساعت گذشته
     </button>
 
-
-    <!-- 5 DAYS -->
 
     <button
         class="mode-button"
@@ -1242,7 +1256,7 @@ body.night
         id="firmsAge"
         class="update-row"
     >
-        آخرین داده FIRMS: در انتظار اطلاعات
+        آخرین دریافت داده FIRMS: در انتظار اطلاعات
     </div>
 
 
@@ -1319,13 +1333,16 @@ const UPDATE_INFO =
 ===================================================== */
 
 const map =
-    L.map("map");
+    L.map(
+        "map"
+    );
 
 
 const lightMap =
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
+
             maxZoom:
                 18,
 
@@ -1339,6 +1356,7 @@ const darkMap =
     L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
         {
+
             maxZoom:
                 19,
 
@@ -1354,7 +1372,7 @@ lightMap.addTo(
 
 
 /* =====================================================
-   LAYER PANES
+   PANES
 ===================================================== */
 
 map.createPane(
@@ -1427,6 +1445,7 @@ function fa(
 ) {
 
     return String(value)
+
         .replace(/0/g,"۰")
         .replace(/1/g,"۱")
         .replace(/2/g,"۲")
@@ -1718,7 +1737,7 @@ async function getText(
 
 
 /* =====================================================
-   CSV
+   CSV PARSER
 ===================================================== */
 
 function parseCSV(
@@ -1739,8 +1758,11 @@ function parseCSV(
     ) {
 
         return {
-            headers: [],
-            rows: []
+            headers:
+                [],
+
+            rows:
+                []
         };
     }
 
@@ -1814,6 +1836,7 @@ function parseCSV(
 
 
     return {
+
         headers:
             headers,
 
@@ -1892,10 +1915,14 @@ async function loadBoundary() {
                 bounds,
                 {
                     padding:
-                        [20,20]
+                        [
+                            20,
+                            20
+                        ]
                 }
             );
         }
+
 
     } catch (
         error
@@ -2032,6 +2059,7 @@ async function loadArchives() {
                 }
             );
 
+
         } catch (
             error
         ) {
@@ -2084,6 +2112,7 @@ function fireUTCDateTime(
 
 
     return new Date(
+
         Date.UTC(
 
             parseInt(
@@ -2157,6 +2186,7 @@ function iranTime(
 
     const iran =
         new Date(
+
             utc.getTime()
             +
             (
@@ -2372,6 +2402,7 @@ function filteredFires(
 
     const start =
         new Date(
+
             now.getTime()
             -
             (
@@ -2395,16 +2426,10 @@ function filteredFires(
             return (
 
                 time
-
                 &&
-
-                time >=
-                start
-
+                time >= start
                 &&
-
-                time <=
-                now
+                time <= now
             );
         }
     );
@@ -2485,7 +2510,10 @@ function showFires(
 
             const marker =
                 L.circleMarker(
-                    [lat,lon],
+                    [
+                        lat,
+                        lon
+                    ],
                     {
 
                         pane:
@@ -2525,7 +2553,7 @@ function showFires(
 
 
 /* =====================================================
-   FIRE COUNT
+   UPDATE COUNT
 ===================================================== */
 
 function updateFireCount(
@@ -2557,20 +2585,6 @@ function popupContent(
         fire.acq_date
         ||
         "---";
-
-
-    const time =
-        fa(
-            iranTime(
-                fire
-            )
-        );
-
-
-    const dayNight =
-        getDayNightLabel(
-            fire
-        );
 
 
     return `
@@ -2614,7 +2628,7 @@ function popupContent(
             ساعت ایران:
         </span>
 
-        ${time}
+        ${fa(iranTime(fire))}
     </div>
 
 
@@ -2623,7 +2637,7 @@ function popupContent(
             زمان:
         </span>
 
-        ${dayNight}
+        ${getDayNightLabel(fire)}
     </div>
 
 
@@ -2713,12 +2727,16 @@ function coordinate(
 
 
 /* =====================================================
-   APPLY MODE
+   CURRENT MODE
 ===================================================== */
 
 let currentMode =
     "24h";
 
+
+/* =====================================================
+   APPLY MODE
+===================================================== */
 
 function applyMode(
     mode
@@ -2753,10 +2771,7 @@ function applyMode(
 
                 button.classList.toggle(
                     "active",
-
-                    button.dataset.mode
-                    ===
-                    mode
+                    button.dataset.mode === mode
                 );
             }
         );
@@ -2788,7 +2803,7 @@ document
 
 
 /* =====================================================
-   SLIDER
+   SLIDER DATE
 ===================================================== */
 
 function updateSliderDate() {
@@ -2825,6 +2840,10 @@ function updateSliderDate() {
 }
 
 
+/* =====================================================
+   SLIDER
+===================================================== */
+
 document
     .getElementById(
         "archiveSlider"
@@ -2860,8 +2879,7 @@ document
 
 
                         return (
-                            fireDate
-                            ===
+                            fireDate ===
                             date
                         );
                     }
@@ -2881,8 +2899,7 @@ document
 
 
 /* =====================================================
-   LAST FIRMS DATA
-   از آخرین acq_date + acq_time
+   FIRMS LATEST DETECTION
 ===================================================== */
 
 function getLatestFirmsDate() {
@@ -2909,7 +2926,7 @@ function getLatestFirmsDate() {
 
 
             if (
-                !latest
+                latest === null
                 ||
                 time >
                 latest
@@ -2927,7 +2944,7 @@ function getLatestFirmsDate() {
 
 
 /* =====================================================
-   FORMAT AGE
+   AGE TEXT
 ===================================================== */
 
 function ageText(
@@ -2959,18 +2976,14 @@ function ageText(
 
     const days =
         Math.floor(
-            totalSeconds
-            /
-            86400
+            totalSeconds / 86400
         );
 
 
     const hours =
         Math.floor(
             (
-                totalSeconds
-                %
-                86400
+                totalSeconds % 86400
             )
             /
             3600
@@ -2980,9 +2993,7 @@ function ageText(
     const minutes =
         Math.floor(
             (
-                totalSeconds
-                %
-                3600
+                totalSeconds % 3600
             )
             /
             60
@@ -2990,9 +3001,7 @@ function ageText(
 
 
     const seconds =
-        totalSeconds
-        %
-        60;
+        totalSeconds % 60;
 
 
     if (
@@ -3000,6 +3009,7 @@ function ageText(
     ) {
 
         return (
+
             fa(days)
             +
             " روز و "
@@ -3016,6 +3026,7 @@ function ageText(
     ) {
 
         return (
+
             fa(hours)
             +
             " ساعت و "
@@ -3028,6 +3039,7 @@ function ageText(
 
 
     return (
+
         fa(minutes)
         +
         " دقیقه و "
@@ -3045,14 +3057,14 @@ function ageText(
 
 function updateFirmsAge() {
 
-    const latest =
-        getLatestFirmsDate();
-
-
     const element =
         document.getElementById(
             "firmsAge"
         );
+
+
+    const latest =
+        getLatestFirmsDate();
 
 
     if (
@@ -3060,14 +3072,14 @@ function updateFirmsAge() {
     ) {
 
         element.innerText =
-            "آخرین داده FIRMS: در انتظار اطلاعات";
+            "آخرین دریافت داده FIRMS: در انتظار اطلاعات";
 
         return;
     }
 
 
     element.innerText =
-        "آخرین داده FIRMS: "
+        "آخرین دریافت داده FIRMS: "
         +
         ageText(
             latest.getTime()
@@ -3076,7 +3088,7 @@ function updateFirmsAge() {
 
 
 /* =====================================================
-   UPDATE SYSTEM INFO
+   SYSTEM UPDATE
 ===================================================== */
 
 async function loadUpdateInfo() {
@@ -3133,7 +3145,7 @@ async function loadUpdateInfo() {
 
 
 /* =====================================================
-   SYSTEM TIMER
+   SYSTEM AGE
 ===================================================== */
 
 function updateSystemAge() {
@@ -3165,18 +3177,348 @@ function updateSystemAge() {
 
 
 /* =====================================================
-   REFRESH
+   EXCEL ESCAPE
+===================================================== */
+
+function escapeXml(
+    value
+) {
+
+    return String(
+
+        value === undefined
+        ||
+        value === null
+
+        ?
+        ""
+        :
+        value
+
+    )
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&apos;"
+        );
+}
+
+
+/* =====================================================
+   EXCEL EXPORT
+===================================================== */
+
+function export24HoursToExcel() {
+
+    const list =
+        filteredFires(
+            "24h"
+        );
+
+
+    if (
+        list.length === 0
+    ) {
+
+        alert(
+            "در ۲۴ ساعت گذشته داده‌ای برای گزارش وجود ندارد."
+        );
+
+        return;
+    }
+
+
+    let headers =
+        archiveHeaders.slice();
+
+
+    if (
+        headers.length === 0
+    ) {
+
+        headers =
+            Object.keys(
+                list[0]
+            )
+            .filter(
+                function(key) {
+
+                    return (
+                        key !==
+                        "archive_date"
+                    );
+                }
+            );
+    }
+
+
+    let xml =
+
+        '<?xml version="1.0"?>' +
+
+        '<Workbook ' +
+
+        'xmlns="urn:schemas-microsoft-com:office:spreadsheet" ' +
+
+        'xmlns:o="urn:schemas-microsoft-com:office:office" ' +
+
+        'xmlns:x="urn:schemas-microsoft-com:office:excel" ' +
+
+        'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">' +
+
+        '<Styles>' +
+
+        '<Style ss:ID="Header">' +
+
+        '<Font ss:Bold="1"/>' +
+
+        '<Interior ss:Color="#E8F0F5" Pattern="Solid"/>' +
+
+        '</Style>' +
+
+        '</Styles>' +
+
+        '<Worksheet ss:Name="Fire_24H">' +
+
+        '<Table>';
+
+
+    /* هدر */
+
+    xml +=
+        '<Row>';
+
+
+    headers.forEach(
+        function(header) {
+
+            xml +=
+
+                '<Cell ss:StyleID="Header">' +
+
+                '<Data ss:Type="String">' +
+
+                escapeXml(
+                    header
+                ) +
+
+                '</Data>' +
+
+                '</Cell>';
+        }
+    );
+
+
+    xml +=
+        '</Row>';
+
+
+    /* داده */
+
+    list.forEach(
+        function(fire) {
+
+            xml +=
+                '<Row>';
+
+
+            headers.forEach(
+                function(header) {
+
+                    const value =
+                        fire[header] !== undefined
+                        &&
+                        fire[header] !== null
+
+                        ?
+
+                        fire[header]
+
+                        :
+
+                        "";
+
+
+                    xml +=
+
+                        '<Cell>' +
+
+                        '<Data ss:Type="String">' +
+
+                        escapeXml(
+                            value
+                        ) +
+
+                        '</Data>' +
+
+                        '</Cell>';
+                }
+            );
+
+
+            xml +=
+                '</Row>';
+        }
+    );
+
+
+    xml +=
+
+        '</Table>' +
+
+        '</Worksheet>' +
+
+        '</Workbook>';
+
+
+    const blob =
+        new Blob(
+            [xml],
+            {
+                type:
+                    "application/vnd.ms-excel"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href =
+        url;
+
+
+    const now =
+        new Date();
+
+
+    const year =
+        now.getFullYear();
+
+
+    const month =
+        String(
+            now.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const day =
+        String(
+            now.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const hour =
+        String(
+            now.getHours()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const minute =
+        String(
+            now.getMinutes()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    link.download =
+
+        "fires_24h_"
+        +
+        year
+        +
+        month
+        +
+        day
+        +
+        "_"
+        +
+        hour
+        +
+        minute
+        +
+        ".xls";
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    document.body.removeChild(
+        link
+    );
+
+
+    setTimeout(
+        function() {
+
+            URL.revokeObjectURL(
+                url
+            );
+
+        },
+        1000
+    );
+}
+
+
+/* =====================================================
+   EXCEL BUTTON
 ===================================================== */
 
 document
     .getElementById(
-        "refreshButton"
+        "excel24Button"
     )
     .addEventListener(
         "click",
         function() {
 
-            location.reload();
+            export24HoursToExcel();
         }
     );
 
@@ -3293,7 +3635,24 @@ if (
 
 
 /* =====================================================
-   TIMER
+   REFRESH
+===================================================== */
+
+document
+    .getElementById(
+        "refreshButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            location.reload();
+        }
+    );
+
+
+/* =====================================================
+   TIMERS
 ===================================================== */
 
 setInterval(
@@ -3314,10 +3673,7 @@ setInterval(
 
 async function initialize() {
 
-
-    /*
-       ۱. مرز
-    */
+    /* 1. مرز */
 
     try {
 
@@ -3334,9 +3690,7 @@ async function initialize() {
     }
 
 
-    /*
-       ۲. آرشیو
-    */
+    /* 2. آرشیو */
 
     try {
 
@@ -3353,9 +3707,7 @@ async function initialize() {
     }
 
 
-    /*
-       ۳. داده‌ها
-    */
+    /* 3. داده‌ها */
 
     try {
 
@@ -3372,28 +3724,21 @@ async function initialize() {
     }
 
 
-    /*
-       ۴. فیلتر پیش‌فرض
-    */
+    /* 4. پیش‌فرض ۲۴ ساعت */
 
     applyMode(
         "24h"
     );
 
 
-    /*
-       ۵. آخرین داده FIRMS
-    */
+    /* 5. زمان آخرین دریافت داده */
 
     updateFirmsAge();
 
 
-    /*
-       ۶. آخرین به‌روزرسانی سامانه
-    */
+    /* 6. زمان آخرین اجرای سامانه */
 
     loadUpdateInfo();
-
 }
 
 
@@ -3406,41 +3751,25 @@ initialize();
 </script>
 
 </body>
-
 </html>
 ```
 
-### مرحله ۲ — کاری که انجام بده
+### بعد از جایگزینی
 
-فقط:
+فقط این چهار کار را انجام بده:
 
-**`index.html` → کل محتوای قبلی را پاک کن → کد بالا را Paste کن → Commit changes**
+**۱.** `index.html` را کامل جایگزین کن.
+**۲.** `Commit changes` بزن.
+**۳.** `Deploy Fars Fire Sentinel` را اجرا کن و سبز شدنش را ببین.
+**۴.** سایت را با `Ctrl + F5` باز کن.
 
-بعد:
+در این نسخه دکمه **📊 گزارش Excel** حذف نشده و **پنل پایین سمت راست هم سر جای خودش مانده**.
 
-**Actions → Deploy Fars Fire Sentinel → اجرا تا سبز شود.**
-
-### نتیجه‌ای که باید ببینی
-
-بالای سمت راست:
-
-```text
-رخدادهای شناسایی‌شده
-72 رخداد
-
-🔥 حریق‌های ۲۴ ساعت گذشته
-📅 حریق‌های ۵ روز گذشته
-```
-
-و **پایین سمت راست، همان جای قبلی**:
+داخل پنل پایین باید دقیقاً این دو خط را ببینی:
 
 ```text
-وضعیت به‌روزرسانی
-
-آخرین داده FIRMS: ۲ ساعت و ۱۸ دقیقه پیش
-آخرین به‌روزرسانی سامانه: ۱۷ دقیقه پیش
+آخرین دریافت داده FIRMS: ...
+آخرین به‌روزرسانی سامانه: ...
 ```
 
-عدد «رخدادهای شناسایی‌شده» هم با **همان فیلتر ۲۴ ساعته‌ای که نقاط روی نقشه را تعیین می‌کند** محاسبه می‌شود؛ بنابراین نباید بین عدد روی سایت و تعداد رکوردهای نمایش‌داده‌شده اختلاف منطقی داشته باشیم.
-
-نکته مهم: «آخرین داده FIRMS» در این نسخه یعنی **زمان جدیدترین رخداد ماهواره‌ای موجود در داده‌ای که سایت دریافت کرده است**، نه زمان انتشار آن رکورد در سرور NASA. این تفاوت مهم است؛ برای زمان واقعی انتشار، باید `update_fires.py` نیز تغییر کند. NASA برای داده‌های FIRMS بین زمان تشخیص ماهواره‌ای و زمان در دسترس قرار گرفتن محصول تفاوت قائل می‌شود.
+و تعداد رخدادهای ۲۴ ساعت هم با همان فیلتر نقشه محاسبه می‌شود.
