@@ -2,17 +2,10 @@
 <html lang="fa" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>
-سامانه پایش برخط حریق
-</title>
+<title>سامانه پایش برخط حریق</title>
 
 <meta
     name="description"
@@ -44,16 +37,9 @@ body {
 }
 
 body {
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-
-    background:
-        #eef2f5;
-
-    color:
-        #263238;
+    font-family: Tahoma, Arial, sans-serif;
+    background: #eef2f5;
+    color: #263238;
 }
 
 
@@ -62,9 +48,7 @@ body {
 ===================================================== */
 
 header {
-
-    height:
-        74px;
+    height: 74px;
 
     background:
         linear-gradient(
@@ -76,51 +60,28 @@ header {
     box-shadow:
         0 2px 12px rgba(0,0,0,.18);
 
-    position:
-        relative;
-
-    z-index:
-        5000;
+    position: relative;
+    z-index: 5000;
 }
 
 .header-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
 
-    width:
-        100%;
-
-    height:
-        100%;
-
-    position:
-        relative;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-
 .title {
-
-    width:
-        100%;
-
-    text-align:
-        center;
-
-    padding:
-        0 100px;
+    width: 100%;
+    text-align: center;
+    padding: 0 100px;
 }
 
 .title h1 {
-
-    margin:
-        0;
+    margin: 0;
 
     font-family:
         "B Titr",
@@ -128,26 +89,15 @@ header {
         Arial,
         sans-serif;
 
-    font-size:
-        23px;
-
-    line-height:
-        1.5;
-
-    color:
-        #ffffff;
+    font-size: 23px;
+    line-height: 1.5;
+    color: #ffffff;
 }
 
 .title p {
-
-    margin:
-        2px 0 0;
-
-    font-size:
-        10px;
-
-    color:
-        rgba(255,255,255,.9);
+    margin: 2px 0 0;
+    font-size: 10px;
+    color: rgba(255,255,255,.9);
 }
 
 
@@ -156,51 +106,32 @@ header {
 ===================================================== */
 
 .header-buttons {
+    position: absolute;
 
-    position:
-        absolute;
+    right: 15px;
+    top: 50%;
 
-    right:
-        15px;
+    transform: translateY(-50%);
 
-    top:
-        50%;
-
-    transform:
-        translateY(-50%);
-
-    display:
-        flex;
-
-    gap:
-        6px;
+    display: flex;
+    gap: 6px;
 }
 
 .header-button {
+    width: 34px;
+    height: 34px;
 
-    width:
-        34px;
-
-    height:
-        34px;
-
-    border:
-        none;
-
-    border-radius:
-        8px;
+    border: none;
+    border-radius: 8px;
 
     background:
         rgba(255,255,255,.18);
 
-    color:
-        #ffffff;
+    color: #ffffff;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
-    font-size:
-        17px;
+    font-size: 17px;
 }
 
 
@@ -209,27 +140,15 @@ header {
 ===================================================== */
 
 #map {
+    position: absolute;
 
-    position:
-        absolute;
+    top: 84px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
 
-    top:
-        84px;
-
-    left:
-        10px;
-
-    right:
-        10px;
-
-    bottom:
-        10px;
-
-    border-radius:
-        12px;
-
-    overflow:
-        hidden;
+    border-radius: 12px;
+    overflow: hidden;
 
     box-shadow:
         0 5px 20px rgba(0,0,0,.13);
@@ -244,24 +163,16 @@ header {
 ===================================================== */
 
 .mode-panel {
+    position: absolute;
 
-    position:
-        absolute;
+    top: 95px;
+    right: 22px;
 
-    top:
-        95px;
+    width: 190px;
 
-    right:
-        22px;
+    z-index: 4000;
 
-    width:
-        190px;
-
-    z-index:
-        4000;
-
-    padding:
-        7px;
+    padding: 7px;
 
     background:
         rgba(255,255,255,.96);
@@ -269,61 +180,43 @@ header {
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        10px;
+    border-radius: 10px;
 
     box-shadow:
         0 5px 16px rgba(0,0,0,.18);
 }
 
 .mode-button {
+    width: 100%;
 
-    width:
-        100%;
+    border: none;
 
-    border:
-        none;
+    background: #f1f3f5;
+    color: #344047;
 
-    background:
-        #f1f3f5;
+    border-radius: 7px;
 
-    color:
-        #344047;
+    padding: 9px 10px;
+    margin-bottom: 5px;
 
-    border-radius:
-        7px;
-
-    padding:
-        9px 10px;
-
-    margin-bottom:
-        5px;
-
-    text-align:
-        right;
+    text-align: right;
 
     font-family:
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size:
-        11px;
+    font-size: 11px;
+    font-weight: bold;
 
-    font-weight:
-        bold;
-
-    cursor:
-        pointer;
+    cursor: pointer;
 }
 
 .mode-button:last-child {
-    margin-bottom:
-        0;
+    margin-bottom: 0;
 }
 
 .mode-button.active {
-
     background:
         linear-gradient(
             135deg,
@@ -331,8 +224,7 @@ header {
             #c84c00
         );
 
-    color:
-        #ffffff;
+    color: #ffffff;
 }
 
 
@@ -341,33 +233,22 @@ header {
 ===================================================== */
 
 .legend-box {
+    position: absolute;
 
-    position:
-        absolute;
-
-    top:
-        95px;
-
-    left:
-        50%;
+    top: 95px;
+    left: 50%;
 
     transform:
         translateX(-50%);
 
-    z-index:
-        4000;
+    z-index: 4000;
 
-    display:
-        flex;
+    display: flex;
+    align-items: center;
 
-    align-items:
-        center;
+    gap: 14px;
 
-    gap:
-        14px;
-
-    padding:
-        7px 12px;
+    padding: 7px 12px;
 
     background:
         rgba(255,255,255,.96);
@@ -375,79 +256,53 @@ header {
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
     box-shadow:
         0 4px 14px rgba(0,0,0,.16);
 
-    font-size:
-        10px;
+    font-size: 10px;
 
-    white-space:
-        nowrap;
+    white-space: nowrap;
 }
 
 .legend-title {
-    font-weight:
-        bold;
+    font-weight: bold;
 }
 
 .legend-item {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .legend-dot {
+    width: 10px;
+    height: 10px;
 
-    width:
-        10px;
+    border-radius: 50%;
 
-    height:
-        10px;
-
-    border-radius:
-        50%;
-
-    border:
-        1px solid #555;
+    border: 1px solid #555;
 }
 
 
 /* =====================================================
    UPDATE TIMER
-   پایین سمت راست، کاملاً چسبیده به گوشه
 ===================================================== */
 
 .update-box {
+    position: absolute;
 
-    position:
-        absolute;
+    right: 10px;
+    bottom: 10px;
 
-    right:
-        10px;
+    z-index: 4000;
 
-    bottom:
-        10px;
+    width: 270px;
 
-    z-index:
-        4000;
+    padding: 8px 12px;
 
-    width:
-        270px;
-
-    padding:
-        8px 12px;
-
-    text-align:
-        center;
+    text-align: center;
 
     background:
         rgba(255,255,255,.96);
@@ -455,38 +310,23 @@ header {
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
     box-shadow:
         0 5px 16px rgba(0,0,0,.18);
 }
 
 .update-title {
-
-    font-size:
-        10px;
-
-    color:
-        #6b7780;
-
-    margin-bottom:
-        3px;
+    font-size: 10px;
+    color: #6b7780;
+    margin-bottom: 3px;
 }
 
 #updateInfo {
-
-    font-size:
-        11px;
-
-    font-weight:
-        bold;
-
-    color:
-        #c45108;
-
-    line-height:
-        1.7;
+    font-size: 11px;
+    font-weight: bold;
+    color: #c45108;
+    line-height: 1.7;
 }
 
 
@@ -495,24 +335,16 @@ header {
 ===================================================== */
 
 .slider-box {
+    position: absolute;
 
-    position:
-        absolute;
+    left: 22px;
+    bottom: 20px;
 
-    left:
-        22px;
+    z-index: 4000;
 
-    bottom:
-        20px;
+    width: 310px;
 
-    z-index:
-        4000;
-
-    width:
-        310px;
-
-    padding:
-        10px 14px;
+    padding: 10px 14px;
 
     background:
         rgba(255,255,255,.96);
@@ -520,59 +352,36 @@ header {
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
     box-shadow:
         0 5px 16px rgba(0,0,0,.18);
 }
 
 .slider-head {
+    display: flex;
 
-    display:
-        flex;
+    align-items: center;
+    justify-content: space-between;
 
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    margin-bottom:
-        9px;
+    margin-bottom: 9px;
 }
 
 .slider-title {
-
-    font-size:
-        12px;
-
-    font-weight:
-        bold;
-
-    color:
-        #455a64;
+    font-size: 12px;
+    font-weight: bold;
+    color: #455a64;
 }
 
 .slider-date {
-
-    font-size:
-        11px;
-
-    font-weight:
-        bold;
-
-    color:
-        #c45108;
+    font-size: 11px;
+    font-weight: bold;
+    color: #c45108;
 }
 
 #archiveSlider {
-
-    width:
-        100%;
-
-    height:
-        6px;
+    width: 100%;
+    height: 6px;
 }
 
 
@@ -581,52 +390,36 @@ header {
 ===================================================== */
 
 .fire-popup {
+    width: 260px;
 
-    width:
-        260px;
-
-    direction:
-        rtl;
-
-    text-align:
-        right;
+    direction: rtl;
+    text-align: right;
 
     font-family:
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size:
-        12px;
-
-    line-height:
-        1.9;
+    font-size: 12px;
+    line-height: 1.9;
 }
 
 .fire-popup h3 {
+    margin: 0 0 7px;
 
-    margin:
-        0 0 7px;
-
-    color:
-        #d35400;
-
-    font-size:
-        15px;
+    color: #d35400;
+    font-size: 15px;
 }
 
 .fire-popup .row {
-
     border-bottom:
         1px solid #edf0f2;
 
-    padding:
-        2px 0;
+    padding: 2px 0;
 }
 
 .fire-popup .label {
-    font-weight:
-        bold;
+    font-weight: bold;
 }
 
 
@@ -635,22 +428,13 @@ header {
 ===================================================== */
 
 body.night {
-    background:
-        #121820;
+    background: #121820;
 }
 
-body.night
-.mode-panel,
-
-body.night
-.legend-box,
-
-body.night
-.update-box,
-
-body.night
-.slider-box {
-
+body.night .mode-panel,
+body.night .legend-box,
+body.night .update-box,
+body.night .slider-box {
     background:
         rgba(26,32,40,.96);
 
@@ -661,19 +445,12 @@ body.night
         #e8edf1;
 }
 
-body.night
-.mode-button {
-
-    background:
-        #252d36;
-
-    color:
-        #dbe3e8;
+body.night .mode-button {
+    background: #252d36;
+    color: #dbe3e8;
 }
 
-body.night
-.mode-button.active {
-
+body.night .mode-button.active {
     background:
         linear-gradient(
             135deg,
@@ -681,28 +458,17 @@ body.night
             #c84c00
         );
 
-    color:
-        #ffffff;
+    color: #ffffff;
 }
 
-body.night
-.slider-title,
-
-body.night
-.legend-title {
-
-    color:
-        #dbe3e8;
+body.night .slider-title,
+body.night .legend-title {
+    color: #dbe3e8;
 }
 
-body.night
-.slider-date,
-
-body.night
-#updateInfo {
-
-    color:
-        #ffd08a;
+body.night .slider-date,
+body.night #updateInfo {
+    color: #ffd08a;
 }
 
 
@@ -713,222 +479,125 @@ body.night
 @media (max-width: 700px) {
 
     header {
-
-        height:
-            80px;
+        height: 80px;
     }
 
     .title {
-
-        padding:
-            0 65px;
+        padding: 0 65px;
     }
 
     .title h1 {
-
-        font-size:
-            15px;
+        font-size: 15px;
     }
 
     .title p {
-        display:
-            none;
+        display: none;
     }
 
     .header-buttons {
-
-        right:
-            8px;
+        right: 8px;
     }
 
     .header-button {
-
-        width:
-            30px;
-
-        height:
-            30px;
-
-        font-size:
-            14px;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
     }
-
 
     #map {
+        top: 88px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
 
-        top:
-            88px;
-
-        left:
-            5px;
-
-        right:
-            5px;
-
-        bottom:
-            5px;
-
-        border-radius:
-            9px;
+        border-radius: 9px;
     }
 
-
     .mode-panel {
-
-        top:
-            99px;
-
-        right:
-            12px;
-
-        width:
-            155px;
+        top: 99px;
+        right: 12px;
+        width: 155px;
     }
 
     .mode-button {
-
-        font-size:
-            9px;
-
-        padding:
-            8px;
+        font-size: 9px;
+        padding: 8px;
     }
 
-
     .legend-box {
+        top: 99px;
+        left: 10px;
 
-        top:
-            99px;
-
-        left:
-            10px;
-
-        transform:
-            none;
+        transform: none;
 
         max-width:
             calc(100% - 185px);
 
-        white-space:
-            normal;
+        white-space: normal;
 
-        flex-wrap:
-            wrap;
+        flex-wrap: wrap;
+        justify-content: center;
 
-        justify-content:
-            center;
+        gap: 7px;
 
-        gap:
-            7px;
+        font-size: 8px;
 
-        font-size:
-            8px;
-
-        padding:
-            5px 7px;
+        padding: 5px 7px;
     }
 
     .legend-title {
-
-        width:
-            100%;
-
-        text-align:
-            center;
+        width: 100%;
+        text-align: center;
     }
 
-
-    /* تایمر کاملاً پایین راست */
-
     .update-box {
+        right: 5px;
+        bottom: 5px;
 
-        right:
-            5px;
+        width: 215px;
+        min-width: 0;
 
-        bottom:
-            5px;
-
-        width:
-            215px;
-
-        min-width:
-            0;
-
-        padding:
-            7px 8px;
+        padding: 7px 8px;
     }
 
     .update-title {
-
-        font-size:
-            8px;
+        font-size: 8px;
     }
 
     #updateInfo {
-
-        font-size:
-            9px;
-
-        line-height:
-            1.6;
+        font-size: 9px;
+        line-height: 1.6;
     }
 
-
-    /* اسلایدر */
-
     .slider-box {
+        left: 5px;
+        bottom: 5px;
 
-        left:
-            5px;
+        width: 215px;
+        min-width: 0;
 
-        bottom:
-            5px;
-
-        width:
-            215px;
-
-        min-width:
-            0;
-
-        padding:
-            8px 10px;
+        padding: 8px 10px;
     }
 
     .slider-head {
+        display: block;
+        text-align: center;
 
-        display:
-            block;
-
-        text-align:
-            center;
-
-        margin-bottom:
-            7px;
+        margin-bottom: 7px;
     }
 
     .slider-title {
-
-        font-size:
-            10px;
+        font-size: 10px;
     }
 
     .slider-date {
-
-        margin-top:
-            3px;
-
-        font-size:
-            10px;
+        margin-top: 3px;
+        font-size: 10px;
     }
 
-
     .fire-popup {
-
-        width:
-            235px;
-
-        font-size:
-            10px;
+        width: 235px;
+        font-size: 10px;
     }
 }
 
@@ -939,6 +608,10 @@ body.night
 
 <body>
 
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header>
 
@@ -982,24 +655,26 @@ body.night
 </header>
 
 
+<!-- =====================================================
+     MAP
+===================================================== -->
+
 <div id="map"></div>
 
+
+<!-- =====================================================
+     MODES
+===================================================== -->
 
 <div class="mode-panel">
 
     <button
         class="mode-button active"
-        data-mode="today"
-    >
-        🔥 حریق‌های امروز
-    </button>
-
-    <button
-        class="mode-button"
         data-mode="24h"
     >
-        ⏱ حریق‌های ۲۴ ساعت گذشته
+        🔥 حریق‌های ۲۴ ساعت گذشته
     </button>
+
 
     <button
         class="mode-button"
@@ -1011,11 +686,16 @@ body.night
 </div>
 
 
+<!-- =====================================================
+     LEGEND
+===================================================== -->
+
 <div class="legend-box">
 
     <span class="legend-title">
         راهنما
     </span>
+
 
     <span class="legend-item">
 
@@ -1027,6 +707,7 @@ body.night
         VIIRS
 
     </span>
+
 
     <span class="legend-item">
 
@@ -1042,6 +723,10 @@ body.night
 </div>
 
 
+<!-- =====================================================
+     UPDATE
+===================================================== -->
+
 <div class="update-box">
 
     <div class="update-title">
@@ -1054,6 +739,10 @@ body.night
 
 </div>
 
+
+<!-- =====================================================
+     SLIDER
+===================================================== -->
 
 <div class="slider-box">
 
@@ -1071,6 +760,7 @@ body.night
         </span>
 
     </div>
+
 
     <input
         id="archiveSlider"
@@ -1115,9 +805,7 @@ const lightMap =
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
-            maxZoom:
-                18,
-
+            maxZoom: 18,
             attribution:
                 "© OpenStreetMap contributors"
         }
@@ -1128,9 +816,7 @@ const darkMap =
     L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
         {
-            maxZoom:
-                19,
-
+            maxZoom: 19,
             attribution:
                 "© OpenStreetMap © CARTO"
         }
@@ -1163,7 +849,7 @@ map.getPane(
 
 
 map.setView(
-    [29.6,52.5],
+    [29.6, 52.5],
     8
 );
 
@@ -1172,17 +858,10 @@ map.setView(
    VARIABLES
 ===================================================== */
 
-let boundaryLayer =
-    null;
-
-let archiveDates =
-    [];
-
-let fires =
-    [];
-
-let updateTimestamp =
-    null;
+let boundaryLayer = null;
+let archiveDates = [];
+let fires = [];
+let updateTimestamp = null;
 
 
 /* =====================================================
@@ -1191,21 +870,16 @@ let updateTimestamp =
 
 const fireLayer =
     L.layerGroup()
-    .addTo(
-        map
-    );
+    .addTo(map);
 
 
 /* =====================================================
    PERSIAN DIGITS
 ===================================================== */
 
-function fa(
-    value
-) {
+function fa(value) {
 
     return String(value)
-
         .replace(/0/g,"۰")
         .replace(/1/g,"۱")
         .replace(/2/g,"۲")
@@ -1220,7 +894,7 @@ function fa(
 
 
 /* =====================================================
-   GREGORIAN → JALALI
+   GREGORIAN TO JALALI
 ===================================================== */
 
 function gregorianToJalali(
@@ -1236,81 +910,51 @@ function gregorianToJalali(
 
     let jy;
 
-    if (
-        gy > 1600
-    ) {
+    if (gy > 1600) {
 
-        jy =
-            979;
-
-        gy -=
-            1600;
+        jy = 979;
+        gy -= 1600;
 
     } else {
 
-        jy =
-            0;
-
-        gy -=
-            621;
+        jy = 0;
+        gy -= 621;
     }
 
     const gy2 =
         gm > 2
-        ?
-        gy + 1
-        :
-        gy;
+        ? gy + 1
+        : gy;
 
     let days =
         365 * gy
         +
-        Math.floor(
-            (gy2 + 3) / 4
-        )
+        Math.floor((gy2 + 3) / 4)
         -
-        Math.floor(
-            (gy2 + 99) / 100
-        )
+        Math.floor((gy2 + 99) / 100)
         +
-        Math.floor(
-            (gy2 + 399) / 400
-        )
+        Math.floor((gy2 + 399) / 400)
         -
         80
         +
         gd
         +
-        gdm[
-            gm - 1
-        ];
+        gdm[gm - 1];
 
     jy +=
-        33 *
-        Math.floor(
-            days / 12053
-        );
+        33 * Math.floor(days / 12053);
 
-    days %=
-        12053;
+    days %= 12053;
 
     jy +=
-        4 *
-        Math.floor(
-            days / 1461
-        );
+        4 * Math.floor(days / 1461);
 
-    days %=
-        1461;
+    days %= 1461;
 
-    if (
-        days > 365
-    ) {
+    if (days > 365) {
 
         jy +=
-            Math.floor(
-                (days - 1) / 365
-            );
+            Math.floor((days - 1) / 365);
 
         days =
             (days - 1) % 365;
@@ -1319,15 +963,11 @@ function gregorianToJalali(
     let jm;
     let jd;
 
-    if (
-        days < 186
-    ) {
+    if (days < 186) {
 
         jm =
             1 +
-            Math.floor(
-                days / 31
-            );
+            Math.floor(days / 31);
 
         jd =
             1 +
@@ -1364,48 +1004,27 @@ function shamsiDate(
     dateString
 ) {
 
-    if (
-        !dateString
-    ) {
-
+    if (!dateString) {
         return "---";
     }
 
     const p =
         String(
             dateString
-        ).split(
-            "-"
-        );
+        ).split("-");
 
-    if (
-        p.length !== 3
-    ) {
-
+    if (p.length !== 3) {
         return dateString;
     }
 
     const j =
         gregorianToJalali(
-
-            parseInt(
-                p[0],
-                10
-            ),
-
-            parseInt(
-                p[1],
-                10
-            ),
-
-            parseInt(
-                p[2],
-                10
-            )
+            parseInt(p[0],10),
+            parseInt(p[1],10),
+            parseInt(p[2],10)
         );
 
     const months = [
-
         "فروردین",
         "اردیبهشت",
         "خرداد",
@@ -1421,22 +1040,15 @@ function shamsiDate(
     ];
 
     return (
-
-        fa(
-            j[2]
-        )
+        fa(j[2])
         +
         " "
         +
-        months[
-            j[1] - 1
-        ]
+        months[j[1] - 1]
         +
         " "
         +
-        fa(
-            j[0]
-        )
+        fa(j[0])
     );
 }
 
@@ -1458,9 +1070,7 @@ async function getText(
             Date.now()
         );
 
-    if (
-        !response.ok
-    ) {
+    if (!response.ok) {
 
         throw new Error(
             "فایل دریافت نشد: "
@@ -1489,10 +1099,7 @@ function parseCSV(
         )
         .trim();
 
-    if (
-        !text
-    ) {
-
+    if (!text) {
         return [];
     }
 
@@ -1501,10 +1108,7 @@ function parseCSV(
             /\r?\n/
         );
 
-    if (
-        lines.length < 2
-    ) {
-
+    if (lines.length < 2) {
         return [];
     }
 
@@ -1516,8 +1120,7 @@ function parseCSV(
                 h.trim().toLowerCase()
         );
 
-    const result =
-        [];
+    const result = [];
 
     for (
         let i = 1;
@@ -1525,18 +1128,14 @@ function parseCSV(
         i++
     ) {
 
-        if (
-            !lines[i].trim()
-        ) {
-
+        if (!lines[i].trim()) {
             continue;
         }
 
         const values =
             lines[i].split(",");
 
-        const row =
-            {};
+        const row = {};
 
         for (
             let j = 0;
@@ -1544,19 +1143,13 @@ function parseCSV(
             j++
         ) {
 
-            row[
-                headers[j]
-            ] =
+            row[headers[j]] =
                 values[j] !== undefined
-                ?
-                values[j].trim()
-                :
-                "";
+                ? values[j].trim()
+                : "";
         }
 
-        result.push(
-            row
-        );
+        result.push(row);
     }
 
     return result;
@@ -1595,7 +1188,6 @@ async function loadBoundary() {
             L.geoJSON(
                 data,
                 {
-
                     pane:
                         "farsPane",
 
@@ -1622,9 +1214,7 @@ async function loadBoundary() {
                         }
                 }
             )
-            .addTo(
-                map
-            );
+            .addTo(map);
 
         const bounds =
             boundaryLayer
@@ -1638,17 +1228,12 @@ async function loadBoundary() {
                 bounds,
                 {
                     padding:
-                        [
-                            20,
-                            20
-                        ]
+                        [20,20]
                 }
             );
         }
 
-    } catch (
-        error
-    ) {
+    } catch (error) {
 
         console.error(
             "خطای مرز:",
@@ -1680,9 +1265,7 @@ async function loadArchiveIndex() {
             item =>
                 item.date
         )
-        .filter(
-            Boolean
-        )
+        .filter(Boolean)
         .sort();
 
     const slider =
@@ -1690,8 +1273,7 @@ async function loadArchiveIndex() {
             "archiveSlider"
         );
 
-    slider.min =
-        0;
+    slider.min = 0;
 
     slider.max =
         Math.max(
@@ -1715,8 +1297,7 @@ async function loadArchiveIndex() {
 
 async function loadArchives() {
 
-    fires =
-        [];
+    fires = [];
 
     for (
         const date
@@ -1746,15 +1327,11 @@ async function loadArchives() {
                     row.archive_date =
                         date;
 
-                    fires.push(
-                        row
-                    );
+                    fires.push(row);
                 }
             );
 
-        } catch (
-            error
-        ) {
+        } catch (error) {
 
             console.warn(
                 "آرشیو پیدا نشد:",
@@ -1762,34 +1339,6 @@ async function loadArchives() {
             );
         }
     }
-}
-
-
-/* =====================================================
-   TODAY IRAN
-===================================================== */
-
-function todayIranDate() {
-
-    return new Intl.DateTimeFormat(
-        "en-CA",
-        {
-
-            timeZone:
-                "Asia/Tehran",
-
-            year:
-                "numeric",
-
-            month:
-                "2-digit",
-
-            day:
-                "2-digit"
-        }
-    ).format(
-        new Date()
-    );
 }
 
 
@@ -1811,9 +1360,7 @@ function fireUTCDateTime(
     }
 
     const parts =
-        fire.acq_date.split(
-            "-"
-        );
+        fire.acq_date.split("-");
 
     const time =
         String(
@@ -1848,26 +1395,11 @@ function fireUTCDateTime(
 
     return new Date(
         Date.UTC(
-
-            parseInt(
-                parts[0],
-                10
-            ),
-
-            parseInt(
-                parts[1],
-                10
-            ) - 1,
-
-            parseInt(
-                parts[2],
-                10
-            ),
-
+            parseInt(parts[0],10),
+            parseInt(parts[1],10) - 1,
+            parseInt(parts[2],10),
             hour,
-
             minute,
-
             0
         )
     );
@@ -1875,7 +1407,7 @@ function fireUTCDateTime(
 
 
 /* =====================================================
-   IRAN TIME 24H
+   IRAN TIME
 ===================================================== */
 
 function iranTime(
@@ -1896,10 +1428,7 @@ function iranTime(
             fire
         );
 
-    if (
-        !utc
-    ) {
-
+    if (!utc) {
         return "---";
     }
 
@@ -1907,19 +1436,13 @@ function iranTime(
         new Date(
             utc.getTime()
             +
-            (
-                3.5
-                *
-                60
-                *
-                60
-                *
-                1000
-            )
+            3.5 *
+            60 *
+            60 *
+            1000
         );
 
     return (
-
         String(
             iran.getUTCHours()
         ).padStart(
@@ -1940,7 +1463,7 @@ function iranTime(
 
 
 /* =====================================================
-   FORMAT 24H
+   FORMAT 24 HOUR
 ===================================================== */
 
 function format24(
@@ -1948,9 +1471,7 @@ function format24(
 ) {
 
     const t =
-        String(
-            value
-        )
+        String(value)
         .replace(
             /\D/g,
             ""
@@ -1978,45 +1499,26 @@ function format24(
             10
         );
 
-    if (
-        hour > 23
-    ) {
-
-        hour %=
-            24;
+    if (hour > 23) {
+        hour %= 24;
     }
 
-    if (
-        minute > 59
-    ) {
-
-        minute =
-            0;
+    if (minute > 59) {
+        minute = 0;
     }
 
     return (
-
-        String(
-            hour
-        ).padStart(
-            2,
-            "0"
-        )
+        String(hour).padStart(2,"0")
         +
         ":"
         +
-        String(
-            minute
-        ).padStart(
-            2,
-            "0"
-        )
+        String(minute).padStart(2,"0")
     );
 }
 
 
 /* =====================================================
-   DAY / NIGHT / DAWN
+   TIME LABEL
 ===================================================== */
 
 function getDayNightLabel(
@@ -2029,8 +1531,7 @@ function getDayNightLabel(
         );
 
     if (
-        !time
-        ||
+        !time ||
         time === "---"
     ) {
 
@@ -2046,17 +1547,12 @@ function getDayNightLabel(
             10
         );
 
-    /*
-       00:00 تا 05:59 = بامداد
-    */
-
     if (
         hour < 6
     ) {
 
         return "بامداد";
     }
-
 
     const code =
         String(
@@ -2067,7 +1563,6 @@ function getDayNightLabel(
         .trim()
         .toUpperCase();
 
-
     if (
         code === "D"
     ) {
@@ -2075,14 +1570,12 @@ function getDayNightLabel(
         return "روز";
     }
 
-
     if (
         code === "N"
     ) {
 
         return "شب";
     }
-
 
     return "---";
 }
@@ -2100,44 +1593,9 @@ function filteredFires(
         new Date();
 
 
-    if (
-        mode === "today"
-    ) {
-
-        const today =
-            todayIranDate();
-
-        return fires.filter(
-            fire => {
-
-                const date =
-                    fire.iran_date
-                    ||
-                    fire.archive_date;
-
-                const time =
-                    fireUTCDateTime(
-                        fire
-                    );
-
-                return (
-
-                    date ===
-                    today
-
-                    &&
-
-                    time
-
-                    &&
-
-                    time <=
-                    now
-                );
-            }
-        );
-    }
-
+    /* =================================================
+       24 HOURS
+    ================================================= */
 
     if (
         mode === "24h"
@@ -2162,7 +1620,6 @@ function filteredFires(
                     );
 
                 return (
-
                     time
                     &&
                     time >= start
@@ -2173,6 +1630,10 @@ function filteredFires(
         );
     }
 
+
+    /* =================================================
+       5 DAYS
+    ================================================= */
 
     if (
         mode === "5days"
@@ -2198,7 +1659,6 @@ function filteredFires(
                     );
 
                 return (
-
                     time
                     &&
                     time >= start
@@ -2246,7 +1706,6 @@ function showFires(
 
                 return;
             }
-
 
             const sensor =
                 String(
@@ -2370,6 +1829,7 @@ function popupContent(
         <span class="label">
             سنجنده:
         </span>
+
         ${fire.detected_sensor || fire.instrument || "---"}
     </div>
 
@@ -2378,6 +1838,7 @@ function popupContent(
         <span class="label">
             ماهواره:
         </span>
+
         ${fire.satellite || "---"}
     </div>
 
@@ -2386,6 +1847,7 @@ function popupContent(
         <span class="label">
             تاریخ ایران:
         </span>
+
         ${shamsiDate(date)}
     </div>
 
@@ -2394,6 +1856,7 @@ function popupContent(
         <span class="label">
             ساعت ایران:
         </span>
+
         ${time}
     </div>
 
@@ -2402,6 +1865,7 @@ function popupContent(
         <span class="label">
             زمان:
         </span>
+
         ${dayNight}
     </div>
 
@@ -2410,6 +1874,7 @@ function popupContent(
         <span class="label">
             تاریخ UTC:
         </span>
+
         ${fire.acq_date || "---"}
     </div>
 
@@ -2418,6 +1883,7 @@ function popupContent(
         <span class="label">
             ساعت UTC:
         </span>
+
         ${fire.acq_time || "---"}
     </div>
 
@@ -2426,6 +1892,7 @@ function popupContent(
         <span class="label">
             FRP:
         </span>
+
         ${fire.frp || "---"} MW
     </div>
 
@@ -2434,6 +1901,7 @@ function popupContent(
         <span class="label">
             Confidence:
         </span>
+
         ${fire.confidence || "---"}
     </div>
 
@@ -2442,6 +1910,7 @@ function popupContent(
         <span class="label">
             Brightness:
         </span>
+
         ${fire.brightness || "---"}
     </div>
 
@@ -2450,6 +1919,7 @@ function popupContent(
         <span class="label">
             مختصات:
         </span>
+
         ${coordinate(fire.latitude)}
         ,
         ${coordinate(fire.longitude)}
@@ -2474,16 +1944,9 @@ function coordinate(
             value
         );
 
-    if (
-        isNaN(number)
-    ) {
-
-        return "---";
-    }
-
-    return number.toFixed(
-        5
-    );
+    return isNaN(number)
+        ? "---"
+        : number.toFixed(5);
 }
 
 
@@ -2553,28 +2016,21 @@ function updateSliderDate() {
             "archiveSlider"
         );
 
-
     const index =
         parseInt(
             slider.value,
             10
         );
 
-
     const date =
-        archiveDates[
-            index
-        ];
-
+        archiveDates[index];
 
     document.getElementById(
         "sliderDate"
     ).innerText =
         date
         ?
-        shamsiDate(
-            date
-        )
+        shamsiDate(date)
         :
         "---";
 }
@@ -2598,12 +2054,8 @@ document
                     10
                 );
 
-
             const date =
-                archiveDates[
-                    index
-                ];
-
+                archiveDates[index];
 
             updateSliderDate();
 
@@ -2617,10 +2069,8 @@ document
                             ||
                             fire.archive_date;
 
-
                         return (
-                            fireDate
-                            ===
+                            fireDate ===
                             date
                         );
                     }
@@ -2635,7 +2085,7 @@ document
 
 
 /* =====================================================
-   NIGHT
+   NIGHT MODE
 ===================================================== */
 
 document
@@ -2650,16 +2100,13 @@ document
                 "night"
             );
 
-
             const night =
                 document.body.classList.contains(
                     "night"
                 );
 
 
-            if (
-                night
-            ) {
+            if (night) {
 
                 map.removeLayer(
                     lightMap
@@ -2706,9 +2153,7 @@ document
 if (
     localStorage.getItem(
         "fars-night"
-    )
-    ===
-    "1"
+    ) === "1"
 ) {
 
     document.body.classList.add(
@@ -2743,18 +2188,15 @@ async function loadUpdateInfo() {
                 UPDATE_INFO
             );
 
-
         const data =
             JSON.parse(
                 text
             );
 
-
         const timestamp =
             Number(
                 data.updated_at_timestamp
             );
-
 
         if (
             !Number.isFinite(
@@ -2767,10 +2209,8 @@ async function loadUpdateInfo() {
             );
         }
 
-
         updateTimestamp =
             timestamp * 1000;
-
 
         updateTimer();
 
@@ -2797,7 +2237,6 @@ function updateTimer() {
             "updateInfo"
         );
 
-
     if (
         !updateTimestamp
     ) {
@@ -2807,7 +2246,6 @@ function updateTimer() {
 
         return;
     }
-
 
     const totalSeconds =
         Math.max(
@@ -2823,33 +2261,26 @@ function updateTimer() {
             )
         );
 
-
     const minutes =
         Math.floor(
             totalSeconds / 60
         );
 
-
     const seconds =
         totalSeconds % 60;
-
 
     element.innerText =
 
         "آخرین به‌روزرسانی: "
 
         +
-        fa(
-            minutes
-        )
+        fa(minutes)
 
         +
         " دقیقه و "
 
         +
-        fa(
-            seconds
-        )
+        fa(seconds)
 
         +
         " ثانیه پیش";
@@ -2894,7 +2325,7 @@ async function initialize() {
     ) {
 
         console.error(
-            "Boundary:",
+            "مرز:",
             error
         );
     }
@@ -2930,8 +2361,10 @@ async function initialize() {
     }
 
 
+    /* پیش‌فرض: ۲۴ ساعت گذشته */
+
     applyMode(
-        "today"
+        "24h"
     );
 
 
