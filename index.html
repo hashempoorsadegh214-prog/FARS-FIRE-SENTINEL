@@ -1,12 +1,19 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>سامانه پایش برخط حریق</title>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+سامانه پایش برخط حریق
+</title>
 
 <meta
     name="description"
@@ -17,15 +24,6 @@
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 >
-
-<!-- =====================================================
-     SheetJS برای ساخت فایل Excel
-===================================================== -->
-
-<script
-    src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"
-></script>
-
 
 <style>
 
@@ -106,7 +104,6 @@ header {
     justify-content:
         center;
 }
-
 
 .title {
 
@@ -336,7 +333,6 @@ header {
 }
 
 .mode-button:last-child {
-
     margin-bottom:
         0;
 }
@@ -408,7 +404,6 @@ header {
 }
 
 .legend-title {
-
     font-weight:
         bold;
 }
@@ -644,18 +639,16 @@ header {
 }
 
 .fire-popup .label {
-
     font-weight:
         bold;
 }
 
 
 /* =====================================================
-   NIGHT
+   NIGHT MODE
 ===================================================== */
 
 body.night {
-
     background:
         #121820;
 }
@@ -734,29 +727,24 @@ body.night
 @media (max-width: 700px) {
 
     header {
-
         height:
             80px;
     }
 
     .title {
-
         padding:
             0 100px 0 70px;
     }
 
     .title h1 {
-
         font-size:
             15px;
     }
 
     .title p {
-
         display:
             none;
     }
-
 
     .header-buttons {
 
@@ -967,7 +955,6 @@ body.night
 
 <div class="header-inner">
 
-
     <div class="title">
 
         <h1>
@@ -983,12 +970,12 @@ body.night
 
     <div class="header-buttons">
 
-        <!-- گزارش Excel 24 ساعت -->
+        <!-- خروجی اکسل -->
 
         <button
             id="excel24Button"
             class="header-button"
-            title="خروجی اکسل حریق‌های ۲۴ ساعت گذشته"
+            title="گزارش Excel حریق‌های ۲۴ ساعت گذشته"
         >
             📊
         </button>
@@ -1201,10 +1188,6 @@ lightMap.addTo(
 );
 
 
-/* =====================================================
-   LAYER PANES
-===================================================== */
-
 map.createPane(
     "farsPane"
 );
@@ -1226,7 +1209,7 @@ map.getPane(
 
 
 map.setView(
-    [29.6, 52.5],
+    [29.6,52.5],
     8
 );
 
@@ -1271,7 +1254,6 @@ function fa(
 ) {
 
     return String(value)
-
         .replace(/0/g,"۰")
         .replace(/1/g,"۱")
         .replace(/2/g,"۲")
@@ -1302,81 +1284,48 @@ function gregorianToJalali(
 
     let jy;
 
-    if (
-        gy > 1600
-    ) {
-
-        jy =
-            979;
-
-        gy -=
-            1600;
-
+    if (gy > 1600) {
+        jy = 979;
+        gy -= 1600;
     } else {
-
-        jy =
-            0;
-
-        gy -=
-            621;
+        jy = 0;
+        gy -= 621;
     }
 
     const gy2 =
         gm > 2
-        ?
-        gy + 1
-        :
-        gy;
+        ? gy + 1
+        : gy;
 
     let days =
         365 * gy
         +
-        Math.floor(
-            (gy2 + 3) / 4
-        )
+        Math.floor((gy2 + 3) / 4)
         -
-        Math.floor(
-            (gy2 + 99) / 100
-        )
+        Math.floor((gy2 + 99) / 100)
         +
-        Math.floor(
-            (gy2 + 399) / 400
-        )
+        Math.floor((gy2 + 399) / 400)
         -
         80
         +
         gd
         +
-        gdm[
-            gm - 1
-        ];
+        gdm[gm - 1];
 
     jy +=
-        33 *
-        Math.floor(
-            days / 12053
-        );
+        33 * Math.floor(days / 12053);
 
-    days %=
-        12053;
+    days %= 12053;
 
     jy +=
-        4 *
-        Math.floor(
-            days / 1461
-        );
+        4 * Math.floor(days / 1461);
 
-    days %=
-        1461;
+    days %= 1461;
 
-    if (
-        days > 365
-    ) {
+    if (days > 365) {
 
         jy +=
-            Math.floor(
-                (days - 1) / 365
-            );
+            Math.floor((days - 1) / 365);
 
         days =
             (days - 1) % 365;
@@ -1385,15 +1334,11 @@ function gregorianToJalali(
     let jm;
     let jd;
 
-    if (
-        days < 186
-    ) {
+    if (days < 186) {
 
         jm =
             1 +
-            Math.floor(
-                days / 31
-            );
+            Math.floor(days / 31);
 
         jd =
             1 +
@@ -1430,48 +1375,27 @@ function shamsiDate(
     dateString
 ) {
 
-    if (
-        !dateString
-    ) {
-
+    if (!dateString) {
         return "---";
     }
 
     const p =
         String(
             dateString
-        ).split(
-            "-"
-        );
+        ).split("-");
 
-    if (
-        p.length !== 3
-    ) {
-
+    if (p.length !== 3) {
         return dateString;
     }
 
     const j =
         gregorianToJalali(
-
-            parseInt(
-                p[0],
-                10
-            ),
-
-            parseInt(
-                p[1],
-                10
-            ),
-
-            parseInt(
-                p[2],
-                10
-            )
+            parseInt(p[0],10),
+            parseInt(p[1],10),
+            parseInt(p[2],10)
         );
 
     const months = [
-
         "فروردین",
         "اردیبهشت",
         "خرداد",
@@ -1487,22 +1411,15 @@ function shamsiDate(
     ];
 
     return (
-
-        fa(
-            j[2]
-        )
+        fa(j[2])
         +
         " "
         +
-        months[
-            j[1] - 1
-        ]
+        months[j[1] - 1]
         +
         " "
         +
-        fa(
-            j[0]
-        )
+        fa(j[0])
     );
 }
 
@@ -1524,9 +1441,7 @@ async function getText(
             Date.now()
         );
 
-    if (
-        !response.ok
-    ) {
+    if (!response.ok) {
 
         throw new Error(
             "فایل دریافت نشد: "
@@ -1555,9 +1470,8 @@ function parseCSV(
         )
         .trim();
 
-    if (
-        !text
-    ) {
+
+    if (!text) {
 
         return {
             headers: [],
@@ -1570,17 +1484,6 @@ function parseCSV(
         text.split(
             /\r?\n/
         );
-
-
-    if (
-        lines.length === 0
-    ) {
-
-        return {
-            headers: [],
-            rows: []
-        };
-    }
 
 
     const headers =
@@ -1656,7 +1559,7 @@ function parseCSV(
 
 
 /* =====================================================
-   LOAD BOUNDARY
+   BOUNDARY
 ===================================================== */
 
 async function loadBoundary() {
@@ -1673,17 +1576,6 @@ async function loadBoundary() {
             JSON.parse(
                 text
             );
-
-
-        if (
-            data.type !==
-            "FeatureCollection"
-        ) {
-
-            throw new Error(
-                "ساختار GeoJSON نامعتبر است."
-            );
-        }
 
 
         boundaryLayer =
@@ -1753,7 +1645,7 @@ async function loadBoundary() {
 
 
 /* =====================================================
-   LOAD ARCHIVE INDEX
+   ARCHIVE INDEX
 ===================================================== */
 
 async function loadArchiveIndex() {
@@ -1852,28 +1744,18 @@ async function loadArchives() {
 
             if (
                 archiveHeaders.length === 0
-                &&
-                parsed.headers.length > 0
             ) {
 
                 archiveHeaders =
-                    parsed.headers
-                    .slice();
+                    parsed.headers.slice();
             }
 
 
             parsed.rows.forEach(
                 function(row) {
 
-                    /*
-                       برای فیلتر زمانی
-                       تاریخ آرشیو را نگه می‌داریم،
-                       ولی در Excel صادر نمی‌کنیم.
-                    */
-
                     row.archive_date =
                         date;
-
 
                     fires.push(
                         row
@@ -1895,7 +1777,7 @@ async function loadArchives() {
 
 
 /* =====================================================
-   FIRMS UTC DATETIME
+   UTC DATETIME
 ===================================================== */
 
 function fireUTCDateTime(
@@ -1903,8 +1785,7 @@ function fireUTCDateTime(
 ) {
 
     if (
-        !fire.acq_date
-        ||
+        !fire.acq_date ||
         !fire.acq_time
     ) {
 
@@ -1913,9 +1794,7 @@ function fireUTCDateTime(
 
 
     const parts =
-        fire.acq_date.split(
-            "-"
-        );
+        fire.acq_date.split("-");
 
 
     const time =
@@ -1929,26 +1808,6 @@ function fireUTCDateTime(
         .padStart(
             4,
             "0"
-        );
-
-
-    const hour =
-        parseInt(
-            time.substring(
-                0,
-                2
-            ),
-            10
-        );
-
-
-    const minute =
-        parseInt(
-            time.substring(
-                2,
-                4
-            ),
-            10
         );
 
 
@@ -1970,9 +1829,15 @@ function fireUTCDateTime(
                 10
             ),
 
-            hour,
+            parseInt(
+                time.substring(0,2),
+                10
+            ),
 
-            minute,
+            parseInt(
+                time.substring(2,4),
+                10
+            ),
 
             0
         )
@@ -1981,7 +1846,7 @@ function fireUTCDateTime(
 
 
 /* =====================================================
-   IRAN TIME 24H
+   IRAN TIME
 ===================================================== */
 
 function iranTime(
@@ -2014,15 +1879,12 @@ function iranTime(
 
     const iran =
         new Date(
-
             utc.getTime()
             +
-            (
-                3.5 *
-                60 *
-                60 *
-                1000
-            )
+            3.5 *
+            60 *
+            60 *
+            1000
         );
 
 
@@ -2036,6 +1898,7 @@ function iranTime(
         )
 
         +
+
         ":"
 
         +
@@ -2051,7 +1914,7 @@ function iranTime(
 
 
 /* =====================================================
-   FORMAT TIME
+   FORMAT 24
 ===================================================== */
 
 function format24(
@@ -2070,63 +1933,22 @@ function format24(
         );
 
 
-    let hour =
-        parseInt(
-            t.substring(
-                0,
-                2
-            ),
-            10
-        );
-
-
-    let minute =
-        parseInt(
-            t.substring(
-                2,
-                4
-            ),
-            10
-        );
-
-
-    if (
-        hour > 23
-    ) {
-
-        hour %=
-            24;
-    }
-
-
-    if (
-        minute > 59
-    ) {
-
-        minute =
-            0;
-    }
-
-
     return (
 
-        String(
-            hour
-        ).padStart(
-            2,
-            "0"
+        t.substring(
+            0,
+            2
         )
 
         +
+
         ":"
 
         +
 
-        String(
-            minute
-        ).padStart(
+        t.substring(
             2,
-            "0"
+            4
         )
     );
 }
@@ -2147,8 +1969,7 @@ function getDayNightLabel(
 
 
     if (
-        !time
-        ||
+        !time ||
         time === "---"
     ) {
 
@@ -2205,7 +2026,7 @@ function getDayNightLabel(
 
 
 /* =====================================================
-   FILTER 24H / 5 DAYS
+   FILTER 24H / 5DAYS
 ===================================================== */
 
 function filteredFires(
@@ -2216,88 +2037,43 @@ function filteredFires(
         new Date();
 
 
-    if (
+    const hours =
         mode === "24h"
-    ) {
-
-        const start =
-            new Date(
-
-                now.getTime()
-                -
-                (
-                    24 *
-                    60 *
-                    60 *
-                    1000
-                )
-            );
+        ?
+        24
+        :
+        120;
 
 
-        return fires.filter(
-            function(fire) {
-
-                const time =
-                    fireUTCDateTime(
-                        fire
-                    );
-
-
-                return (
-
-                    time
-                    &&
-                    time >= start
-                    &&
-                    time <= now
-                );
-            }
+    const start =
+        new Date(
+            now.getTime()
+            -
+            hours *
+            60 *
+            60 *
+            1000
         );
-    }
 
 
-    if (
-        mode === "5days"
-    ) {
+    return fires.filter(
+        function(fire) {
 
-        const start =
-            new Date(
-
-                now.getTime()
-                -
-                (
-                    5 *
-                    24 *
-                    60 *
-                    60 *
-                    1000
-                )
-            );
-
-
-        return fires.filter(
-            function(fire) {
-
-                const time =
-                    fireUTCDateTime(
-                        fire
-                    );
-
-
-                return (
-
-                    time
-                    &&
-                    time >= start
-                    &&
-                    time <= now
+            const time =
+                fireUTCDateTime(
+                    fire
                 );
-            }
-        );
-    }
 
 
-    return [];
+            return (
+                time
+                &&
+                time >= start
+                &&
+                time <= now
+            );
+        }
+    );
 }
 
 
@@ -2354,8 +2130,7 @@ function showFires(
 
 
             if (
-                sensor ===
-                "VIIRS"
+                sensor === "VIIRS"
             ) {
 
                 color =
@@ -2364,8 +2139,7 @@ function showFires(
 
 
             if (
-                sensor ===
-                "MODIS"
+                sensor === "MODIS"
             ) {
 
                 color =
@@ -2375,10 +2149,7 @@ function showFires(
 
             const marker =
                 L.circleMarker(
-                    [
-                        lat,
-                        lon
-                    ],
+                    [lat,lon],
                     {
 
                         pane:
@@ -2435,20 +2206,6 @@ function popupContent(
         "---";
 
 
-    const time =
-        fa(
-            iranTime(
-                fire
-            )
-        );
-
-
-    const dayNight =
-        getDayNightLabel(
-            fire
-        );
-
-
     return `
 
 <div class="fire-popup">
@@ -2482,14 +2239,14 @@ function popupContent(
         <span class="label">
             ساعت ایران:
         </span>
-        ${time}
+        ${fa(iranTime(fire))}
     </div>
 
     <div class="row">
         <span class="label">
             زمان:
         </span>
-        ${dayNight}
+        ${getDayNightLabel(fire)}
     </div>
 
     <div class="row">
@@ -2557,8 +2314,10 @@ function coordinate(
 
 
     return isNaN(number)
-        ? "---"
-        : number.toFixed(5);
+        ?
+        "---"
+        :
+        number.toFixed(5);
 }
 
 
@@ -2618,7 +2377,7 @@ document
 
 
 /* =====================================================
-   SLIDER DATE
+   SLIDER
 ===================================================== */
 
 function updateSliderDate() {
@@ -2637,9 +2396,7 @@ function updateSliderDate() {
 
 
     const date =
-        archiveDates[
-            index
-        ];
+        archiveDates[index];
 
 
     document.getElementById(
@@ -2647,17 +2404,11 @@ function updateSliderDate() {
     ).innerText =
         date
         ?
-        shamsiDate(
-            date
-        )
+        shamsiDate(date)
         :
         "---";
 }
 
-
-/* =====================================================
-   SLIDER
-===================================================== */
 
 document
     .getElementById(
@@ -2675,9 +2426,7 @@ document
 
 
             const date =
-                archiveDates[
-                    index
-                ];
+                archiveDates[index];
 
 
             updateSliderDate();
@@ -2709,27 +2458,50 @@ document
 
 
 /* =====================================================
-   EXCEL EXPORT - 24 HOURS
+   EXCEL EXPORT - NO EXTERNAL LIBRARY
+===================================================== */
+
+function escapeXml(
+    value
+) {
+
+    return String(
+        value === undefined ||
+        value === null
+        ?
+        ""
+        :
+        value
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&apos;"
+    );
+}
+
+
+/* =====================================================
+   EXCEL FILE
+   SpreadsheetML 2003
 ===================================================== */
 
 function export24HoursToExcel() {
-
-    if (
-        typeof XLSX ===
-        "undefined"
-    ) {
-
-        alert(
-            "کتابخانه ساخت Excel بارگذاری نشده است."
-        );
-
-        return;
-    }
-
-
-    /*
-       دقیقاً همان فیلتر ۲۴ ساعت سایت
-    */
 
     const list =
         filteredFires(
@@ -2750,13 +2522,16 @@ function export24HoursToExcel() {
 
 
     /*
-       اگر هدرها از آرشیو خوانده نشده باشند،
-       از کلیدهای اولین رکورد استفاده می‌کنیم.
+       ستون‌ها دقیقاً همان ستون‌های آرشیو
     */
 
     let headers =
         archiveHeaders.slice();
 
+
+    /*
+       اگر آرشیو هنوز هدر نداشت
+    */
 
     if (
         headers.length === 0
@@ -2765,8 +2540,7 @@ function export24HoursToExcel() {
         headers =
             Object.keys(
                 list[0]
-            )
-            .filter(
+            ).filter(
                 function(key) {
 
                     return (
@@ -2779,104 +2553,155 @@ function export24HoursToExcel() {
 
 
     /*
-       دقیقاً همان ترتیب ستون‌های آرشیو
+       ساخت XML اکسل
     */
 
-    const data =
-        [];
+    let xml =
+
+        '<?xml version="1.0"?>' +
+
+        '<Workbook ' +
+
+        'xmlns="urn:schemas-microsoft-com:office:spreadsheet" ' +
+
+        'xmlns:o="urn:schemas-microsoft-com:office:office" ' +
+
+        'xmlns:x="urn:schemas-microsoft-com:office:excel" ' +
+
+        'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">' +
+
+        '<Styles>' +
+
+        '<Style ss:ID="Header">' +
+
+        '<Font ss:Bold="1"/>' +
+
+        '<Interior ss:Color="#E8F0F5" ss:Pattern="Solid"/>' +
+
+        '</Style>' +
+
+        '</Styles>' +
+
+        '<Worksheet ss:Name="Fire_24H">' +
+
+        '<Table>';
 
 
     /*
-       ردیف عنوان
+       هدر
     */
 
-    data.push(
-        headers
+    xml +=
+        '<Row>';
+
+
+    headers.forEach(
+        function(header) {
+
+            xml +=
+                '<Cell ss:StyleID="Header">' +
+
+                '<Data ss:Type="String">' +
+
+                escapeXml(
+                    header
+                ) +
+
+                '</Data>' +
+
+                '</Cell>';
+        }
     );
 
 
+    xml +=
+        '</Row>';
+
+
     /*
-       داده‌های ۲۴ ساعت
+       داده‌ها
     */
 
     list.forEach(
         function(fire) {
 
-            const row =
-                headers.map(
-                    function(header) {
+            xml +=
+                '<Row>';
 
-                        return (
-                            fire[header]
-                            !== undefined
-                            &&
-                            fire[header]
-                            !== null
-                        )
+
+            headers.forEach(
+                function(header) {
+
+                    const value =
+                        fire[header] !== undefined
+                        &&
+                        fire[header] !== null
                         ?
                         fire[header]
                         :
                         "";
-                    }
-                );
 
 
-            data.push(
-                row
+                    xml +=
+                        '<Cell>' +
+
+                        '<Data ss:Type="String">' +
+
+                        escapeXml(
+                            value
+                        ) +
+
+                        '</Data>' +
+
+                        '</Cell>';
+                }
             );
+
+
+            xml +=
+                '</Row>';
         }
     );
 
 
-    /*
-       ساخت Workbook
-    */
-
-    const worksheet =
-        XLSX.utils.aoa_to_sheet(
-            data
-        );
+    xml +=
+        '</Table>' +
+        '</Worksheet>' +
+        '</Workbook>';
 
 
     /*
-       عرض مناسب ستون‌ها
+       ساخت فایل
     */
 
-    worksheet["!cols"] =
-        headers.map(
-            function(header) {
-
-                return {
-                    wch:
-                        Math.max(
-                            12,
-                            Math.min(
-                                28,
-                                String(header).length + 5
-                            )
-                        )
-                };
+    const blob =
+        new Blob(
+            [xml],
+            {
+                type:
+                    "application/vnd.ms-excel"
             }
         );
 
 
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href =
+        url;
+
+
     /*
-       ساخت Workbook
-    */
-
-    const workbook =
-        XLSX.utils.book_new();
-
-
-    XLSX.utils.book_append_sheet(
-        workbook,
-        worksheet,
-        "Fire_24H"
-    );
-
-
-    /*
-       نام فایل با زمان فعلی
+       تاریخ و ساعت فایل
     */
 
     const now =
@@ -2923,7 +2748,7 @@ function export24HoursToExcel() {
         );
 
 
-    const filename =
+    link.download =
         "fires_24h_"
         +
         year
@@ -2938,16 +2763,31 @@ function export24HoursToExcel() {
         +
         minute
         +
-        ".xlsx";
+        ".xls";
 
 
-    /*
-       دانلود Excel
-    */
+    document.body.appendChild(
+        link
+    );
 
-    XLSX.writeFile(
-        workbook,
-        filename
+
+    link.click();
+
+
+    document.body.removeChild(
+        link
+    );
+
+
+    setTimeout(
+        function() {
+
+            URL.revokeObjectURL(
+                url
+            );
+
+        },
+        1000
     );
 }
 
@@ -3294,7 +3134,7 @@ async function initialize() {
 
 
     /*
-       5. زمان آخرین به‌روزرسانی
+       5. تایمر
     */
 
     loadUpdateInfo();
@@ -3306,4 +3146,34 @@ initialize();
 </script>
 
 </body>
+
 </html>
+```
+
+### تفاوت این نسخه
+
+دیگر این خط در کد وجود ندارد:
+
+```html
+<script src="https://cdn.sheetjs.com/..."></script>
+```
+
+پس **هیچ وابستگی‌ای به کتابخانه Excel خارجی نداریم**.
+
+دکمه `📊` مستقیماً فایل Excel با پسوند `.xls` تولید می‌کند و Excel آن را باز می‌کند.
+
+و مهم‌تر اینکه خروجی از همان تابع:
+
+```javascript
+filteredFires("24h")
+```
+
+ساخته می‌شود؛ بنابراین دقیقاً همان رکوردهایی را می‌دهد که گزینه **«حریق‌های ۲۴ ساعت گذشته»** روی نقشه نشان می‌دهد.
+
+ستون‌ها هم از همان Header اولین فایل آرشیو گرفته می‌شوند.
+
+بعد از جایگزینی فقط:
+
+**Commit changes → Deploy Fars Fire Sentinel → Ctrl+F5**
+
+این نسخه دیگر نباید خطای «کتابخانه ساخت Excel بارگذاری نشده است» بدهد.
