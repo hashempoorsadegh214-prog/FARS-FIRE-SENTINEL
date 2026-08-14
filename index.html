@@ -2,10 +2,17 @@
 <html lang="fa" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>سامانه پایش برخط حریق</title>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+سامانه پایش برخط حریق
+</title>
 
 <meta
     name="description"
@@ -18,6 +25,10 @@
 >
 
 <style>
+
+/* =====================================================
+   BASE
+===================================================== */
 
 * {
     box-sizing: border-box;
@@ -33,42 +44,83 @@ body {
 }
 
 body {
-    font-family: Tahoma, Arial, sans-serif;
-    background: #eef2f5;
-    color: #263238;
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:
+        #eef2f5;
+
+    color:
+        #263238;
 }
 
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 header {
-    height: 74px;
-    background: linear-gradient(135deg, #e9782c, #f2ae70);
-    box-shadow: 0 2px 12px rgba(0,0,0,.18);
-    position: relative;
-    z-index: 5000;
+
+    height:
+        74px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9782c,
+            #f2ae70
+        );
+
+    box-shadow:
+        0 2px 12px rgba(0,0,0,.18);
+
+    position:
+        relative;
+
+    z-index:
+        5000;
 }
 
 .header-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width:
+        100%;
+
+    height:
+        100%;
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 }
 
+
 .title {
-    width: 100%;
-    text-align: center;
-    padding: 0 100px;
+
+    width:
+        100%;
+
+    text-align:
+        center;
+
+    padding:
+        0 100px;
 }
 
 .title h1 {
-    margin: 0;
+
+    margin:
+        0;
 
     font-family:
         "B Titr",
@@ -76,58 +128,108 @@ header {
         Arial,
         sans-serif;
 
-    font-size: 23px;
-    line-height: 1.5;
-    color: #ffffff;
+    font-size:
+        23px;
+
+    line-height:
+        1.5;
+
+    color:
+        #ffffff;
 }
 
 .title p {
-    margin: 2px 0 0;
-    font-size: 10px;
-    color: rgba(255,255,255,.9);
+
+    margin:
+        2px 0 0;
+
+    font-size:
+        10px;
+
+    color:
+        rgba(255,255,255,.9);
 }
 
+
+/* =====================================================
+   HEADER BUTTONS
+===================================================== */
+
 .header-buttons {
-    position: absolute;
 
-    right: 15px;
-    top: 50%;
+    position:
+        absolute;
 
-    transform: translateY(-50%);
+    right:
+        15px;
 
-    display: flex;
-    gap: 6px;
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    display:
+        flex;
+
+    gap:
+        6px;
 }
 
 .header-button {
-    width: 34px;
-    height: 34px;
 
-    border: none;
-    border-radius: 8px;
+    width:
+        34px;
 
-    background: rgba(255,255,255,.18);
-    color: #ffffff;
+    height:
+        34px;
 
-    cursor: pointer;
-    font-size: 17px;
+    border:
+        none;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(255,255,255,.18);
+
+    color:
+        #ffffff;
+
+    cursor:
+        pointer;
+
+    font-size:
+        17px;
 }
 
 
-/* =========================
+/* =====================================================
    MAP
-========================= */
+===================================================== */
 
 #map {
-    position: absolute;
 
-    top: 84px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
+    position:
+        absolute;
 
-    border-radius: 12px;
-    overflow: hidden;
+    top:
+        84px;
+
+    left:
+        10px;
+
+    right:
+        10px;
+
+    bottom:
+        10px;
+
+    border-radius:
+        12px;
+
+    overflow:
+        hidden;
 
     box-shadow:
         0 5px 20px rgba(0,0,0,.13);
@@ -137,64 +239,91 @@ header {
 }
 
 
-/* =========================
+/* =====================================================
    MODE PANEL
-========================= */
+===================================================== */
 
 .mode-panel {
-    position: absolute;
 
-    top: 95px;
-    right: 22px;
+    position:
+        absolute;
 
-    width: 190px;
+    top:
+        95px;
 
-    z-index: 4000;
+    right:
+        22px;
 
-    padding: 7px;
+    width:
+        190px;
 
-    background: rgba(255,255,255,.96);
+    z-index:
+        4000;
+
+    padding:
+        7px;
+
+    background:
+        rgba(255,255,255,.96);
 
     border:
         1px solid #dce2e6;
 
-    border-radius: 10px;
+    border-radius:
+        10px;
 
     box-shadow:
         0 5px 16px rgba(0,0,0,.18);
 }
 
 .mode-button {
-    width: 100%;
 
-    border: none;
+    width:
+        100%;
 
-    background: #f1f3f5;
-    color: #344047;
+    border:
+        none;
 
-    border-radius: 7px;
+    background:
+        #f1f3f5;
 
-    padding: 9px 10px;
-    margin-bottom: 5px;
+    color:
+        #344047;
 
-    text-align: right;
+    border-radius:
+        7px;
+
+    padding:
+        9px 10px;
+
+    margin-bottom:
+        5px;
+
+    text-align:
+        right;
 
     font-family:
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size: 11px;
-    font-weight: bold;
+    font-size:
+        11px;
 
-    cursor: pointer;
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
 }
 
 .mode-button:last-child {
-    margin-bottom: 0;
+    margin-bottom:
+        0;
 }
 
 .mode-button.active {
+
     background:
         linear-gradient(
             135deg,
@@ -202,207 +331,325 @@ header {
             #c84c00
         );
 
-    color: #ffffff;
+    color:
+        #ffffff;
 }
 
 
-/* =========================
+/* =====================================================
    LEGEND
-========================= */
+===================================================== */
 
 .legend-box {
-    position: absolute;
 
-    top: 95px;
-    left: 50%;
+    position:
+        absolute;
 
-    transform: translateX(-50%);
+    top:
+        95px;
 
-    z-index: 4000;
+    left:
+        50%;
 
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    transform:
+        translateX(-50%);
 
-    padding: 7px 12px;
+    z-index:
+        4000;
 
-    background: rgba(255,255,255,.96);
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    padding:
+        7px 12px;
+
+    background:
+        rgba(255,255,255,.96);
 
     border:
         1px solid #dce2e6;
 
-    border-radius: 9px;
+    border-radius:
+        9px;
 
     box-shadow:
         0 4px 14px rgba(0,0,0,.16);
 
-    font-size: 10px;
-    white-space: nowrap;
+    font-size:
+        10px;
+
+    white-space:
+        nowrap;
 }
 
 .legend-title {
-    font-weight: bold;
+    font-weight:
+        bold;
 }
 
 .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        5px;
 }
 
 .legend-dot {
-    width: 10px;
-    height: 10px;
 
-    border-radius: 50%;
-    border: 1px solid #555;
+    width:
+        10px;
+
+    height:
+        10px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid #555;
 }
 
 
-/* =========================
-   UPDATE
-========================= */
+/* =====================================================
+   UPDATE TIMER
+   پایین سمت راست، کاملاً چسبیده به گوشه
+===================================================== */
 
 .update-box {
-    position: absolute;
 
-    right: 22px;
-    bottom: 20px;
+    position:
+        absolute;
 
-    z-index: 4000;
+    right:
+        10px;
 
-    width: 270px;
+    bottom:
+        10px;
 
-    padding: 8px 12px;
+    z-index:
+        4000;
 
-    text-align: center;
+    width:
+        270px;
 
-    background: rgba(255,255,255,.96);
+    padding:
+        8px 12px;
+
+    text-align:
+        center;
+
+    background:
+        rgba(255,255,255,.96);
 
     border:
         1px solid #dce2e6;
 
-    border-radius: 9px;
+    border-radius:
+        9px;
 
     box-shadow:
         0 5px 16px rgba(0,0,0,.18);
 }
 
 .update-title {
-    font-size: 9px;
-    color: #6b7780;
-    margin-bottom: 3px;
+
+    font-size:
+        10px;
+
+    color:
+        #6b7780;
+
+    margin-bottom:
+        3px;
 }
 
 #updateInfo {
-    font-size: 10px;
-    font-weight: bold;
-    color: #c45108;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    color:
+        #c45108;
+
+    line-height:
+        1.7;
 }
 
 
-/* =========================
+/* =====================================================
    SLIDER
-========================= */
+===================================================== */
 
 .slider-box {
-    position: absolute;
 
-    left: 22px;
-    bottom: 20px;
+    position:
+        absolute;
 
-    z-index: 4000;
+    left:
+        22px;
 
-    width: 300px;
+    bottom:
+        20px;
 
-    padding: 9px 12px;
+    z-index:
+        4000;
 
-    background: rgba(255,255,255,.96);
+    width:
+        310px;
+
+    padding:
+        10px 14px;
+
+    background:
+        rgba(255,255,255,.96);
 
     border:
         1px solid #dce2e6;
 
-    border-radius: 9px;
+    border-radius:
+        9px;
 
     box-shadow:
         0 5px 16px rgba(0,0,0,.18);
 }
 
 .slider-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    margin-bottom: 7px;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        9px;
 }
 
 .slider-title {
-    font-size: 10px;
-    font-weight: bold;
-    color: #455a64;
+
+    font-size:
+        12px;
+
+    font-weight:
+        bold;
+
+    color:
+        #455a64;
 }
 
 .slider-date {
-    font-size: 9px;
-    font-weight: bold;
-    color: #c45108;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    color:
+        #c45108;
 }
 
 #archiveSlider {
-    width: 100%;
+
+    width:
+        100%;
+
+    height:
+        6px;
 }
 
 
-/* =========================
+/* =====================================================
    POPUP
-========================= */
+===================================================== */
 
 .fire-popup {
-    width: 260px;
 
-    direction: rtl;
-    text-align: right;
+    width:
+        260px;
+
+    direction:
+        rtl;
+
+    text-align:
+        right;
 
     font-family:
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size: 12px;
-    line-height: 1.9;
+    font-size:
+        12px;
+
+    line-height:
+        1.9;
 }
 
 .fire-popup h3 {
-    margin: 0 0 7px;
 
-    color: #d35400;
-    font-size: 15px;
+    margin:
+        0 0 7px;
+
+    color:
+        #d35400;
+
+    font-size:
+        15px;
 }
 
 .fire-popup .row {
+
     border-bottom:
         1px solid #edf0f2;
 
-    padding: 2px 0;
+    padding:
+        2px 0;
 }
 
 .fire-popup .label {
-    font-weight: bold;
+    font-weight:
+        bold;
 }
 
 
-/* =========================
-   NIGHT
-========================= */
+/* =====================================================
+   NIGHT MODE
+===================================================== */
 
 body.night {
-    background: #121820;
+    background:
+        #121820;
 }
 
-body.night .mode-panel,
-body.night .legend-box,
-body.night .update-box,
-body.night .slider-box {
+body.night
+.mode-panel,
+
+body.night
+.legend-box,
+
+body.night
+.update-box,
+
+body.night
+.slider-box {
 
     background:
         rgba(26,32,40,.96);
@@ -414,12 +661,19 @@ body.night .slider-box {
         #e8edf1;
 }
 
-body.night .mode-button {
-    background: #252d36;
-    color: #dbe3e8;
+body.night
+.mode-button {
+
+    background:
+        #252d36;
+
+    color:
+        #dbe3e8;
 }
 
-body.night .mode-button.active {
+body.night
+.mode-button.active {
+
     background:
         linear-gradient(
             135deg,
@@ -427,144 +681,254 @@ body.night .mode-button.active {
             #c84c00
         );
 
-    color: #ffffff;
+    color:
+        #ffffff;
 }
 
-body.night .slider-title,
-body.night .legend-title {
-    color: #dbe3e8;
+body.night
+.slider-title,
+
+body.night
+.legend-title {
+
+    color:
+        #dbe3e8;
 }
 
-body.night .slider-date,
-body.night #updateInfo {
-    color: #ffd08a;
+body.night
+.slider-date,
+
+body.night
+#updateInfo {
+
+    color:
+        #ffd08a;
 }
 
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media (max-width: 700px) {
 
     header {
-        height: 80px;
+
+        height:
+            80px;
     }
 
     .title {
-        padding: 0 65px;
+
+        padding:
+            0 65px;
     }
 
     .title h1 {
-        font-size: 15px;
+
+        font-size:
+            15px;
     }
 
     .title p {
-        display: none;
+        display:
+            none;
     }
 
     .header-buttons {
-        right: 8px;
+
+        right:
+            8px;
     }
 
     .header-button {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
+
+        width:
+            30px;
+
+        height:
+            30px;
+
+        font-size:
+            14px;
     }
+
 
     #map {
-        top: 88px;
-        left: 5px;
-        right: 5px;
-        bottom: 5px;
-        border-radius: 9px;
+
+        top:
+            88px;
+
+        left:
+            5px;
+
+        right:
+            5px;
+
+        bottom:
+            5px;
+
+        border-radius:
+            9px;
     }
 
+
     .mode-panel {
-        top: 99px;
-        right: 12px;
-        width: 155px;
+
+        top:
+            99px;
+
+        right:
+            12px;
+
+        width:
+            155px;
     }
 
     .mode-button {
-        font-size: 9px;
-        padding: 8px;
+
+        font-size:
+            9px;
+
+        padding:
+            8px;
     }
 
+
     .legend-box {
-        top: 99px;
-        left: 10px;
-        transform: none;
+
+        top:
+            99px;
+
+        left:
+            10px;
+
+        transform:
+            none;
 
         max-width:
             calc(100% - 185px);
 
-        white-space: normal;
-        flex-wrap: wrap;
-        justify-content: center;
+        white-space:
+            normal;
 
-        gap: 7px;
+        flex-wrap:
+            wrap;
 
-        font-size: 8px;
-        padding: 5px 7px;
+        justify-content:
+            center;
+
+        gap:
+            7px;
+
+        font-size:
+            8px;
+
+        padding:
+            5px 7px;
     }
 
     .legend-title {
-        width: 100%;
-        text-align: center;
-    }
-
-    .update-box {
-        right: 10px;
-        bottom: 10px;
 
         width:
-            calc(50% - 15px);
+            100%;
 
-        min-width: 135px;
+        text-align:
+            center;
+    }
 
-        padding: 7px;
+
+    /* تایمر کاملاً پایین راست */
+
+    .update-box {
+
+        right:
+            5px;
+
+        bottom:
+            5px;
+
+        width:
+            215px;
+
+        min-width:
+            0;
+
+        padding:
+            7px 8px;
     }
 
     .update-title {
-        font-size: 8px;
+
+        font-size:
+            8px;
     }
 
     #updateInfo {
-        font-size: 8px;
-        line-height: 1.6;
+
+        font-size:
+            9px;
+
+        line-height:
+            1.6;
     }
 
+
+    /* اسلایدر */
+
     .slider-box {
-        left: 10px;
-        bottom: 10px;
+
+        left:
+            5px;
+
+        bottom:
+            5px;
 
         width:
-            calc(50% - 15px);
+            215px;
 
-        min-width: 135px;
+        min-width:
+            0;
 
-        padding: 7px;
+        padding:
+            8px 10px;
     }
 
     .slider-head {
-        display: block;
-        text-align: center;
+
+        display:
+            block;
+
+        text-align:
+            center;
+
+        margin-bottom:
+            7px;
     }
 
     .slider-title {
-        font-size: 9px;
+
+        font-size:
+            10px;
     }
 
     .slider-date {
-        margin-top: 3px;
-        font-size: 8px;
+
+        margin-top:
+            3px;
+
+        font-size:
+            10px;
     }
 
+
     .fire-popup {
-        width: 235px;
-        font-size: 10px;
+
+        width:
+            235px;
+
+        font-size:
+            10px;
     }
 }
 
@@ -729,23 +1093,31 @@ body.night #updateInfo {
    FILES
 ===================================================== */
 
-const BOUNDARY_FILE = "fars.geojson";
-const ARCHIVE_INDEX = "archive/index.json";
-const UPDATE_INFO = "update-info.json";
+const BOUNDARY_FILE =
+    "fars.geojson";
+
+const ARCHIVE_INDEX =
+    "archive/index.json";
+
+const UPDATE_INFO =
+    "update-info.json";
 
 
 /* =====================================================
    MAP
 ===================================================== */
 
-const map = L.map("map");
+const map =
+    L.map("map");
 
 
 const lightMap =
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
-            maxZoom: 18,
+            maxZoom:
+                18,
+
             attribution:
                 "© OpenStreetMap contributors"
         }
@@ -756,33 +1128,42 @@ const darkMap =
     L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
         {
-            maxZoom: 19,
+            maxZoom:
+                19,
+
             attribution:
                 "© OpenStreetMap © CARTO"
         }
     );
 
 
-lightMap.addTo(map);
+lightMap.addTo(
+    map
+);
 
 
-/* =====================================================
-   LAYER ORDER
-===================================================== */
+map.createPane(
+    "farsPane"
+);
 
-map.createPane("farsPane");
-map.getPane("farsPane").style.zIndex = 450;
+map.getPane(
+    "farsPane"
+).style.zIndex =
+    450;
 
-map.createPane("firePane");
-map.getPane("firePane").style.zIndex = 500;
 
+map.createPane(
+    "firePane"
+);
 
-/* =====================================================
-   START VIEW
-===================================================== */
+map.getPane(
+    "firePane"
+).style.zIndex =
+    500;
+
 
 map.setView(
-    [29.6, 52.5],
+    [29.6,52.5],
     8
 );
 
@@ -791,23 +1172,40 @@ map.setView(
    VARIABLES
 ===================================================== */
 
-let boundaryLayer = null;
-let archiveDates = [];
-let fires = [];
-let updateTimestamp = null;
+let boundaryLayer =
+    null;
 
+let archiveDates =
+    [];
+
+let fires =
+    [];
+
+let updateTimestamp =
+    null;
+
+
+/* =====================================================
+   FIRE LAYER
+===================================================== */
 
 const fireLayer =
-    L.layerGroup().addTo(map);
+    L.layerGroup()
+    .addTo(
+        map
+    );
 
 
 /* =====================================================
    PERSIAN DIGITS
 ===================================================== */
 
-function fa(value) {
+function fa(
+    value
+) {
 
     return String(value)
+
         .replace(/0/g,"۰")
         .replace(/1/g,"۱")
         .replace(/2/g,"۲")
@@ -822,7 +1220,7 @@ function fa(value) {
 
 
 /* =====================================================
-   GREGORIAN TO JALALI
+   GREGORIAN → JALALI
 ===================================================== */
 
 function gregorianToJalali(
@@ -838,48 +1236,81 @@ function gregorianToJalali(
 
     let jy;
 
-    if (gy > 1600) {
-        jy = 979;
-        gy -= 1600;
+    if (
+        gy > 1600
+    ) {
+
+        jy =
+            979;
+
+        gy -=
+            1600;
+
     } else {
-        jy = 0;
-        gy -= 621;
+
+        jy =
+            0;
+
+        gy -=
+            621;
     }
 
     const gy2 =
         gm > 2
-        ? gy + 1
-        : gy;
+        ?
+        gy + 1
+        :
+        gy;
 
     let days =
         365 * gy
         +
-        Math.floor((gy2 + 3) / 4)
+        Math.floor(
+            (gy2 + 3) / 4
+        )
         -
-        Math.floor((gy2 + 99) / 100)
+        Math.floor(
+            (gy2 + 99) / 100
+        )
         +
-        Math.floor((gy2 + 399) / 400)
+        Math.floor(
+            (gy2 + 399) / 400
+        )
         -
         80
         +
         gd
         +
-        gdm[gm - 1];
+        gdm[
+            gm - 1
+        ];
 
     jy +=
-        33 * Math.floor(days / 12053);
+        33 *
+        Math.floor(
+            days / 12053
+        );
 
-    days %= 12053;
+    days %=
+        12053;
 
     jy +=
-        4 * Math.floor(days / 1461);
+        4 *
+        Math.floor(
+            days / 1461
+        );
 
-    days %= 1461;
+    days %=
+        1461;
 
-    if (days > 365) {
+    if (
+        days > 365
+    ) {
 
         jy +=
-            Math.floor((days - 1) / 365);
+            Math.floor(
+                (days - 1) / 365
+            );
 
         days =
             (days - 1) % 365;
@@ -888,13 +1319,19 @@ function gregorianToJalali(
     let jm;
     let jd;
 
-    if (days < 186) {
+    if (
+        days < 186
+    ) {
 
         jm =
-            1 + Math.floor(days / 31);
+            1 +
+            Math.floor(
+                days / 31
+            );
 
         jd =
-            1 + days % 31;
+            1 +
+            days % 31;
 
     } else {
 
@@ -906,7 +1343,9 @@ function gregorianToJalali(
 
         jd =
             1 +
-            ((days - 186) % 30);
+            (
+                (days - 186) % 30
+            );
     }
 
     return [
@@ -921,27 +1360,52 @@ function gregorianToJalali(
    SHAMSI DATE
 ===================================================== */
 
-function shamsiDate(dateString) {
+function shamsiDate(
+    dateString
+) {
 
-    if (!dateString) {
+    if (
+        !dateString
+    ) {
+
         return "---";
     }
 
     const p =
-        String(dateString).split("-");
+        String(
+            dateString
+        ).split(
+            "-"
+        );
 
-    if (p.length !== 3) {
+    if (
+        p.length !== 3
+    ) {
+
         return dateString;
     }
 
     const j =
         gregorianToJalali(
-            parseInt(p[0],10),
-            parseInt(p[1],10),
-            parseInt(p[2],10)
+
+            parseInt(
+                p[0],
+                10
+            ),
+
+            parseInt(
+                p[1],
+                10
+            ),
+
+            parseInt(
+                p[2],
+                10
+            )
         );
 
     const months = [
+
         "فروردین",
         "اردیبهشت",
         "خرداد",
@@ -957,36 +1421,51 @@ function shamsiDate(dateString) {
     ];
 
     return (
-        fa(j[2])
+
+        fa(
+            j[2]
+        )
         +
         " "
         +
-        months[j[1] - 1]
+        months[
+            j[1] - 1
+        ]
         +
         " "
         +
-        fa(j[0])
+        fa(
+            j[0]
+        )
     );
 }
 
 
 /* =====================================================
-   LOAD TEXT
+   GET TEXT
 ===================================================== */
 
-async function getText(url) {
+async function getText(
+    url
+) {
 
     const response =
         await fetch(
-            url +
-            "?v=" +
+            url
+            +
+            "?v="
+            +
             Date.now()
         );
 
-    if (!response.ok) {
+    if (
+        !response.ok
+    ) {
 
         throw new Error(
-            "خطا در دریافت: " + url
+            "فایل دریافت نشد: "
+            +
+            url
         );
     }
 
@@ -998,21 +1477,34 @@ async function getText(url) {
    CSV
 ===================================================== */
 
-function parseCSV(text) {
+function parseCSV(
+    text
+) {
 
     text =
         text
-        .replace(/^\uFEFF/,"")
+        .replace(
+            /^\uFEFF/,
+            ""
+        )
         .trim();
 
-    if (!text) {
+    if (
+        !text
+    ) {
+
         return [];
     }
 
     const lines =
-        text.split(/\r?\n/);
+        text.split(
+            /\r?\n/
+        );
 
-    if (lines.length < 2) {
+    if (
+        lines.length < 2
+    ) {
+
         return [];
     }
 
@@ -1024,7 +1516,8 @@ function parseCSV(text) {
                 h.trim().toLowerCase()
         );
 
-    const result = [];
+    const result =
+        [];
 
     for (
         let i = 1;
@@ -1032,14 +1525,18 @@ function parseCSV(text) {
         i++
     ) {
 
-        if (!lines[i].trim()) {
+        if (
+            !lines[i].trim()
+        ) {
+
             continue;
         }
 
         const values =
             lines[i].split(",");
 
-        const row = {};
+        const row =
+            {};
 
         for (
             let j = 0;
@@ -1047,13 +1544,19 @@ function parseCSV(text) {
             j++
         ) {
 
-            row[headers[j]] =
+            row[
+                headers[j]
+            ] =
                 values[j] !== undefined
-                ? values[j].trim()
-                : "";
+                ?
+                values[j].trim()
+                :
+                "";
         }
 
-        result.push(row);
+        result.push(
+            row
+        );
     }
 
     return result;
@@ -1061,101 +1564,97 @@ function parseCSV(text) {
 
 
 /* =====================================================
-   LOAD FARS BOUNDARY
+   BOUNDARY
 ===================================================== */
 
 async function loadBoundary() {
 
-    const text =
-        await getText(
-            BOUNDARY_FILE
-        );
+    try {
 
-    const data =
-        JSON.parse(text);
+        const text =
+            await getText(
+                BOUNDARY_FILE
+            );
 
-    if (
-        data.type !==
-        "FeatureCollection"
+        const data =
+            JSON.parse(
+                text
+            );
+
+        if (
+            data.type !==
+            "FeatureCollection"
+        ) {
+
+            throw new Error(
+                "ساختار GeoJSON نامعتبر است."
+            );
+        }
+
+        boundaryLayer =
+            L.geoJSON(
+                data,
+                {
+
+                    pane:
+                        "farsPane",
+
+                    style:
+                        function() {
+
+                            return {
+
+                                color:
+                                    "#ff0000",
+
+                                weight:
+                                    4,
+
+                                opacity:
+                                    1,
+
+                                fillColor:
+                                    "#ff0000",
+
+                                fillOpacity:
+                                    0.02
+                            };
+                        }
+                }
+            )
+            .addTo(
+                map
+            );
+
+        const bounds =
+            boundaryLayer
+            .getBounds();
+
+        if (
+            bounds.isValid()
+        ) {
+
+            map.fitBounds(
+                bounds,
+                {
+                    padding:
+                        [
+                            20,
+                            20
+                        ]
+                }
+            );
+        }
+
+    } catch (
+        error
     ) {
 
-        throw new Error(
-            "fars.geojson باید FeatureCollection باشد."
+        console.error(
+            "خطای مرز:",
+            error
         );
     }
-
-    if (
-        !Array.isArray(
-            data.features
-        )
-        ||
-        data.features.length === 0
-    ) {
-
-        throw new Error(
-            "fars.geojson خالی است."
-        );
-    }
-
-
-    boundaryLayer =
-        L.geoJSON(
-            data,
-            {
-
-                pane:
-                    "farsPane",
-
-                style:
-                    function() {
-
-                        return {
-
-                            color:
-                                "#ff0000",
-
-                            weight:
-                                4,
-
-                            opacity:
-                                1,
-
-                            fillColor:
-                                "#ff0000",
-
-                            fillOpacity:
-                                0.02
-                        };
-                    }
-            }
-        ).addTo(
-            map
-        );
-
-
-    const bounds =
-        boundaryLayer
-        .getBounds();
-
-
-    if (
-        bounds.isValid()
-    ) {
-
-        map.fitBounds(
-            bounds,
-            {
-                padding:
-                    [20,20]
-            }
-        );
-    }
-
-
-    console.log(
-        "Fars boundary loaded:",
-        bounds.toBBoxString()
-    );
 }
 
 
@@ -1171,7 +1670,9 @@ async function loadArchiveIndex() {
         );
 
     const index =
-        JSON.parse(text);
+        JSON.parse(
+            text
+        );
 
     archiveDates =
         index
@@ -1179,7 +1680,9 @@ async function loadArchiveIndex() {
             item =>
                 item.date
         )
-        .filter(Boolean)
+        .filter(
+            Boolean
+        )
         .sort();
 
     const slider =
@@ -1187,7 +1690,8 @@ async function loadArchiveIndex() {
             "archiveSlider"
         );
 
-    slider.min = 0;
+    slider.min =
+        0;
 
     slider.max =
         Math.max(
@@ -1211,7 +1715,8 @@ async function loadArchiveIndex() {
 
 async function loadArchives() {
 
-    fires = [];
+    fires =
+        [];
 
     for (
         const date
@@ -1223,13 +1728,17 @@ async function loadArchives() {
 
             const text =
                 await getText(
-                    "archive/" +
-                    date +
+                    "archive/"
+                    +
+                    date
+                    +
                     ".csv"
                 );
 
             const rows =
-                parseCSV(text);
+                parseCSV(
+                    text
+                );
 
             rows.forEach(
                 row => {
@@ -1237,14 +1746,18 @@ async function loadArchives() {
                     row.archive_date =
                         date;
 
-                    fires.push(row);
+                    fires.push(
+                        row
+                    );
                 }
             );
 
-        } catch (error) {
+        } catch (
+            error
+        ) {
 
             console.warn(
-                "آرشیو موجود نیست:",
+                "آرشیو پیدا نشد:",
                 date
             );
         }
@@ -1261,6 +1774,7 @@ function todayIranDate() {
     return new Intl.DateTimeFormat(
         "en-CA",
         {
+
             timeZone:
                 "Asia/Tehran",
 
@@ -1280,13 +1794,16 @@ function todayIranDate() {
 
 
 /* =====================================================
-   FIRMS UTC
+   FIRMS UTC DATETIME
 ===================================================== */
 
-function fireUTCDateTime(fire) {
+function fireUTCDateTime(
+    fire
+) {
 
     if (
-        !fire.acq_date ||
+        !fire.acq_date
+        ||
         !fire.acq_time
     ) {
 
@@ -1294,34 +1811,63 @@ function fireUTCDateTime(fire) {
     }
 
     const parts =
-        fire.acq_date.split("-");
+        fire.acq_date.split(
+            "-"
+        );
 
     const time =
         String(
             fire.acq_time
         )
-        .replace(/\D/g,"")
-        .padStart(4,"0");
+        .replace(
+            /\D/g,
+            ""
+        )
+        .padStart(
+            4,
+            "0"
+        );
 
     const hour =
         parseInt(
-            time.substring(0,2),
+            time.substring(
+                0,
+                2
+            ),
             10
         );
 
     const minute =
         parseInt(
-            time.substring(2,4),
+            time.substring(
+                2,
+                4
+            ),
             10
         );
 
     return new Date(
         Date.UTC(
-            parseInt(parts[0],10),
-            parseInt(parts[1],10) - 1,
-            parseInt(parts[2],10),
+
+            parseInt(
+                parts[0],
+                10
+            ),
+
+            parseInt(
+                parts[1],
+                10
+            ) - 1,
+
+            parseInt(
+                parts[2],
+                10
+            ),
+
             hour,
+
             minute,
+
             0
         )
     );
@@ -1329,10 +1875,12 @@ function fireUTCDateTime(fire) {
 
 
 /* =====================================================
-   IRAN TIME
+   IRAN TIME 24H
 ===================================================== */
 
-function iranTime(fire) {
+function iranTime(
+    fire
+) {
 
     if (
         fire.iran_time
@@ -1348,7 +1896,10 @@ function iranTime(fire) {
             fire
         );
 
-    if (!utc) {
+    if (
+        !utc
+    ) {
+
         return "---";
     }
 
@@ -1356,61 +1907,184 @@ function iranTime(fire) {
         new Date(
             utc.getTime()
             +
-            3.5 * 60 * 60 * 1000
+            (
+                3.5
+                *
+                60
+                *
+                60
+                *
+                1000
+            )
         );
 
     return (
+
         String(
             iran.getUTCHours()
-        ).padStart(2,"0")
+        ).padStart(
+            2,
+            "0"
+        )
         +
         ":"
         +
         String(
             iran.getUTCMinutes()
-        ).padStart(2,"0")
+        ).padStart(
+            2,
+            "0"
+        )
     );
 }
 
 
 /* =====================================================
-   TIME FORMAT
+   FORMAT 24H
 ===================================================== */
 
-function format24(value) {
+function format24(
+    value
+) {
 
     const t =
-        String(value)
-        .replace(/\D/g,"")
-        .padStart(4,"0");
+        String(
+            value
+        )
+        .replace(
+            /\D/g,
+            ""
+        )
+        .padStart(
+            4,
+            "0"
+        );
 
     let hour =
         parseInt(
-            t.substring(0,2),
+            t.substring(
+                0,
+                2
+            ),
             10
         );
 
     let minute =
         parseInt(
-            t.substring(2,4),
+            t.substring(
+                2,
+                4
+            ),
             10
         );
 
-    if (hour > 23) {
-        hour %= 24;
+    if (
+        hour > 23
+    ) {
+
+        hour %=
+            24;
     }
 
-    if (minute > 59) {
-        minute = 0;
+    if (
+        minute > 59
+    ) {
+
+        minute =
+            0;
     }
 
     return (
-        String(hour).padStart(2,"0")
+
+        String(
+            hour
+        ).padStart(
+            2,
+            "0"
+        )
         +
         ":"
         +
-        String(minute).padStart(2,"0")
+        String(
+            minute
+        ).padStart(
+            2,
+            "0"
+        )
     );
+}
+
+
+/* =====================================================
+   DAY / NIGHT / DAWN
+===================================================== */
+
+function getDayNightLabel(
+    fire
+) {
+
+    const time =
+        iranTime(
+            fire
+        );
+
+    if (
+        !time
+        ||
+        time === "---"
+    ) {
+
+        return "---";
+    }
+
+    const hour =
+        parseInt(
+            time.substring(
+                0,
+                2
+            ),
+            10
+        );
+
+    /*
+       00:00 تا 05:59 = بامداد
+    */
+
+    if (
+        hour < 6
+    ) {
+
+        return "بامداد";
+    }
+
+
+    const code =
+        String(
+            fire.daynight
+            ||
+            ""
+        )
+        .trim()
+        .toUpperCase();
+
+
+    if (
+        code === "D"
+    ) {
+
+        return "روز";
+    }
+
+
+    if (
+        code === "N"
+    ) {
+
+        return "شب";
+    }
+
+
+    return "---";
 }
 
 
@@ -1418,7 +2092,9 @@ function format24(value) {
    FILTER
 ===================================================== */
 
-function filteredFires(mode) {
+function filteredFires(
+    mode
+) {
 
     const now =
         new Date();
@@ -1445,11 +2121,18 @@ function filteredFires(mode) {
                     );
 
                 return (
-                    date === today
+
+                    date ===
+                    today
+
                     &&
+
                     time
+
                     &&
-                    time <= now
+
+                    time <=
+                    now
                 );
             }
         );
@@ -1464,7 +2147,10 @@ function filteredFires(mode) {
             new Date(
                 now.getTime()
                 -
-                24 * 60 * 60 * 1000
+                24 *
+                60 *
+                60 *
+                1000
             );
 
         return fires.filter(
@@ -1476,6 +2162,7 @@ function filteredFires(mode) {
                     );
 
                 return (
+
                     time
                     &&
                     time >= start
@@ -1495,7 +2182,11 @@ function filteredFires(mode) {
             new Date(
                 now.getTime()
                 -
-                5 * 24 * 60 * 60 * 1000
+                5 *
+                24 *
+                60 *
+                60 *
+                1000
             );
 
         return fires.filter(
@@ -1507,6 +2198,7 @@ function filteredFires(mode) {
                     );
 
                 return (
+
                     time
                     &&
                     time >= start
@@ -1523,12 +2215,15 @@ function filteredFires(mode) {
 
 
 /* =====================================================
-   FIRE MARKERS
+   SHOW FIRES
 ===================================================== */
 
-function showFires(list) {
+function showFires(
+    list
+) {
 
     fireLayer.clearLayers();
+
 
     list.forEach(
         fire => {
@@ -1544,11 +2239,14 @@ function showFires(list) {
                 );
 
             if (
-                isNaN(lat) ||
+                isNaN(lat)
+                ||
                 isNaN(lon)
             ) {
+
                 return;
             }
+
 
             const sensor =
                 String(
@@ -1561,22 +2259,30 @@ function showFires(list) {
                 .trim()
                 .toUpperCase();
 
+
             let color =
                 "#8e24aa";
 
+
             if (
-                sensor === "VIIRS"
+                sensor ===
+                "VIIRS"
             ) {
+
                 color =
                     "#ef233c";
             }
 
+
             if (
-                sensor === "MODIS"
+                sensor ===
+                "MODIS"
             ) {
+
                 color =
                     "#f39c12";
             }
+
 
             const marker =
                 L.circleMarker(
@@ -1603,11 +2309,13 @@ function showFires(list) {
                     }
                 );
 
+
             marker.bindPopup(
                 popupContent(
                     fire
                 )
             );
+
 
             marker.addTo(
                 fireLayer
@@ -1621,7 +2329,9 @@ function showFires(list) {
    POPUP
 ===================================================== */
 
-function popupContent(fire) {
+function popupContent(
+    fire
+) {
 
     const date =
         fire.iran_date
@@ -1632,6 +2342,7 @@ function popupContent(fire) {
         ||
         "---";
 
+
     const time =
         fa(
             iranTime(
@@ -1639,90 +2350,106 @@ function popupContent(fire) {
             )
         );
 
-    const code =
-        String(
-            fire.daynight
-            ||
-            ""
-        )
-        .trim()
-        .toUpperCase();
 
-    let dayNight =
-        "---";
+    const dayNight =
+        getDayNightLabel(
+            fire
+        );
 
-    if (
-        code === "D"
-    ) {
-        dayNight =
-            "روز";
-    }
-
-    if (
-        code === "N"
-    ) {
-        dayNight =
-            "شب";
-    }
 
     return `
 
 <div class="fire-popup">
 
-    <h3>🔥 حریق استان فارس</h3>
+    <h3>
+        🔥 حریق استان فارس
+    </h3>
+
 
     <div class="row">
-        <span class="label">سنجنده:</span>
+        <span class="label">
+            سنجنده:
+        </span>
         ${fire.detected_sensor || fire.instrument || "---"}
     </div>
 
+
     <div class="row">
-        <span class="label">ماهواره:</span>
+        <span class="label">
+            ماهواره:
+        </span>
         ${fire.satellite || "---"}
     </div>
 
+
     <div class="row">
-        <span class="label">تاریخ ایران:</span>
+        <span class="label">
+            تاریخ ایران:
+        </span>
         ${shamsiDate(date)}
     </div>
 
+
     <div class="row">
-        <span class="label">ساعت ایران:</span>
+        <span class="label">
+            ساعت ایران:
+        </span>
         ${time}
     </div>
 
+
     <div class="row">
-        <span class="label">روز/شب:</span>
+        <span class="label">
+            زمان:
+        </span>
         ${dayNight}
     </div>
 
+
     <div class="row">
-        <span class="label">تاریخ UTC:</span>
+        <span class="label">
+            تاریخ UTC:
+        </span>
         ${fire.acq_date || "---"}
     </div>
 
+
     <div class="row">
-        <span class="label">ساعت UTC:</span>
+        <span class="label">
+            ساعت UTC:
+        </span>
         ${fire.acq_time || "---"}
     </div>
 
+
     <div class="row">
-        <span class="label">FRP:</span>
+        <span class="label">
+            FRP:
+        </span>
         ${fire.frp || "---"} MW
     </div>
 
+
     <div class="row">
-        <span class="label">Confidence:</span>
+        <span class="label">
+            Confidence:
+        </span>
         ${fire.confidence || "---"}
     </div>
 
+
     <div class="row">
-        <span class="label">Brightness:</span>
+        <span class="label">
+            Brightness:
+        </span>
         ${fire.brightness || "---"}
     </div>
 
+
     <div class="row">
-        <span class="label">مختصات:</span>
+        <span class="label">
+            مختصات:
+        </span>
         ${coordinate(fire.latitude)}
         ,
         ${coordinate(fire.longitude)}
@@ -1738,28 +2465,42 @@ function popupContent(fire) {
    COORDINATE
 ===================================================== */
 
-function coordinate(value) {
+function coordinate(
+    value
+) {
 
     const number =
-        parseFloat(value);
+        parseFloat(
+            value
+        );
 
-    return isNaN(number)
-        ? "---"
-        : number.toFixed(5);
+    if (
+        isNaN(number)
+    ) {
+
+        return "---";
+    }
+
+    return number.toFixed(
+        5
+    );
 }
 
 
 /* =====================================================
-   MODE
+   APPLY MODE
 ===================================================== */
 
-function applyMode(mode) {
+function applyMode(
+    mode
+) {
 
     showFires(
         filteredFires(
             mode
         )
     );
+
 
     document
         .querySelectorAll(
@@ -1802,7 +2543,7 @@ document
 
 
 /* =====================================================
-   SLIDER
+   SLIDER DATE
 ===================================================== */
 
 function updateSliderDate() {
@@ -1812,25 +2553,36 @@ function updateSliderDate() {
             "archiveSlider"
         );
 
+
     const index =
         parseInt(
             slider.value,
             10
         );
 
+
     const date =
-        archiveDates[index];
+        archiveDates[
+            index
+        ];
+
 
     document.getElementById(
         "sliderDate"
     ).innerText =
         date
         ?
-        shamsiDate(date)
+        shamsiDate(
+            date
+        )
         :
         "---";
 }
 
+
+/* =====================================================
+   SLIDER
+===================================================== */
 
 document
     .getElementById(
@@ -1846,10 +2598,15 @@ document
                     10
                 );
 
+
             const date =
-                archiveDates[index];
+                archiveDates[
+                    index
+                ];
+
 
             updateSliderDate();
+
 
             const list =
                 fires.filter(
@@ -1860,12 +2617,15 @@ document
                             ||
                             fire.archive_date;
 
+
                         return (
-                            fireDate ===
+                            fireDate
+                            ===
                             date
                         );
                     }
                 );
+
 
             showFires(
                 list
@@ -1890,12 +2650,16 @@ document
                 "night"
             );
 
+
             const night =
                 document.body.classList.contains(
                     "night"
                 );
 
-            if (night) {
+
+            if (
+                night
+            ) {
 
                 map.removeLayer(
                     lightMap
@@ -1935,10 +2699,16 @@ document
     );
 
 
+/* =====================================================
+   RESTORE NIGHT
+===================================================== */
+
 if (
     localStorage.getItem(
         "fars-night"
-    ) === "1"
+    )
+    ===
+    "1"
 ) {
 
     document.body.classList.add(
@@ -1973,15 +2743,18 @@ async function loadUpdateInfo() {
                 UPDATE_INFO
             );
 
+
         const data =
             JSON.parse(
                 text
             );
 
+
         const timestamp =
             Number(
                 data.updated_at_timestamp
             );
+
 
         if (
             !Number.isFinite(
@@ -1994,12 +2767,16 @@ async function loadUpdateInfo() {
             );
         }
 
+
         updateTimestamp =
             timestamp * 1000;
 
+
         updateTimer();
 
-    } catch (error) {
+    } catch (
+        error
+    ) {
 
         document.getElementById(
             "updateInfo"
@@ -2020,6 +2797,7 @@ function updateTimer() {
             "updateInfo"
         );
 
+
     if (
         !updateTimestamp
     ) {
@@ -2029,6 +2807,7 @@ function updateTimer() {
 
         return;
     }
+
 
     const totalSeconds =
         Math.max(
@@ -2044,22 +2823,34 @@ function updateTimer() {
             )
         );
 
+
     const minutes =
         Math.floor(
             totalSeconds / 60
         );
 
+
     const seconds =
         totalSeconds % 60;
 
+
     element.innerText =
+
         "آخرین به‌روزرسانی: "
+
         +
-        fa(minutes)
+        fa(
+            minutes
+        )
+
         +
         " دقیقه و "
+
         +
-        fa(seconds)
+        fa(
+            seconds
+        )
+
         +
         " ثانیه پیش";
 }
@@ -2094,32 +2885,28 @@ document
 
 async function initialize() {
 
-    /*
-       اول مرز
-    */
-
     try {
 
         await loadBoundary();
 
-    } catch (error) {
+    } catch (
+        error
+    ) {
 
         console.error(
-            "مرز:",
+            "Boundary:",
             error
         );
     }
 
 
-    /*
-       بعد آرشیو
-    */
-
     try {
 
         await loadArchiveIndex();
 
-    } catch (error) {
+    } catch (
+        error
+    ) {
 
         console.error(
             "Archive index:",
@@ -2128,15 +2915,13 @@ async function initialize() {
     }
 
 
-    /*
-       بعد داده‌های حریق
-    */
-
     try {
 
         await loadArchives();
 
-    } catch (error) {
+    } catch (
+        error
+    ) {
 
         console.error(
             "Archives:",
@@ -2145,18 +2930,10 @@ async function initialize() {
     }
 
 
-    /*
-       نمایش امروز
-    */
-
     applyMode(
         "today"
     );
 
-
-    /*
-       تایمر
-    */
 
     loadUpdateInfo();
 }
