@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -25,7 +24,6 @@
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 >
 
-
 <style>
 
 /* =====================================================
@@ -38,28 +36,17 @@
 
 html,
 body {
-
     margin: 0;
     padding: 0;
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
 }
 
 body {
-
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-
-    background:
-        #eef2f5;
-
-    color:
-        #263238;
+    font-family: Tahoma, Arial, sans-serif;
+    background: #eef2f5;
+    color: #263238;
 }
 
 
@@ -68,9 +55,7 @@ body {
 ===================================================== */
 
 header {
-
-    height:
-        74px;
+    height: 74px;
 
     background:
         linear-gradient(
@@ -80,55 +65,31 @@ header {
         );
 
     box-shadow:
-        0 2px 12px
-        rgba(0,0,0,.18);
+        0 2px 12px rgba(0,0,0,.18);
 
-    position:
-        relative;
-
-    z-index:
-        5000;
+    position: relative;
+    z-index: 5000;
 }
 
 .header-inner {
+    width: 100%;
+    height: 100%;
 
-    width:
-        100%;
+    position: relative;
 
-    height:
-        100%;
-
-    position:
-        relative;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 
 .title {
-
-    width:
-        100%;
-
-    text-align:
-        center;
-
-    padding:
-        0 120px;
+    width: 100%;
+    text-align: center;
+    padding: 0 120px;
 }
 
-
 .title h1 {
-
-    margin:
-        0;
+    margin: 0;
 
     font-family:
         "B Titr",
@@ -136,27 +97,17 @@ header {
         Arial,
         sans-serif;
 
-    font-size:
-        23px;
+    font-size: 23px;
+    line-height: 1.5;
 
-    line-height:
-        1.5;
-
-    color:
-        #ffffff;
+    color: #ffffff;
 }
 
-
 .title p {
+    margin: 2px 0 0;
 
-    margin:
-        2px 0 0;
-
-    font-size:
-        10px;
-
-    color:
-        rgba(255,255,255,.9);
+    font-size: 10px;
+    color: rgba(255,255,255,.9);
 }
 
 
@@ -165,63 +116,36 @@ header {
 ===================================================== */
 
 .header-buttons {
+    position: absolute;
 
-    position:
-        absolute;
+    right: 12px;
+    top: 50%;
 
-    right:
-        12px;
+    transform: translateY(-50%);
 
-    top:
-        50%;
-
-    transform:
-        translateY(-50%);
-
-    display:
-        flex;
-
-    gap:
-        5px;
-
-    align-items:
-        center;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-
 .header-button {
+    width: 35px;
+    height: 35px;
 
-    width:
-        35px;
-
-    height:
-        35px;
-
-    border:
-        none;
-
-    border-radius:
-        8px;
+    border: none;
+    border-radius: 8px;
 
     background:
         rgba(255,255,255,.18);
 
-    color:
-        #ffffff;
+    color: #ffffff;
 
-    cursor:
-        pointer;
+    cursor: pointer;
 
-    font-size:
-        16px;
-
-    transition:
-        .2s ease;
+    font-size: 16px;
 }
 
-
 .header-button:hover {
-
     background:
         rgba(255,255,255,.30);
 }
@@ -232,31 +156,18 @@ header {
 ===================================================== */
 
 #map {
+    position: absolute;
 
-    position:
-        absolute;
+    top: 84px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
 
-    top:
-        84px;
-
-    left:
-        10px;
-
-    right:
-        10px;
-
-    bottom:
-        10px;
-
-    border-radius:
-        12px;
-
-    overflow:
-        hidden;
+    border-radius: 12px;
+    overflow: hidden;
 
     box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.13);
+        0 5px 20px rgba(0,0,0,.13);
 
     border:
         1px solid #d7dde1;
@@ -268,24 +179,16 @@ header {
 ===================================================== */
 
 .mode-panel {
+    position: absolute;
 
-    position:
-        absolute;
+    top: 95px;
+    right: 22px;
 
-    top:
-        95px;
+    width: 205px;
 
-    right:
-        22px;
+    z-index: 4000;
 
-    width:
-        205px;
-
-    z-index:
-        4000;
-
-    padding:
-        7px;
+    padding: 7px;
 
     background:
         rgba(255,255,255,.96);
@@ -293,12 +196,10 @@ header {
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        10px;
+    border-radius: 10px;
 
     box-shadow:
-        0 5px 16px
-        rgba(0,0,0,.18);
+        0 5px 16px rgba(0,0,0,.18);
 }
 
 
@@ -307,49 +208,31 @@ header {
 ===================================================== */
 
 .fire-count {
+    width: 100%;
 
-    width:
-        100%;
+    padding: 8px;
+    margin-bottom: 6px;
 
-    padding:
-        8px;
+    text-align: center;
 
-    margin-bottom:
-        6px;
-
-    text-align:
-        center;
-
-    background:
-        #fff3e8;
+    background: #fff3e8;
 
     border:
         1px solid #f2c7a5;
 
-    border-radius:
-        7px;
+    border-radius: 7px;
 
-    color:
-        #c45108;
+    color: #c45108;
 
-    font-size:
-        11px;
+    font-size: 11px;
+    font-weight: bold;
 
-    font-weight:
-        bold;
-
-    line-height:
-        1.7;
+    line-height: 1.7;
 }
 
-
 .fire-count-number {
-
-    font-size:
-        17px;
-
-    color:
-        #d84315;
+    font-size: 17px;
+    color: #d84315;
 }
 
 
@@ -358,56 +241,36 @@ header {
 ===================================================== */
 
 .mode-button {
+    width: 100%;
 
-    width:
-        100%;
+    border: none;
 
-    border:
-        none;
+    background: #f1f3f5;
+    color: #344047;
 
-    background:
-        #f1f3f5;
+    border-radius: 7px;
 
-    color:
-        #344047;
+    padding: 9px 10px;
+    margin-bottom: 5px;
 
-    border-radius:
-        7px;
-
-    padding:
-        9px 10px;
-
-    margin-bottom:
-        5px;
-
-    text-align:
-        right;
+    text-align: right;
 
     font-family:
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size:
-        11px;
+    font-size: 11px;
+    font-weight: bold;
 
-    font-weight:
-        bold;
-
-    cursor:
-        pointer;
+    cursor: pointer;
 }
-
 
 .mode-button:last-child {
-
-    margin-bottom:
-        0;
+    margin-bottom: 0;
 }
 
-
 .mode-button.active {
-
     background:
         linear-gradient(
             135deg,
@@ -415,43 +278,29 @@ header {
             #c84c00
         );
 
-    color:
-        #ffffff;
+    color: #ffffff;
 }
 
 
 /* =====================================================
-   LEGEND
+   SENSOR LEGEND
 ===================================================== */
 
 .legend-box {
+    position: absolute;
 
-    position:
-        absolute;
+    top: 95px;
+    left: 50%;
 
-    top:
-        95px;
+    transform: translateX(-50%);
 
-    left:
-        50%;
+    z-index: 4000;
 
-    transform:
-        translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 14px;
 
-    z-index:
-        4000;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        14px;
-
-    padding:
-        7px 12px;
+    padding: 7px 12px;
 
     background:
         rgba(255,255,255,.96);
@@ -459,51 +308,30 @@ header {
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
     box-shadow:
-        0 4px 14px
-        rgba(0,0,0,.16);
+        0 4px 14px rgba(0,0,0,.16);
 
-    font-size:
-        10px;
-
-    white-space:
-        nowrap;
+    font-size: 10px;
+    white-space: nowrap;
 }
-
 
 .legend-title {
-
-    font-weight:
-        bold;
+    font-weight: bold;
 }
-
 
 .legend-item {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-
 .legend-dot {
+    width: 10px;
+    height: 10px;
 
-    width:
-        10px;
-
-    height:
-        10px;
-
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     border:
         1px solid #555;
@@ -515,27 +343,18 @@ header {
 ===================================================== */
 
 .update-box {
+    position: absolute;
 
-    position:
-        absolute;
+    right: 10px;
+    bottom: 10px;
 
-    right:
-        10px;
+    z-index: 4000;
 
-    bottom:
-        10px;
+    width: 300px;
 
-    z-index:
-        4000;
+    padding: 8px 12px;
 
-    width:
-        300px;
-
-    padding:
-        8px 12px;
-
-    text-align:
-        center;
+    text-align: center;
 
     background:
         rgba(255,255,255,.96);
@@ -543,41 +362,28 @@ header {
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
     box-shadow:
-        0 5px 16px
-        rgba(0,0,0,.18);
+        0 5px 16px rgba(0,0,0,.18);
 }
-
 
 .update-title {
+    font-size: 10px;
 
-    font-size:
-        10px;
+    color: #6b7780;
 
-    color:
-        #6b7780;
-
-    margin-bottom:
-        4px;
+    margin-bottom: 4px;
 }
 
-
 .update-row {
+    font-size: 10px;
 
-    font-size:
-        10px;
+    font-weight: bold;
 
-    font-weight:
-        bold;
+    line-height: 1.8;
 
-    line-height:
-        1.8;
-
-    color:
-        #c45108;
+    color: #c45108;
 }
 
 
@@ -586,24 +392,16 @@ header {
 ===================================================== */
 
 .slider-box {
+    position: absolute;
 
-    position:
-        absolute;
+    left: 22px;
+    bottom: 20px;
 
-    left:
-        22px;
+    z-index: 4000;
 
-    bottom:
-        20px;
+    width: 330px;
 
-    z-index:
-        4000;
-
-    width:
-        310px;
-
-    padding:
-        10px 14px;
+    padding: 10px 14px;
 
     background:
         rgba(255,255,255,.96);
@@ -611,64 +409,56 @@ header {
     border:
         1px solid #dce2e6;
 
-    border-radius:
-        9px;
+    border-radius: 9px;
 
     box-shadow:
-        0 5px 16px
-        rgba(0,0,0,.18);
+        0 5px 16px rgba(0,0,0,.18);
 }
 
+
+/* =====================================================
+   SLIDER HEAD
+===================================================== */
 
 .slider-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    display:
-        flex;
+    gap: 10px;
 
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    margin-bottom:
-        9px;
+    margin-bottom: 8px;
 }
-
 
 .slider-title {
-
-    font-size:
-        12px;
-
-    font-weight:
-        bold;
-
-    color:
-        #455a64;
+    font-size: 12px;
+    font-weight: bold;
+    color: #455a64;
 }
-
 
 .slider-date {
+    font-size: 11px;
+    font-weight: bold;
+    color: #c45108;
 
-    font-size:
-        11px;
-
-    font-weight:
-        bold;
-
-    color:
-        #c45108;
+    text-align: left;
 }
 
+.slider-count {
+    font-size: 10px;
+    font-weight: bold;
+    color: #546e7a;
+
+    margin-top: 3px;
+}
+
+.slider-date-block {
+    text-align: left;
+}
 
 #archiveSlider {
-
-    width:
-        100%;
-
-    height:
-        6px;
+    width: 100%;
+    height: 6px;
 }
 
 
@@ -677,81 +467,52 @@ header {
 ===================================================== */
 
 .fire-popup {
+    width: 260px;
 
-    width:
-        260px;
-
-    direction:
-        rtl;
-
-    text-align:
-        right;
+    direction: rtl;
+    text-align: right;
 
     font-family:
         Tahoma,
         Arial,
         sans-serif;
 
-    font-size:
-        12px;
-
-    line-height:
-        1.9;
+    font-size: 12px;
+    line-height: 1.9;
 }
-
 
 .fire-popup h3 {
+    margin: 0 0 7px;
 
-    margin:
-        0 0 7px;
+    color: #d35400;
 
-    color:
-        #d35400;
-
-    font-size:
-        15px;
+    font-size: 15px;
 }
 
-
 .fire-popup .row {
-
     border-bottom:
         1px solid #edf0f2;
 
-    padding:
-        2px 0;
+    padding: 2px 0;
 }
 
-
 .fire-popup .label {
-
-    font-weight:
-        bold;
+    font-weight: bold;
 }
 
 
 /* =====================================================
-   NIGHT
+   NIGHT MODE
 ===================================================== */
 
 body.night {
-
-    background:
-        #121820;
+    background: #121820;
 }
 
-
-body.night
-.mode-panel,
-
-body.night
-.legend-box,
-
-body.night
-.update-box,
-
-body.night
-.slider-box {
+body.night .mode-panel,
+body.night .legend-box,
+body.night .update-box,
+body.night .slider-box {
 
     background:
         rgba(26,32,40,.96);
@@ -763,43 +524,22 @@ body.night
         #e8edf1;
 }
 
-
-body.night
-.fire-count {
-
-    background:
-        #2b2420;
-
-    border-color:
-        #634a3b;
-
-    color:
-        #ffd08a;
+body.night .fire-count {
+    background: #2b2420;
+    border-color: #634a3b;
+    color: #ffd08a;
 }
 
-
-body.night
-.fire-count-number {
-
-    color:
-        #ffb36b;
+body.night .fire-count-number {
+    color: #ffb36b;
 }
 
-
-body.night
-.mode-button {
-
-    background:
-        #252d36;
-
-    color:
-        #dbe3e8;
+body.night .mode-button {
+    background: #252d36;
+    color: #dbe3e8;
 }
 
-
-body.night
-.mode-button.active {
-
+body.night .mode-button.active {
     background:
         linear-gradient(
             135deg,
@@ -807,30 +547,18 @@ body.night
             #c84c00
         );
 
-    color:
-        #ffffff;
+    color: #ffffff;
 }
 
-
-body.night
-.slider-title,
-
-body.night
-.legend-title {
-
-    color:
-        #dbe3e8;
+body.night .slider-title,
+body.night .legend-title {
+    color: #dbe3e8;
 }
 
-
-body.night
-.slider-date,
-
-body.night
-.update-row {
-
-    color:
-        #ffd08a;
+body.night .slider-date,
+body.night .slider-count,
+body.night .update-row {
+    color: #ffd08a;
 }
 
 
@@ -841,245 +569,140 @@ body.night
 @media (max-width: 700px) {
 
     header {
-
-        height:
-            80px;
+        height: 80px;
     }
-
 
     .title {
-
-        padding:
-            0 100px 0 70px;
+        padding: 0 100px 0 70px;
     }
-
 
     .title h1 {
-
-        font-size:
-            15px;
+        font-size: 15px;
     }
-
 
     .title p {
-
-        display:
-            none;
+        display: none;
     }
-
 
     .header-buttons {
-
-        right:
-            6px;
-
-        gap:
-            4px;
+        right: 6px;
+        gap: 4px;
     }
-
 
     .header-button {
-
-        width:
-            29px;
-
-        height:
-            29px;
-
-        font-size:
-            13px;
+        width: 29px;
+        height: 29px;
+        font-size: 13px;
     }
-
 
     #map {
+        top: 88px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
 
-        top:
-            88px;
-
-        left:
-            5px;
-
-        right:
-            5px;
-
-        bottom:
-            5px;
-
-        border-radius:
-            9px;
+        border-radius: 9px;
     }
-
 
     .mode-panel {
-
-        top:
-            99px;
-
-        right:
-            12px;
-
-        width:
-            155px;
+        top: 99px;
+        right: 12px;
+        width: 155px;
     }
-
 
     .fire-count {
-
-        font-size:
-            9px;
-
-        padding:
-            6px;
+        font-size: 9px;
+        padding: 6px;
     }
-
 
     .fire-count-number {
-
-        font-size:
-            15px;
+        font-size: 15px;
     }
-
 
     .mode-button {
-
-        font-size:
-            9px;
-
-        padding:
-            8px;
+        font-size: 9px;
+        padding: 8px;
     }
 
-
     .legend-box {
+        top: 99px;
+        left: 10px;
 
-        top:
-            99px;
-
-        left:
-            10px;
-
-        transform:
-            none;
+        transform: none;
 
         max-width:
             calc(100% - 185px);
 
-        white-space:
-            normal;
+        white-space: normal;
 
-        flex-wrap:
-            wrap;
+        flex-wrap: wrap;
+        justify-content: center;
 
-        justify-content:
-            center;
+        gap: 7px;
 
-        gap:
-            7px;
+        font-size: 8px;
 
-        font-size:
-            8px;
-
-        padding:
-            5px 7px;
+        padding: 5px 7px;
     }
-
 
     .legend-title {
-
-        width:
-            100%;
-
-        text-align:
-            center;
+        width: 100%;
+        text-align: center;
     }
-
 
     .update-box {
+        right: 5px;
+        bottom: 5px;
 
-        right:
-            5px;
+        width: 225px;
 
-        bottom:
-            5px;
-
-        width:
-            225px;
-
-        padding:
-            6px 8px;
+        padding: 6px 8px;
     }
-
 
     .update-title {
-
-        font-size:
-            8px;
+        font-size: 8px;
     }
-
 
     .update-row {
-
-        font-size:
-            8px;
-
-        line-height:
-            1.7;
+        font-size: 8px;
+        line-height: 1.7;
     }
-
 
     .slider-box {
+        left: 5px;
+        bottom: 5px;
 
-        left:
-            5px;
+        width: 225px;
 
-        bottom:
-            5px;
-
-        width:
-            215px;
-
-        padding:
-            8px 10px;
+        padding: 8px 10px;
     }
-
 
     .slider-head {
-
-        display:
-            block;
-
-        text-align:
-            center;
-
-        margin-bottom:
-            7px;
+        display: block;
+        text-align: center;
+        margin-bottom: 7px;
     }
-
 
     .slider-title {
-
-        font-size:
-            10px;
+        font-size: 10px;
     }
 
+    .slider-date-block {
+        margin-top: 3px;
+        text-align: center;
+    }
 
     .slider-date {
-
-        margin-top:
-            3px;
-
-        font-size:
-            10px;
+        font-size: 10px;
     }
 
+    .slider-count {
+        font-size: 9px;
+    }
 
     .fire-popup {
-
-        width:
-            235px;
-
-        font-size:
-            10px;
+        width: 235px;
+        font-size: 10px;
     }
 }
 
@@ -1099,7 +722,6 @@ body.night
 
 <div class="header-inner">
 
-
     <div class="title">
 
         <h1>
@@ -1115,8 +737,6 @@ body.night
 
     <div class="header-buttons">
 
-        <!-- Excel -->
-
         <button
             id="excel24Button"
             class="header-button"
@@ -1126,8 +746,6 @@ body.night
         </button>
 
 
-        <!-- Night -->
-
         <button
             id="nightButton"
             class="header-button"
@@ -1136,8 +754,6 @@ body.night
             🌙
         </button>
 
-
-        <!-- Refresh -->
 
         <button
             id="refreshButton"
@@ -1166,7 +782,6 @@ body.night
 ===================================================== -->
 
 <div class="mode-panel">
-
 
     <div class="fire-count">
 
@@ -1205,13 +820,13 @@ body.night
 
 
 <!-- =====================================================
-     LEGEND
+     SENSOR
 ===================================================== -->
 
 <div class="legend-box">
 
     <span class="legend-title">
-        راهنما
+        سنجنده
     </span>
 
 
@@ -1256,7 +871,7 @@ body.night
         id="firmsAge"
         class="update-row"
     >
-        آخرین دریافت داده از سنجنده: در انتظار اطلاعات
+        آخرین دریافت داده FIRMS: در انتظار اطلاعات
     </div>
 
 
@@ -1283,12 +898,24 @@ body.night
         </span>
 
 
-        <span
-            id="sliderDate"
-            class="slider-date"
-        >
-            ---
-        </span>
+        <div class="slider-date-block">
+
+            <div
+                id="sliderDate"
+                class="slider-date"
+            >
+                ---
+            </div>
+
+
+            <div
+                id="sliderCount"
+                class="slider-count"
+            >
+                تعداد رخداد: ۰
+            </div>
+
+        </div>
 
     </div>
 
@@ -1319,10 +946,8 @@ body.night
 const BOUNDARY_FILE =
     "fars.geojson";
 
-
 const ARCHIVE_INDEX =
     "archive/index.json";
-
 
 const UPDATE_INFO =
     "update-info.json";
@@ -1333,16 +958,13 @@ const UPDATE_INFO =
 ===================================================== */
 
 const map =
-    L.map(
-        "map"
-    );
+    L.map("map");
 
 
 const lightMap =
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
-
             maxZoom:
                 18,
 
@@ -1356,7 +978,6 @@ const darkMap =
     L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
         {
-
             maxZoom:
                 19,
 
@@ -1408,21 +1029,20 @@ map.setView(
 let boundaryLayer =
     null;
 
-
 let archiveDates =
     [];
-
 
 let fires =
     [];
 
-
 let archiveHeaders =
     [];
 
-
 let updateTimestamp =
     null;
+
+let currentMode =
+    "24h";
 
 
 /* =====================================================
@@ -1474,9 +1094,7 @@ function gregorianToJalali(
         181,212,243,273,304,334
     ];
 
-
     let jy;
-
 
     if (
         gy > 1600
@@ -1497,14 +1115,12 @@ function gregorianToJalali(
             621;
     }
 
-
     const gy2 =
         gm > 2
         ?
         gy + 1
         :
         gy;
-
 
     let days =
         365 * gy
@@ -1525,10 +1141,7 @@ function gregorianToJalali(
         +
         gd
         +
-        gdm[
-            gm - 1
-        ];
-
+        gdm[gm - 1];
 
     jy +=
         33 *
@@ -1536,10 +1149,8 @@ function gregorianToJalali(
             days / 12053
         );
 
-
     days %=
         12053;
-
 
     jy +=
         4 *
@@ -1547,10 +1158,8 @@ function gregorianToJalali(
             days / 1461
         );
 
-
     days %=
         1461;
-
 
     if (
         days > 365
@@ -1565,10 +1174,8 @@ function gregorianToJalali(
             (days - 1) % 365;
     }
 
-
     let jm;
     let jd;
-
 
     if (
         days < 186
@@ -1599,7 +1206,6 @@ function gregorianToJalali(
             );
     }
 
-
     return [
         jy,
         jm,
@@ -1623,7 +1229,6 @@ function shamsiDate(
         return "---";
     }
 
-
     const p =
         String(
             dateString
@@ -1631,14 +1236,12 @@ function shamsiDate(
             "-"
         );
 
-
     if (
         p.length !== 3
     ) {
 
         return dateString;
     }
-
 
     const j =
         gregorianToJalali(
@@ -1659,7 +1262,6 @@ function shamsiDate(
             )
         );
 
-
     const months = [
 
         "فروردین",
@@ -1676,24 +1278,19 @@ function shamsiDate(
         "اسفند"
     ];
 
-
     return (
 
         fa(
             j[2]
         )
-
         +
         " "
-
         +
         months[
             j[1] - 1
         ]
-
         +
         " "
-
         +
         fa(
             j[0]
@@ -1847,7 +1444,7 @@ function parseCSV(
 
 
 /* =====================================================
-   LOAD BOUNDARY
+   BOUNDARY
 ===================================================== */
 
 async function loadBoundary() {
@@ -1937,7 +1534,7 @@ async function loadBoundary() {
 
 
 /* =====================================================
-   LOAD ARCHIVE INDEX
+   ARCHIVE INDEX
 ===================================================== */
 
 async function loadArchiveIndex() {
@@ -1995,7 +1592,7 @@ async function loadArchiveIndex() {
         );
 
 
-    updateSliderDate();
+    updateSliderDisplay();
 }
 
 
@@ -2007,7 +1604,6 @@ async function loadArchives() {
 
     fires =
         [];
-
 
     archiveHeaders =
         [];
@@ -2553,7 +2149,7 @@ function showFires(
 
 
 /* =====================================================
-   UPDATE COUNT
+   FIRE COUNT
 ===================================================== */
 
 function updateFireCount(
@@ -2727,14 +2323,6 @@ function coordinate(
 
 
 /* =====================================================
-   CURRENT MODE
-===================================================== */
-
-let currentMode =
-    "24h";
-
-
-/* =====================================================
    APPLY MODE
 ===================================================== */
 
@@ -2803,10 +2391,34 @@ document
 
 
 /* =====================================================
-   SLIDER DATE
+   ARCHIVE DATE + COUNT
 ===================================================== */
 
-function updateSliderDate() {
+function getArchiveDateRows(
+    date
+) {
+
+    return fires.filter(
+        function(fire) {
+
+            const fireDate =
+                fire.iran_date
+                ||
+                fire.archive_date
+                ||
+                fire.acq_date;
+
+
+            return (
+                fireDate ===
+                date
+            );
+        }
+    );
+}
+
+
+function updateSliderDisplay() {
 
     const slider =
         document.getElementById(
@@ -2827,9 +2439,20 @@ function updateSliderDate() {
         ];
 
 
+    const count =
+        date
+        ?
+        getArchiveDateRows(
+            date
+        ).length
+        :
+        0;
+
+
     document.getElementById(
         "sliderDate"
     ).innerText =
+
         date
         ?
         shamsiDate(
@@ -2837,6 +2460,17 @@ function updateSliderDate() {
         )
         :
         "---";
+
+
+    document.getElementById(
+        "sliderCount"
+    ).innerText =
+
+        "تعداد رخداد: "
+        +
+        fa(
+            count
+        );
 }
 
 
@@ -2865,25 +2499,17 @@ document
                 ];
 
 
-            updateSliderDate();
+            updateSliderDisplay();
 
 
             const list =
-                fires.filter(
-                    function(fire) {
-
-                        const fireDate =
-                            fire.iran_date
-                            ||
-                            fire.archive_date;
-
-
-                        return (
-                            fireDate ===
-                            date
-                        );
-                    }
-                );
+                date
+                ?
+                getArchiveDateRows(
+                    date
+                )
+                :
+                [];
 
 
             showFires(
@@ -2899,7 +2525,7 @@ document
 
 
 /* =====================================================
-   FIRMS LATEST DETECTION
+   LATEST FIRMS DETECTION
 ===================================================== */
 
 function getLatestFirmsDate() {
@@ -3001,7 +2627,8 @@ function ageText(
 
 
     const seconds =
-        totalSeconds % 60;
+        totalSeconds %
+        60;
 
 
     if (
@@ -3052,7 +2679,7 @@ function ageText(
 
 
 /* =====================================================
-   UPDATE FIRMS AGE
+   FIRMS AGE
 ===================================================== */
 
 function updateFirmsAge() {
@@ -3132,6 +2759,7 @@ async function loadUpdateInfo() {
 
         updateSystemAge();
 
+
     } catch (
         error
     ) {
@@ -3177,7 +2805,7 @@ function updateSystemAge() {
 
 
 /* =====================================================
-   EXCEL ESCAPE
+   EXCEL XML ESCAPE
 ===================================================== */
 
 function escapeXml(
@@ -3189,7 +2817,6 @@ function escapeXml(
         value === undefined
         ||
         value === null
-
         ?
         ""
         :
@@ -3274,36 +2901,60 @@ function export24HoursToExcel() {
 
     let xml =
 
-        '<?xml version="1.0"?>' +
+        '<?xml version="1.0"?>'
 
-        '<Workbook ' +
+        +
 
-        'xmlns="urn:schemas-microsoft-com:office:spreadsheet" ' +
+        '<Workbook '
 
-        'xmlns:o="urn:schemas-microsoft-com:office:office" ' +
+        +
 
-        'xmlns:x="urn:schemas-microsoft-com:office:excel" ' +
+        'xmlns="urn:schemas-microsoft-com:office:spreadsheet" '
 
-        'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">' +
+        +
 
-        '<Styles>' +
+        'xmlns:o="urn:schemas-microsoft-com:office:office" '
 
-        '<Style ss:ID="Header">' +
+        +
 
-        '<Font ss:Bold="1"/>' +
+        'xmlns:x="urn:schemas-microsoft-com:office:excel" '
 
-        '<Interior ss:Color="#E8F0F5" Pattern="Solid"/>' +
+        +
 
-        '</Style>' +
+        'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">'
 
-        '</Styles>' +
+        +
 
-        '<Worksheet ss:Name="Fire_24H">' +
+        '<Styles>'
+
+        +
+
+        '<Style ss:ID="Header">'
+
+        +
+
+        '<Font ss:Bold="1"/>'
+
+        +
+
+        '<Interior ss:Color="#E8F0F5" Pattern="Solid"/>'
+
+        +
+
+        '</Style>'
+
+        +
+
+        '</Styles>'
+
+        +
+
+        '<Worksheet ss:Name="Fire_24H">'
+
+        +
 
         '<Table>';
 
-
-    /* هدر */
 
     xml +=
         '<Row>';
@@ -3314,15 +2965,23 @@ function export24HoursToExcel() {
 
             xml +=
 
-                '<Cell ss:StyleID="Header">' +
+                '<Cell ss:StyleID="Header">'
 
-                '<Data ss:Type="String">' +
+                +
+
+                '<Data ss:Type="String">'
+
+                +
 
                 escapeXml(
                     header
-                ) +
+                )
 
-                '</Data>' +
+                +
+
+                '</Data>'
+
+                +
 
                 '</Cell>';
         }
@@ -3332,8 +2991,6 @@ function export24HoursToExcel() {
     xml +=
         '</Row>';
 
-
-    /* داده */
 
     list.forEach(
         function(fire) {
@@ -3361,15 +3018,23 @@ function export24HoursToExcel() {
 
                     xml +=
 
-                        '<Cell>' +
+                        '<Cell>'
 
-                        '<Data ss:Type="String">' +
+                        +
+
+                        '<Data ss:Type="String">'
+
+                        +
 
                         escapeXml(
                             value
-                        ) +
+                        )
 
-                        '</Data>' +
+                        +
+
+                        '</Data>'
+
+                        +
 
                         '</Cell>';
                 }
@@ -3384,9 +3049,13 @@ function export24HoursToExcel() {
 
     xml +=
 
-        '</Table>' +
+        '</Table>'
 
-        '</Worksheet>' +
+        +
+
+        '</Worksheet>'
+
+        +
 
         '</Workbook>';
 
@@ -3464,18 +3133,25 @@ function export24HoursToExcel() {
     link.download =
 
         "fires_24h_"
+
         +
         year
+
         +
         month
+
         +
         day
+
         +
         "_"
+
         +
         hour
+
         +
         minute
+
         +
         ".xls";
 
@@ -3519,6 +3195,7 @@ document
         function() {
 
             export24HoursToExcel();
+
         }
     );
 
@@ -3572,6 +3249,7 @@ document
                     "fars-night",
                     "1"
                 );
+
 
             } else {
 
@@ -3647,6 +3325,7 @@ document
         function() {
 
             location.reload();
+
         }
     );
 
@@ -3673,7 +3352,9 @@ setInterval(
 
 async function initialize() {
 
-    /* 1. مرز */
+    /*
+       ۱. مرز
+    */
 
     try {
 
@@ -3690,7 +3371,9 @@ async function initialize() {
     }
 
 
-    /* 2. آرشیو */
+    /*
+       ۲. آرشیو
+    */
 
     try {
 
@@ -3707,7 +3390,9 @@ async function initialize() {
     }
 
 
-    /* 3. داده‌ها */
+    /*
+       ۳. داده‌ها
+    */
 
     try {
 
@@ -3724,19 +3409,32 @@ async function initialize() {
     }
 
 
-    /* 4. پیش‌فرض ۲۴ ساعت */
+    /*
+       ۴. نمایش ۲۴ ساعت
+    */
 
     applyMode(
         "24h"
     );
 
 
-    /* 5. زمان آخرین دریافت داده */
+    /*
+       ۵. نمایش تاریخ و تعداد آرشیو
+    */
+
+    updateSliderDisplay();
+
+
+    /*
+       ۶. آخرین دریافت داده
+    */
 
     updateFirmsAge();
 
 
-    /* 6. زمان آخرین اجرای سامانه */
+    /*
+       ۷. آخرین به‌روزرسانی سامانه
+    */
 
     loadUpdateInfo();
 }
@@ -3751,25 +3449,5 @@ initialize();
 </script>
 
 </body>
+
 </html>
-```
-
-### بعد از جایگزینی
-
-فقط این چهار کار را انجام بده:
-
-**۱.** `index.html` را کامل جایگزین کن.
-**۲.** `Commit changes` بزن.
-**۳.** `Deploy Fars Fire Sentinel` را اجرا کن و سبز شدنش را ببین.
-**۴.** سایت را با `Ctrl + F5` باز کن.
-
-در این نسخه دکمه **📊 گزارش Excel** حذف نشده و **پنل پایین سمت راست هم سر جای خودش مانده**.
-
-داخل پنل پایین باید دقیقاً این دو خط را ببینی:
-
-```text
-آخرین دریافت داده FIRMS: ...
-آخرین به‌روزرسانی سامانه: ...
-```
-
-و تعداد رخدادهای ۲۴ ساعت هم با همان فیلتر نقشه محاسبه می‌شود.
