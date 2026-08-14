@@ -25,6 +25,7 @@
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 >
 
+
 <style>
 
 /* =====================================================
@@ -37,14 +38,18 @@
 
 html,
 body {
+
     margin: 0;
     padding: 0;
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
 }
 
 body {
+
     font-family:
         Tahoma,
         Arial,
@@ -64,8 +69,7 @@ body {
 
 header {
 
-    height:
-        74px;
+    height: 74px;
 
     background:
         linear-gradient(
@@ -75,7 +79,8 @@ header {
         );
 
     box-shadow:
-        0 2px 12px rgba(0,0,0,.18);
+        0 2px 12px
+        rgba(0,0,0,.18);
 
     position:
         relative;
@@ -83,6 +88,7 @@ header {
     z-index:
         5000;
 }
+
 
 .header-inner {
 
@@ -105,6 +111,7 @@ header {
         center;
 }
 
+
 .title {
 
     width:
@@ -116,6 +123,7 @@ header {
     padding:
         0 120px;
 }
+
 
 .title h1 {
 
@@ -137,6 +145,7 @@ header {
     color:
         #ffffff;
 }
+
 
 .title p {
 
@@ -174,13 +183,8 @@ header {
 
     gap:
         5px;
-
-    flex-wrap:
-        wrap;
-
-    justify-content:
-        flex-end;
 }
+
 
 .header-button {
 
@@ -207,10 +211,8 @@ header {
 
     font-size:
         16px;
-
-    transition:
-        .2s ease;
 }
+
 
 .header-button:hover {
 
@@ -247,7 +249,8 @@ header {
         hidden;
 
     box-shadow:
-        0 5px 20px rgba(0,0,0,.13);
+        0 5px 20px
+        rgba(0,0,0,.13);
 
     border:
         1px solid #d7dde1;
@@ -270,7 +273,7 @@ header {
         22px;
 
     width:
-        190px;
+        205px;
 
     z-index:
         4000;
@@ -288,8 +291,65 @@ header {
         10px;
 
     box-shadow:
-        0 5px 16px rgba(0,0,0,.18);
+        0 5px 16px
+        rgba(0,0,0,.18);
 }
+
+
+/* =====================================================
+   FIRE COUNT
+===================================================== */
+
+.fire-count {
+
+    width:
+        100%;
+
+    padding:
+        8px;
+
+    margin-bottom:
+        6px;
+
+    text-align:
+        center;
+
+    background:
+        #fff3e8;
+
+    border:
+        1px solid #f2c7a5;
+
+    border-radius:
+        7px;
+
+    color:
+        #c45108;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    line-height:
+        1.7;
+}
+
+
+.fire-count-number {
+
+    font-size:
+        17px;
+
+    color:
+        #d84315;
+}
+
+
+/* =====================================================
+   MODE BUTTON
+===================================================== */
 
 .mode-button {
 
@@ -332,10 +392,13 @@ header {
         pointer;
 }
 
+
 .mode-button:last-child {
+
     margin-bottom:
         0;
 }
+
 
 .mode-button.active {
 
@@ -394,7 +457,8 @@ header {
         9px;
 
     box-shadow:
-        0 4px 14px rgba(0,0,0,.16);
+        0 4px 14px
+        rgba(0,0,0,.16);
 
     font-size:
         10px;
@@ -403,10 +467,13 @@ header {
         nowrap;
 }
 
+
 .legend-title {
+
     font-weight:
         bold;
 }
+
 
 .legend-item {
 
@@ -419,6 +486,7 @@ header {
     gap:
         5px;
 }
+
 
 .legend-dot {
 
@@ -437,7 +505,8 @@ header {
 
 
 /* =====================================================
-   UPDATE TIMER
+   UPDATE PANEL
+   جای آن همان پایین سمت راست است
 ===================================================== */
 
 .update-box {
@@ -455,7 +524,7 @@ header {
         4000;
 
     width:
-        270px;
+        290px;
 
     padding:
         8px 12px;
@@ -473,8 +542,10 @@ header {
         9px;
 
     box-shadow:
-        0 5px 16px rgba(0,0,0,.18);
+        0 5px 16px
+        rgba(0,0,0,.18);
 }
+
 
 .update-title {
 
@@ -485,22 +556,23 @@ header {
         #6b7780;
 
     margin-bottom:
-        3px;
+        4px;
 }
 
-#updateInfo {
+
+.update-row {
 
     font-size:
-        11px;
+        10px;
 
     font-weight:
         bold;
 
+    line-height:
+        1.8;
+
     color:
         #c45108;
-
-    line-height:
-        1.7;
 }
 
 
@@ -538,8 +610,10 @@ header {
         9px;
 
     box-shadow:
-        0 5px 16px rgba(0,0,0,.18);
+        0 5px 16px
+        rgba(0,0,0,.18);
 }
+
 
 .slider-head {
 
@@ -556,6 +630,7 @@ header {
         9px;
 }
 
+
 .slider-title {
 
     font-size:
@@ -568,6 +643,7 @@ header {
         #455a64;
 }
 
+
 .slider-date {
 
     font-size:
@@ -579,6 +655,7 @@ header {
     color:
         #c45108;
 }
+
 
 #archiveSlider {
 
@@ -617,6 +694,7 @@ header {
         1.9;
 }
 
+
 .fire-popup h3 {
 
     margin:
@@ -629,6 +707,7 @@ header {
         15px;
 }
 
+
 .fire-popup .row {
 
     border-bottom:
@@ -638,20 +717,24 @@ header {
         2px 0;
 }
 
+
 .fire-popup .label {
+
     font-weight:
         bold;
 }
 
 
 /* =====================================================
-   NIGHT MODE
+   NIGHT
 ===================================================== */
 
 body.night {
+
     background:
         #121820;
 }
+
 
 body.night
 .mode-panel,
@@ -675,6 +758,29 @@ body.night
         #e8edf1;
 }
 
+
+body.night
+.fire-count {
+
+    background:
+        #2b2420;
+
+    border-color:
+        #634a3b;
+
+    color:
+        #ffd08a;
+}
+
+
+body.night
+.fire-count-number {
+
+    color:
+        #ffb36b;
+}
+
+
 body.night
 .mode-button {
 
@@ -684,6 +790,7 @@ body.night
     color:
         #dbe3e8;
 }
+
 
 body.night
 .mode-button.active {
@@ -699,6 +806,7 @@ body.night
         #ffffff;
 }
 
+
 body.night
 .slider-title,
 
@@ -709,11 +817,12 @@ body.night
         #dbe3e8;
 }
 
+
 body.night
 .slider-date,
 
 body.night
-#updateInfo {
+.update-row {
 
     color:
         #ffd08a;
@@ -727,44 +836,50 @@ body.night
 @media (max-width: 700px) {
 
     header {
+
         height:
             80px;
     }
 
+
     .title {
+
         padding:
-            0 100px 0 70px;
+            0 65px;
     }
 
+
     .title h1 {
+
         font-size:
             15px;
     }
 
+
     .title p {
+
         display:
             none;
     }
+
 
     .header-buttons {
 
         right:
             6px;
 
-        width:
-            88px;
-
         gap:
             4px;
     }
 
+
     .header-button {
 
         width:
-            28px;
+            29px;
 
         height:
-            28px;
+            29px;
 
         font-size:
             13px;
@@ -801,6 +916,24 @@ body.night
         width:
             155px;
     }
+
+
+    .fire-count {
+
+        font-size:
+            9px;
+
+        padding:
+            6px;
+    }
+
+
+    .fire-count-number {
+
+        font-size:
+            15px;
+    }
+
 
     .mode-button {
 
@@ -845,6 +978,7 @@ body.night
             5px 7px;
     }
 
+
     .legend-title {
 
         width:
@@ -864,11 +998,12 @@ body.night
             5px;
 
         width:
-            215px;
+            225px;
 
         padding:
-            7px 8px;
+            6px 8px;
     }
+
 
     .update-title {
 
@@ -876,13 +1011,14 @@ body.night
             8px;
     }
 
-    #updateInfo {
+
+    .update-row {
 
         font-size:
-            9px;
+            8px;
 
         line-height:
-            1.6;
+            1.7;
     }
 
 
@@ -901,6 +1037,7 @@ body.night
             8px 10px;
     }
 
+
     .slider-head {
 
         display:
@@ -913,11 +1050,13 @@ body.night
             7px;
     }
 
+
     .slider-title {
 
         font-size:
             10px;
     }
+
 
     .slider-date {
 
@@ -955,6 +1094,7 @@ body.night
 
 <div class="header-inner">
 
+
     <div class="title">
 
         <h1>
@@ -970,19 +1110,6 @@ body.night
 
     <div class="header-buttons">
 
-        <!-- خروجی اکسل -->
-
-        <button
-            id="excel24Button"
-            class="header-button"
-            title="گزارش Excel حریق‌های ۲۴ ساعت گذشته"
-        >
-            📊
-        </button>
-
-
-        <!-- حالت شب -->
-
         <button
             id="nightButton"
             class="header-button"
@@ -991,8 +1118,6 @@ body.night
             🌙
         </button>
 
-
-        <!-- بازخوانی -->
 
         <button
             id="refreshButton"
@@ -1017,10 +1142,33 @@ body.night
 
 
 <!-- =====================================================
-     MODES
+     MODE PANEL
 ===================================================== -->
 
 <div class="mode-panel">
+
+
+    <!-- تعداد رخداد -->
+
+    <div class="fire-count">
+
+        رخدادهای شناسایی‌شده
+
+        <br>
+
+        <span
+            id="fireCount"
+            class="fire-count-number"
+        >
+            ۰
+        </span>
+
+        رخداد
+
+    </div>
+
+
+    <!-- 24 HOURS -->
 
     <button
         class="mode-button active"
@@ -1029,6 +1177,8 @@ body.night
         🔥 حریق‌های ۲۴ ساعت گذشته
     </button>
 
+
+    <!-- 5 DAYS -->
 
     <button
         class="mode-button"
@@ -1078,17 +1228,29 @@ body.night
 
 
 <!-- =====================================================
-     UPDATE
+     UPDATE PANEL
 ===================================================== -->
 
 <div class="update-box">
 
     <div class="update-title">
-        آخرین وضعیت سامانه
+        وضعیت به‌روزرسانی
     </div>
 
-    <div id="updateInfo">
-        آخرین به‌روزرسانی: در انتظار اطلاعات
+
+    <div
+        id="firmsAge"
+        class="update-row"
+    >
+        آخرین داده FIRMS: در انتظار اطلاعات
+    </div>
+
+
+    <div
+        id="updateInfo"
+        class="update-row"
+    >
+        آخرین به‌روزرسانی سامانه: در انتظار اطلاعات
     </div>
 
 </div>
@@ -1105,6 +1267,7 @@ body.night
         <span class="slider-title">
             آرشیو روزانه
         </span>
+
 
         <span
             id="sliderDate"
@@ -1128,7 +1291,9 @@ body.night
 </div>
 
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
 
 
 <script>
@@ -1140,8 +1305,10 @@ body.night
 const BOUNDARY_FILE =
     "fars.geojson";
 
+
 const ARCHIVE_INDEX =
     "archive/index.json";
+
 
 const UPDATE_INFO =
     "update-info.json";
@@ -1152,9 +1319,7 @@ const UPDATE_INFO =
 ===================================================== */
 
 const map =
-    L.map(
-        "map"
-    );
+    L.map("map");
 
 
 const lightMap =
@@ -1187,6 +1352,10 @@ lightMap.addTo(
     map
 );
 
+
+/* =====================================================
+   LAYER PANES
+===================================================== */
 
 map.createPane(
     "farsPane"
@@ -1221,14 +1390,18 @@ map.setView(
 let boundaryLayer =
     null;
 
+
 let archiveDates =
     [];
+
 
 let fires =
     [];
 
+
 let archiveHeaders =
     [];
+
 
 let updateTimestamp =
     null;
@@ -1282,63 +1455,111 @@ function gregorianToJalali(
         181,212,243,273,304,334
     ];
 
+
     let jy;
 
-    if (gy > 1600) {
-        jy = 979;
-        gy -= 1600;
+
+    if (
+        gy > 1600
+    ) {
+
+        jy =
+            979;
+
+        gy -=
+            1600;
+
     } else {
-        jy = 0;
-        gy -= 621;
+
+        jy =
+            0;
+
+        gy -=
+            621;
     }
+
 
     const gy2 =
         gm > 2
-        ? gy + 1
-        : gy;
+        ?
+        gy + 1
+        :
+        gy;
+
 
     let days =
         365 * gy
         +
-        Math.floor((gy2 + 3) / 4)
+        Math.floor(
+            (gy2 + 3) / 4
+        )
         -
-        Math.floor((gy2 + 99) / 100)
+        Math.floor(
+            (gy2 + 99) / 100
+        )
         +
-        Math.floor((gy2 + 399) / 400)
+        Math.floor(
+            (gy2 + 399) / 400
+        )
         -
         80
         +
         gd
         +
-        gdm[gm - 1];
+        gdm[
+            gm - 1
+        ];
+
 
     jy +=
-        33 * Math.floor(days / 12053);
+        33 *
+        Math.floor(
+            days / 12053
+        );
 
-    days %= 12053;
+
+    days %=
+        12053;
+
 
     jy +=
-        4 * Math.floor(days / 1461);
+        4 *
+        Math.floor(
+            days / 1461
+        );
 
-    days %= 1461;
 
-    if (days > 365) {
+    days %=
+        1461;
+
+
+    if (
+        days > 365
+    ) {
 
         jy +=
-            Math.floor((days - 1) / 365);
+            Math.floor(
+                (days - 1) / 365
+            );
 
         days =
             (days - 1) % 365;
     }
 
+
     let jm;
     let jd;
 
-    if (days < 186) {
+
+    if (
+        days < 186
+    ) {
 
         jm =
             1 +
-            Math.floor(days / 31);
+            Math.floor(
+                days / 31
+            );
 
         jd =
             1 +
@@ -1359,6 +1580,7 @@ function gregorianToJalali(
             );
     }
 
+
     return [
         jy,
         jm,
@@ -1375,27 +1597,52 @@ function shamsiDate(
     dateString
 ) {
 
-    if (!dateString) {
+    if (
+        !dateString
+    ) {
+
         return "---";
     }
+
 
     const p =
         String(
             dateString
-        ).split("-");
+        ).split(
+            "-"
+        );
 
-    if (p.length !== 3) {
+
+    if (
+        p.length !== 3
+    ) {
+
         return dateString;
     }
 
+
     const j =
         gregorianToJalali(
-            parseInt(p[0],10),
-            parseInt(p[1],10),
-            parseInt(p[2],10)
+
+            parseInt(
+                p[0],
+                10
+            ),
+
+            parseInt(
+                p[1],
+                10
+            ),
+
+            parseInt(
+                p[2],
+                10
+            )
         );
 
+
     const months = [
+
         "فروردین",
         "اردیبهشت",
         "خرداد",
@@ -1410,16 +1657,28 @@ function shamsiDate(
         "اسفند"
     ];
 
+
     return (
-        fa(j[2])
+
+        fa(
+            j[2]
+        )
+
         +
         " "
+
         +
-        months[j[1] - 1]
+        months[
+            j[1] - 1
+        ]
+
         +
         " "
+
         +
-        fa(j[0])
+        fa(
+            j[0]
+        )
     );
 }
 
@@ -1441,7 +1700,10 @@ async function getText(
             Date.now()
         );
 
-    if (!response.ok) {
+
+    if (
+        !response.ok
+    ) {
 
         throw new Error(
             "فایل دریافت نشد: "
@@ -1450,12 +1712,13 @@ async function getText(
         );
     }
 
+
     return await response.text();
 }
 
 
 /* =====================================================
-   CSV PARSER
+   CSV
 ===================================================== */
 
 function parseCSV(
@@ -1471,7 +1734,9 @@ function parseCSV(
         .trim();
 
 
-    if (!text) {
+    if (
+        !text
+    ) {
 
         return {
             headers: [],
@@ -1559,7 +1824,7 @@ function parseCSV(
 
 
 /* =====================================================
-   BOUNDARY
+   LOAD BOUNDARY
 ===================================================== */
 
 async function loadBoundary() {
@@ -1645,7 +1910,7 @@ async function loadBoundary() {
 
 
 /* =====================================================
-   ARCHIVE INDEX
+   LOAD ARCHIVE INDEX
 ===================================================== */
 
 async function loadArchiveIndex() {
@@ -1664,16 +1929,19 @@ async function loadArchiveIndex() {
 
     archiveDates =
         index
-        .map(
-            function(item) {
 
-                return item.date;
-            }
-        )
-        .filter(
-            Boolean
-        )
-        .sort();
+            .map(
+                function(item) {
+
+                    return item.date;
+                }
+            )
+
+            .filter(
+                Boolean
+            )
+
+            .sort();
 
 
     const slider =
@@ -1757,6 +2025,7 @@ async function loadArchives() {
                     row.archive_date =
                         date;
 
+
                     fires.push(
                         row
                     );
@@ -1777,7 +2046,7 @@ async function loadArchives() {
 
 
 /* =====================================================
-   UTC DATETIME
+   FIRMS DATETIME
 ===================================================== */
 
 function fireUTCDateTime(
@@ -1785,7 +2054,8 @@ function fireUTCDateTime(
 ) {
 
     if (
-        !fire.acq_date ||
+        !fire.acq_date
+        ||
         !fire.acq_time
     ) {
 
@@ -1794,7 +2064,9 @@ function fireUTCDateTime(
 
 
     const parts =
-        fire.acq_date.split("-");
+        fire.acq_date.split(
+            "-"
+        );
 
 
     const time =
@@ -1830,12 +2102,18 @@ function fireUTCDateTime(
             ),
 
             parseInt(
-                time.substring(0,2),
+                time.substring(
+                    0,
+                    2
+                ),
                 10
             ),
 
             parseInt(
-                time.substring(2,4),
+                time.substring(
+                    2,
+                    4
+                ),
                 10
             ),
 
@@ -1881,10 +2159,12 @@ function iranTime(
         new Date(
             utc.getTime()
             +
-            3.5 *
-            60 *
-            60 *
-            1000
+            (
+                3.5 *
+                60 *
+                60 *
+                1000
+            )
         );
 
 
@@ -1914,7 +2194,7 @@ function iranTime(
 
 
 /* =====================================================
-   FORMAT 24
+   FORMAT 24H
 ===================================================== */
 
 function format24(
@@ -1922,7 +2202,9 @@ function format24(
 ) {
 
     const t =
-        String(value)
+        String(
+            value
+        )
         .replace(
             /\D/g,
             ""
@@ -1933,11 +2215,51 @@ function format24(
         );
 
 
+    let hour =
+        parseInt(
+            t.substring(
+                0,
+                2
+            ),
+            10
+        );
+
+
+    let minute =
+        parseInt(
+            t.substring(
+                2,
+                4
+            ),
+            10
+        );
+
+
+    if (
+        hour > 23
+    ) {
+
+        hour %=
+            24;
+    }
+
+
+    if (
+        minute > 59
+    ) {
+
+        minute =
+            0;
+    }
+
+
     return (
 
-        t.substring(
-            0,
-            2
+        String(
+            hour
+        ).padStart(
+            2,
+            "0"
         )
 
         +
@@ -1946,16 +2268,18 @@ function format24(
 
         +
 
-        t.substring(
+        String(
+            minute
+        ).padStart(
             2,
-            4
+            "0"
         )
     );
 }
 
 
 /* =====================================================
-   DAY / NIGHT
+   DAY / NIGHT / DAWN
 ===================================================== */
 
 function getDayNightLabel(
@@ -1969,7 +2293,8 @@ function getDayNightLabel(
 
 
     if (
-        !time ||
+        !time
+        ||
         time === "---"
     ) {
 
@@ -2026,7 +2351,7 @@ function getDayNightLabel(
 
 
 /* =====================================================
-   FILTER 24H / 5DAYS
+   FILTER
 ===================================================== */
 
 function filteredFires(
@@ -2049,10 +2374,12 @@ function filteredFires(
         new Date(
             now.getTime()
             -
-            hours *
-            60 *
-            60 *
-            1000
+            (
+                hours *
+                60 *
+                60 *
+                1000
+            )
         );
 
 
@@ -2066,11 +2393,18 @@ function filteredFires(
 
 
             return (
+
                 time
+
                 &&
-                time >= start
+
+                time >=
+                start
+
                 &&
-                time <= now
+
+                time <=
+                now
             );
         }
     );
@@ -2130,7 +2464,8 @@ function showFires(
 
 
             if (
-                sensor === "VIIRS"
+                sensor ===
+                "VIIRS"
             ) {
 
                 color =
@@ -2139,7 +2474,8 @@ function showFires(
 
 
             if (
-                sensor === "MODIS"
+                sensor ===
+                "MODIS"
             ) {
 
                 color =
@@ -2189,6 +2525,23 @@ function showFires(
 
 
 /* =====================================================
+   FIRE COUNT
+===================================================== */
+
+function updateFireCount(
+    count
+) {
+
+    document.getElementById(
+        "fireCount"
+    ).innerText =
+        fa(
+            count
+        );
+}
+
+
+/* =====================================================
    POPUP
 ===================================================== */
 
@@ -2206,6 +2559,20 @@ function popupContent(
         "---";
 
 
+    const time =
+        fa(
+            iranTime(
+                fire
+            )
+        );
+
+
+    const dayNight =
+        getDayNightLabel(
+            fire
+        );
+
+
     return `
 
 <div class="fire-popup">
@@ -2214,80 +2581,102 @@ function popupContent(
         🔥 حریق استان فارس
     </h3>
 
+
     <div class="row">
         <span class="label">
             سنجنده:
         </span>
+
         ${fire.detected_sensor || fire.instrument || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             ماهواره:
         </span>
+
         ${fire.satellite || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             تاریخ ایران:
         </span>
+
         ${shamsiDate(date)}
     </div>
+
 
     <div class="row">
         <span class="label">
             ساعت ایران:
         </span>
-        ${fa(iranTime(fire))}
+
+        ${time}
     </div>
+
 
     <div class="row">
         <span class="label">
             زمان:
         </span>
-        ${getDayNightLabel(fire)}
+
+        ${dayNight}
     </div>
+
 
     <div class="row">
         <span class="label">
             تاریخ UTC:
         </span>
+
         ${fire.acq_date || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             ساعت UTC:
         </span>
+
         ${fire.acq_time || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             FRP:
         </span>
+
         ${fire.frp || "---"} MW
     </div>
+
 
     <div class="row">
         <span class="label">
             Confidence:
         </span>
+
         ${fire.confidence || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             Brightness:
         </span>
+
         ${fire.brightness || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             مختصات:
         </span>
+
         ${coordinate(fire.latitude)}
         ,
         ${coordinate(fire.longitude)}
@@ -2317,7 +2706,9 @@ function coordinate(
         ?
         "---"
         :
-        number.toFixed(5);
+        number.toFixed(
+            5
+        );
 }
 
 
@@ -2325,14 +2716,31 @@ function coordinate(
    APPLY MODE
 ===================================================== */
 
+let currentMode =
+    "24h";
+
+
 function applyMode(
     mode
 ) {
 
-    showFires(
+    currentMode =
+        mode;
+
+
+    const list =
         filteredFires(
             mode
-        )
+        );
+
+
+    showFires(
+        list
+    );
+
+
+    updateFireCount(
+        list.length
     );
 
 
@@ -2345,7 +2753,10 @@ function applyMode(
 
                 button.classList.toggle(
                     "active",
-                    button.dataset.mode === mode
+
+                    button.dataset.mode
+                    ===
+                    mode
                 );
             }
         );
@@ -2396,7 +2807,9 @@ function updateSliderDate() {
 
 
     const date =
-        archiveDates[index];
+        archiveDates[
+            index
+        ];
 
 
     document.getElementById(
@@ -2404,7 +2817,9 @@ function updateSliderDate() {
     ).innerText =
         date
         ?
-        shamsiDate(date)
+        shamsiDate(
+            date
+        )
         :
         "---";
 }
@@ -2426,7 +2841,9 @@ document
 
 
             const date =
-                archiveDates[index];
+                archiveDates[
+                    index
+                ];
 
 
             updateSliderDate();
@@ -2443,7 +2860,8 @@ document
 
 
                         return (
-                            fireDate ===
+                            fireDate
+                            ===
                             date
                         );
                     }
@@ -2453,463 +2871,212 @@ document
             showFires(
                 list
             );
+
+
+            updateFireCount(
+                list.length
+            );
         }
     );
 
 
 /* =====================================================
-   EXCEL EXPORT - NO EXTERNAL LIBRARY
+   LAST FIRMS DATA
+   از آخرین acq_date + acq_time
 ===================================================== */
 
-function escapeXml(
-    value
+function getLatestFirmsDate() {
+
+    let latest =
+        null;
+
+
+    fires.forEach(
+        function(fire) {
+
+            const time =
+                fireUTCDateTime(
+                    fire
+                );
+
+
+            if (
+                !time
+            ) {
+
+                return;
+            }
+
+
+            if (
+                !latest
+                ||
+                time >
+                latest
+            ) {
+
+                latest =
+                    time;
+            }
+        }
+    );
+
+
+    return latest;
+}
+
+
+/* =====================================================
+   FORMAT AGE
+===================================================== */
+
+function ageText(
+    timestamp
 ) {
 
-    return String(
-        value === undefined ||
-        value === null
-        ?
-        ""
-        :
-        value
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&apos;"
+    if (
+        !timestamp
+    ) {
+
+        return "در انتظار اطلاعات";
+    }
+
+
+    const elapsed =
+        Math.max(
+            0,
+            Date.now()
+            -
+            timestamp
+        );
+
+
+    const totalSeconds =
+        Math.floor(
+            elapsed / 1000
+        );
+
+
+    const days =
+        Math.floor(
+            totalSeconds
+            /
+            86400
+        );
+
+
+    const hours =
+        Math.floor(
+            (
+                totalSeconds
+                %
+                86400
+            )
+            /
+            3600
+        );
+
+
+    const minutes =
+        Math.floor(
+            (
+                totalSeconds
+                %
+                3600
+            )
+            /
+            60
+        );
+
+
+    const seconds =
+        totalSeconds
+        %
+        60;
+
+
+    if (
+        days > 0
+    ) {
+
+        return (
+            fa(days)
+            +
+            " روز و "
+            +
+            fa(hours)
+            +
+            " ساعت پیش"
+        );
+    }
+
+
+    if (
+        hours > 0
+    ) {
+
+        return (
+            fa(hours)
+            +
+            " ساعت و "
+            +
+            fa(minutes)
+            +
+            " دقیقه پیش"
+        );
+    }
+
+
+    return (
+        fa(minutes)
+        +
+        " دقیقه و "
+        +
+        fa(seconds)
+        +
+        " ثانیه پیش"
     );
 }
 
 
 /* =====================================================
-   EXCEL FILE
-   SpreadsheetML 2003
+   UPDATE FIRMS AGE
 ===================================================== */
 
-function export24HoursToExcel() {
+function updateFirmsAge() {
 
-    const list =
-        filteredFires(
-            "24h"
+    const latest =
+        getLatestFirmsDate();
+
+
+    const element =
+        document.getElementById(
+            "firmsAge"
         );
 
 
     if (
-        list.length === 0
+        !latest
     ) {
 
-        alert(
-            "در ۲۴ ساعت گذشته داده‌ای برای خروجی Excel وجود ندارد."
-        );
+        element.innerText =
+            "آخرین داده FIRMS: در انتظار اطلاعات";
 
         return;
     }
 
 
-    /*
-       ستون‌ها دقیقاً همان ستون‌های آرشیو
-    */
-
-    let headers =
-        archiveHeaders.slice();
-
-
-    /*
-       اگر آرشیو هنوز هدر نداشت
-    */
-
-    if (
-        headers.length === 0
-    ) {
-
-        headers =
-            Object.keys(
-                list[0]
-            ).filter(
-                function(key) {
-
-                    return (
-                        key !==
-                        "archive_date"
-                    );
-                }
-            );
-    }
-
-
-    /*
-       ساخت XML اکسل
-    */
-
-    let xml =
-
-        '<?xml version="1.0"?>' +
-
-        '<Workbook ' +
-
-        'xmlns="urn:schemas-microsoft-com:office:spreadsheet" ' +
-
-        'xmlns:o="urn:schemas-microsoft-com:office:office" ' +
-
-        'xmlns:x="urn:schemas-microsoft-com:office:excel" ' +
-
-        'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">' +
-
-        '<Styles>' +
-
-        '<Style ss:ID="Header">' +
-
-        '<Font ss:Bold="1"/>' +
-
-        '<Interior ss:Color="#E8F0F5" ss:Pattern="Solid"/>' +
-
-        '</Style>' +
-
-        '</Styles>' +
-
-        '<Worksheet ss:Name="Fire_24H">' +
-
-        '<Table>';
-
-
-    /*
-       هدر
-    */
-
-    xml +=
-        '<Row>';
-
-
-    headers.forEach(
-        function(header) {
-
-            xml +=
-                '<Cell ss:StyleID="Header">' +
-
-                '<Data ss:Type="String">' +
-
-                escapeXml(
-                    header
-                ) +
-
-                '</Data>' +
-
-                '</Cell>';
-        }
-    );
-
-
-    xml +=
-        '</Row>';
-
-
-    /*
-       داده‌ها
-    */
-
-    list.forEach(
-        function(fire) {
-
-            xml +=
-                '<Row>';
-
-
-            headers.forEach(
-                function(header) {
-
-                    const value =
-                        fire[header] !== undefined
-                        &&
-                        fire[header] !== null
-                        ?
-                        fire[header]
-                        :
-                        "";
-
-
-                    xml +=
-                        '<Cell>' +
-
-                        '<Data ss:Type="String">' +
-
-                        escapeXml(
-                            value
-                        ) +
-
-                        '</Data>' +
-
-                        '</Cell>';
-                }
-            );
-
-
-            xml +=
-                '</Row>';
-        }
-    );
-
-
-    xml +=
-        '</Table>' +
-        '</Worksheet>' +
-        '</Workbook>';
-
-
-    /*
-       ساخت فایل
-    */
-
-    const blob =
-        new Blob(
-            [xml],
-            {
-                type:
-                    "application/vnd.ms-excel"
-            }
-        );
-
-
-    const url =
-        URL.createObjectURL(
-            blob
-        );
-
-
-    const link =
-        document.createElement(
-            "a"
-        );
-
-
-    link.href =
-        url;
-
-
-    /*
-       تاریخ و ساعت فایل
-    */
-
-    const now =
-        new Date();
-
-
-    const year =
-        now.getFullYear();
-
-
-    const month =
-        String(
-            now.getMonth() + 1
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const day =
-        String(
-            now.getDate()
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const hour =
-        String(
-            now.getHours()
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    const minute =
-        String(
-            now.getMinutes()
-        ).padStart(
-            2,
-            "0"
-        );
-
-
-    link.download =
-        "fires_24h_"
+    element.innerText =
+        "آخرین داده FIRMS: "
         +
-        year
-        +
-        month
-        +
-        day
-        +
-        "_"
-        +
-        hour
-        +
-        minute
-        +
-        ".xls";
-
-
-    document.body.appendChild(
-        link
-    );
-
-
-    link.click();
-
-
-    document.body.removeChild(
-        link
-    );
-
-
-    setTimeout(
-        function() {
-
-            URL.revokeObjectURL(
-                url
-            );
-
-        },
-        1000
-    );
+        ageText(
+            latest.getTime()
+        );
 }
 
 
 /* =====================================================
-   EXCEL BUTTON
-===================================================== */
-
-document
-    .getElementById(
-        "excel24Button"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            export24HoursToExcel();
-        }
-    );
-
-
-/* =====================================================
-   NIGHT MODE
-===================================================== */
-
-document
-    .getElementById(
-        "nightButton"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            document.body.classList.toggle(
-                "night"
-            );
-
-
-            const night =
-                document.body.classList.contains(
-                    "night"
-                );
-
-
-            if (
-                night
-            ) {
-
-                map.removeLayer(
-                    lightMap
-                );
-
-                darkMap.addTo(
-                    map
-                );
-
-                this.innerText =
-                    "☀️";
-
-                localStorage.setItem(
-                    "fars-night",
-                    "1"
-                );
-
-            } else {
-
-                map.removeLayer(
-                    darkMap
-                );
-
-                lightMap.addTo(
-                    map
-                );
-
-                this.innerText =
-                    "🌙";
-
-                localStorage.setItem(
-                    "fars-night",
-                    "0"
-                );
-            }
-        }
-    );
-
-
-/* =====================================================
-   RESTORE NIGHT
-===================================================== */
-
-if (
-    localStorage.getItem(
-        "fars-night"
-    )
-    ===
-    "1"
-) {
-
-    document.body.classList.add(
-        "night"
-    );
-
-
-    map.removeLayer(
-        lightMap
-    );
-
-
-    darkMap.addTo(
-        map
-    );
-
-
-    document.getElementById(
-        "nightButton"
-    ).innerText =
-        "☀️";
-}
-
-
-/* =====================================================
-   UPDATE INFO
+   UPDATE SYSTEM INFO
 ===================================================== */
 
 async function loadUpdateInfo() {
@@ -2947,10 +3114,11 @@ async function loadUpdateInfo() {
 
 
         updateTimestamp =
-            timestamp * 1000;
+            timestamp *
+            1000;
 
 
-        updateTimer();
+        updateSystemAge();
 
     } catch (
         error
@@ -2959,16 +3127,16 @@ async function loadUpdateInfo() {
         document.getElementById(
             "updateInfo"
         ).innerText =
-            "آخرین به‌روزرسانی: نامشخص";
+            "آخرین به‌روزرسانی سامانه: نامشخص";
     }
 }
 
 
 /* =====================================================
-   TIMER
+   SYSTEM TIMER
 ===================================================== */
 
-function updateTimer() {
+function updateSystemAge() {
 
     const element =
         document.getElementById(
@@ -2981,67 +3149,19 @@ function updateTimer() {
     ) {
 
         element.innerText =
-            "آخرین به‌روزرسانی: در انتظار اطلاعات";
+            "آخرین به‌روزرسانی سامانه: در انتظار اطلاعات";
 
         return;
     }
 
 
-    const totalSeconds =
-        Math.max(
-            0,
-            Math.floor(
-                (
-                    Date.now()
-                    -
-                    updateTimestamp
-                )
-                /
-                1000
-            )
-        );
-
-
-    const minutes =
-        Math.floor(
-            totalSeconds / 60
-        );
-
-
-    const seconds =
-        totalSeconds % 60;
-
-
     element.innerText =
-
-        "آخرین به‌روزرسانی: "
-
+        "آخرین به‌روزرسانی سامانه: "
         +
-
-        fa(
-            minutes
-        )
-
-        +
-
-        " دقیقه و "
-
-        +
-
-        fa(
-            seconds
-        )
-
-        +
-
-        " ثانیه پیش";
+        ageText(
+            updateTimestamp
+        );
 }
-
-
-setInterval(
-    updateTimer,
-    1000
-);
 
 
 /* =====================================================
@@ -3062,13 +3182,141 @@ document
 
 
 /* =====================================================
+   NIGHT MODE
+===================================================== */
+
+document
+    .getElementById(
+        "nightButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            document.body
+                .classList
+                .toggle(
+                    "night"
+                );
+
+
+            const night =
+                document.body
+                .classList
+                .contains(
+                    "night"
+                );
+
+
+            if (
+                night
+            ) {
+
+                map.removeLayer(
+                    lightMap
+                );
+
+
+                darkMap.addTo(
+                    map
+                );
+
+
+                this.innerText =
+                    "☀️";
+
+
+                localStorage.setItem(
+                    "fars-night",
+                    "1"
+                );
+
+            } else {
+
+                map.removeLayer(
+                    darkMap
+                );
+
+
+                lightMap.addTo(
+                    map
+                );
+
+
+                this.innerText =
+                    "🌙";
+
+
+                localStorage.setItem(
+                    "fars-night",
+                    "0"
+                );
+            }
+        }
+    );
+
+
+/* =====================================================
+   RESTORE NIGHT
+===================================================== */
+
+if (
+    localStorage.getItem(
+        "fars-night"
+    )
+    ===
+    "1"
+) {
+
+    document.body
+        .classList
+        .add(
+            "night"
+        );
+
+
+    map.removeLayer(
+        lightMap
+    );
+
+
+    darkMap.addTo(
+        map
+    );
+
+
+    document.getElementById(
+        "nightButton"
+    ).innerText =
+        "☀️";
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+setInterval(
+    function() {
+
+        updateFirmsAge();
+
+        updateSystemAge();
+
+    },
+    1000
+);
+
+
+/* =====================================================
    INITIALIZE
 ===================================================== */
 
 async function initialize() {
 
+
     /*
-       1. مرز
+       ۱. مرز
     */
 
     try {
@@ -3080,14 +3328,14 @@ async function initialize() {
     ) {
 
         console.error(
-            "مرز:",
+            "Boundary:",
             error
         );
     }
 
 
     /*
-       2. آرشیو
+       ۲. آرشیو
     */
 
     try {
@@ -3106,7 +3354,7 @@ async function initialize() {
 
 
     /*
-       3. داده‌ها
+       ۳. داده‌ها
     */
 
     try {
@@ -3125,7 +3373,7 @@ async function initialize() {
 
 
     /*
-       4. نمایش پیش‌فرض ۲۴ ساعت
+       ۴. فیلتر پیش‌فرض
     */
 
     applyMode(
@@ -3134,12 +3382,24 @@ async function initialize() {
 
 
     /*
-       5. تایمر
+       ۵. آخرین داده FIRMS
+    */
+
+    updateFirmsAge();
+
+
+    /*
+       ۶. آخرین به‌روزرسانی سامانه
     */
 
     loadUpdateInfo();
+
 }
 
+
+/* =====================================================
+   START
+===================================================== */
 
 initialize();
 
@@ -3150,30 +3410,37 @@ initialize();
 </html>
 ```
 
-### تفاوت این نسخه
+### مرحله ۲ — کاری که انجام بده
 
-دیگر این خط در کد وجود ندارد:
+فقط:
 
-```html
-<script src="https://cdn.sheetjs.com/..."></script>
+**`index.html` → کل محتوای قبلی را پاک کن → کد بالا را Paste کن → Commit changes**
+
+بعد:
+
+**Actions → Deploy Fars Fire Sentinel → اجرا تا سبز شود.**
+
+### نتیجه‌ای که باید ببینی
+
+بالای سمت راست:
+
+```text
+رخدادهای شناسایی‌شده
+72 رخداد
+
+🔥 حریق‌های ۲۴ ساعت گذشته
+📅 حریق‌های ۵ روز گذشته
 ```
 
-پس **هیچ وابستگی‌ای به کتابخانه Excel خارجی نداریم**.
+و **پایین سمت راست، همان جای قبلی**:
 
-دکمه `📊` مستقیماً فایل Excel با پسوند `.xls` تولید می‌کند و Excel آن را باز می‌کند.
+```text
+وضعیت به‌روزرسانی
 
-و مهم‌تر اینکه خروجی از همان تابع:
-
-```javascript
-filteredFires("24h")
+آخرین داده FIRMS: ۲ ساعت و ۱۸ دقیقه پیش
+آخرین به‌روزرسانی سامانه: ۱۷ دقیقه پیش
 ```
 
-ساخته می‌شود؛ بنابراین دقیقاً همان رکوردهایی را می‌دهد که گزینه **«حریق‌های ۲۴ ساعت گذشته»** روی نقشه نشان می‌دهد.
+عدد «رخدادهای شناسایی‌شده» هم با **همان فیلتر ۲۴ ساعته‌ای که نقاط روی نقشه را تعیین می‌کند** محاسبه می‌شود؛ بنابراین نباید بین عدد روی سایت و تعداد رکوردهای نمایش‌داده‌شده اختلاف منطقی داشته باشیم.
 
-ستون‌ها هم از همان Header اولین فایل آرشیو گرفته می‌شوند.
-
-بعد از جایگزینی فقط:
-
-**Commit changes → Deploy Fars Fire Sentinel → Ctrl+F5**
-
-این نسخه دیگر نباید خطای «کتابخانه ساخت Excel بارگذاری نشده است» بدهد.
+نکته مهم: «آخرین داده FIRMS» در این نسخه یعنی **زمان جدیدترین رخداد ماهواره‌ای موجود در داده‌ای که سایت دریافت کرده است**، نه زمان انتشار آن رکورد در سرور NASA. این تفاوت مهم است؛ برای زمان واقعی انتشار، باید `update_fires.py` نیز تغییر کند. NASA برای داده‌های FIRMS بین زمان تشخیص ماهواره‌ای و زمان در دسترس قرار گرفتن محصول تفاوت قائل می‌شود.
