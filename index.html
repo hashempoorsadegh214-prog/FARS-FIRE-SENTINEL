@@ -2,14 +2,21 @@
 <html lang="fa" dir="rtl">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>سامانه برخط پایش حریق استان فارس</title>
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+سامانه پایش برخط حریق
+</title>
 
 <meta
     name="description"
-    content="سامانه برخط پایش حریق استان فارس با داده‌های NASA FIRMS و سنجنده‌های VIIRS و MODIS."
+    content="سامانه پایش برخط حریق استان فارس با استفاده از داده‌های ماهواره‌ای NASA FIRMS و سنجنده‌های VIIRS و MODIS."
 >
 
 <link
@@ -37,9 +44,16 @@ body {
 }
 
 body {
-    font-family: Tahoma, Arial, sans-serif;
-    background: #eef2f5;
-    color: #263238;
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:
+        #eef2f5;
+
+    color:
+        #263238;
 }
 
 
@@ -48,73 +62,159 @@ body {
 ===================================================== */
 
 header {
-    height: 74px;
-    background: linear-gradient(135deg, #e9782c, #f2ae70);
-    box-shadow: 0 2px 12px rgba(0,0,0,.18);
-    position: relative;
-    z-index: 5000;
+
+    height:
+        74px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e9782c,
+            #f2ae70
+        );
+
+    box-shadow:
+        0 2px 12px
+        rgba(0,0,0,.18);
+
+    position:
+        relative;
+
+    z-index:
+        5000;
 }
 
 .header-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 }
 
-.logo {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-}
 
-.logo img {
-    height: 48px;
-    width: auto;
-    max-width: 170px;
-    display: block;
-}
+/* =====================================================
+   TITLE
+===================================================== */
 
 .title {
-    text-align: center;
-    padding: 0 120px;
+
+    width:
+        100%;
+
+    text-align:
+        center;
+
+    padding:
+        0 100px;
 }
 
 .title h1 {
-    margin: 0;
-    font-family: "B Titr", Tahoma, Arial, sans-serif;
-    font-size: 21px;
-    line-height: 1.5;
-    color: #fff;
+
+    margin:
+        0;
+
+    font-family:
+        "B Titr",
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    font-size:
+        23px;
+
+    line-height:
+        1.5;
+
+    color:
+        #ffffff;
 }
 
 .title p {
-    margin: 2px 0 0;
-    font-size: 10px;
-    color: rgba(255,255,255,.9);
+
+    margin:
+        2px 0 0;
+
+    font-size:
+        10px;
+
+    color:
+        rgba(255,255,255,.9);
 }
 
+
+/* =====================================================
+   HEADER BUTTONS
+===================================================== */
+
 .header-buttons {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    gap: 6px;
+
+    position:
+        absolute;
+
+    right:
+        15px;
+
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    display:
+        flex;
+
+    gap:
+        6px;
 }
 
 .header-button {
-    width: 34px;
-    height: 34px;
-    border: none;
-    border-radius: 8px;
-    background: rgba(255,255,255,.18);
-    color: #fff;
-    cursor: pointer;
-    font-size: 17px;
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    border:
+        none;
+
+    border-radius:
+        8px;
+
+    background:
+        rgba(255,255,255,.18);
+
+    color:
+        #ffffff;
+
+    cursor:
+        pointer;
+
+    font-size:
+        17px;
+
+    transition:
+        .2s ease;
+}
+
+.header-button:hover {
+
+    background:
+        rgba(255,255,255,.30);
 }
 
 
@@ -123,15 +223,34 @@ header {
 ===================================================== */
 
 #map {
-    position: absolute;
-    top: 84px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,.13);
-    border: 1px solid #d7dde1;
+
+    position:
+        absolute;
+
+    top:
+        84px;
+
+    left:
+        10px;
+
+    right:
+        10px;
+
+    bottom:
+        10px;
+
+    border-radius:
+        12px;
+
+    overflow:
+        hidden;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,.13);
+
+    border:
+        1px solid #d7dde1;
 }
 
 
@@ -140,44 +259,104 @@ header {
 ===================================================== */
 
 .mode-panel {
-    position: absolute;
-    top: 95px;
-    right: 22px;
-    width: 190px;
-    z-index: 4000;
-    padding: 7px;
 
-    background: rgba(255,255,255,.96);
-    border: 1px solid #dce2e6;
-    border-radius: 10px;
-    box-shadow: 0 5px 16px rgba(0,0,0,.18);
+    position:
+        absolute;
+
+    top:
+        95px;
+
+    right:
+        22px;
+
+    width:
+        190px;
+
+    z-index:
+        4000;
+
+    padding:
+        7px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid #dce2e6;
+
+    border-radius:
+        10px;
+
+    box-shadow:
+        0 5px 16px
+        rgba(0,0,0,.18);
 }
 
 .mode-button {
-    width: 100%;
-    border: none;
-    background: #f1f3f5;
-    color: #344047;
-    border-radius: 7px;
-    padding: 9px 10px;
-    margin-bottom: 5px;
 
-    text-align: right;
+    width:
+        100%;
 
-    font-family: Tahoma, Arial, sans-serif;
-    font-size: 11px;
-    font-weight: bold;
+    border:
+        none;
 
-    cursor: pointer;
+    background:
+        #f1f3f5;
+
+    color:
+        #344047;
+
+    border-radius:
+        7px;
+
+    padding:
+        9px 10px;
+
+    margin-bottom:
+        5px;
+
+    text-align:
+        right;
+
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    font-size:
+        11px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    transition:
+        .2s ease;
 }
 
 .mode-button:last-child {
-    margin-bottom: 0;
+    margin-bottom:
+        0;
+}
+
+.mode-button:hover {
+    background:
+        #e7eaed;
 }
 
 .mode-button.active {
-    background: linear-gradient(135deg,#e36f19,#c84c00);
-    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e36f19,
+            #c84c00
+        );
+
+    color:
+        #ffffff;
 }
 
 
@@ -186,81 +365,150 @@ header {
 ===================================================== */
 
 .legend-box {
-    position: absolute;
-    top: 95px;
-    left: 50%;
-    transform: translateX(-50%);
 
-    z-index: 4000;
+    position:
+        absolute;
 
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    top:
+        95px;
 
-    padding: 7px 12px;
+    left:
+        50%;
 
-    background: rgba(255,255,255,.96);
-    border: 1px solid #dce2e6;
-    border-radius: 9px;
-    box-shadow: 0 4px 14px rgba(0,0,0,.16);
+    transform:
+        translateX(-50%);
 
-    font-size: 10px;
-    white-space: nowrap;
+    z-index:
+        4000;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    padding:
+        7px 12px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid #dce2e6;
+
+    border-radius:
+        9px;
+
+    box-shadow:
+        0 4px 14px
+        rgba(0,0,0,.16);
+
+    font-size:
+        10px;
+
+    white-space:
+        nowrap;
 }
 
 .legend-title {
-    font-weight: bold;
+    font-weight:
+        bold;
 }
 
 .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        5px;
 }
 
 .legend-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 1px solid #555;
+
+    width:
+        10px;
+
+    height:
+        10px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid #555;
 }
 
 
 /* =====================================================
-   UPDATE
+   UPDATE BOX
 ===================================================== */
 
 .update-box {
-    position: absolute;
 
-    right: 22px;
-    bottom: 20px;
+    position:
+        absolute;
 
-    z-index: 4000;
+    right:
+        22px;
 
-    width: 270px;
+    bottom:
+        20px;
 
-    padding: 8px 12px;
+    z-index:
+        4000;
 
-    text-align: center;
+    width:
+        270px;
 
-    background: rgba(255,255,255,.96);
-    border: 1px solid #dce2e6;
-    border-radius: 9px;
+    padding:
+        8px 12px;
 
-    box-shadow: 0 5px 16px rgba(0,0,0,.18);
+    text-align:
+        center;
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid #dce2e6;
+
+    border-radius:
+        9px;
+
+    box-shadow:
+        0 5px 16px
+        rgba(0,0,0,.18);
 }
 
 .update-title {
-    font-size: 9px;
-    color: #6b7780;
-    margin-bottom: 3px;
+
+    font-size:
+        9px;
+
+    color:
+        #6b7780;
+
+    margin-bottom:
+        3px;
 }
 
 #updateInfo {
-    font-size: 10px;
-    font-weight: bold;
-    color: #c45108;
+
+    font-size:
+        10px;
+
+    font-weight:
+        bold;
+
+    color:
+        #c45108;
 }
 
 
@@ -269,45 +517,81 @@ header {
 ===================================================== */
 
 .slider-box {
-    position: absolute;
 
-    left: 22px;
-    bottom: 20px;
+    position:
+        absolute;
 
-    z-index: 4000;
+    left:
+        22px;
 
-    width: 300px;
+    bottom:
+        20px;
 
-    padding: 9px 12px;
+    z-index:
+        4000;
 
-    background: rgba(255,255,255,.96);
-    border: 1px solid #dce2e6;
-    border-radius: 9px;
+    width:
+        300px;
 
-    box-shadow: 0 5px 16px rgba(0,0,0,.18);
+    padding:
+        9px 12px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid #dce2e6;
+
+    border-radius:
+        9px;
+
+    box-shadow:
+        0 5px 16px
+        rgba(0,0,0,.18);
 }
 
 .slider-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 7px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    margin-bottom:
+        7px;
 }
 
 .slider-title {
-    font-size: 10px;
-    font-weight: bold;
-    color: #455a64;
+
+    font-size:
+        10px;
+
+    font-weight:
+        bold;
+
+    color:
+        #455a64;
 }
 
 .slider-date {
-    font-size: 9px;
-    font-weight: bold;
-    color: #c45108;
+
+    font-size:
+        9px;
+
+    font-weight:
+        bold;
+
+    color:
+        #c45108;
 }
 
 #archiveSlider {
-    width: 100%;
+    width:
+        100%;
 }
 
 
@@ -316,31 +600,52 @@ header {
 ===================================================== */
 
 .fire-popup {
-    width: 260px;
 
-    direction: rtl;
-    text-align: right;
+    width:
+        260px;
 
-    font-family: Tahoma, Arial, sans-serif;
+    direction:
+        rtl;
 
-    font-size: 12px;
-    line-height: 1.9;
+    text-align:
+        right;
+
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    font-size:
+        12px;
+
+    line-height:
+        1.9;
 }
 
 .fire-popup h3 {
-    margin: 0 0 7px;
 
-    color: #d35400;
-    font-size: 15px;
+    margin:
+        0 0 7px;
+
+    color:
+        #d35400;
+
+    font-size:
+        15px;
 }
 
 .fire-popup .row {
-    border-bottom: 1px solid #edf0f2;
-    padding: 2px 0;
+
+    border-bottom:
+        1px solid #edf0f2;
+
+    padding:
+        2px 0;
 }
 
 .fire-popup .label {
-    font-weight: bold;
+    font-weight:
+        bold;
 }
 
 
@@ -349,36 +654,74 @@ header {
 ===================================================== */
 
 body.night {
-    background: #121820;
+    background:
+        #121820;
 }
 
-body.night .mode-panel,
-body.night .legend-box,
-body.night .update-box,
-body.night .slider-box {
-    background: rgba(26,32,40,.96);
-    border-color: #3a4650;
-    color: #e8edf1;
+body.night
+.mode-panel,
+
+body.night
+.legend-box,
+
+body.night
+.update-box,
+
+body.night
+.slider-box {
+
+    background:
+        rgba(26,32,40,.96);
+
+    border-color:
+        #3a4650;
+
+    color:
+        #e8edf1;
 }
 
-body.night .mode-button {
-    background: #252d36;
-    color: #dbe3e8;
+body.night
+.mode-button {
+
+    background:
+        #252d36;
+
+    color:
+        #dbe3e8;
 }
 
-body.night .mode-button.active {
-    background: linear-gradient(135deg,#e36f19,#c84c00);
-    color: #fff;
+body.night
+.mode-button.active {
+
+    background:
+        linear-gradient(
+            135deg,
+            #e36f19,
+            #c84c00
+        );
+
+    color:
+        #ffffff;
 }
 
-body.night .slider-title,
-body.night .legend-title {
-    color: #dbe3e8;
+body.night
+.slider-title,
+
+body.night
+.legend-title {
+
+    color:
+        #dbe3e8;
 }
 
-body.night .slider-date,
-body.night #updateInfo {
-    color: #ffd08a;
+body.night
+.slider-date,
+
+body.night
+#updateInfo {
+
+    color:
+        #ffd08a;
 }
 
 
@@ -389,158 +732,251 @@ body.night #updateInfo {
 @media (max-width: 700px) {
 
     header {
-        height: 80px;
+        height:
+            80px;
     }
 
     .title {
-        padding: 0 75px;
+        padding:
+            0 65px;
     }
 
     .title h1 {
-        font-size: 14px;
+        font-size:
+            15px;
     }
 
     .title p {
-        display: none;
-    }
-
-    .logo {
-        left: 8px;
-    }
-
-    .logo img {
-        height: 38px;
-        max-width: 80px;
+        display:
+            none;
     }
 
     .header-buttons {
-        right: 8px;
+        right:
+            8px;
     }
 
     .header-button {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
+
+        width:
+            30px;
+
+        height:
+            30px;
+
+        font-size:
+            14px;
     }
+
 
     #map {
-        top: 88px;
-        left: 5px;
-        right: 5px;
-        bottom: 5px;
-        border-radius: 9px;
+
+        top:
+            88px;
+
+        left:
+            5px;
+
+        right:
+            5px;
+
+        bottom:
+            5px;
+
+        border-radius:
+            9px;
     }
 
+
     .mode-panel {
-        top: 99px;
-        right: 12px;
-        width: 155px;
+
+        top:
+            99px;
+
+        right:
+            12px;
+
+        width:
+            155px;
     }
 
     .mode-button {
-        font-size: 9px;
-        padding: 8px;
+
+        font-size:
+            9px;
+
+        padding:
+            8px;
     }
 
+
     .legend-box {
-        top: 99px;
-        left: 10px;
 
-        transform: none;
+        top:
+            99px;
 
-        max-width: calc(100% - 185px);
+        left:
+            10px;
 
-        white-space: normal;
-        flex-wrap: wrap;
-        justify-content: center;
+        transform:
+            none;
 
-        gap: 7px;
+        max-width:
+            calc(100% - 185px);
 
-        font-size: 8px;
-        padding: 5px 7px;
+        white-space:
+            normal;
+
+        flex-wrap:
+            wrap;
+
+        justify-content:
+            center;
+
+        gap:
+            7px;
+
+        font-size:
+            8px;
+
+        padding:
+            5px 7px;
     }
 
     .legend-title {
-        width: 100%;
-        text-align: center;
+
+        width:
+            100%;
+
+        text-align:
+            center;
     }
 
+
     .update-box {
-        right: 10px;
-        bottom: 10px;
 
-        width: calc(50% - 15px);
-        min-width: 135px;
+        right:
+            10px;
 
-        padding: 7px;
+        bottom:
+            10px;
+
+        width:
+            calc(50% - 15px);
+
+        min-width:
+            135px;
+
+        padding:
+            7px;
     }
 
     .update-title {
-        font-size: 8px;
+        font-size:
+            8px;
     }
 
     #updateInfo {
-        font-size: 8px;
-        line-height: 1.6;
+        font-size:
+            8px;
+
+        line-height:
+            1.6;
     }
 
+
     .slider-box {
-        left: 10px;
-        bottom: 10px;
 
-        width: calc(50% - 15px);
-        min-width: 135px;
+        left:
+            10px;
 
-        padding: 7px;
+        bottom:
+            10px;
+
+        width:
+            calc(50% - 15px);
+
+        min-width:
+            135px;
+
+        padding:
+            7px;
     }
 
     .slider-head {
-        display: block;
-        text-align: center;
+
+        display:
+            block;
+
+        text-align:
+            center;
     }
 
     .slider-title {
-        font-size: 9px;
+        font-size:
+            9px;
     }
 
     .slider-date {
-        margin-top: 3px;
-        font-size: 8px;
+
+        margin-top:
+            3px;
+
+        font-size:
+            8px;
     }
 
+
     .fire-popup {
-        width: 235px;
-        font-size: 10px;
+
+        width:
+            235px;
+
+        font-size:
+            10px;
     }
 }
 
 
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
 @media (max-width: 390px) {
 
     .title {
-        padding: 0 58px;
+        padding:
+            0 55px;
     }
 
     .title h1 {
-        font-size: 12px;
+        font-size:
+            12px;
     }
 
     .mode-panel {
-        width: 135px;
+        width:
+            135px;
     }
 
     .mode-button {
-        font-size: 8px;
+        font-size:
+            8px;
     }
 
     .legend-box {
-        max-width: calc(100% - 160px);
+        max-width:
+            calc(100% - 160px);
     }
 
     .update-box,
     .slider-box {
-        width: calc(50% - 12px);
-        min-width: 120px;
+
+        width:
+            calc(50% - 12px);
+
+        min-width:
+            120px;
     }
 }
 
@@ -552,24 +988,19 @@ body.night #updateInfo {
 <body>
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header>
 
 <div class="header-inner">
-
-    <div class="lددogo">
-
-        <img
-            src="farslogo.png"
-            alt="اداره کل حفاظت محیط زیست فارس"
-        >
-
-    </div>
 
 
     <div class="title">
 
         <h1>
-            سامانه برخط پایش حریق 
+            سامانه پایش برخط حریق
         </h1>
 
         <p>
@@ -605,8 +1036,16 @@ body.night #updateInfo {
 </header>
 
 
+<!-- =====================================================
+     MAP
+===================================================== -->
+
 <div id="map"></div>
 
+
+<!-- =====================================================
+     MODES
+===================================================== -->
 
 <div class="mode-panel">
 
@@ -617,12 +1056,14 @@ body.night #updateInfo {
         🔥 حریق‌های امروز
     </button>
 
+
     <button
         class="mode-button"
         data-mode="24h"
     >
         ⏱ حریق‌های ۲۴ ساعت گذشته
     </button>
+
 
     <button
         class="mode-button"
@@ -634,11 +1075,16 @@ body.night #updateInfo {
 </div>
 
 
+<!-- =====================================================
+     LEGEND
+===================================================== -->
+
 <div class="legend-box">
 
     <span class="legend-title">
         راهنما
     </span>
+
 
     <span class="legend-item">
 
@@ -650,6 +1096,7 @@ body.night #updateInfo {
         VIIRS
 
     </span>
+
 
     <span class="legend-item">
 
@@ -665,6 +1112,10 @@ body.night #updateInfo {
 </div>
 
 
+<!-- =====================================================
+     UPDATE
+===================================================== -->
+
 <div class="update-box">
 
     <div class="update-title">
@@ -677,6 +1128,10 @@ body.night #updateInfo {
 
 </div>
 
+
+<!-- =====================================================
+     SLIDER
+===================================================== -->
 
 <div class="slider-box">
 
@@ -732,14 +1187,18 @@ const UPDATE_INFO =
 ===================================================== */
 
 const map =
-    L.map("map");
+    L.map(
+        "map"
+    );
 
 
 const lightMap =
     L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
-            maxZoom: 18,
+            maxZoom:
+                18,
+
             attribution:
                 "© OpenStreetMap contributors"
         }
@@ -750,18 +1209,27 @@ const darkMap =
     L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
         {
-            maxZoom: 19,
+            maxZoom:
+                19,
+
             attribution:
                 "© OpenStreetMap © CARTO"
         }
     );
 
 
-lightMap.addTo(map);
+lightMap.addTo(
+    map
+);
 
+
+/*
+    شروع اولیه نقشه
+    بعد از بارگذاری مرز اصلاح می‌شود
+*/
 
 map.setView(
-    [29.6,52.5],
+    [29.6, 52.5],
     8
 );
 
@@ -770,10 +1238,17 @@ map.setView(
    VARIABLES
 ===================================================== */
 
-let boundaryLayer = null;
-let archiveDates = [];
-let fires = [];
-let updateTimestamp = null;
+let boundaryLayer =
+    null;
+
+let archiveDates =
+    [];
+
+let fires =
+    [];
+
+let updateTimestamp =
+    null;
 
 
 /* =====================================================
@@ -781,26 +1256,71 @@ let updateTimestamp = null;
 ===================================================== */
 
 const fireLayer =
-    L.layerGroup().addTo(map);
+    L.layerGroup()
+    .addTo(
+        map
+    );
 
 
 /* =====================================================
    PERSIAN DIGITS
 ===================================================== */
 
-function fa(value) {
+function fa(
+    value
+) {
 
     return String(value)
-        .replace(/0/g,"۰")
-        .replace(/1/g,"۱")
-        .replace(/2/g,"۲")
-        .replace(/3/g,"۳")
-        .replace(/4/g,"۴")
-        .replace(/5/g,"۵")
-        .replace(/6/g,"۶")
-        .replace(/7/g,"۷")
-        .replace(/8/g,"۸")
-        .replace(/9/g,"۹");
+
+        .replace(
+            /0/g,
+            "۰"
+        )
+
+        .replace(
+            /1/g,
+            "۱"
+        )
+
+        .replace(
+            /2/g,
+            "۲"
+        )
+
+        .replace(
+            /3/g,
+            "۳"
+        )
+
+        .replace(
+            /4/g,
+            "۴"
+        )
+
+        .replace(
+            /5/g,
+            "۵"
+        )
+
+        .replace(
+            /6/g,
+            "۶"
+        )
+
+        .replace(
+            /7/g,
+            "۷"
+        )
+
+        .replace(
+            /8/g,
+            "۸"
+        )
+
+        .replace(
+            /9/g,
+            "۹"
+        );
 }
 
 
@@ -815,85 +1335,146 @@ function gregorianToJalali(
 ) {
 
     const gdm = [
-        0,31,59,90,120,151,
-        181,212,243,273,304,334
+
+        0,
+        31,
+        59,
+        90,
+        120,
+        151,
+        181,
+        212,
+        243,
+        273,
+        304,
+        334
     ];
+
 
     let jy;
 
-    if (gy > 1600) {
 
-        jy = 979;
-        gy -= 1600;
+    if (
+        gy > 1600
+    ) {
+
+        jy =
+            979;
+
+        gy -=
+            1600;
 
     } else {
 
-        jy = 0;
-        gy -= 621;
+        jy =
+            0;
+
+        gy -=
+            621;
     }
+
 
     const gy2 =
         gm > 2
-        ? gy + 1
-        : gy;
+        ?
+        gy + 1
+        :
+        gy;
+
 
     let days =
         365 * gy
         +
-        Math.floor((gy2 + 3) / 4)
+        Math.floor(
+            (gy2 + 3) / 4
+        )
         -
-        Math.floor((gy2 + 99) / 100)
+        Math.floor(
+            (gy2 + 99) / 100
+        )
         +
-        Math.floor((gy2 + 399) / 400)
+        Math.floor(
+            (gy2 + 399) / 400
+        )
         -
         80
         +
         gd
         +
-        gdm[gm - 1];
+        gdm[
+            gm - 1
+        ];
+
 
     jy +=
-        33 * Math.floor(days / 12053);
+        33 *
+        Math.floor(
+            days / 12053
+        );
 
-    days %= 12053;
+
+    days %=
+        12053;
+
 
     jy +=
-        4 * Math.floor(days / 1461);
+        4 *
+        Math.floor(
+            days / 1461
+        );
 
-    days %= 1461;
 
-    if (days > 365) {
+    days %=
+        1461;
+
+
+    if (
+        days > 365
+    ) {
 
         jy +=
-            Math.floor((days - 1) / 365);
+            Math.floor(
+                (days - 1) / 365
+            );
 
         days =
             (days - 1) % 365;
     }
 
+
     let jm;
     let jd;
 
-    if (days < 186) {
+
+    if (
+        days < 186
+    ) {
 
         jm =
-            1 + Math.floor(days / 31);
+            1 +
+            Math.floor(
+                days / 31
+            );
 
         jd =
-            1 + days % 31;
+            1 +
+            days % 31;
 
     } else {
 
         jm =
-            7 + Math.floor(
+            7 +
+            Math.floor(
                 (days - 186) / 30
             );
 
         jd =
-            1 + (
+            1 +
+            (
                 (days - 186) % 30
             );
     }
+
 
     return [
         jy,
@@ -911,27 +1492,50 @@ function shamsiDate(
     dateString
 ) {
 
-    if (!dateString) {
+    if (
+        !dateString
+    ) {
+
         return "---";
     }
+
 
     const p =
         String(
             dateString
         ).split("-");
 
-    if (p.length !== 3) {
+
+    if (
+        p.length !== 3
+    ) {
+
         return dateString;
     }
 
+
     const j =
         gregorianToJalali(
-            parseInt(p[0],10),
-            parseInt(p[1],10),
-            parseInt(p[2],10)
+
+            parseInt(
+                p[0],
+                10
+            ),
+
+            parseInt(
+                p[1],
+                10
+            ),
+
+            parseInt(
+                p[2],
+                10
+            )
         );
 
+
     const months = [
+
         "فروردین",
         "اردیبهشت",
         "خرداد",
@@ -946,16 +1550,28 @@ function shamsiDate(
         "اسفند"
     ];
 
+
     return (
-        fa(j[2])
+
+        fa(
+            j[2]
+        )
+
         +
         " "
+
         +
-        months[j[1] - 1]
+        months[
+            j[1] - 1
+        ]
+
         +
         " "
+
         +
-        fa(j[0])
+        fa(
+            j[0]
+        )
     );
 }
 
@@ -977,7 +1593,10 @@ async function getText(
             Date.now()
         );
 
-    if (!response.ok) {
+
+    if (
+        !response.ok
+    ) {
 
         throw new Error(
             "فایل دریافت نشد: "
@@ -986,12 +1605,13 @@ async function getText(
         );
     }
 
+
     return await response.text();
 }
 
 
 /* =====================================================
-   CSV
+   CSV PARSER
 ===================================================== */
 
 function parseCSV(
@@ -1006,26 +1626,45 @@ function parseCSV(
         )
         .trim();
 
-    if (!text) {
+
+    if (
+        !text
+    ) {
+
         return [];
     }
+
 
     const lines =
-        text.split(/\r?\n/);
+        text.split(
+            /\r?\n/
+        );
 
-    if (lines.length < 2) {
+
+    if (
+        lines.length < 2
+    ) {
+
         return [];
     }
+
 
     const headers =
         lines[0]
         .split(",")
         .map(
-            h =>
-                h.trim().toLowerCase()
+            function(value) {
+
+                return value
+                    .trim()
+                    .toLowerCase();
+            }
         );
 
-    const result = [];
+
+    const result =
+        [];
+
 
     for (
         let i = 1;
@@ -1033,14 +1672,21 @@ function parseCSV(
         i++
     ) {
 
-        if (!lines[i].trim()) {
+        if (
+            !lines[i].trim()
+        ) {
+
             continue;
         }
+
 
         const values =
             lines[i].split(",");
 
-        const row = {};
+
+        const row =
+            {};
+
 
         for (
             let j = 0;
@@ -1048,95 +1694,129 @@ function parseCSV(
             j++
         ) {
 
-            row[headers[j]] =
+            row[
+                headers[j]
+            ] =
                 values[j] !== undefined
-                ? values[j].trim()
-                : "";
+                ?
+                values[j].trim()
+                :
+                "";
         }
 
-        result.push(row);
+
+        result.push(
+            row
+        );
     }
+
 
     return result;
 }
 
 
 /* =====================================================
-   LOAD LIGHT FARS BOUNDARY
+   1. LOAD BOUNDARY FIRST
 ===================================================== */
 
-async function loadBoundary() {
+async function loadBoundaryFirst() {
 
-    try {
+    const text =
+        await getText(
+            BOUNDARY_FILE
+        );
 
-        const text =
-            await getText(
-                BOUNDARY_FILE
-            );
 
-        const data =
-            JSON.parse(text);
+    const data =
+        JSON.parse(
+            text
+        );
 
-        if (
-            !data.features
-            ||
-            !data.features.length
-        ) {
-            throw new Error(
-                "fars.geojson خالی است."
-            );
-        }
 
-        boundaryLayer =
-            L.geoJSON(
-                data,
-                {
-                    style: {
+    if (
+        !data
+        ||
+        !data.features
+        ||
+        !Array.isArray(
+            data.features
+        )
+    ) {
 
-                        color:
-                            "#ef5350",
-
-                        weight:
-                            3,
-
-                        opacity:
-                            .95,
-
-                        fillColor:
-                            "#ef5350",
-
-                        fillOpacity:
-                            .03
-                    }
-                }
-            ).addTo(map);
-
-        const bounds =
-            boundaryLayer.getBounds();
-
-        if (bounds.isValid()) {
-
-            map.fitBounds(
-                bounds,
-                {
-                    padding:
-                        [15,15]
-                }
-            );
-        }
-
-    } catch (error) {
-
-        console.error(
-            "خطای مرز:",
-            error
+        throw new Error(
+            "ساختار fars.geojson معتبر نیست."
         );
     }
+
+
+    /*
+       فایل fars.geojson باید فقط فارس را داشته باشد.
+       بنابراین کل FeatureCollection را نمایش می‌دهیم.
+    */
+
+    boundaryLayer =
+        L.geoJSON(
+            data,
+            {
+
+                style:
+                    function() {
+
+                        return {
+
+                            color:
+                                "#e53935",
+
+                            weight:
+                                3,
+
+                            opacity:
+                                1,
+
+                            fillColor:
+                                "#e53935",
+
+                            fillOpacity:
+                                0.04
+                        };
+                    }
+            }
+        )
+        .addTo(
+            map
+        );
+
+
+    const bounds =
+        boundaryLayer
+        .getBounds();
+
+
+    if (
+        bounds.isValid()
+    ) {
+
+        map.fitBounds(
+            bounds,
+            {
+                padding:
+                    [
+                        20,
+                        20
+                    ]
+            }
+        );
+    }
+
+
+    console.log(
+        "مرز فارس با موفقیت بارگذاری شد."
+    );
 }
 
 
 /* =====================================================
-   ARCHIVE INDEX
+   2. LOAD ARCHIVE INDEX
 ===================================================== */
 
 async function loadArchiveIndex() {
@@ -1146,25 +1826,39 @@ async function loadArchiveIndex() {
             ARCHIVE_INDEX
         );
 
+
     const index =
-        JSON.parse(text);
+        JSON.parse(
+            text
+        );
+
 
     archiveDates =
         index
-        .map(
-            item =>
-                item.date
-        )
-        .filter(Boolean)
-        .sort();
+
+            .map(
+                function(item) {
+
+                    return item.date;
+                }
+            )
+
+            .filter(
+                Boolean
+            )
+
+            .sort();
+
 
     const slider =
         document.getElementById(
             "archiveSlider"
         );
 
+
     slider.min =
         0;
+
 
     slider.max =
         Math.max(
@@ -1172,23 +1866,27 @@ async function loadArchiveIndex() {
             0
         );
 
+
     slider.value =
         Math.max(
             archiveDates.length - 1,
             0
         );
 
+
     updateSliderDate();
 }
 
 
 /* =====================================================
-   LOAD ARCHIVES
+   3. LOAD FIRE ARCHIVES
 ===================================================== */
 
 async function loadArchives() {
 
-    fires = [];
+    fires =
+        [];
+
 
     for (
         const date
@@ -1207,25 +1905,32 @@ async function loadArchives() {
                     ".csv"
                 );
 
+
             const rows =
                 parseCSV(
                     text
                 );
 
+
             rows.forEach(
-                row => {
+                function(row) {
 
                     row.archive_date =
                         date;
 
-                    fires.push(row);
+
+                    fires.push(
+                        row
+                    );
                 }
             );
 
-        } catch (error) {
+        } catch (
+            error
+        ) {
 
             console.warn(
-                "آرشیو پیدا نشد:",
+                "آرشیو موجود نیست:",
                 date
             );
         }
@@ -1242,6 +1947,7 @@ function todayIranDate() {
     return new Intl.DateTimeFormat(
         "en-CA",
         {
+
             timeZone:
                 "Asia/Tehran",
 
@@ -1261,7 +1967,7 @@ function todayIranDate() {
 
 
 /* =====================================================
-   FIRMS UTC TIME
+   FIRMS UTC DATETIME
 ===================================================== */
 
 function fireUTCDateTime(
@@ -1277,10 +1983,22 @@ function fireUTCDateTime(
         return null;
     }
 
-    const parts =
-        fire.acq_date.split("-");
 
-    let time =
+    const parts =
+        fire.acq_date.split(
+            "-"
+        );
+
+
+    if (
+        parts.length !== 3
+    ) {
+
+        return null;
+    }
+
+
+    const time =
         String(
             fire.acq_time
         )
@@ -1293,17 +2011,26 @@ function fireUTCDateTime(
             "0"
         );
 
+
     const hour =
         parseInt(
-            time.substring(0,2),
+            time.substring(
+                0,
+                2
+            ),
             10
         );
 
+
     const minute =
         parseInt(
-            time.substring(2,4),
+            time.substring(
+                2,
+                4
+            ),
             10
         );
+
 
     return new Date(
         Date.UTC(
@@ -1334,7 +2061,7 @@ function fireUTCDateTime(
 
 
 /* =====================================================
-   IRAN TIME
+   IRAN TIME 24H
 ===================================================== */
 
 function iranTime(
@@ -1350,66 +2077,148 @@ function iranTime(
         );
     }
 
+
     const utc =
         fireUTCDateTime(
             fire
         );
 
-    if (!utc) {
+
+    if (
+        !utc
+    ) {
+
         return "---";
     }
 
+
     const iran =
         new Date(
+
             utc.getTime()
             +
             (
-                3.5 *
-                60 *
-                60 *
+                3.5
+                *
+                60
+                *
+                60
+                *
                 1000
             )
         );
 
+
     return (
+
         String(
             iran.getUTCHours()
-        ).padStart(2,"0")
+        ).padStart(
+            2,
+            "0"
+        )
+
         +
         ":"
+
         +
+
         String(
             iran.getUTCMinutes()
-        ).padStart(2,"0")
+        ).padStart(
+            2,
+            "0"
+        )
     );
 }
 
 
 /* =====================================================
-   FORMAT TIME
+   FORMAT 24H
 ===================================================== */
 
 function format24(
     value
 ) {
 
-    const t =
-        String(value)
-        .replace(/\D/g,"")
-        .padStart(4,"0");
+    const text =
+        String(
+            value
+        )
+        .replace(
+            /\D/g,
+            ""
+        )
+        .padStart(
+            4,
+            "0"
+        );
+
+
+    let hour =
+        parseInt(
+            text.substring(
+                0,
+                2
+            ),
+            10
+        );
+
+
+    let minute =
+        parseInt(
+            text.substring(
+                2,
+                4
+            ),
+            10
+        );
+
+
+    if (
+        hour > 23
+    ) {
+
+        hour %=
+            24;
+    }
+
+
+    if (
+        minute > 59
+    ) {
+
+        minute =
+            0;
+    }
+
 
     return (
-        t.substring(0,2)
+
+        String(
+            hour
+        ).padStart(
+            2,
+            "0"
+        )
+
         +
         ":"
+
         +
-        t.substring(2,4)
+
+        String(
+            minute
+        ).padStart(
+            2,
+            "0"
+        )
     );
 }
 
 
 /* =====================================================
-   FILTER
+   FILTER FIRES
 ===================================================== */
 
 function filteredFires(
@@ -1420,6 +2229,10 @@ function filteredFires(
         new Date();
 
 
+    /* --------------------------------------------------
+       TODAY
+    -------------------------------------------------- */
+
     if (
         mode === "today"
     ) {
@@ -1427,30 +2240,44 @@ function filteredFires(
         const today =
             todayIranDate();
 
+
         return fires.filter(
-            fire => {
+            function(fire) {
 
                 const date =
                     fire.iran_date
                     ||
                     fire.archive_date;
 
+
                 const time =
                     fireUTCDateTime(
                         fire
                     );
 
+
                 return (
-                    date === today
+
+                    date ===
+                    today
+
                     &&
+
                     time
+
                     &&
-                    time <= now
+
+                    time <=
+                    now
                 );
             }
         );
     }
 
+
+    /* --------------------------------------------------
+       24 HOURS
+    -------------------------------------------------- */
 
     if (
         mode === "24h"
@@ -1458,33 +2285,52 @@ function filteredFires(
 
         const start =
             new Date(
+
                 now.getTime()
                 -
-                24 *
-                60 *
-                60 *
-                1000
+                (
+                    24
+                    *
+                    60
+                    *
+                    60
+                    *
+                    1000
+                )
             );
 
+
         return fires.filter(
-            fire => {
+            function(fire) {
 
                 const time =
                     fireUTCDateTime(
                         fire
                     );
 
+
                 return (
+
                     time
+
                     &&
-                    time >= start
+
+                    time >=
+                    start
+
                     &&
-                    time <= now
+
+                    time <=
+                    now
                 );
             }
         );
     }
 
+
+    /* --------------------------------------------------
+       5 DAYS
+    -------------------------------------------------- */
 
     if (
         mode === "5days"
@@ -1492,29 +2338,45 @@ function filteredFires(
 
         const start =
             new Date(
+
                 now.getTime()
                 -
-                5 *
-                24 *
-                60 *
-                60 *
-                1000
+                (
+                    5
+                    *
+                    24
+                    *
+                    60
+                    *
+                    60
+                    *
+                    1000
+                )
             );
 
+
         return fires.filter(
-            fire => {
+            function(fire) {
 
                 const time =
                     fireUTCDateTime(
                         fire
                     );
 
+
                 return (
+
                     time
+
                     &&
-                    time >= start
+
+                    time >=
+                    start
+
                     &&
-                    time <= now
+
+                    time <=
+                    now
                 );
             }
         );
@@ -1526,7 +2388,7 @@ function filteredFires(
 
 
 /* =====================================================
-   SHOW FIRES
+   DISPLAY FIRES
 ===================================================== */
 
 function showFires(
@@ -1535,26 +2397,31 @@ function showFires(
 
     fireLayer.clearLayers();
 
+
     list.forEach(
-        fire => {
+        function(fire) {
 
             const lat =
                 parseFloat(
                     fire.latitude
                 );
 
+
             const lon =
                 parseFloat(
                     fire.longitude
                 );
+
 
             if (
                 isNaN(lat)
                 ||
                 isNaN(lon)
             ) {
+
                 return;
             }
+
 
             const sensor =
                 String(
@@ -1567,27 +2434,37 @@ function showFires(
                 .trim()
                 .toUpperCase();
 
+
             let color =
                 "#8e24aa";
+
 
             if (
                 sensor === "VIIRS"
             ) {
+
                 color =
                     "#ef233c";
             }
 
+
             if (
                 sensor === "MODIS"
             ) {
+
                 color =
                     "#f39c12";
             }
 
+
             const marker =
                 L.circleMarker(
-                    [lat,lon],
+                    [
+                        lat,
+                        lon
+                    ],
                     {
+
                         radius:
                             8,
 
@@ -1605,11 +2482,13 @@ function showFires(
                     }
                 );
 
+
             marker.bindPopup(
                 popupContent(
                     fire
                 )
             );
+
 
             marker.addTo(
                 fireLayer
@@ -1636,12 +2515,14 @@ function popupContent(
         ||
         "---";
 
+
     const time =
         fa(
             iranTime(
                 fire
             )
         );
+
 
     const code =
         String(
@@ -1652,22 +2533,28 @@ function popupContent(
         .trim()
         .toUpperCase();
 
+
     let dayNight =
         "---";
+
 
     if (
         code === "D"
     ) {
+
         dayNight =
             "روز";
     }
 
+
     if (
         code === "N"
     ) {
+
         dayNight =
             "شب";
     }
+
 
     return `
 
@@ -1677,80 +2564,102 @@ function popupContent(
         🔥 حریق استان فارس
     </h3>
 
+
     <div class="row">
         <span class="label">
             سنجنده:
         </span>
+
         ${fire.detected_sensor || fire.instrument || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             ماهواره:
         </span>
+
         ${fire.satellite || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             تاریخ ایران:
         </span>
+
         ${shamsiDate(date)}
     </div>
+
 
     <div class="row">
         <span class="label">
             ساعت ایران:
         </span>
+
         ${time}
     </div>
+
 
     <div class="row">
         <span class="label">
             روز/شب:
         </span>
+
         ${dayNight}
     </div>
+
 
     <div class="row">
         <span class="label">
             تاریخ UTC:
         </span>
+
         ${fire.acq_date || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             ساعت UTC:
         </span>
+
         ${fire.acq_time || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             FRP:
         </span>
+
         ${fire.frp || "---"} MW
     </div>
+
 
     <div class="row">
         <span class="label">
             Confidence:
         </span>
+
         ${fire.confidence || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             Brightness:
         </span>
+
         ${fire.brightness || "---"}
     </div>
+
 
     <div class="row">
         <span class="label">
             مختصات:
         </span>
+
         ${coordinate(fire.latitude)}
         ,
         ${coordinate(fire.longitude)}
@@ -1770,29 +2679,42 @@ function coordinate(
     value
 ) {
 
-    const n =
+    const number =
         parseFloat(
             value
         );
 
-    return isNaN(n)
-        ? "---"
-        : n.toFixed(5);
+
+    if (
+        isNaN(number)
+    ) {
+
+        return "---";
+    }
+
+
+    return number.toFixed(
+        5
+    );
 }
 
 
 /* =====================================================
-   MODE
+   APPLY MODE
 ===================================================== */
 
 function applyMode(
     mode
 ) {
 
-    showFires(
+    const list =
         filteredFires(
             mode
-        )
+        );
+
+
+    showFires(
+        list
     );
 
 
@@ -1801,7 +2723,7 @@ function applyMode(
             ".mode-button"
         )
         .forEach(
-            button => {
+            function(button) {
 
                 button.classList.toggle(
                     "active",
@@ -1824,7 +2746,7 @@ document
         ".mode-button"
     )
     .forEach(
-        button => {
+        function(button) {
 
             button.addEventListener(
                 "click",
@@ -1840,7 +2762,7 @@ document
 
 
 /* =====================================================
-   SLIDER LABEL
+   SLIDER DATE
 ===================================================== */
 
 function updateSliderDate() {
@@ -1850,21 +2772,28 @@ function updateSliderDate() {
             "archiveSlider"
         );
 
+
     const index =
         parseInt(
             slider.value,
             10
         );
 
+
     const date =
-        archiveDates[index];
+        archiveDates[
+            index
+        ];
+
 
     document.getElementById(
         "sliderDate"
     ).innerText =
         date
         ?
-        shamsiDate(date)
+        shamsiDate(
+            date
+        )
         :
         "---";
 }
@@ -1888,19 +2817,25 @@ document
                     10
                 );
 
+
             const date =
-                archiveDates[index];
+                archiveDates[
+                    index
+                ];
+
 
             updateSliderDate();
 
+
             const list =
                 fires.filter(
-                    fire => {
+                    function(fire) {
 
                         const fireDate =
                             fire.iran_date
                             ||
                             fire.archive_date;
+
 
                         return (
                             fireDate
@@ -1909,6 +2844,7 @@ document
                         );
                     }
                 );
+
 
             showFires(
                 list
@@ -1933,23 +2869,30 @@ document
                 "night"
             );
 
+
             const night =
                 document.body.classList.contains(
                     "night"
                 );
 
-            if (night) {
+
+            if (
+                night
+            ) {
 
                 map.removeLayer(
                     lightMap
                 );
 
+
                 darkMap.addTo(
                     map
                 );
 
+
                 this.innerText =
                     "☀️";
+
 
                 localStorage.setItem(
                     "fars-night",
@@ -1962,12 +2905,15 @@ document
                     darkMap
                 );
 
+
                 lightMap.addTo(
                     map
                 );
 
+
                 this.innerText =
                     "🌙";
+
 
                 localStorage.setItem(
                     "fars-night",
@@ -1979,7 +2925,7 @@ document
 
 
 /* =====================================================
-   RESTORE NIGHT
+   RESTORE NIGHT MODE
 ===================================================== */
 
 if (
@@ -1994,13 +2940,16 @@ if (
         "night"
     );
 
+
     map.removeLayer(
         lightMap
     );
 
+
     darkMap.addTo(
         map
     );
+
 
     document.getElementById(
         "nightButton"
@@ -2022,15 +2971,18 @@ async function loadUpdateInfo() {
                 UPDATE_INFO
             );
 
+
         const data =
             JSON.parse(
                 text
             );
 
+
         const timestamp =
             Number(
                 data.updated_at_timestamp
             );
+
 
         if (
             !Number.isFinite(
@@ -2039,16 +2991,20 @@ async function loadUpdateInfo() {
         ) {
 
             throw new Error(
-                "timestamp invalid"
+                "timestamp نامعتبر"
             );
         }
+
 
         updateTimestamp =
             timestamp * 1000;
 
+
         updateTimer();
 
-    } catch (error) {
+    } catch (
+        error
+    ) {
 
         document.getElementById(
             "updateInfo"
@@ -2059,7 +3015,7 @@ async function loadUpdateInfo() {
 
 
 /* =====================================================
-   TIMER
+   UPDATE TIMER
 ===================================================== */
 
 function updateTimer() {
@@ -2068,6 +3024,7 @@ function updateTimer() {
         document.getElementById(
             "updateInfo"
         );
+
 
     if (
         !updateTimestamp
@@ -2079,7 +3036,8 @@ function updateTimer() {
         return;
     }
 
-    const seconds =
+
+    const totalSeconds =
         Math.max(
             0,
             Math.floor(
@@ -2093,23 +3051,39 @@ function updateTimer() {
             )
         );
 
+
     const minutes =
         Math.floor(
-            seconds / 60
+            totalSeconds / 60
         );
 
-    const sec =
-        seconds % 60;
+
+    const seconds =
+        totalSeconds % 60;
+
 
     element.innerText =
+
         "آخرین به‌روزرسانی: "
+
         +
-        fa(minutes)
+
+        fa(
+            minutes
+        )
+
         +
+
         " دقیقه و "
+
         +
-        fa(sec)
+
+        fa(
+            seconds
+        )
+
         +
+
         " ثانیه پیش";
 }
 
@@ -2139,56 +3113,86 @@ document
 
 /* =====================================================
    INITIALIZE
+   ترتیب:
+   1. مرز
+   2. آرشیو
+   3. داده‌های حریق
+   4. نمایش حریق
 ===================================================== */
 
 async function initialize() {
 
-    /* داده‌ها اول */
+    /* -----------------------------------------------
+       مرحله ۱: مرز فارس
+    ----------------------------------------------- */
+
+    try {
+
+        await loadBoundaryFirst();
+
+    } catch (
+        error
+    ) {
+
+        console.error(
+            "خطا در بارگذاری مرز:",
+            error
+        );
+    }
+
+
+    /* -----------------------------------------------
+       مرحله ۲: فهرست آرشیو
+    ----------------------------------------------- */
 
     try {
 
         await loadArchiveIndex();
 
-    } catch (error) {
+    } catch (
+        error
+    ) {
 
         console.error(
-            "Archive index:",
+            "خطا در archive/index.json:",
             error
         );
     }
 
+
+    /* -----------------------------------------------
+       مرحله ۳: داده‌های حریق
+    ----------------------------------------------- */
 
     try {
 
         await loadArchives();
 
-    } catch (error) {
+    } catch (
+        error
+    ) {
 
         console.error(
-            "Archives:",
+            "خطا در آرشیو حریق:",
             error
         );
     }
 
 
-    /* نمایش حریق */
+    /* -----------------------------------------------
+       مرحله ۴: نمایش حریق‌های امروز
+    ----------------------------------------------- */
 
     applyMode(
         "today"
     );
 
 
-    /* تایمر */
+    /* -----------------------------------------------
+       مرحله ۵: تایمر
+    ----------------------------------------------- */
 
     loadUpdateInfo();
-
-
-    /*
-       مرز سبک فارس
-       بعد از داده‌ها لود می‌شود
-    */
-
-    await loadBoundary();
 }
 
 
@@ -2201,4 +3205,5 @@ initialize();
 </script>
 
 </body>
+
 </html>
