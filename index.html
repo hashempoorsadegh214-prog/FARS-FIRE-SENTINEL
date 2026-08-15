@@ -49,7 +49,9 @@ body{
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
     position:relative;
@@ -166,7 +168,9 @@ header{
 }
 
 
-/* MAP */
+/* =========================
+   MAP
+========================= */
 
 #map{
     position:absolute;
@@ -188,7 +192,9 @@ header{
 }
 
 
-/* CONTROL PANEL */
+/* =========================
+   CONTROL PANEL
+========================= */
 
 .control-panel{
     position:absolute;
@@ -418,7 +424,9 @@ header{
 }
 
 
-/* LOWER STATUS */
+/* =========================
+   LOWER STATUS
+========================= */
 
 .update-box{
     position:absolute;
@@ -477,7 +485,9 @@ header{
 }
 
 
-/* SLIDER */
+/* =========================
+   SLIDER
+========================= */
 
 .slider-box{
     position:absolute;
@@ -547,7 +557,9 @@ header{
 }
 
 
-/* POPUP */
+/* =========================
+   POPUP
+========================= */
 
 .fire-popup{
     width:270px;
@@ -593,7 +605,9 @@ header{
 }
 
 
-/* NIGHT */
+/* =========================
+   NIGHT
+========================= */
 
 body.night{
     background:#121820;
@@ -662,7 +676,9 @@ body.night .slider-count{
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width:700px){
 
@@ -976,15 +992,20 @@ body.night .slider-count{
 <div class="control-panel">
 
     <div class="fire-count">
+
         رخدادهای شناسایی‌شده
+
         <br>
+
         <span
             id="fireCount"
             class="fire-count-number"
         >
             ۰
         </span>
+
         رخداد
+
     </div>
 
 
@@ -1212,6 +1233,9 @@ const state = {
     mode:
         "24h",
 
+    view:
+        "archive",
+
     areaFilter:
         "none",
 
@@ -1387,8 +1411,10 @@ function gregorianToJalali(
 ){
 
     const gdm=[
+
         0,31,59,90,120,151,
         181,212,243,273,304,334
+
     ];
 
 
@@ -1471,7 +1497,7 @@ function gregorianToJalali(
                 (days-1)/365
             );
 
-        days=
+        days =
             (days-1)%365;
 
     }
@@ -1856,7 +1882,8 @@ function createMap(){
 
     state.map.getPane(
         "boundaryPane"
-    ).style.zIndex=400;
+    ).style.zIndex =
+        400;
 
 
     state.map.createPane(
@@ -1865,7 +1892,8 @@ function createMap(){
 
     state.map.getPane(
         "areaPane"
-    ).style.zIndex=450;
+    ).style.zIndex =
+        450;
 
 
     state.map.createPane(
@@ -1874,7 +1902,8 @@ function createMap(){
 
     state.map.getPane(
         "firePane"
-    ).style.zIndex=600;
+    ).style.zIndex =
+        600;
 
 
     state.fireLayer =
@@ -2593,8 +2622,7 @@ function findRegionsAtPoint(
 
                     for(
                         const polygon
-                        of
-                        geometry.coordinates
+                        of geometry.coordinates
                     ){
 
                         if(
@@ -2678,13 +2706,13 @@ function applyAreaFilter(
     return fires.filter(
         fire=>{
 
-            const lat =
+            const lat=
                 Number(
                     fire.latitude
                 );
 
 
-            const lon =
+            const lon=
                 Number(
                     fire.longitude
                 );
@@ -3095,6 +3123,9 @@ document
                     state.mode =
                         button.dataset.mode;
 
+                    state.view =
+                        "time";
+
 
                     document
                         .querySelectorAll(
@@ -3144,7 +3175,29 @@ function setAreaFilter(
     updateAreaLayers();
 
 
-    refreshFires();
+    if(
+        state.view==="archive"
+    ){
+
+        const index =
+            Number(
+                $("archiveSlider").value
+            );
+
+
+        const date =
+            state.archiveDates[index];
+
+
+        showArchiveDate(
+            date
+        );
+
+    }else{
+
+        refreshFires();
+
+    }
 
 }
 
@@ -3316,6 +3369,45 @@ function updateSliderDisplay(){
 }
 
 
+function showArchiveDate(
+    date
+){
+
+    if(
+        !date
+    ){
+
+        return;
+
+    }
+
+
+    state.view =
+        "archive";
+
+
+    const fires =
+        applyAreaFilter(
+            getArchiveFires(
+                date
+            )
+        );
+
+
+    renderFires(
+        fires
+    );
+
+
+    $("fireCount")
+        .textContent =
+            fa(
+                fires.length
+            );
+
+}
+
+
 $("archiveSlider")
     .addEventListener(
         "input",
@@ -3323,6 +3415,14 @@ $("archiveSlider")
 
             updateSliderDisplay();
 
+        }
+    );
+
+
+$("archiveSlider")
+    .addEventListener(
+        "change",
+        function(){
 
             const date =
                 state.archiveDates[
@@ -3332,33 +3432,9 @@ $("archiveSlider")
                 ];
 
 
-            if(
-                !date
-            ){
-
-                return;
-
-            }
-
-
-            const fires =
-                applyAreaFilter(
-                    getArchiveFires(
-                        date
-                    )
-                );
-
-
-            renderFires(
-                fires
+            showArchiveDate(
+                date
             );
-
-
-            $("fireCount")
-                .textContent =
-                    fa(
-                        fires.length
-                    );
 
         }
     );
@@ -3881,6 +3957,9 @@ async function createRegionReport(){
 
     let html2canvas;
 
+    let logo =
+        null;
+
 
     try{
 
@@ -3898,196 +3977,84 @@ async function createRegionReport(){
     }
 
 
+    try{
+
+        logo =
+            await new Promise(
+                (resolve,reject)=>{
+
+                    const img =
+                        new Image();
+
+
+                    img.onload =
+                        () =>
+                            resolve(
+                                img
+                            );
+
+
+                    img.onerror =
+                        reject;
+
+
+                    img.src =
+                        "logo.png?v="+
+                        Date.now();
+
+                }
+            );
+
+    }catch(error){
+
+        logo =
+            null;
+
+    }
+
+
     const mapElement =
         document.getElementById(
             "map"
         );
 
 
-    const mapBounds =
-        state.map.getBounds();
+    if(
+        !mapElement
+    ){
+
+        return;
+
+    }
 
 
-    const fires =
-        getVisibleFires()
-            .filter(
-                fire=>{
+    /* فقط خود نقشه ثبت می‌شود.
+       نقاط حریق دوباره رسم نمی‌شوند. */
 
-                    const lat=
-                        Number(
-                            fire.latitude
-                        );
-
-
-                    const lon=
-                        Number(
-                            fire.longitude
-                        );
-
-
-                    return (
-                        Number.isFinite(lat) &&
-                        Number.isFinite(lon) &&
-                        mapBounds.contains(
-                            [
-                                lat,
-                                lon
-                            ]
-                        )
-                    );
-
-                }
-            );
-
-
-    const canvas =
+    const mapCanvas =
         await html2canvas(
             mapElement,
             {
-                backgroundColor:"#ffffff",
+                backgroundColor:
+                    "#ffffff",
 
-                useCORS:true,
+                useCORS:
+                    true,
 
-                allowTaint:false,
+                allowTaint:
+                    false,
 
-                logging:false,
+                logging:
+                    false,
 
                 scale:
-                    Math.min(
-                        window.devicePixelRatio || 1,
-                        2
-                    )
+                    1
             }
         );
 
 
-    const ctx =
-        canvas.getContext(
-            "2d"
-        );
-
-
-    const mapRect =
-        mapElement.getBoundingClientRect();
-
-
-    const scaleX =
-        canvas.width /
-        mapRect.width;
-
-
-    const scaleY =
-        canvas.height /
-        mapRect.height;
-
-
-    fires.forEach(
-        fire=>{
-
-            const lat=
-                Number(
-                    fire.latitude
-                );
-
-
-            const lon=
-                Number(
-                    fire.longitude
-                );
-
-
-            const point =
-                state.map.latLngToContainerPoint(
-                    [
-                        lat,
-                        lon
-                    ]
-                );
-
-
-            const x =
-                point.x*scaleX;
-
-
-            const y =
-                point.y*scaleY;
-
-
-            const color =
-                sensorColor(
-                    getSensor(
-                        fire
-                    )
-                );
-
-
-            const radius =
-                7*Math.max(
-                    scaleX,
-                    scaleY
-                );
-
-
-            ctx.beginPath();
-
-
-            ctx.arc(
-                x,
-                y,
-                radius+4,
-                0,
-                Math.PI*2
-            );
-
-
-            ctx.fillStyle =
-                "rgba(255,255,255,.95)";
-
-
-            ctx.fill();
-
-
-            ctx.beginPath();
-
-
-            ctx.arc(
-                x,
-                y,
-                radius,
-                0,
-                Math.PI*2
-            );
-
-
-            ctx.fillStyle =
-                color;
-
-
-            ctx.fill();
-
-
-            ctx.lineWidth =
-                2*Math.max(
-                    scaleX,
-                    scaleY
-                );
-
-
-            ctx.strokeStyle =
-                "#6d0000";
-
-
-            ctx.stroke();
-
-        }
-    );
-
-
     const headerHeight =
-        Math.max(
-            88,
-            88*scaleY
-        );
+        92;
 
 
     const reportCanvas =
@@ -4097,25 +4064,25 @@ async function createRegionReport(){
 
 
     reportCanvas.width =
-        canvas.width;
+        mapCanvas.width;
 
 
     reportCanvas.height =
-        canvas.height+
+        mapCanvas.height+
         headerHeight;
 
 
-    const reportCtx =
+    const ctx =
         reportCanvas.getContext(
             "2d"
         );
 
 
-    reportCtx.fillStyle =
+    ctx.fillStyle =
         "#ffffff";
 
 
-    reportCtx.fillRect(
+    ctx.fillRect(
         0,
         0,
         reportCanvas.width,
@@ -4123,11 +4090,11 @@ async function createRegionReport(){
     );
 
 
-    reportCtx.fillStyle =
+    ctx.fillStyle =
         "#b71c1c";
 
 
-    reportCtx.fillRect(
+    ctx.fillRect(
         0,
         0,
         reportCanvas.width,
@@ -4135,123 +4102,76 @@ async function createRegionReport(){
     );
 
 
-    reportCtx.drawImage(
-        canvas,
-        0,
-        headerHeight
-    );
+    if(
+        logo
+    ){
+
+        const size =
+            68;
 
 
-    reportCtx.direction =
+        ctx.drawImage(
+            logo,
+            20,
+            (headerHeight-size)/2,
+            size,
+            size
+        );
+
+    }
+
+
+    ctx.direction =
         "rtl";
 
 
-    reportCtx.textAlign =
+    ctx.textAlign =
         "right";
 
 
-    reportCtx.fillStyle =
+    ctx.fillStyle =
         "#ffffff";
 
 
-    reportCtx.font =
-        "bold 27px Tahoma";
+    ctx.font =
+        "bold 25px Tahoma";
 
 
-    reportCtx.fillText(
+    ctx.fillText(
         "سامانه پایش و مدیریت داده‌های حریق",
-        reportCanvas.width-25,
+        reportCanvas.width-24,
         36
     );
 
 
-    reportCtx.font =
-        "15px Tahoma";
+    ctx.font =
+        "14px Tahoma";
 
 
-    reportCtx.fillText(
-        "رخدادهای محدوده: "
-        +
-        fa(
-            fires.length
-        )
-        +
-        " | بازه: "
+    ctx.fillText(
+        "گزارش تصویری نقشه | "
         +
         (
+            state.view==="archive"
+            ?
+            "آرشیو روزانه"
+            :
             state.mode==="24h"
             ?
-            "۲۴ ساعت"
+            "۲۴ ساعت گذشته"
             :
-            "۵ روز"
-        )
-        +
-        " | فیلتر: "
-        +
-        getReportFilter(),
-        reportCanvas.width-25,
-        63
+            "۵ روز گذشته"
+        ),
+        reportCanvas.width-24,
+        64
     );
 
 
-    reportCtx.textAlign =
-        "left";
-
-
-    reportCtx.font =
-        "13px Tahoma";
-
-
-    reportCtx.fillText(
-        "VIIRS",
-        25,
-        32
-    );
-
-
-    reportCtx.fillText(
-        "MODIS",
-        25,
-        58
-    );
-
-
-    reportCtx.beginPath();
-
-
-    reportCtx.arc(
-        72,
-        27,
-        6,
+    ctx.drawImage(
+        mapCanvas,
         0,
-        Math.PI*2
+        headerHeight
     );
-
-
-    reportCtx.fillStyle =
-        "#ff1744";
-
-
-    reportCtx.fill();
-
-
-    reportCtx.beginPath();
-
-
-    reportCtx.arc(
-        72,
-        53,
-        6,
-        0,
-        Math.PI*2
-    );
-
-
-    reportCtx.fillStyle =
-        "#ff9800";
-
-
-    reportCtx.fill();
 
 
     const link =
@@ -4276,7 +4196,15 @@ async function createRegionReport(){
         );
 
 
+    document.body.appendChild(
+        link
+    );
+
+
     link.click();
+
+
+    link.remove();
 
 }
 
@@ -4415,25 +4343,62 @@ async function init(){
 
     createMap();
 
+
     await loadBoundary();
+
 
     await loadProtectedLayer();
 
+
     await loadHuntingLayer();
+
 
     await loadArchiveIndex();
 
+
     await loadArchives();
+
 
     await loadFallbackCSV();
 
+
     await loadSystemUpdate();
 
-    refreshFires();
 
-    updateSliderDisplay();
+    const latestIndex =
+        state.archiveDates.length-1;
+
+
+    if(
+        latestIndex>=0
+    ){
+
+        $("archiveSlider").value =
+            latestIndex;
+
+
+        updateSliderDisplay();
+
+
+        showArchiveDate(
+            state.archiveDates[
+                latestIndex
+            ]
+        );
+
+    }else{
+
+        state.view =
+            "time";
+
+
+        refreshFires();
+
+    }
+
 
     updateStatus();
+
 
     restoreNight();
 
