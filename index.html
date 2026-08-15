@@ -78,7 +78,8 @@ header{
     align-items:center;
     justify-content:center;
 
-    padding:0 150px 0 110px;
+    padding:
+        0 150px 0 120px;
 
     text-align:center;
 }
@@ -99,6 +100,8 @@ header{
     filter:
         brightness(0)
         invert(1);
+
+    z-index:2;
 }
 
 .title h1{
@@ -171,6 +174,7 @@ header{
     bottom:8px;
 
     border:1px solid #d7dde1;
+
     border-radius:10px;
 
     overflow:hidden;
@@ -231,7 +235,6 @@ header{
 
     font-size:16px;
     font-weight:bold;
-
     line-height:1.2;
 }
 
@@ -242,7 +245,7 @@ header{
 
 
 /* =========================
-   MODE
+   MODE BUTTONS
 ========================= */
 
 .mode-btn{
@@ -290,7 +293,8 @@ header{
     margin-top:5px;
     padding-top:6px;
 
-    border-top:1px solid #e6eaed;
+    border-top:
+        1px solid #e6eaed;
 }
 
 .area-title{
@@ -363,7 +367,6 @@ header{
 .sensor-item{
     display:flex;
     align-items:center;
-
     gap:5px;
 }
 
@@ -372,7 +375,6 @@ header{
     height:9px;
 
     border-radius:50%;
-
     border:1px solid #555;
 }
 
@@ -545,7 +547,8 @@ body.night .control-panel,
 body.night .sensor-box,
 body.night .update-box,
 body.night .slider-box{
-    background:rgba(26,32,40,.97);
+    background:
+        rgba(26,32,40,.97);
 
     border-color:#3a4650;
 
@@ -602,12 +605,12 @@ body.night .slider-count{
     }
 
     .header-content{
-        padding:0 108px 0 58px;
+        padding:
+            0 108px 0 58px;
     }
 
     .header-logo{
         left:6px;
-
         width:46px;
         height:46px;
     }
@@ -636,7 +639,6 @@ body.night .slider-count{
 
     #map{
         top:63px;
-
         left:4px;
         right:4px;
         bottom:4px;
@@ -649,7 +651,6 @@ body.night .slider-count{
         right:7px;
 
         width:145px;
-
         max-height:205px;
 
         overflow-y:auto;
@@ -661,8 +662,8 @@ body.night .slider-count{
 
     .fire-count{
         padding:4px;
-        font-size:11px;
 
+        font-size:11px;
         margin-bottom:4px;
     }
 
@@ -672,9 +673,7 @@ body.night .slider-count{
 
     .mode-btn{
         padding:5px 6px;
-
         font-size:11px;
-
         margin-bottom:4px;
     }
 
@@ -686,9 +685,7 @@ body.night .slider-count{
         padding:4px 5px;
 
         font-size:10px;
-
         gap:5px;
-
         margin-bottom:3px;
     }
 
@@ -732,6 +729,10 @@ body.night .slider-count{
         border-radius:12px;
     }
 
+    .slider-head{
+        margin-bottom:2px;
+    }
+
     .slider-title{
         font-size:11px;
     }
@@ -751,7 +752,6 @@ body.night .slider-count{
         bottom:5px;
 
         width:auto;
-
         max-width:none;
 
         padding:4px 6px;
@@ -856,32 +856,28 @@ body.night .slider-count{
         <button
             id="reportBtn"
             class="header-btn"
-            title="گزارش منطقه"
-        >
+            title="گزارش منطقه">
             📸
         </button>
 
         <button
             id="excelBtn"
             class="header-btn"
-            title="گزارش Excel"
-        >
+            title="گزارش Excel">
             📊
         </button>
 
         <button
             id="nightBtn"
             class="header-btn"
-            title="حالت شب"
-        >
+            title="حالت شب">
             🌙
         </button>
 
         <button
             id="refreshBtn"
             class="header-btn"
-            title="بازخوانی"
-        >
+            title="بازخوانی">
             ↻
         </button>
 
@@ -896,35 +892,29 @@ body.night .slider-count{
 <div class="control-panel">
 
     <div class="fire-count">
-
         رخدادهای شناسایی‌شده
-
         <br>
 
         <span
             id="fireCount"
-            class="fire-count-number"
-        >
+            class="fire-count-number">
             ۰
         </span>
 
         رخداد
-
     </div>
 
 
     <button
         class="mode-btn active"
-        data-mode="24h"
-    >
+        data-mode="24h">
         🔥 حریق‌های ۲۴ ساعت گذشته
     </button>
 
 
     <button
         class="mode-btn"
-        data-mode="5days"
-    >
+        data-mode="5days">
         📅 حریق‌های ۵ روز گذشته
     </button>
 
@@ -940,8 +930,7 @@ body.night .slider-count{
 
             <input
                 id="protectedFilter"
-                type="checkbox"
-            >
+                type="checkbox">
 
             مناطق چهارگانه محیط زیست
 
@@ -952,8 +941,7 @@ body.night .slider-count{
 
             <input
                 id="huntingFilter"
-                type="checkbox"
-            >
+                type="checkbox">
 
             مناطق شکار ممنوع
 
@@ -975,8 +963,8 @@ body.night .slider-count{
 
         <span
             class="sensor-dot"
-            style="background:#ff1744"
-        ></span>
+            style="background:#ff1744">
+        </span>
 
         VIIRS
 
@@ -987,8 +975,8 @@ body.night .slider-count{
 
         <span
             class="sensor-dot"
-            style="background:#ff9800"
-        ></span>
+            style="background:#ff9800">
+        </span>
 
         MODIS
 
@@ -1001,8 +989,7 @@ body.night .slider-count{
 
     <span
         id="sensorAge"
-        class="update-row"
-    >
+        class="update-row">
         آخرین مشاهده حریق توسط سنجنده:
         در انتظار اطلاعات
     </span>
@@ -1010,8 +997,7 @@ body.night .slider-count{
 
     <span
         id="systemAge"
-        class="update-row"
-    >
+        class="update-row">
         آخرین به‌روزرسانی سامانه:
         در انتظار اطلاعات
     </span>
@@ -1032,16 +1018,14 @@ body.night .slider-count{
 
             <div
                 id="sliderDate"
-                class="slider-date"
-            >
+                class="slider-date">
                 ---
             </div>
 
 
             <div
                 id="sliderCount"
-                class="slider-count"
-            >
+                class="slider-count">
                 تعداد رخداد: ۰
             </div>
 
@@ -1063,8 +1047,8 @@ body.night .slider-count{
 
 
 <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-></script>
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
 
 
 <script>
@@ -1354,7 +1338,7 @@ function gregorianToJalali(
 
 
     jy +=
-        33*
+        33 *
         Math.floor(days/12053);
 
 
@@ -1362,7 +1346,7 @@ function gregorianToJalali(
 
 
     jy +=
-        4*
+        4 *
         Math.floor(days/1461);
 
 
@@ -1391,21 +1375,21 @@ function gregorianToJalali(
     ){
 
         jm =
-            1+
+            1 +
             Math.floor(days/31);
 
         jd =
-            1+
+            1 +
             days%31;
 
     }else{
 
         jm =
-            7+
+            7 +
             Math.floor((days-186)/30);
 
         jd =
-            1+
+            1 +
             (days-186)%30;
 
     }
@@ -1434,8 +1418,7 @@ function shamsiDate(
 
 
     const parts =
-        String(date)
-            .split("-");
+        String(date).split("-");
 
 
     if(
@@ -1541,7 +1524,9 @@ function iranTime(
 ){
 
     const utc =
-        fireUTCDateTime(fire);
+        fireUTCDateTime(
+            fire
+        );
 
 
     if(
@@ -1593,7 +1578,9 @@ function getTimeLabel(
 
 
     const hour =
-        Number(time.slice(0,2));
+        Number(
+            time.slice(0,2)
+        );
 
 
     if(
@@ -1712,24 +1699,21 @@ function sensorColor(
 function createMap(){
 
     state.map =
-        L.map("map");
+        L.map(
+            "map"
+        );
 
 
-    /*
-       CARTO را برای Screenshot انتخاب می‌کنیم
-       چون با crossOrigin بهتر با Canvas کار می‌کند.
-    */
+    /* همان نقشه اصلی OpenStreetMap */
 
     state.lightMap =
         L.tileLayer(
-            "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
             {
-                maxZoom:19,
-
-                crossOrigin:true,
+                maxZoom:18,
 
                 attribution:
-                    "© OpenStreetMap © CARTO"
+                    "© OpenStreetMap contributors"
             }
         )
         .addTo(
@@ -1742,8 +1726,6 @@ function createMap(){
             "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
             {
                 maxZoom:19,
-
-                crossOrigin:true,
 
                 attribution:
                     "© OpenStreetMap © CARTO"
@@ -1780,9 +1762,9 @@ function createMap(){
 
     state.fireLayer =
         L.layerGroup()
-            .addTo(
-                state.map
-            );
+        .addTo(
+            state.map
+        );
 
 
     state.map.setView(
@@ -1802,7 +1784,9 @@ async function loadGeoJSON(
 ){
 
     return JSON.parse(
-        await getText(file)
+        await getText(
+            file
+        )
     );
 
 }
@@ -2031,7 +2015,7 @@ async function loadArchiveIndex(){
 
 
 /* =========================
-   LOAD ARCHIVES
+   ARCHIVES
 ========================= */
 
 async function loadArchives(){
@@ -2183,7 +2167,7 @@ function getTimeFilteredFires(){
 
 
 /* =========================
-   POINT IN POLYGON
+   POINT IN RING
 ========================= */
 
 function pointInRing(
@@ -2362,7 +2346,9 @@ function findRegionName(
 
 
     const dynamicKey =
-        Object.keys(properties)
+        Object.keys(
+            properties
+        )
         .find(
             key =>
                 /name|نام|title|عنوان/i
@@ -2608,10 +2594,6 @@ function applyAreaFilter(
 }
 
 
-/* =========================
-   VISIBLE FIRES
-========================= */
-
 function getVisibleFires(){
 
     return applyAreaFilter(
@@ -2676,6 +2658,7 @@ function createPopup(
                 <span class="label">
                     مناطق چهارگانه:
                 </span>
+
                 <span class="area-name">
                     ${regions.protected.join("، ")}
                 </span>
@@ -2694,6 +2677,7 @@ function createPopup(
                 <span class="label">
                     شکار ممنوع:
                 </span>
+
                 <span class="area-name">
                     ${regions.hunting.join("، ")}
                 </span>
@@ -2713,6 +2697,7 @@ function createPopup(
                 <span class="label">
                     محدوده:
                 </span>
+
                 خارج از مناطق چهارگانه و شکار ممنوع
             </div>
         `;
@@ -2721,73 +2706,99 @@ function createPopup(
 
 
     return `
+
         <div class="fire-popup">
 
             <h3>
                 🔥 حریق استان فارس
             </h3>
 
+
             <div class="row">
                 <span class="label">
                     سنجنده:
                 </span>
+
                 ${sensor}
             </div>
+
 
             <div class="row">
                 <span class="label">
                     ماهواره:
                 </span>
+
                 ${fire.satellite || "---"}
             </div>
+
 
             <div class="row">
                 <span class="label">
                     تاریخ ایران:
                 </span>
+
                 ${shamsiDate(date)}
             </div>
+
 
             <div class="row">
                 <span class="label">
                     ساعت ایران:
                 </span>
+
                 ${fa(iranTime(fire))}
             </div>
+
 
             <div class="row">
                 <span class="label">
                     زمان:
                 </span>
+
                 ${getTimeLabel(fire)}
             </div>
 
+
             ${regionHTML}
+
 
             <div class="row">
                 <span class="label">
                     FRP:
                 </span>
+
                 ${fire.frp || "---"} MW
             </div>
+
 
             <div class="row">
                 <span class="label">
                     Confidence:
                 </span>
+
                 ${fire.confidence || "---"}
             </div>
+
 
             <div class="row">
                 <span class="label">
                     مختصات:
                 </span>
-                ${Number(fire.latitude).toFixed(5)}
+
+                ${Number(
+                    fire.latitude
+                ).toFixed(5)}
+
                 ،
-                ${Number(fire.longitude).toFixed(5)}
+
+                ${Number(
+                    fire.longitude
+                ).toFixed(5)}
+
             </div>
 
         </div>
+
     `;
 
 }
@@ -2904,11 +2915,11 @@ document
         ".mode-btn"
     )
     .forEach(
-        button=>{
+        button => {
 
             button.addEventListener(
                 "click",
-                ()=>{
+                () => {
 
                     state.mode =
                         button.dataset.mode;
@@ -2922,11 +2933,11 @@ document
                             ".mode-btn"
                         )
                         .forEach(
-                            item=>{
+                            item => {
 
                                 item.classList.toggle(
                                     "active",
-                                    item===button
+                                    item === button
                                 );
 
                             }
@@ -2943,7 +2954,7 @@ document
 
 
 /* =========================
-   AREA
+   AREA FILTER
 ========================= */
 
 function setAreaFilter(
@@ -2956,19 +2967,19 @@ function setAreaFilter(
 
     $("protectedFilter")
         .checked =
-            type==="protected";
+            type === "protected";
 
 
     $("huntingFilter")
         .checked =
-            type==="hunting";
+            type === "hunting";
 
 
     updateAreaLayers();
 
 
     if(
-        state.view==="archive"
+        state.view === "archive"
     ){
 
         showArchiveDate(
@@ -3025,7 +3036,7 @@ function updateAreaLayers(){
     ){
 
         if(
-            state.areaFilter==="protected"
+            state.areaFilter === "protected"
         ){
 
             state.protectedLayer.addTo(
@@ -3048,7 +3059,7 @@ function updateAreaLayers(){
     ){
 
         if(
-            state.areaFilter==="hunting"
+            state.areaFilter === "hunting"
         ){
 
             state.huntingLayer.addTo(
@@ -3069,7 +3080,7 @@ function updateAreaLayers(){
 
 
 /* =========================
-   ARCHIVE
+   SLIDER
 ========================= */
 
 function getCurrentArchiveDate(){
@@ -3080,7 +3091,11 @@ function getCurrentArchiveDate(){
         );
 
 
-    return state.archiveDates[index] || null;
+    return (
+        state.archiveDates[index]
+        ||
+        null
+    );
 
 }
 
@@ -3090,14 +3105,14 @@ function getArchiveFires(
 ){
 
     return state.fires.filter(
-        fire=>{
+        fire => {
 
             const value =
                 fire.archive_date ||
                 fire.acq_date;
 
 
-            return value===date;
+            return value === date;
 
         }
     );
@@ -3116,11 +3131,12 @@ function updateSliderDisplay(){
     ){
 
         $("sliderDate")
-            .textContent="---";
+            .textContent =
+                "---";
 
 
         $("sliderCount")
-            .textContent=
+            .textContent =
                 "تعداد رخداد: ۰";
 
 
@@ -3222,11 +3238,12 @@ $("archiveSlider")
 
 function getLatestObservation(){
 
-    let latest=null;
+    let latest =
+        null;
 
 
     state.fires.forEach(
-        fire=>{
+        fire => {
 
             const time =
                 fireUTCDateTime(
@@ -3245,10 +3262,11 @@ function getLatestObservation(){
 
             if(
                 !latest ||
-                time>latest
+                time > latest
             ){
 
-                latest=time;
+                latest =
+                    time;
 
             }
 
@@ -3278,29 +3296,33 @@ function ageText(
         Math.max(
             0,
             Math.floor(
-                (Date.now()-timestamp)/1000
+                (
+                    Date.now() -
+                    timestamp
+                ) /
+                1000
             )
         );
 
 
     const hours =
         Math.floor(
-            seconds/3600
+            seconds / 3600
         );
 
 
     const minutes =
         Math.floor(
-            (seconds%3600)/60
+            (seconds % 3600) / 60
         );
 
 
     const sec =
-        seconds%60;
+        seconds % 60;
 
 
     if(
-        hours>0
+        hours > 0
     ){
 
         return (
@@ -3352,7 +3374,7 @@ async function loadSystemUpdate(){
         ){
 
             state.systemTimestamp =
-                timestamp*1000;
+                timestamp * 1000;
 
         }
 
@@ -3450,7 +3472,7 @@ function exportExcel(){
 
 
     if(
-        fires.length===0
+        fires.length === 0
     ){
 
         alert(
@@ -3491,16 +3513,14 @@ function exportExcel(){
 
 
     headers.forEach(
-        header=>{
+        header => {
 
             xml +=
                 "<Cell>"
                 +
                 '<Data ss:Type="String">'
                 +
-                escapeXml(
-                    header
-                )
+                escapeXml(header)
                 +
                 "</Data>"
                 +
@@ -3515,14 +3535,14 @@ function exportExcel(){
 
 
     fires.forEach(
-        fire=>{
+        fire => {
 
             xml +=
                 "<Row>";
 
 
             headers.forEach(
-                header=>{
+                header => {
 
                     xml +=
                         "<Cell>"
@@ -3615,119 +3635,19 @@ function exportExcel(){
 
 
 /* =========================
-   HTML2CANVAS
-   فقط هنگام گزارش
-========================= */
-
-async function loadHtml2Canvas(){
-
-    if(
-        typeof window.html2canvas ===
-        "function"
-    ){
-
-        return window.html2canvas;
-
-    }
-
-
-    const script =
-        document.createElement(
-            "script"
-        );
-
-
-    script.src =
-        "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
-
-
-    script.async =
-        true;
-
-
-    await new Promise(
-        (resolve,reject)=>{
-
-            script.onload =
-                resolve;
-
-            script.onerror =
-                reject;
-
-            document.head.appendChild(
-                script
-            );
-
-        }
-    );
-
-
-    if(
-        typeof window.html2canvas !==
-        "function"
-    ){
-
-        throw new Error(
-            "html2canvas failed"
-        );
-
-    }
-
-
-    return window.html2canvas;
-
-}
-
-
-/* =========================
-   REPORT FILTER
-========================= */
-
-function getReportFilter(){
-
-    if(
-        state.areaFilter==="protected"
-    ){
-
-        return "مناطق چهارگانه محیط زیست";
-
-    }
-
-
-    if(
-        state.areaFilter==="hunting"
-    ){
-
-        return "مناطق شکار ممنوع";
-
-    }
-
-
-    return "ندارد";
-
-}
-
-
-/* =========================
-   REPORT
+   SCREENSHOT
+   بدون تغییر نقشه سایت
 ========================= */
 
 async function createRegionReport(){
 
-    let html2canvas;
-
-    let logo=null;
-
-
-    try{
-
-        html2canvas =
-            await loadHtml2Canvas();
-
-    }catch(error){
+    if(
+        !navigator.mediaDevices ||
+        !navigator.mediaDevices.getDisplayMedia
+    ){
 
         alert(
-            "ابزار تهیه گزارش بارگذاری نشد."
+            "مرورگر شما امکان تهیه Screenshot از صفحه را ندارد."
         );
 
         return;
@@ -3735,279 +3655,336 @@ async function createRegionReport(){
     }
 
 
+    let stream =
+        null;
+
+
     try{
 
-        logo =
-            await new Promise(
-                (resolve,reject)=>{
+        /*
+           از خود تب فعال عکس می‌گیریم.
+           بنابراین OpenStreetMap و تمام عناصر
+           واقعی روی نقشه بدون تبدیل دوباره
+           مختصات ثبت می‌شوند.
+        */
 
-                    const img =
-                        new Image();
-
-
-                    img.onload =
-                        () =>
-                            resolve(img);
-
-
-                    img.onerror =
-                        reject;
+        stream =
+            await navigator.mediaDevices.getDisplayMedia({
+                video:true,
+                audio:false
+            });
 
 
-                    img.src =
-                        "logo.png?v="+
-                        Date.now();
-
-                }
+        const video =
+            document.createElement(
+                "video"
             );
+
+
+        video.srcObject =
+            stream;
+
+
+        video.muted =
+            true;
+
+
+        await video.play();
+
+
+        await new Promise(
+            resolve =>
+                setTimeout(
+                    resolve,
+                    300
+                )
+        );
+
+
+        const width =
+            video.videoWidth;
+
+
+        const height =
+            video.videoHeight;
+
+
+        if(
+            !width ||
+            !height
+        ){
+
+            throw new Error(
+                "تصویر صفحه دریافت نشد."
+            );
+
+        }
+
+
+        const screenCanvas =
+            document.createElement(
+                "canvas"
+            );
+
+
+        screenCanvas.width =
+            width;
+
+
+        screenCanvas.height =
+            height;
+
+
+        const screenCtx =
+            screenCanvas.getContext(
+                "2d"
+            );
+
+
+        screenCtx.drawImage(
+            video,
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        stream
+            .getTracks()
+            .forEach(
+                track =>
+                    track.stop()
+            );
+
+
+        stream =
+            null;
+
+
+        /*
+           سربرگ گزارش
+        */
+
+        const headerHeight =
+            92;
+
+
+        const reportCanvas =
+            document.createElement(
+                "canvas"
+            );
+
+
+        reportCanvas.width =
+            screenCanvas.width;
+
+
+        reportCanvas.height =
+            screenCanvas.height +
+            headerHeight;
+
+
+        const reportCtx =
+            reportCanvas.getContext(
+                "2d"
+            );
+
+
+        reportCtx.fillStyle =
+            "#ffffff";
+
+
+        reportCtx.fillRect(
+            0,
+            0,
+            reportCanvas.width,
+            reportCanvas.height
+        );
+
+
+        reportCtx.fillStyle =
+            "#b71c1c";
+
+
+        reportCtx.fillRect(
+            0,
+            0,
+            reportCanvas.width,
+            headerHeight
+        );
+
+
+        /*
+           لوگو
+        */
+
+        try{
+
+            const logo =
+                await new Promise(
+                    (resolve,reject)=>{
+
+                        const img =
+                            new Image();
+
+
+                        img.onload =
+                            () =>
+                                resolve(img);
+
+
+                        img.onerror =
+                            reject;
+
+
+                        img.src =
+                            "logo.png?v="+
+                            Date.now();
+
+                    }
+                );
+
+
+            const logoSize =
+                64;
+
+
+            reportCtx.drawImage(
+                logo,
+                18,
+                (headerHeight-logoSize)/2,
+                logoSize,
+                logoSize
+            );
+
+        }catch(error){
+
+            /* گزارش بدون لوگو هم ادامه پیدا می‌کند */
+
+        }
+
+
+        /*
+           عنوان
+        */
+
+        reportCtx.direction =
+            "rtl";
+
+
+        reportCtx.textAlign =
+            "right";
+
+
+        reportCtx.fillStyle =
+            "#ffffff";
+
+
+        reportCtx.font =
+            "bold 26px Tahoma";
+
+
+        reportCtx.fillText(
+            "سامانه پایش و مدیریت داده‌های حریق",
+            reportCanvas.width-22,
+            36
+        );
+
+
+        reportCtx.font =
+            "14px Tahoma";
+
+
+        reportCtx.fillText(
+            "گزارش تصویری نقشه | "
+            +
+            (
+                state.view === "archive"
+                ?
+                "آرشیو روزانه"
+                :
+                state.mode === "24h"
+                ?
+                "۲۴ ساعت گذشته"
+                :
+                "۵ روز گذشته"
+            ),
+            reportCanvas.width-22,
+            63
+        );
+
+
+        /*
+           تصویر واقعی تب
+        */
+
+        reportCtx.drawImage(
+            screenCanvas,
+            0,
+            headerHeight
+        );
+
+
+        /*
+           دانلود
+        */
+
+        const link =
+            document.createElement(
+                "a"
+            );
+
+
+        link.download =
+            "fire_report_"
+            +
+            new Date()
+                .toISOString()
+                .slice(0,10)
+            +
+            ".png";
+
+
+        link.href =
+            reportCanvas.toDataURL(
+                "image/png"
+            );
+
+
+        document.body.appendChild(
+            link
+        );
+
+
+        link.click();
+
+
+        link.remove();
+
 
     }catch(error){
 
-        logo=null;
+        if(
+            stream
+        ){
 
-    }
+            stream
+                .getTracks()
+                .forEach(
+                    track =>
+                        track.stop()
+                );
 
-
-    /*
-       Leaflet را قبل از Screenshot
-       مجبور به محاسبه مجدد اندازه می‌کنیم.
-    */
-
-    state.map.invalidateSize(true);
-
-
-    await new Promise(
-        resolve =>
-            setTimeout(
-                resolve,
-                400
-            )
-    );
+        }
 
 
-    const mapElement =
-        document.getElementById(
-            "map"
-        );
-
-
-    /*
-       فقط خود نقشه را می‌گیریم.
-       هیچ مختصات حریق دوباره رسم نمی‌شود.
-    */
-
-    const mapCanvas =
-        await html2canvas(
-            mapElement,
-            {
-
-                backgroundColor:
-                    "#ffffff",
-
-                useCORS:
-                    true,
-
-                allowTaint:
-                    false,
-
-                foreignObjectRendering:
-                    false,
-
-                imageTimeout:
-                    15000,
-
-                logging:
-                    false,
-
-                scale:
-                    1
-
-            }
-        );
-
-
-    /*
-       سربرگ
-    */
-
-    const headerHeight =
-        92;
-
-
-    const reportCanvas =
-        document.createElement(
-            "canvas"
-        );
-
-
-    reportCanvas.width =
-        mapCanvas.width;
-
-
-    reportCanvas.height =
-        mapCanvas.height +
-        headerHeight;
-
-
-    const ctx =
-        reportCanvas.getContext(
-            "2d"
-        );
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.fillRect(
-        0,
-        0,
-        reportCanvas.width,
-        reportCanvas.height
-    );
-
-
-    ctx.fillStyle =
-        "#b71c1c";
-
-
-    ctx.fillRect(
-        0,
-        0,
-        reportCanvas.width,
-        headerHeight
-    );
-
-
-    /*
-       لوگو
-    */
-
-    if(
-        logo
-    ){
-
-        const size =
-            64;
-
-
-        ctx.drawImage(
-            logo,
-            18,
-            (headerHeight-size)/2,
-            size,
-            size
+        console.error(
+            "Screenshot error:",
+            error
         );
 
     }
-
-
-    /*
-       عنوان
-    */
-
-    ctx.direction =
-        "rtl";
-
-
-    ctx.textAlign =
-        "right";
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-
-    ctx.font =
-        "bold 24px Tahoma";
-
-
-    ctx.fillText(
-        "سامانه پایش و مدیریت داده‌های حریق",
-        reportCanvas.width-22,
-        35
-    );
-
-
-    /*
-       متن دوم سربرگ
-    */
-
-    ctx.font =
-        "13px Tahoma";
-
-
-    const reportMode =
-        state.view==="archive"
-        ?
-        "آرشیو روزانه"
-        :
-        state.mode==="24h"
-        ?
-        "۲۴ ساعت گذشته"
-        :
-        "۵ روز گذشته";
-
-
-    ctx.fillText(
-        "گزارش تصویری نقشه | "
-        +
-        reportMode
-        +
-        " | فیلتر: "
-        +
-        getReportFilter(),
-        reportCanvas.width-22,
-        61
-    );
-
-
-    /*
-       خود تصویر نقشه
-    */
-
-    ctx.drawImage(
-        mapCanvas,
-        0,
-        headerHeight
-    );
-
-
-    /*
-       دانلود
-    */
-
-    const link =
-        document.createElement(
-            "a"
-        );
-
-
-    link.download =
-        "fire_report_"
-        +
-        new Date()
-            .toISOString()
-            .slice(0,10)
-        +
-        ".png";
-
-
-    link.href =
-        reportCanvas.toDataURL(
-            "image/png"
-        );
-
-
-    document.body.appendChild(
-        link
-    );
-
-
-    link.click();
-
-
-    link.remove();
 
 }
 
@@ -4082,7 +4059,7 @@ function restoreNight(){
     if(
         localStorage.getItem(
             "fars-night"
-        )==="1"
+        ) === "1"
     ){
 
         document.body
@@ -4175,18 +4152,15 @@ async function init(){
 
 
     /*
-       مهم:
-       هنگام ورود سایت، مستقیماً
-       آخرین تاریخ آرشیو نمایش داده می‌شود.
-       دیگر refreshFires() اینجا اجرا نمی‌شود.
+       آخرین تاریخ آرشیو = تاریخ اولیه نقشه
     */
 
     const latestIndex =
-        state.archiveDates.length-1;
+        state.archiveDates.length - 1;
 
 
     if(
-        latestIndex>=0
+        latestIndex >= 0
     ){
 
         $("archiveSlider").value =
@@ -4209,6 +4183,9 @@ async function init(){
 
 
         refreshFires();
+
+
+        updateSliderDisplay();
 
     }
 
