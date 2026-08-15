@@ -15,10 +15,6 @@
 
 <style>
 
-/* =========================
-   BASE
-========================= */
-
 :root {
     --orange: #e36f19;
     --orange-dark: #c45108;
@@ -54,7 +50,6 @@ body {
 header {
     position: relative;
     z-index: 5000;
-
     height: 74px;
 
     background:
@@ -103,11 +98,6 @@ header {
     color:
         rgba(255,255,255,.9);
 }
-
-
-/* =========================
-   HEADER BUTTONS
-========================= */
 
 .header-buttons {
     position: absolute;
@@ -236,7 +226,7 @@ header {
 
 
 /* =========================
-   MODE BUTTONS
+   TIME BUTTONS
 ========================= */
 
 .mode-btn {
@@ -337,7 +327,7 @@ header {
 
 
 /* =========================
-   SENSOR
+   SENSOR BOX
 ========================= */
 
 .sensor-box {
@@ -397,7 +387,7 @@ header {
 
 
 /* =========================
-   UPDATE PANEL
+   UPDATE BOX
 ========================= */
 
 .update-box {
@@ -525,7 +515,7 @@ header {
 ========================= */
 
 .fire-popup {
-    width: 260px;
+    width: 270px;
 
     direction: rtl;
     text-align: right;
@@ -557,6 +547,11 @@ header {
 }
 
 .fire-popup .label {
+    font-weight: bold;
+}
+
+.area-name {
+    color: #1565c0;
     font-weight: bold;
 }
 
@@ -820,7 +815,7 @@ body.night
     }
 
     .fire-popup {
-        width: 235px;
+        width: 240px;
         font-size: 10px;
     }
 
@@ -1150,7 +1145,7 @@ const state = {
 
 
 /* =========================
-   HELPERS
+   HELPER
 ========================= */
 
 const $ =
@@ -1158,9 +1153,7 @@ const $ =
         document.getElementById(id);
 
 
-async function getText(
-    url
-) {
+async function getText(url) {
 
     const response =
         await fetch(
@@ -1191,9 +1184,7 @@ async function getText(
    PERSIAN DIGITS
 ========================= */
 
-function fa(
-    value
-) {
+function fa(value) {
 
     return String(value)
 
@@ -1215,9 +1206,7 @@ function fa(
    CSV
 ========================= */
 
-function parseCSV(
-    text
-) {
+function parseCSV(text) {
 
     text =
         text
@@ -1457,9 +1446,7 @@ function gregorianToJalali(
 }
 
 
-function shamsiDate(
-    date
-) {
+function shamsiDate(date) {
 
     if (!date) {
 
@@ -1524,9 +1511,7 @@ function shamsiDate(
    TIME
 ========================= */
 
-function fireUTCDateTime(
-    fire
-) {
+function fireUTCDateTime(fire) {
 
     if (
         !fire.acq_date ||
@@ -1592,9 +1577,7 @@ function fireUTCDateTime(
 }
 
 
-function iranTime(
-    fire
-) {
+function iranTime(fire) {
 
     const utc =
         fireUTCDateTime(
@@ -1635,9 +1618,7 @@ function iranTime(
 }
 
 
-function getTimeLabel(
-    fire
-) {
+function getTimeLabel(fire) {
 
     const time =
         iranTime(
@@ -1704,9 +1685,7 @@ function getTimeLabel(
    SENSOR
 ========================= */
 
-function getSensor(
-    fire
-) {
+function getSensor(fire) {
 
     const sensor =
         String(
@@ -1741,9 +1720,7 @@ function getSensor(
 }
 
 
-function sensorColor(
-    sensor
-) {
+function sensorColor(sensor) {
 
     if (
         sensor === "VIIRS"
@@ -1805,13 +1782,6 @@ function createMap() {
         );
 
 
-    /*
-       ترتیب لایه‌ها:
-       مرز
-       مناطق
-       حریق
-    */
-
     state.map.createPane(
         "boundaryPane"
     );
@@ -1861,9 +1831,7 @@ function createMap() {
    GEOJSON
 ========================= */
 
-async function loadGeoJSON(
-    file
-) {
+async function loadGeoJSON(file) {
 
     const text =
         await getText(
@@ -1879,7 +1847,7 @@ async function loadGeoJSON(
 
 
 /* =========================
-   FARS BOUNDARY
+   MAIN BOUNDARY
 ========================= */
 
 async function loadBoundary() {
@@ -1916,6 +1884,7 @@ async function loadBoundary() {
 
                         fillOpacity:
                             .02
+
                     }
 
                 }
@@ -1991,6 +1960,7 @@ async function loadProtectedLayer() {
 
                         fillOpacity:
                             .05
+
                     }
 
                 }
@@ -2044,6 +2014,7 @@ async function loadHuntingLayer() {
 
                         fillOpacity:
                             .05
+
                     }
 
                 }
@@ -2053,7 +2024,7 @@ async function loadHuntingLayer() {
     } catch (error) {
 
         console.warn(
-            "مناطق شکار ممنوع:",
+            "شکار ممنوع:",
             error
         );
 
@@ -2096,16 +2067,18 @@ async function loadArchiveIndex() {
 
         state.archiveDates =
             index
+
                 .map(
                     item =>
-                        typeof item ===
-                        "string"
+                        typeof item === "string"
                         ?
                         item
                         :
                         item.date
                 )
+
                 .filter(Boolean)
+
                 .sort();
 
     } catch (error) {
@@ -2114,7 +2087,6 @@ async function loadArchiveIndex() {
             "archive/index.json:",
             error
         );
-
 
         state.archiveDates =
             [];
@@ -2147,13 +2119,16 @@ async function loadArchiveIndex() {
 
 
 /* =========================
-   ARCHIVES
+   ARCHIVE DATA
 ========================= */
 
 async function loadArchives() {
 
-    state.fires = [];
-    state.archiveHeaders = [];
+    state.fires =
+        [];
+
+    state.archiveHeaders =
+        [];
 
 
     for (
@@ -2203,7 +2178,7 @@ async function loadArchives() {
         } catch (error) {
 
             console.warn(
-                "فایل آرشیو موجود نیست:",
+                "فایل آرشیو:",
                 date
             );
 
@@ -2215,7 +2190,7 @@ async function loadArchives() {
 
 
 /* =========================
-   FALLBACK CSV
+   FALLBACK
 ========================= */
 
 async function loadFallbackCSV() {
@@ -2250,11 +2225,6 @@ async function loadFallbackCSV() {
         state.fires =
             parsed.rows;
 
-
-        console.log(
-            "fires.csv:",
-            state.fires.length
-        );
 
     } catch (error) {
 
@@ -2464,22 +2434,133 @@ function pointInPolygon(
 
 
 /* =========================
-   POINT IN GEOJSON
+   PROPERTY NAME
 ========================= */
 
-function pointInGeoJSON(
-    lat,
-    lon,
-    geojson
+function findRegionName(
+    properties
 ) {
 
     if (
-        !geojson
+        !properties
     ) {
 
-        return false;
+        return "";
 
     }
+
+
+    const preferredKeys = [
+
+        "name",
+        "NAME",
+        "Name",
+        "نام",
+        "نام منطقه",
+        "نام_منطقه",
+        "نام منطقه حفاظت شده",
+        "نام منطقه شکار ممنوع",
+        "area_name",
+        "AREA_NAME",
+        "area",
+        "AREA",
+        "title",
+        "Title",
+        "region",
+        "Region",
+        "zone",
+        "ZONE",
+        "sitename",
+        "SiteName",
+        "Name_1",
+        "NAME_1"
+
+    ];
+
+
+    for (
+        const key
+        of
+        preferredKeys
+    ) {
+
+        if (
+            properties[key] !== undefined &&
+            properties[key] !== null &&
+            String(
+                properties[key]
+            ).trim() !== ""
+        ) {
+
+            return String(
+                properties[key]
+            ).trim();
+
+        }
+
+    }
+
+
+    const keys =
+        Object.keys(
+            properties
+        );
+
+
+    const nameKey =
+        keys.find(
+            key =>
+                /name|نام|title|عنوان/i
+                .test(key)
+        );
+
+
+    if (
+        nameKey
+    ) {
+
+        const value =
+            properties[nameKey];
+
+
+        if (
+            value !== undefined &&
+            value !== null &&
+            String(value).trim() !== ""
+        ) {
+
+            return String(
+                value
+            ).trim();
+
+        }
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================
+   FIND REGION
+========================= */
+
+function findRegionsAtPoint(
+    lat,
+    lon
+) {
+
+    const result = {
+
+        protected:
+            [],
+
+        hunting:
+            []
+
+    };
 
 
     const point =
@@ -2489,89 +2570,149 @@ function pointInGeoJSON(
         ];
 
 
-    const features =
-        geojson.type ===
-        "FeatureCollection"
-        ?
-        geojson.features
-        :
-        geojson.type ===
-        "Feature"
-        ?
-        [geojson]
-        :
-        [];
-
-
-    for (
-        const feature
-        of
-        features
+    function scan(
+        geojson,
+        target
     ) {
 
         if (
-            !feature ||
-            !feature.geometry
+            !geojson
         ) {
 
-            continue;
+            return;
 
         }
 
 
-        const geometry =
-            feature.geometry;
+        const features =
+            geojson.type ===
+            "FeatureCollection"
+
+            ?
+
+            geojson.features
+
+            :
+
+            geojson.type ===
+            "Feature"
+
+            ?
+
+            [geojson]
+
+            :
+
+            [];
 
 
-        if (
-            geometry.type ===
-            "Polygon"
-        ) {
-
-            if (
-                pointInPolygon(
-                    point,
-                    geometry.coordinates
-                )
-            ) {
-
-                return true;
-
-            }
-
-        }
-
-
-        if (
-            geometry.type ===
-            "MultiPolygon"
-        ) {
-
-            for (
-                const polygon
-                of
-                geometry.coordinates
-            ) {
+        features.forEach(
+            feature => {
 
                 if (
-                    pointInPolygon(
-                        point,
-                        polygon
-                    )
+                    !feature ||
+                    !feature.geometry
                 ) {
 
-                    return true;
+                    return;
+
+                }
+
+
+                const geometry =
+                    feature.geometry;
+
+
+                let inside =
+                    false;
+
+
+                if (
+                    geometry.type ===
+                    "Polygon"
+                ) {
+
+                    inside =
+                        pointInPolygon(
+                            point,
+                            geometry.coordinates
+                        );
+
+                }
+
+
+                if (
+                    geometry.type ===
+                    "MultiPolygon"
+                ) {
+
+                    for (
+                        const polygon
+                        of
+                        geometry.coordinates
+                    ) {
+
+                        if (
+                            pointInPolygon(
+                                point,
+                                polygon
+                            )
+                        ) {
+
+                            inside =
+                                true;
+
+                            break;
+
+                        }
+
+                    }
+
+                }
+
+
+                if (
+                    inside
+                ) {
+
+                    const name =
+                        findRegionName(
+                            feature.properties
+                        );
+
+
+                    if (
+                        name &&
+                        !result[target]
+                            .includes(name)
+                    ) {
+
+                        result[target]
+                            .push(name);
+
+                    }
 
                 }
 
             }
-
-        }
+        );
 
     }
 
 
-    return false;
+    scan(
+        state.protectedGeoJSON,
+        "protected"
+    );
+
+
+    scan(
+        state.huntingGeoJSON,
+        "hunting"
+    );
+
+
+    return result;
 
 }
 
@@ -2597,9 +2738,13 @@ function applyAreaFilter(
     const geojson =
         state.areaFilter ===
         "protected"
+
         ?
+
         state.protectedGeoJSON
+
         :
+
         state.huntingGeoJSON;
 
 
@@ -2637,11 +2782,23 @@ function applyAreaFilter(
             }
 
 
-            return pointInGeoJSON(
-                lat,
-                lon,
-                geojson
-            );
+            const regions =
+                findRegionsAtPoint(
+                    lat,
+                    lon
+                );
+
+
+            return state.areaFilter ===
+                "protected"
+
+                ?
+
+                regions.protected.length > 0
+
+                :
+
+                regions.hunting.length > 0;
 
         }
     );
@@ -2770,28 +2927,104 @@ function createPopup(
         "---";
 
 
-    let areaText =
-        "فیلتر مکانی فعال نیست";
+    const lat =
+        Number(
+            fire.latitude
+        );
+
+
+    const lon =
+        Number(
+            fire.longitude
+        );
+
+
+    const regions =
+        Number.isFinite(lat) &&
+        Number.isFinite(lon)
+
+        ?
+
+        findRegionsAtPoint(
+            lat,
+            lon
+        )
+
+        :
+
+        {
+            protected: [],
+            hunting: []
+        };
+
+
+    let regionHTML = "";
 
 
     if (
-        state.areaFilter ===
-        "protected"
+        regions.protected.length > 0
     ) {
 
-        areaText =
-            "داخل مناطق چهارگانه محیط زیست";
+        regionHTML += `
+
+        <div class="row">
+
+            <span class="label">
+                مناطق چهارگانه:
+            </span>
+
+            <span class="area-name">
+                ${regions.protected.join("، ")}
+            </span>
+
+        </div>
+
+        `;
 
     }
 
 
     if (
-        state.areaFilter ===
-        "hunting"
+        regions.hunting.length > 0
     ) {
 
-        areaText =
-            "داخل مناطق شکار ممنوع";
+        regionHTML += `
+
+        <div class="row">
+
+            <span class="label">
+                منطقه شکار ممنوع:
+            </span>
+
+            <span class="area-name">
+                ${regions.hunting.join("، ")}
+            </span>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if (
+        !regions.protected.length &&
+        !regions.hunting.length
+    ) {
+
+        regionHTML += `
+
+        <div class="row">
+
+            <span class="label">
+                محدوده:
+            </span>
+
+            خارج از مناطق چهارگانه و شکار ممنوع
+
+        </div>
+
+        `;
 
     }
 
@@ -2804,69 +3037,108 @@ function createPopup(
         🔥 حریق استان فارس
     </h3>
 
+
     <div class="row">
+
         <span class="label">
             سنجنده:
         </span>
+
         ${sensor}
+
     </div>
 
+
     <div class="row">
+
         <span class="label">
             ماهواره:
         </span>
+
         ${fire.satellite || "---"}
+
     </div>
 
+
     <div class="row">
+
         <span class="label">
             تاریخ ایران:
         </span>
+
         ${shamsiDate(date)}
+
     </div>
 
+
     <div class="row">
+
         <span class="label">
             ساعت ایران:
         </span>
+
         ${fa(iranTime(fire))}
+
     </div>
 
+
     <div class="row">
+
         <span class="label">
             زمان:
         </span>
+
         ${getTimeLabel(fire)}
+
     </div>
 
-    <div class="row">
-        <span class="label">
-            محدوده:
-        </span>
-        ${areaText}
-    </div>
+
+    ${regionHTML}
+
 
     <div class="row">
+
         <span class="label">
             FRP:
         </span>
+
         ${fire.frp || "---"} MW
+
     </div>
 
+
     <div class="row">
+
         <span class="label">
             Confidence:
         </span>
+
         ${fire.confidence || "---"}
+
     </div>
 
+
     <div class="row">
+
+        <span class="label">
+            Brightness:
+        </span>
+
+        ${fire.brightness || "---"}
+
+    </div>
+
+
+    <div class="row">
+
         <span class="label">
             مختصات:
         </span>
+
         ${formatNumber(fire.latitude)}
         ،
         ${formatNumber(fire.longitude)}
+
     </div>
 
 </div>
@@ -2880,15 +3152,13 @@ function formatNumber(
     value
 ) {
 
-    const n =
-        Number(
-            value
-        );
+    const number =
+        Number(value);
 
 
-    return Number.isFinite(n)
+    return Number.isFinite(number)
         ?
-        n.toFixed(5)
+        number.toFixed(5)
         :
         "---";
 
@@ -2896,7 +3166,7 @@ function formatNumber(
 
 
 /* =========================
-   REFRESH DISPLAY
+   REFRESH FIRES
 ========================= */
 
 function refreshFires() {
@@ -2920,7 +3190,7 @@ function refreshFires() {
 
 
 /* =========================
-   MODE
+   MODE BUTTONS
 ========================= */
 
 document
@@ -3316,8 +3586,7 @@ function ageText(
 
 
     const sec =
-        seconds %
-        60;
+        seconds % 60;
 
 
     if (
@@ -3555,17 +3824,10 @@ function exportExcel() {
         header => {
 
             xml +=
-
                 '<Cell ss:StyleID="Header">' +
-
                 '<Data ss:Type="String">' +
-
-                escapeXml(
-                    header
-                ) +
-
+                escapeXml(header) +
                 '</Data>' +
-
                 '</Cell>';
 
         }
@@ -3587,17 +3849,12 @@ function exportExcel() {
                 header => {
 
                     xml +=
-
-                        '<Cell>' +
-
+                        "<Cell>" +
                         '<Data ss:Type="String">' +
-
                         escapeXml(
                             fire[header]
                         ) +
-
                         '</Data>' +
-
                         '</Cell>';
 
                 }
@@ -3612,11 +3869,8 @@ function exportExcel() {
 
 
     xml +=
-
         "</Table>" +
-
         "</Worksheet>" +
-
         "</Workbook>";
 
 
@@ -3651,22 +3905,17 @@ function exportExcel() {
 
 
     link.download =
-
         "fires_24h_"
-
         +
         now.getFullYear()
-
         +
         String(
             now.getMonth() + 1
         ).padStart(2,"0")
-
         +
         String(
             now.getDate()
         ).padStart(2,"0")
-
         +
         ".xls";
 
@@ -3823,43 +4072,32 @@ $("refreshBtn")
 
 
 /* =========================
-   INITIALIZE
+   INIT
 ========================= */
 
 async function init() {
 
     createMap();
 
-
     await loadBoundary();
-
 
     await loadProtectedLayer();
 
-
     await loadHuntingLayer();
-
 
     await loadArchiveIndex();
 
-
     await loadArchives();
-
 
     await loadFallbackCSV();
 
-
     await loadSystemUpdate();
-
 
     refreshFires();
 
-
     updateSliderDisplay();
 
-
     updateStatus();
-
 
     restoreNight();
 
