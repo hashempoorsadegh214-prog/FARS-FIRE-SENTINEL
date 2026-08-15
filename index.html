@@ -18,6 +18,7 @@
 :root{
     --red:#b71c1c;
     --red-dark:#720000;
+    --red-light:#d41414;
     --panel:rgba(255,255,255,.97);
     --border:#d8dee3;
     --text:#263238;
@@ -48,9 +49,7 @@ body{
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header{
     position:relative;
@@ -61,7 +60,7 @@ header{
     background:
         linear-gradient(
             135deg,
-            #720000 0%,
+            #7a0000 0%,
             #c91414 45%,
             #8f0000 75%,
             #e01b1b 100%
@@ -90,7 +89,8 @@ header{
     left:12px;
     top:50%;
 
-    transform:translateY(-50%);
+    transform:
+        translateY(-50%);
 
     width:68px;
     height:68px;
@@ -117,7 +117,7 @@ header{
     font-size:23px;
     line-height:1.2;
 
-    color:#fff;
+    color:#ffffff;
 }
 
 .title p{
@@ -125,7 +125,8 @@ header{
 
     font-size:12px;
 
-    color:rgba(255,255,255,.94);
+    color:
+        rgba(255,255,255,.94);
 }
 
 .header-buttons{
@@ -134,9 +135,11 @@ header{
     right:10px;
     top:50%;
 
-    transform:translateY(-50%);
+    transform:
+        translateY(-50%);
 
     display:flex;
+
     gap:4px;
 }
 
@@ -147,9 +150,10 @@ header{
     border:0;
     border-radius:8px;
 
-    background:rgba(255,255,255,.18);
+    background:
+        rgba(255,255,255,.18);
 
-    color:#fff;
+    color:#ffffff;
 
     cursor:pointer;
 
@@ -157,13 +161,12 @@ header{
 }
 
 .header-btn:hover{
-    background:rgba(255,255,255,.30);
+    background:
+        rgba(255,255,255,.30);
 }
 
 
-/* =========================
-   MAP
-========================= */
+/* MAP */
 
 #map{
     position:absolute;
@@ -173,7 +176,8 @@ header{
     right:8px;
     bottom:8px;
 
-    border:1px solid #d7dde1;
+    border:
+        1px solid #d7dde1;
 
     border-radius:10px;
 
@@ -184,9 +188,7 @@ header{
 }
 
 
-/* =========================
-   CONTROL PANEL
-========================= */
+/* CONTROL PANEL */
 
 .control-panel{
     position:absolute;
@@ -200,13 +202,23 @@ header{
 
     padding:7px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:12px;
 
-    background:var(--panel);
+    background:
+        var(--panel);
 
     box-shadow:
         0 4px 14px rgba(0,0,0,.16);
+
+    font-family:
+        "B Nazanin",
+        "BNazanin",
+        Tahoma,
+        Arial,
+        sans-serif;
 }
 
 .control-panel *,
@@ -220,21 +232,31 @@ header{
         sans-serif !important;
 }
 
+
+/* FIRE COUNT */
+
 .fire-count{
     margin-bottom:6px;
+
     padding:6px;
 
     text-align:center;
 
-    border:1px solid #d9aaaa;
+    border:
+        1px solid #d9aaaa;
+
     border-radius:8px;
 
-    background:#fff4f4;
+    background:
+        #fff4f4;
 
-    color:var(--red-dark);
+    color:
+        var(--red-dark);
 
     font-size:16px;
+
     font-weight:bold;
+
     line-height:1.2;
 }
 
@@ -244,29 +266,35 @@ header{
 }
 
 
-/* =========================
-   MODE BUTTONS
-========================= */
+/* MODE BUTTONS */
 
 .mode-btn{
     width:100%;
 
     margin-bottom:5px;
+
     padding:6px 8px;
 
     border:0;
+
     border-radius:8px;
 
-    background:#f0f2f4;
+    background:
+        #f0f2f4;
 
     color:#344047;
 
     font-size:15px;
+
     font-weight:bold;
 
     text-align:right;
 
     cursor:pointer;
+
+    transition:
+        background .2s ease,
+        box-shadow .2s ease;
 }
 
 .mode-btn.active{
@@ -278,19 +306,18 @@ header{
             #980000
         );
 
-    color:#fff;
+    color:#ffffff;
 
     box-shadow:
         0 2px 8px rgba(114,0,0,.35);
 }
 
 
-/* =========================
-   AREA FILTER
-========================= */
+/* AREA FILTER */
 
 .area-box{
     margin-top:5px;
+
     padding-top:6px;
 
     border-top:
@@ -301,16 +328,19 @@ header{
     margin-bottom:4px;
 
     font-size:14px;
+
     font-weight:bold;
 }
 
 .area-option{
     display:flex;
+
     align-items:center;
 
     gap:7px;
 
     margin-bottom:4px;
+
     padding:5px 7px;
 
     border-radius:7px;
@@ -318,6 +348,7 @@ header{
     background:#f6f7f8;
 
     font-size:14px;
+
     font-weight:bold;
 
     cursor:pointer;
@@ -326,13 +357,12 @@ header{
 .area-option input{
     width:14px;
     height:14px;
+
     margin:0;
 }
 
 
-/* =========================
-   SENSOR
-========================= */
+/* SENSOR */
 
 .sensor-box{
     position:absolute;
@@ -340,21 +370,26 @@ header{
     top:92px;
     left:50%;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
     z-index:4000;
 
     display:flex;
+
     align-items:center;
 
     gap:12px;
 
     padding:5px 10px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:10px;
 
-    background:var(--panel);
+    background:
+        var(--panel);
 
     box-shadow:
         0 4px 12px rgba(0,0,0,.14);
@@ -366,7 +401,9 @@ header{
 
 .sensor-item{
     display:flex;
+
     align-items:center;
+
     gap:5px;
 }
 
@@ -375,13 +412,13 @@ header{
     height:9px;
 
     border-radius:50%;
-    border:1px solid #555;
+
+    border:
+        1px solid #555;
 }
 
 
-/* =========================
-   STATUS
-========================= */
+/* LOWER STATUS */
 
 .update-box{
     position:absolute;
@@ -392,18 +429,25 @@ header{
     z-index:4000;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     width:max-content;
-    max-width:calc(100vw - 18px);
+
+    max-width:
+        calc(100vw - 18px);
 
     padding:6px 12px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:20px;
 
-    background:var(--panel);
+    background:
+        var(--panel);
 
     box-shadow:
         0 4px 14px rgba(0,0,0,.16);
@@ -411,26 +455,29 @@ header{
     white-space:nowrap;
 
     font-size:14px;
+
     font-weight:bold;
+
+    direction:rtl;
 }
 
 .update-row{
     display:inline;
 
-    color:var(--red-dark);
+    color:
+        var(--red-dark);
 
     white-space:nowrap;
 }
 
 .update-row + .update-row::before{
     content:"  │  ";
+
     color:#8b949a;
 }
 
 
-/* =========================
-   SLIDER
-========================= */
+/* SLIDER */
 
 .slider-box{
     position:absolute;
@@ -444,10 +491,13 @@ header{
 
     padding:7px 12px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:20px;
 
-    background:var(--panel);
+    background:
+        var(--panel);
 
     box-shadow:
         0 4px 14px rgba(0,0,0,.16);
@@ -457,7 +507,9 @@ header{
 
 .slider-head{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     gap:10px;
@@ -467,20 +519,24 @@ header{
 
 .slider-title{
     font-size:16px;
+
     font-weight:bold;
 }
 
 .slider-date{
     font-size:15px;
+
     font-weight:bold;
 
-    color:var(--red-dark);
+    color:
+        var(--red-dark);
 
     white-space:nowrap;
 }
 
 .slider-count{
     font-size:14px;
+
     color:#546e7a;
 
     white-space:nowrap;
@@ -491,14 +547,13 @@ header{
 }
 
 
-/* =========================
-   POPUP
-========================= */
+/* POPUP */
 
 .fire-popup{
     width:270px;
 
     direction:rtl;
+
     text-align:right;
 
     font-family:
@@ -507,13 +562,15 @@ header{
         sans-serif;
 
     font-size:12px;
+
     line-height:1.9;
 }
 
 .fire-popup h3{
     margin:0 0 6px;
 
-    color:var(--red);
+    color:
+        var(--red);
 
     font-size:15px;
 }
@@ -531,13 +588,12 @@ header{
 
 .area-name{
     color:#1565c0;
+
     font-weight:bold;
 }
 
 
-/* =========================
-   NIGHT
-========================= */
+/* NIGHT */
 
 body.night{
     background:#121820;
@@ -550,13 +606,16 @@ body.night .slider-box{
     background:
         rgba(26,32,40,.97);
 
-    border-color:#3a4650;
+    border-color:
+        #3a4650;
 
     color:#e8edf1;
 }
 
 body.night .mode-btn{
-    background:#252d36;
+    background:
+        #252d36;
+
     color:#dbe3e8;
 }
 
@@ -569,17 +628,26 @@ body.night .mode-btn.active{
             #980000
         );
 
-    color:#fff;
+    color:#ffffff;
+
+    box-shadow:
+        0 2px 8px rgba(114,0,0,.45);
 }
 
 body.night .area-option{
-    background:#252d36;
+    background:
+        #252d36;
+
     color:#dbe3e8;
 }
 
 body.night .fire-count{
-    background:#301e1e;
-    border-color:#694141;
+    background:
+        #301e1e;
+
+    border-color:
+        #694141;
+
     color:#ffd6d6;
 }
 
@@ -594,9 +662,7 @@ body.night .slider-count{
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width:700px){
 
@@ -611,12 +677,14 @@ body.night .slider-count{
 
     .header-logo{
         left:6px;
+
         width:46px;
         height:46px;
     }
 
     .title h1{
         font-size:14px;
+
         white-space:nowrap;
     }
 
@@ -626,6 +694,7 @@ body.night .slider-count{
 
     .header-buttons{
         right:5px;
+
         gap:3px;
     }
 
@@ -634,11 +703,13 @@ body.night .slider-count{
         height:27px;
 
         font-size:12px;
+
         border-radius:6px;
     }
 
     #map{
         top:63px;
+
         left:4px;
         right:4px;
         bottom:4px;
@@ -651,6 +722,7 @@ body.night .slider-count{
         right:7px;
 
         width:145px;
+
         max-height:205px;
 
         overflow-y:auto;
@@ -664,6 +736,7 @@ body.night .slider-count{
         padding:4px;
 
         font-size:11px;
+
         margin-bottom:4px;
     }
 
@@ -673,7 +746,9 @@ body.night .slider-count{
 
     .mode-btn{
         padding:5px 6px;
+
         font-size:11px;
+
         margin-bottom:4px;
     }
 
@@ -685,7 +760,9 @@ body.night .slider-count{
         padding:4px 5px;
 
         font-size:10px;
+
         gap:5px;
+
         margin-bottom:3px;
     }
 
@@ -752,6 +829,7 @@ body.night .slider-count{
         bottom:5px;
 
         width:auto;
+
         max-width:none;
 
         padding:4px 6px;
@@ -763,6 +841,7 @@ body.night .slider-count{
 
     .update-row{
         font-size:9px;
+
         line-height:1.1;
     }
 
@@ -772,6 +851,7 @@ body.night .slider-count{
 
     .fire-popup{
         width:225px;
+
         font-size:10px;
     }
 
@@ -856,28 +936,32 @@ body.night .slider-count{
         <button
             id="reportBtn"
             class="header-btn"
-            title="گزارش منطقه">
+            title="گزارش منطقه"
+        >
             📸
         </button>
 
         <button
             id="excelBtn"
             class="header-btn"
-            title="گزارش Excel">
+            title="گزارش Excel"
+        >
             📊
         </button>
 
         <button
             id="nightBtn"
             class="header-btn"
-            title="حالت شب">
+            title="حالت شب"
+        >
             🌙
         </button>
 
         <button
             id="refreshBtn"
             class="header-btn"
-            title="بازخوانی">
+            title="بازخوانی"
+        >
             ↻
         </button>
 
@@ -894,27 +978,28 @@ body.night .slider-count{
     <div class="fire-count">
         رخدادهای شناسایی‌شده
         <br>
-
         <span
             id="fireCount"
-            class="fire-count-number">
+            class="fire-count-number"
+        >
             ۰
         </span>
-
         رخداد
     </div>
 
 
     <button
         class="mode-btn active"
-        data-mode="24h">
+        data-mode="24h"
+    >
         🔥 حریق‌های ۲۴ ساعت گذشته
     </button>
 
 
     <button
         class="mode-btn"
-        data-mode="5days">
+        data-mode="5days"
+    >
         📅 حریق‌های ۵ روز گذشته
     </button>
 
@@ -930,7 +1015,8 @@ body.night .slider-count{
 
             <input
                 id="protectedFilter"
-                type="checkbox">
+                type="checkbox"
+            >
 
             مناطق چهارگانه محیط زیست
 
@@ -941,7 +1027,8 @@ body.night .slider-count{
 
             <input
                 id="huntingFilter"
-                type="checkbox">
+                type="checkbox"
+            >
 
             مناطق شکار ممنوع
 
@@ -963,8 +1050,8 @@ body.night .slider-count{
 
         <span
             class="sensor-dot"
-            style="background:#ff1744">
-        </span>
+            style="background:#ff1744"
+        ></span>
 
         VIIRS
 
@@ -975,8 +1062,8 @@ body.night .slider-count{
 
         <span
             class="sensor-dot"
-            style="background:#ff9800">
-        </span>
+            style="background:#ff9800"
+        ></span>
 
         MODIS
 
@@ -989,7 +1076,8 @@ body.night .slider-count{
 
     <span
         id="sensorAge"
-        class="update-row">
+        class="update-row"
+    >
         آخرین مشاهده حریق توسط سنجنده:
         در انتظار اطلاعات
     </span>
@@ -997,7 +1085,8 @@ body.night .slider-count{
 
     <span
         id="systemAge"
-        class="update-row">
+        class="update-row"
+    >
         آخرین به‌روزرسانی سامانه:
         در انتظار اطلاعات
     </span>
@@ -1018,14 +1107,16 @@ body.night .slider-count{
 
             <div
                 id="sliderDate"
-                class="slider-date">
+                class="slider-date"
+            >
                 ---
             </div>
 
 
             <div
                 id="sliderCount"
-                class="slider-count">
+                class="slider-count"
+            >
                 تعداد رخداد: ۰
             </div>
 
@@ -1047,15 +1138,13 @@ body.night .slider-count{
 
 
 <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-</script>
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
 
 
 <script>
 
-/* =========================
-   CONFIG
-========================= */
+/* CONFIG */
 
 const CONFIG = {
 
@@ -1080,50 +1169,59 @@ const CONFIG = {
 };
 
 
-/* =========================
-   STATE
-========================= */
+/* STATE */
 
 const state = {
 
-    map:null,
+    map:
+        null,
 
-    lightMap:null,
+    lightMap:
+        null,
 
-    darkMap:null,
+    darkMap:
+        null,
 
-    boundaryLayer:null,
+    boundaryLayer:
+        null,
 
-    protectedLayer:null,
+    protectedLayer:
+        null,
 
-    huntingLayer:null,
+    huntingLayer:
+        null,
 
-    fireLayer:null,
+    fireLayer:
+        null,
 
-    protectedGeoJSON:null,
+    protectedGeoJSON:
+        null,
 
-    huntingGeoJSON:null,
+    huntingGeoJSON:
+        null,
 
-    archiveDates:[],
+    archiveDates:
+        [],
 
-    archiveHeaders:[],
+    archiveHeaders:
+        [],
 
-    fires:[],
+    fires:
+        [],
 
-    mode:"24h",
+    mode:
+        "24h",
 
-    view:"archive",
+    areaFilter:
+        "none",
 
-    areaFilter:"none",
-
-    systemTimestamp:null
+    systemTimestamp:
+        null
 
 };
 
 
-/* =========================
-   HELPERS
-========================= */
+/* HELPERS */
 
 const $ =
     id =>
@@ -1164,6 +1262,7 @@ function fa(
 ){
 
     return String(value)
+
         .replace(/0/g,"۰")
         .replace(/1/g,"۱")
         .replace(/2/g,"۲")
@@ -1178,9 +1277,7 @@ function fa(
 }
 
 
-/* =========================
-   CSV
-========================= */
+/* CSV */
 
 function parseCSV(
     text
@@ -1266,7 +1363,9 @@ function parseCSV(
         );
 
 
-        rows.push(row);
+        rows.push(
+            row
+        );
 
     }
 
@@ -1279,9 +1378,7 @@ function parseCSV(
 }
 
 
-/* =========================
-   JALALI
-========================= */
+/* JALALI */
 
 function gregorianToJalali(
     gy,
@@ -1324,30 +1421,42 @@ function gregorianToJalali(
     let days =
         365*gy
         +
-        Math.floor((gy2+3)/4)
+        Math.floor(
+            (gy2+3)/4
+        )
         -
-        Math.floor((gy2+99)/100)
+        Math.floor(
+            (gy2+99)/100
+        )
         +
-        Math.floor((gy2+399)/400)
+        Math.floor(
+            (gy2+399)/400
+        )
         -
         80
         +
         gd
         +
-        gdm[gm-1];
+        gdm[
+            gm-1
+        ];
 
 
     jy +=
-        33 *
-        Math.floor(days/12053);
+        33*
+        Math.floor(
+            days/12053
+        );
 
 
     days %=12053;
 
 
     jy +=
-        4 *
-        Math.floor(days/1461);
+        4*
+        Math.floor(
+            days/1461
+        );
 
 
     days %=1461;
@@ -1358,9 +1467,11 @@ function gregorianToJalali(
     ){
 
         jy +=
-            Math.floor((days-1)/365);
+            Math.floor(
+                (days-1)/365
+            );
 
-        days =
+        days=
             (days-1)%365;
 
     }
@@ -1375,21 +1486,25 @@ function gregorianToJalali(
     ){
 
         jm =
-            1 +
-            Math.floor(days/31);
+            1+
+            Math.floor(
+                days/31
+            );
 
         jd =
-            1 +
+            1+
             days%31;
 
     }else{
 
         jm =
-            7 +
-            Math.floor((days-186)/30);
+            7+
+            Math.floor(
+                (days-186)/30
+            );
 
         jd =
-            1 +
+            1+
             (days-186)%30;
 
     }
@@ -1418,7 +1533,8 @@ function shamsiDate(
 
 
     const parts =
-        String(date).split("-");
+        String(date)
+            .split("-");
 
 
     if(
@@ -1439,6 +1555,7 @@ function shamsiDate(
 
 
     const months=[
+
         "فروردین",
         "اردیبهشت",
         "خرداد",
@@ -1451,6 +1568,7 @@ function shamsiDate(
         "دی",
         "بهمن",
         "اسفند"
+
     ];
 
 
@@ -1469,9 +1587,7 @@ function shamsiDate(
 }
 
 
-/* =========================
-   TIME
-========================= */
+/* TIME */
 
 function fireUTCDateTime(
     fire
@@ -1510,8 +1626,12 @@ function fireUTCDateTime(
             Number(date[0]),
             Number(date[1])-1,
             Number(date[2]),
-            Number(time.slice(0,2)),
-            Number(time.slice(2,4)),
+            Number(
+                time.slice(0,2)
+            ),
+            Number(
+                time.slice(2,4)
+            ),
             0
         )
     );
@@ -1540,7 +1660,8 @@ function iranTime(
 
     const iran =
         new Date(
-            utc.getTime() +
+            utc.getTime()
+            +
             3.5*60*60*1000
         );
 
@@ -1565,7 +1686,9 @@ function getTimeLabel(
 ){
 
     const time =
-        iranTime(fire);
+        iranTime(
+            fire
+        );
 
 
     if(
@@ -1624,9 +1747,7 @@ function getTimeLabel(
 }
 
 
-/* =========================
-   SENSOR
-========================= */
+/* SENSOR */
 
 function getSensor(
     fire
@@ -1692,9 +1813,7 @@ function sensorColor(
 }
 
 
-/* =========================
-   MAP
-========================= */
+/* MAP */
 
 function createMap(){
 
@@ -1703,8 +1822,6 @@ function createMap(){
             "map"
         );
 
-
-    /* همان نقشه اصلی OpenStreetMap */
 
     state.lightMap =
         L.tileLayer(
@@ -1762,9 +1879,9 @@ function createMap(){
 
     state.fireLayer =
         L.layerGroup()
-        .addTo(
-            state.map
-        );
+            .addTo(
+                state.map
+            );
 
 
     state.map.setView(
@@ -1775,9 +1892,7 @@ function createMap(){
 }
 
 
-/* =========================
-   GEOJSON
-========================= */
+/* GEOJSON */
 
 async function loadGeoJSON(
     file
@@ -1792,9 +1907,7 @@ async function loadGeoJSON(
 }
 
 
-/* =========================
-   BOUNDARY
-========================= */
+/* BOUNDARY */
 
 async function loadBoundary(){
 
@@ -1810,14 +1923,24 @@ async function loadBoundary(){
             L.geoJSON(
                 data,
                 {
-                    pane:"boundaryPane",
+                    pane:
+                        "boundaryPane",
 
                     style:{
-                        color:"#ff0000",
-                        weight:4,
-                        opacity:1,
-                        fillColor:"#ff0000",
-                        fillOpacity:.02
+                        color:
+                            "#ff0000",
+
+                        weight:
+                            4,
+
+                        opacity:
+                            1,
+
+                        fillColor:
+                            "#ff0000",
+
+                        fillOpacity:
+                            .02
                     }
                 }
             )
@@ -1838,7 +1961,8 @@ async function loadBoundary(){
             state.map.fitBounds(
                 bounds,
                 {
-                    padding:[15,15]
+                    padding:
+                        [15,15]
                 }
             );
 
@@ -1856,9 +1980,7 @@ async function loadBoundary(){
 }
 
 
-/* =========================
-   PROTECTED
-========================= */
+/* PROTECTED */
 
 async function loadProtectedLayer(){
 
@@ -1874,13 +1996,21 @@ async function loadProtectedLayer(){
             L.geoJSON(
                 state.protectedGeoJSON,
                 {
-                    pane:"areaPane",
+                    pane:
+                        "areaPane",
 
                     style:{
-                        color:"#1976d2",
-                        weight:2,
-                        fillColor:"#1976d2",
-                        fillOpacity:.05
+                        color:
+                            "#1976d2",
+
+                        weight:
+                            2,
+
+                        fillColor:
+                            "#1976d2",
+
+                        fillOpacity:
+                            .05
                     }
                 }
             );
@@ -1897,9 +2027,7 @@ async function loadProtectedLayer(){
 }
 
 
-/* =========================
-   HUNTING
-========================= */
+/* HUNTING */
 
 async function loadHuntingLayer(){
 
@@ -1915,13 +2043,21 @@ async function loadHuntingLayer(){
             L.geoJSON(
                 state.huntingGeoJSON,
                 {
-                    pane:"areaPane",
+                    pane:
+                        "areaPane",
 
                     style:{
-                        color:"#7b1fa2",
-                        weight:2,
-                        fillColor:"#7b1fa2",
-                        fillOpacity:.05
+                        color:
+                            "#7b1fa2",
+
+                        weight:
+                            2,
+
+                        fillColor:
+                            "#7b1fa2",
+
+                        fillOpacity:
+                            .05
                     }
                 }
             );
@@ -1938,9 +2074,7 @@ async function loadHuntingLayer(){
 }
 
 
-/* =========================
-   ARCHIVE INDEX
-========================= */
+/* ARCHIVE INDEX */
 
 async function loadArchiveIndex(){
 
@@ -2014,9 +2148,7 @@ async function loadArchiveIndex(){
 }
 
 
-/* =========================
-   ARCHIVES
-========================= */
+/* ARCHIVES */
 
 async function loadArchives(){
 
@@ -2049,7 +2181,7 @@ async function loadArchives(){
 
 
             parsed.rows.forEach(
-                row=>{
+                row => {
 
                     row.archive_date =
                         date;
@@ -2075,9 +2207,7 @@ async function loadArchives(){
 }
 
 
-/* =========================
-   FALLBACK
-========================= */
+/* FALLBACK */
 
 async function loadFallbackCSV(){
 
@@ -2119,9 +2249,7 @@ async function loadFallbackCSV(){
 }
 
 
-/* =========================
-   TIME FILTER
-========================= */
+/* TIME FILTER */
 
 function getTimeFilteredFires(){
 
@@ -2146,7 +2274,7 @@ function getTimeFilteredFires(){
 
 
     return state.fires.filter(
-        fire=>{
+        fire => {
 
             const time =
                 fireUTCDateTime(
@@ -2166,9 +2294,7 @@ function getTimeFilteredFires(){
 }
 
 
-/* =========================
-   POINT IN RING
-========================= */
+/* POINT IN RING */
 
 function pointInRing(
     point,
@@ -2208,9 +2334,18 @@ function pointInRing(
             &&
             x<
             (
-                (xj-xi)*
-                (y-yi)/
-                (yj-yi)+
+                (
+                    xj-xi
+                )
+                *
+                (
+                    y-yi
+                )
+                /
+                (
+                    yj-yi
+                )
+                +
                 xi
             );
 
@@ -2283,9 +2418,7 @@ function pointInPolygon(
 }
 
 
-/* =========================
-   REGION NAME
-========================= */
+/* REGION NAME */
 
 function findRegionName(
     properties
@@ -2301,6 +2434,7 @@ function findRegionName(
 
 
     const preferred=[
+
         "name",
         "NAME",
         "Name",
@@ -2321,6 +2455,7 @@ function findRegionName(
         "ZONE",
         "Name_1",
         "NAME_1"
+
     ];
 
 
@@ -2372,9 +2507,7 @@ function findRegionName(
 }
 
 
-/* =========================
-   FIND REGIONS
-========================= */
+/* FIND REGIONS */
 
 function findRegionsAtPoint(
     lat,
@@ -2382,8 +2515,10 @@ function findRegionsAtPoint(
 ){
 
     const result={
+
         protected:[],
         hunting:[]
+
     };
 
 
@@ -2458,7 +2593,8 @@ function findRegionsAtPoint(
 
                     for(
                         const polygon
-                        of geometry.coordinates
+                        of
+                        geometry.coordinates
                     ){
 
                         if(
@@ -2524,9 +2660,7 @@ function findRegionsAtPoint(
 }
 
 
-/* =========================
-   AREA FILTER
-========================= */
+/* AREA FILTER */
 
 function applyAreaFilter(
     fires
@@ -2544,13 +2678,13 @@ function applyAreaFilter(
     return fires.filter(
         fire=>{
 
-            const lat=
+            const lat =
                 Number(
                     fire.latitude
                 );
 
 
-            const lon=
+            const lon =
                 Number(
                     fire.longitude
                 );
@@ -2603,9 +2737,7 @@ function getVisibleFires(){
 }
 
 
-/* =========================
-   POPUP
-========================= */
+/* POPUP */
 
 function createPopup(
     fire,
@@ -2634,12 +2766,16 @@ function createPopup(
     const regions =
         Number.isFinite(lat) &&
         Number.isFinite(lon)
+
         ?
+
         findRegionsAtPoint(
             lat,
             lon
         )
+
         :
+
         {
             protected:[],
             hunting:[]
@@ -2654,7 +2790,9 @@ function createPopup(
     ){
 
         regionHTML += `
+
             <div class="row">
+
                 <span class="label">
                     مناطق چهارگانه:
                 </span>
@@ -2662,7 +2800,9 @@ function createPopup(
                 <span class="area-name">
                     ${regions.protected.join("، ")}
                 </span>
+
             </div>
+
         `;
 
     }
@@ -2673,7 +2813,9 @@ function createPopup(
     ){
 
         regionHTML += `
+
             <div class="row">
+
                 <span class="label">
                     شکار ممنوع:
                 </span>
@@ -2681,7 +2823,9 @@ function createPopup(
                 <span class="area-name">
                     ${regions.hunting.join("، ")}
                 </span>
+
             </div>
+
         `;
 
     }
@@ -2693,13 +2837,17 @@ function createPopup(
     ){
 
         regionHTML += `
+
             <div class="row">
+
                 <span class="label">
                     محدوده:
                 </span>
 
                 خارج از مناطق چهارگانه و شکار ممنوع
+
             </div>
+
         `;
 
     }
@@ -2715,47 +2863,59 @@ function createPopup(
 
 
             <div class="row">
+
                 <span class="label">
                     سنجنده:
                 </span>
 
                 ${sensor}
+
             </div>
 
 
             <div class="row">
+
                 <span class="label">
                     ماهواره:
                 </span>
 
                 ${fire.satellite || "---"}
+
             </div>
 
 
             <div class="row">
+
                 <span class="label">
                     تاریخ ایران:
                 </span>
 
                 ${shamsiDate(date)}
+
             </div>
 
 
             <div class="row">
+
                 <span class="label">
                     ساعت ایران:
                 </span>
 
-                ${fa(iranTime(fire))}
+                ${fa(
+                    iranTime(fire)
+                )}
+
             </div>
 
 
             <div class="row">
+
                 <span class="label">
                     زمان:
                 </span>
 
                 ${getTimeLabel(fire)}
+
             </div>
 
 
@@ -2763,24 +2923,29 @@ function createPopup(
 
 
             <div class="row">
+
                 <span class="label">
                     FRP:
                 </span>
 
                 ${fire.frp || "---"} MW
+
             </div>
 
 
             <div class="row">
+
                 <span class="label">
                     Confidence:
                 </span>
 
                 ${fire.confidence || "---"}
+
             </div>
 
 
             <div class="row">
+
                 <span class="label">
                     مختصات:
                 </span>
@@ -2804,9 +2969,7 @@ function createPopup(
 }
 
 
-/* =========================
-   RENDER FIRES
-========================= */
+/* RENDER */
 
 function renderFires(
     fires
@@ -2818,13 +2981,13 @@ function renderFires(
     fires.forEach(
         fire=>{
 
-            const lat =
+            const lat=
                 Number(
                     fire.latitude
                 );
 
 
-            const lon =
+            const lon=
                 Number(
                     fire.longitude
                 );
@@ -2848,22 +3011,32 @@ function renderFires(
 
             const marker =
                 L.circleMarker(
-                    [lat,lon],
+                    [
+                        lat,
+                        lon
+                    ],
                     {
-                        pane:"firePane",
 
-                        radius:8,
+                        pane:
+                            "firePane",
 
-                        color:"#6d0000",
+                        radius:
+                            8,
 
-                        weight:2,
+                        color:
+                            "#6d0000",
+
+                        weight:
+                            2,
 
                         fillColor:
                             sensorColor(
                                 sensor
                             ),
 
-                        fillOpacity:.95
+                        fillOpacity:
+                            .95
+
                     }
                 );
 
@@ -2906,26 +3079,21 @@ function refreshFires(){
 }
 
 
-/* =========================
-   MODE
-========================= */
+/* MODE */
 
 document
     .querySelectorAll(
         ".mode-btn"
     )
     .forEach(
-        button => {
+        button=>{
 
             button.addEventListener(
                 "click",
-                () => {
+                ()=>{
 
                     state.mode =
                         button.dataset.mode;
-
-                    state.view =
-                        "time";
 
 
                     document
@@ -2933,11 +3101,11 @@ document
                             ".mode-btn"
                         )
                         .forEach(
-                            item => {
+                            item=>{
 
                                 item.classList.toggle(
                                     "active",
-                                    item === button
+                                    item===button
                                 );
 
                             }
@@ -2953,9 +3121,7 @@ document
     );
 
 
-/* =========================
-   AREA FILTER
-========================= */
+/* AREA */
 
 function setAreaFilter(
     type
@@ -2967,30 +3133,18 @@ function setAreaFilter(
 
     $("protectedFilter")
         .checked =
-            type === "protected";
+            type==="protected";
 
 
     $("huntingFilter")
         .checked =
-            type === "hunting";
+            type==="hunting";
 
 
     updateAreaLayers();
 
 
-    if(
-        state.view === "archive"
-    ){
-
-        showArchiveDate(
-            getCurrentArchiveDate()
-        );
-
-    }else{
-
-        refreshFires();
-
-    }
+    refreshFires();
 
 }
 
@@ -3036,7 +3190,7 @@ function updateAreaLayers(){
     ){
 
         if(
-            state.areaFilter === "protected"
+            state.areaFilter==="protected"
         ){
 
             state.protectedLayer.addTo(
@@ -3059,7 +3213,7 @@ function updateAreaLayers(){
     ){
 
         if(
-            state.areaFilter === "hunting"
+            state.areaFilter==="hunting"
         ){
 
             state.huntingLayer.addTo(
@@ -3079,40 +3233,21 @@ function updateAreaLayers(){
 }
 
 
-/* =========================
-   SLIDER
-========================= */
-
-function getCurrentArchiveDate(){
-
-    const index =
-        Number(
-            $("archiveSlider").value
-        );
-
-
-    return (
-        state.archiveDates[index]
-        ||
-        null
-    );
-
-}
-
+/* SLIDER */
 
 function getArchiveFires(
     date
 ){
 
     return state.fires.filter(
-        fire => {
+        fire=>{
 
             const value =
                 fire.archive_date ||
                 fire.acq_date;
 
 
-            return value === date;
+            return value===date;
 
         }
     );
@@ -3122,8 +3257,20 @@ function getArchiveFires(
 
 function updateSliderDisplay(){
 
+    const slider =
+        $("archiveSlider");
+
+
+    const index =
+        Number(
+            slider.value
+        );
+
+
     const date =
-        getCurrentArchiveDate();
+        state.archiveDates[
+            index
+        ];
 
 
     if(
@@ -3169,45 +3316,6 @@ function updateSliderDisplay(){
 }
 
 
-function showArchiveDate(
-    date
-){
-
-    if(
-        !date
-    ){
-
-        return;
-
-    }
-
-
-    state.view =
-        "archive";
-
-
-    const fires =
-        applyAreaFilter(
-            getArchiveFires(
-                date
-            )
-        );
-
-
-    renderFires(
-        fires
-    );
-
-
-    $("fireCount")
-        .textContent =
-            fa(
-                fires.length
-            );
-
-}
-
-
 $("archiveSlider")
     .addEventListener(
         "input",
@@ -3215,26 +3323,48 @@ $("archiveSlider")
 
             updateSliderDisplay();
 
-        }
-    );
+
+            const date =
+                state.archiveDates[
+                    Number(
+                        this.value
+                    )
+                ];
 
 
-$("archiveSlider")
-    .addEventListener(
-        "change",
-        function(){
+            if(
+                !date
+            ){
 
-            showArchiveDate(
-                getCurrentArchiveDate()
+                return;
+
+            }
+
+
+            const fires =
+                applyAreaFilter(
+                    getArchiveFires(
+                        date
+                    )
+                );
+
+
+            renderFires(
+                fires
             );
 
+
+            $("fireCount")
+                .textContent =
+                    fa(
+                        fires.length
+                    );
+
         }
     );
 
 
-/* =========================
-   STATUS
-========================= */
+/* STATUS */
 
 function getLatestObservation(){
 
@@ -3243,7 +3373,7 @@ function getLatestObservation(){
 
 
     state.fires.forEach(
-        fire => {
+        fire=>{
 
             const time =
                 fireUTCDateTime(
@@ -3262,10 +3392,10 @@ function getLatestObservation(){
 
             if(
                 !latest ||
-                time > latest
+                time>latest
             ){
 
-                latest =
+                latest=
                     time;
 
             }
@@ -3297,9 +3427,10 @@ function ageText(
             0,
             Math.floor(
                 (
-                    Date.now() -
+                    Date.now()-
                     timestamp
-                ) /
+                )
+                /
                 1000
             )
         );
@@ -3307,22 +3438,22 @@ function ageText(
 
     const hours =
         Math.floor(
-            seconds / 3600
+            seconds/3600
         );
 
 
     const minutes =
         Math.floor(
-            (seconds % 3600) / 60
+            (seconds%3600)/60
         );
 
 
     const sec =
-        seconds % 60;
+        seconds%60;
 
 
     if(
-        hours > 0
+        hours>0
     ){
 
         return (
@@ -3370,11 +3501,13 @@ async function loadSystemUpdate(){
 
 
         if(
-            Number.isFinite(timestamp)
+            Number.isFinite(
+                timestamp
+            )
         ){
 
             state.systemTimestamp =
-                timestamp * 1000;
+                timestamp*1000;
 
         }
 
@@ -3428,9 +3561,7 @@ function updateStatus(){
 }
 
 
-/* =========================
-   EXCEL
-========================= */
+/* EXCEL */
 
 function escapeXml(
     value
@@ -3472,7 +3603,7 @@ function exportExcel(){
 
 
     if(
-        fires.length === 0
+        fires.length===0
     ){
 
         alert(
@@ -3513,14 +3644,16 @@ function exportExcel(){
 
 
     headers.forEach(
-        header => {
+        header=>{
 
             xml +=
                 "<Cell>"
                 +
                 '<Data ss:Type="String">'
                 +
-                escapeXml(header)
+                escapeXml(
+                    header
+                )
                 +
                 "</Data>"
                 +
@@ -3535,14 +3668,14 @@ function exportExcel(){
 
 
     fires.forEach(
-        fire => {
+        fire=>{
 
             xml +=
                 "<Row>";
 
 
             headers.forEach(
-                header => {
+                header=>{
 
                     xml +=
                         "<Cell>"
@@ -3634,20 +3767,130 @@ function exportExcel(){
 }
 
 
-/* =========================
-   SCREENSHOT
-   بدون تغییر نقشه سایت
-========================= */
+/* REPORT */
+
+async function loadHtml2Canvas(){
+
+    if(
+        typeof window.html2canvas==="function"
+    ){
+
+        return window.html2canvas;
+
+    }
+
+
+    const sources=[
+
+        "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js",
+
+        "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js",
+
+        "https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js"
+
+    ];
+
+
+    for(
+        const src of sources
+    ){
+
+        try{
+
+            await new Promise(
+                (resolve,reject)=>{
+
+                    const script =
+                        document.createElement(
+                            "script"
+                        );
+
+
+                    script.src =
+                        src;
+
+
+                    script.async =
+                        true;
+
+
+                    script.onload =
+                        resolve;
+
+
+                    script.onerror =
+                        reject;
+
+
+                    document.head.appendChild(
+                        script
+                    );
+
+                }
+            );
+
+
+            if(
+                typeof window.html2canvas==="function"
+            ){
+
+                return window.html2canvas;
+
+            }
+
+        }catch(
+            error
+        ){}
+
+    }
+
+
+    throw new Error(
+        "html2canvas could not be loaded"
+    );
+
+}
+
+
+function getReportFilter(){
+
+    if(
+        state.areaFilter==="protected"
+    ){
+
+        return "مناطق چهارگانه محیط زیست";
+
+    }
+
+
+    if(
+        state.areaFilter==="hunting"
+    ){
+
+        return "مناطق شکار ممنوع";
+
+    }
+
+
+    return "ندارد";
+
+}
+
 
 async function createRegionReport(){
 
-    if(
-        !navigator.mediaDevices ||
-        !navigator.mediaDevices.getDisplayMedia
-    ){
+    let html2canvas;
+
+
+    try{
+
+        html2canvas =
+            await loadHtml2Canvas();
+
+    }catch(error){
 
         alert(
-            "مرورگر شما امکان تهیه Screenshot از صفحه را ندارد."
+            "ابزار تهیه گزارش بارگذاری نشد."
         );
 
         return;
@@ -3655,343 +3898,390 @@ async function createRegionReport(){
     }
 
 
-    let stream =
-        null;
-
-
-    try{
-
-        /*
-           از خود تب فعال عکس می‌گیریم.
-           بنابراین OpenStreetMap و تمام عناصر
-           واقعی روی نقشه بدون تبدیل دوباره
-           مختصات ثبت می‌شوند.
-        */
-
-        stream =
-            await navigator.mediaDevices.getDisplayMedia({
-                video:true,
-                audio:false
-            });
-
-
-        const video =
-            document.createElement(
-                "video"
-            );
-
-
-        video.srcObject =
-            stream;
-
-
-        video.muted =
-            true;
-
-
-        await video.play();
-
-
-        await new Promise(
-            resolve =>
-                setTimeout(
-                    resolve,
-                    300
-                )
+    const mapElement =
+        document.getElementById(
+            "map"
         );
 
 
-        const width =
-            video.videoWidth;
+    const mapBounds =
+        state.map.getBounds();
 
 
-        const height =
-            video.videoHeight;
+    const fires =
+        getVisibleFires()
+            .filter(
+                fire=>{
+
+                    const lat=
+                        Number(
+                            fire.latitude
+                        );
 
 
-        if(
-            !width ||
-            !height
-        ){
-
-            throw new Error(
-                "تصویر صفحه دریافت نشد."
-            );
-
-        }
+                    const lon=
+                        Number(
+                            fire.longitude
+                        );
 
 
-        const screenCanvas =
-            document.createElement(
-                "canvas"
-            );
+                    return (
+                        Number.isFinite(lat) &&
+                        Number.isFinite(lon) &&
+                        mapBounds.contains(
+                            [
+                                lat,
+                                lon
+                            ]
+                        )
+                    );
 
-
-        screenCanvas.width =
-            width;
-
-
-        screenCanvas.height =
-            height;
-
-
-        const screenCtx =
-            screenCanvas.getContext(
-                "2d"
+                }
             );
 
 
-        screenCtx.drawImage(
-            video,
-            0,
-            0,
-            width,
-            height
+    const canvas =
+        await html2canvas(
+            mapElement,
+            {
+                backgroundColor:"#ffffff",
+
+                useCORS:true,
+
+                allowTaint:false,
+
+                logging:false,
+
+                scale:
+                    Math.min(
+                        window.devicePixelRatio || 1,
+                        2
+                    )
+            }
         );
 
 
-        stream
-            .getTracks()
-            .forEach(
-                track =>
-                    track.stop()
-            );
-
-
-        stream =
-            null;
-
-
-        /*
-           سربرگ گزارش
-        */
-
-        const headerHeight =
-            92;
-
-
-        const reportCanvas =
-            document.createElement(
-                "canvas"
-            );
-
-
-        reportCanvas.width =
-            screenCanvas.width;
-
-
-        reportCanvas.height =
-            screenCanvas.height +
-            headerHeight;
-
-
-        const reportCtx =
-            reportCanvas.getContext(
-                "2d"
-            );
-
-
-        reportCtx.fillStyle =
-            "#ffffff";
-
-
-        reportCtx.fillRect(
-            0,
-            0,
-            reportCanvas.width,
-            reportCanvas.height
+    const ctx =
+        canvas.getContext(
+            "2d"
         );
 
 
-        reportCtx.fillStyle =
-            "#b71c1c";
+    const mapRect =
+        mapElement.getBoundingClientRect();
 
 
-        reportCtx.fillRect(
-            0,
-            0,
-            reportCanvas.width,
-            headerHeight
-        );
+    const scaleX =
+        canvas.width /
+        mapRect.width;
 
 
-        /*
-           لوگو
-        */
-
-        try{
-
-            const logo =
-                await new Promise(
-                    (resolve,reject)=>{
-
-                        const img =
-                            new Image();
+    const scaleY =
+        canvas.height /
+        mapRect.height;
 
 
-                        img.onload =
-                            () =>
-                                resolve(img);
+    fires.forEach(
+        fire=>{
 
-
-                        img.onerror =
-                            reject;
-
-
-                        img.src =
-                            "logo.png?v="+
-                            Date.now();
-
-                    }
+            const lat=
+                Number(
+                    fire.latitude
                 );
 
 
-            const logoSize =
-                64;
-
-
-            reportCtx.drawImage(
-                logo,
-                18,
-                (headerHeight-logoSize)/2,
-                logoSize,
-                logoSize
-            );
-
-        }catch(error){
-
-            /* گزارش بدون لوگو هم ادامه پیدا می‌کند */
-
-        }
-
-
-        /*
-           عنوان
-        */
-
-        reportCtx.direction =
-            "rtl";
-
-
-        reportCtx.textAlign =
-            "right";
-
-
-        reportCtx.fillStyle =
-            "#ffffff";
-
-
-        reportCtx.font =
-            "bold 26px Tahoma";
-
-
-        reportCtx.fillText(
-            "سامانه پایش و مدیریت داده‌های حریق",
-            reportCanvas.width-22,
-            36
-        );
-
-
-        reportCtx.font =
-            "14px Tahoma";
-
-
-        reportCtx.fillText(
-            "گزارش تصویری نقشه | "
-            +
-            (
-                state.view === "archive"
-                ?
-                "آرشیو روزانه"
-                :
-                state.mode === "24h"
-                ?
-                "۲۴ ساعت گذشته"
-                :
-                "۵ روز گذشته"
-            ),
-            reportCanvas.width-22,
-            63
-        );
-
-
-        /*
-           تصویر واقعی تب
-        */
-
-        reportCtx.drawImage(
-            screenCanvas,
-            0,
-            headerHeight
-        );
-
-
-        /*
-           دانلود
-        */
-
-        const link =
-            document.createElement(
-                "a"
-            );
-
-
-        link.download =
-            "fire_report_"
-            +
-            new Date()
-                .toISOString()
-                .slice(0,10)
-            +
-            ".png";
-
-
-        link.href =
-            reportCanvas.toDataURL(
-                "image/png"
-            );
-
-
-        document.body.appendChild(
-            link
-        );
-
-
-        link.click();
-
-
-        link.remove();
-
-
-    }catch(error){
-
-        if(
-            stream
-        ){
-
-            stream
-                .getTracks()
-                .forEach(
-                    track =>
-                        track.stop()
+            const lon=
+                Number(
+                    fire.longitude
                 );
 
+
+            const point =
+                state.map.latLngToContainerPoint(
+                    [
+                        lat,
+                        lon
+                    ]
+                );
+
+
+            const x =
+                point.x*scaleX;
+
+
+            const y =
+                point.y*scaleY;
+
+
+            const color =
+                sensorColor(
+                    getSensor(
+                        fire
+                    )
+                );
+
+
+            const radius =
+                7*Math.max(
+                    scaleX,
+                    scaleY
+                );
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+                x,
+                y,
+                radius+4,
+                0,
+                Math.PI*2
+            );
+
+
+            ctx.fillStyle =
+                "rgba(255,255,255,.95)";
+
+
+            ctx.fill();
+
+
+            ctx.beginPath();
+
+
+            ctx.arc(
+                x,
+                y,
+                radius,
+                0,
+                Math.PI*2
+            );
+
+
+            ctx.fillStyle =
+                color;
+
+
+            ctx.fill();
+
+
+            ctx.lineWidth =
+                2*Math.max(
+                    scaleX,
+                    scaleY
+                );
+
+
+            ctx.strokeStyle =
+                "#6d0000";
+
+
+            ctx.stroke();
+
         }
+    );
 
 
-        console.error(
-            "Screenshot error:",
-            error
+    const headerHeight =
+        Math.max(
+            88,
+            88*scaleY
         );
 
-    }
+
+    const reportCanvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+    reportCanvas.width =
+        canvas.width;
+
+
+    reportCanvas.height =
+        canvas.height+
+        headerHeight;
+
+
+    const reportCtx =
+        reportCanvas.getContext(
+            "2d"
+        );
+
+
+    reportCtx.fillStyle =
+        "#ffffff";
+
+
+    reportCtx.fillRect(
+        0,
+        0,
+        reportCanvas.width,
+        reportCanvas.height
+    );
+
+
+    reportCtx.fillStyle =
+        "#b71c1c";
+
+
+    reportCtx.fillRect(
+        0,
+        0,
+        reportCanvas.width,
+        headerHeight
+    );
+
+
+    reportCtx.drawImage(
+        canvas,
+        0,
+        headerHeight
+    );
+
+
+    reportCtx.direction =
+        "rtl";
+
+
+    reportCtx.textAlign =
+        "right";
+
+
+    reportCtx.fillStyle =
+        "#ffffff";
+
+
+    reportCtx.font =
+        "bold 27px Tahoma";
+
+
+    reportCtx.fillText(
+        "سامانه پایش و مدیریت داده‌های حریق",
+        reportCanvas.width-25,
+        36
+    );
+
+
+    reportCtx.font =
+        "15px Tahoma";
+
+
+    reportCtx.fillText(
+        "رخدادهای محدوده: "
+        +
+        fa(
+            fires.length
+        )
+        +
+        " | بازه: "
+        +
+        (
+            state.mode==="24h"
+            ?
+            "۲۴ ساعت"
+            :
+            "۵ روز"
+        )
+        +
+        " | فیلتر: "
+        +
+        getReportFilter(),
+        reportCanvas.width-25,
+        63
+    );
+
+
+    reportCtx.textAlign =
+        "left";
+
+
+    reportCtx.font =
+        "13px Tahoma";
+
+
+    reportCtx.fillText(
+        "VIIRS",
+        25,
+        32
+    );
+
+
+    reportCtx.fillText(
+        "MODIS",
+        25,
+        58
+    );
+
+
+    reportCtx.beginPath();
+
+
+    reportCtx.arc(
+        72,
+        27,
+        6,
+        0,
+        Math.PI*2
+    );
+
+
+    reportCtx.fillStyle =
+        "#ff1744";
+
+
+    reportCtx.fill();
+
+
+    reportCtx.beginPath();
+
+
+    reportCtx.arc(
+        72,
+        53,
+        6,
+        0,
+        Math.PI*2
+    );
+
+
+    reportCtx.fillStyle =
+        "#ff9800";
+
+
+    reportCtx.fill();
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.download =
+        "fire_report_"
+        +
+        new Date()
+            .toISOString()
+            .slice(0,10)
+        +
+        ".png";
+
+
+    link.href =
+        reportCanvas.toDataURL(
+            "image/png"
+        );
+
+
+    link.click();
 
 }
 
 
-/* =========================
-   NIGHT
-========================= */
+/* NIGHT */
 
 function toggleNight(){
 
@@ -4059,7 +4349,7 @@ function restoreNight(){
     if(
         localStorage.getItem(
             "fars-night"
-        ) === "1"
+        )==="1"
     ){
 
         document.body
@@ -4088,9 +4378,7 @@ function restoreNight(){
 }
 
 
-/* =========================
-   BUTTONS
-========================= */
+/* BUTTONS */
 
 $("excelBtn")
     .addEventListener(
@@ -4121,77 +4409,31 @@ $("refreshBtn")
     );
 
 
-/* =========================
-   INIT
-========================= */
+/* INIT */
 
 async function init(){
 
     createMap();
 
-
     await loadBoundary();
-
 
     await loadProtectedLayer();
 
-
     await loadHuntingLayer();
-
 
     await loadArchiveIndex();
 
-
     await loadArchives();
-
 
     await loadFallbackCSV();
 
-
     await loadSystemUpdate();
 
+    refreshFires();
 
-    /*
-       آخرین تاریخ آرشیو = تاریخ اولیه نقشه
-    */
-
-    const latestIndex =
-        state.archiveDates.length - 1;
-
-
-    if(
-        latestIndex >= 0
-    ){
-
-        $("archiveSlider").value =
-            latestIndex;
-
-
-        updateSliderDisplay();
-
-
-        showArchiveDate(
-            state.archiveDates[
-                latestIndex
-            ]
-        );
-
-    }else{
-
-        state.view =
-            "time";
-
-
-        refreshFires();
-
-
-        updateSliderDisplay();
-
-    }
-
+    updateSliderDisplay();
 
     updateStatus();
-
 
     restoreNight();
 
