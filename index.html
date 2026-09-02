@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -2381,6 +2382,46 @@ async function loadHuntingLayer(){
 
 
 /* =========================================================
+   CURRENT IRAN DATE
+========================================================= */
+
+function getCurrentIranDate(){
+
+    const IRAN_OFFSET =
+        3.5 * 60 * 60 * 1000;
+
+    const iranNow =
+        new Date(
+            Date.now() +
+            IRAN_OFFSET
+        );
+
+    const year =
+        iranNow.getUTCFullYear();
+
+    const month =
+        iranNow.getUTCMonth() + 1;
+
+    const day =
+        iranNow.getUTCDate();
+
+    return [
+
+        String(year)
+            .padStart(4,"0"),
+
+        String(month)
+            .padStart(2,"0"),
+
+        String(day)
+            .padStart(2,"0")
+
+    ].join("-");
+
+}
+
+
+/* =========================================================
    ARCHIVE INDEX
 ========================================================= */
 
@@ -2441,7 +2482,39 @@ async function loadArchiveIndex(){
 
             )
 
-            .filter(Boolean)
+            .filter(Boolean);
+
+
+        /*
+           فقط برای اسلایدر:
+           اگر روز جاری ایران هنوز در archive/index.json
+           درج نشده باشد، همان روز را اضافه می‌کنیم.
+
+           این باعث می‌شود تغییر روز دقیقاً ساعت ۰۰:۰۰
+           به وقت ایران در رابط کاربری اتفاق بیفتد.
+        */
+
+        const currentIranDate =
+            getCurrentIranDate();
+
+
+        if(
+            !state.archiveDates.includes(
+                currentIranDate
+            )
+        ){
+
+            state.archiveDates.push(
+                currentIranDate
+            );
+
+        }
+
+
+        state.archiveDates =
+            [...new Set(
+                state.archiveDates
+            )]
             .sort();
 
     }catch(error){
@@ -2451,7 +2524,22 @@ async function loadArchiveIndex(){
             error
         );
 
-        state.archiveDates=[];
+        state.archiveDates = [];
+
+
+        /*
+           حتی اگر index.json موقتاً
+           قابل دریافت نباشد، روز جاری ایران
+           برای اسلایدر در نظر گرفته شود.
+        */
+
+        const currentIranDate =
+            getCurrentIranDate();
+
+
+        state.archiveDates = [
+            currentIranDate
+        ];
 
     }
 
@@ -3024,14 +3112,18 @@ function findRegionsAtPoint(
 
 
     const point=[
+
         lon,
         lat
+
     ];
 
 
     function scan(
+
         geojson,
         target
+
     ){
 
         if(
@@ -3507,7 +3599,8 @@ function createFirePopup(
 
                 ${Number(
                     fire.longitude
-                ).toFixed(5)}
+                ).toFixed(5)
+                }
 
             </div>
 
@@ -4599,19 +4692,6 @@ function exportExcel(){
    REPORT TILE RENDERER
 ========================================================= */
 
-/*
-   این بخش دیگر از html2canvas استفاده نمی‌کند.
-
-   تصویر گزارش مستقیماً از Tileهای نقشه ساخته می‌شود.
-
-   این باعث می‌شود:
-   - Screenshot مرورگر لازم نباشد
-   - html2canvas لازم نباشد
-   - نقاط روی تصویر جابه‌جا نشوند
-   - انتخاب تب مرورگر لازم نباشد
-*/
-
-
 function clamp(
     value,
     min,
@@ -4909,14 +4989,6 @@ async function buildReportMap(){
         256;
 
 
-    const worldSize =
-        tileSize *
-        Math.pow(
-            2,
-            zoom
-        );
-
-
     const centerWorldX =
         lonToWorldX(
             center.lng,
@@ -5126,6 +5198,7 @@ async function buildReportMap(){
                 .catch(
 
                     ()=>{
+
                     }
 
                 )
@@ -5141,12 +5214,6 @@ async function buildReportMap(){
         tilePromises
     );
 
-
-    /*
-       ستاره حریق‌ها
-       دقیقاً با همان Web Mercator
-       و همان zoom نقشه
-    */
 
     const reportFires =
         getVisibleFires();
@@ -5251,13 +5318,6 @@ async function createRegionReport(){
 
     try{
 
-        /*
-           گزارش بدون
-           html2canvas
-           و بدون
-           getDisplayMedia
-        */
-
         const mapCanvas =
             await buildReportMap();
 
@@ -5272,10 +5332,6 @@ async function createRegionReport(){
 
         }
 
-
-        /*
-           Header
-        */
 
         const headerHeight =
             92;
@@ -5313,10 +5369,6 @@ async function createRegionReport(){
         }
 
 
-        /*
-           White background
-        */
-
         ctx.fillStyle =
             "#ffffff";
 
@@ -5332,10 +5384,6 @@ async function createRegionReport(){
         );
 
 
-        /*
-           Red header
-        */
-
         ctx.fillStyle =
             "#b71c1c";
 
@@ -5350,10 +5398,6 @@ async function createRegionReport(){
 
         );
 
-
-        /*
-           logo.webp
-        */
 
         try{
 
@@ -5380,7 +5424,6 @@ async function createRegionReport(){
                 ) / 2,
 
                 logoSize,
-
                 logoSize
 
             );
@@ -5394,10 +5437,6 @@ async function createRegionReport(){
 
         }
 
-
-        /*
-           Title
-        */
 
         ctx.direction =
             "rtl";
@@ -5425,10 +5464,6 @@ async function createRegionReport(){
 
         );
 
-
-        /*
-           Period
-        */
 
         let periodText =
             "۲۴ ساعت";
@@ -5525,10 +5560,6 @@ async function createRegionReport(){
         );
 
 
-        /*
-           Map
-        */
-
         ctx.drawImage(
 
             mapCanvas,
@@ -5539,10 +5570,6 @@ async function createRegionReport(){
 
         );
 
-
-        /*
-           Download
-        */
 
         const link =
             document.createElement(
@@ -5603,26 +5630,67 @@ async function createRegionReport(){
 ========================================================= */
 
 function toggleNight(){
-var night=document.body.classList.toggle("night");
-var btn=$("nightBtn");
-if(night){
-btn.textContent="☀️";
-localStorage.setItem("fars-night","true");
-}else{
-btn.textContent="🌙";
-localStorage.setItem("fars-night","false");
-}
+
+    var night =
+        document.body.classList.toggle(
+            "night"
+        );
+
+    var btn =
+        $("nightBtn");
+
+
+    if(night){
+
+        btn.textContent =
+            "☀️";
+
+        localStorage.setItem(
+            "fars-night",
+            "true"
+        );
+
+    }else{
+
+        btn.textContent =
+            "🌙";
+
+        localStorage.setItem(
+            "fars-night",
+            "false"
+        );
+
+    }
+
 }
 
 
 function restoreNight(){
-if(localStorage.getItem("fars-night")==="true"){
-document.body.classList.add("night");
-var btn=$("nightBtn");
-if(btn){
-btn.textContent="☀️";
-}
-}
+
+    if(
+        localStorage.getItem(
+            "fars-night"
+        ) ===
+        "true"
+    ){
+
+        document.body.classList.add(
+            "night"
+        );
+
+        var btn =
+            $("nightBtn");
+
+
+        if(btn){
+
+            btn.textContent =
+                "☀️";
+
+        }
+
+    }
+
 }
 
 
@@ -5672,6 +5740,52 @@ $("refreshBtn")
 
 
 /* =========================================================
+   AUTO REFRESH ARCHIVE DATE
+========================================================= */
+
+let lastIranDate =
+    getCurrentIranDate();
+
+
+setInterval(
+
+    async function(){
+
+        const currentIranDate =
+            getCurrentIranDate();
+
+
+        if(
+            currentIranDate ===
+            lastIranDate
+        ){
+
+            return;
+
+        }
+
+
+        lastIranDate =
+            currentIranDate;
+
+
+        await loadArchiveIndex();
+
+
+        updateArchiveDisplay();
+
+        showArchiveDate(
+            currentIranDate
+        );
+
+    },
+
+    30000
+
+);
+
+
+/* =========================================================
    INIT
 ========================================================= */
 
@@ -5707,6 +5821,28 @@ async function init(){
     updateArchiveDisplay();
 
 
+    /*
+       بعد از بارگذاری اولیه،
+       آخرین تاریخ اسلایدر انتخاب شود.
+    */
+
+    const latestArchiveDate =
+        state.archiveDates[
+            state.archiveDates.length - 1
+        ];
+
+
+    if(
+        latestArchiveDate
+    ){
+
+        showArchiveDate(
+            latestArchiveDate
+        );
+
+    }
+
+
     updateStatus();
 
 
@@ -5734,3 +5870,4 @@ init();
 </body>
 
 </html>
+```
