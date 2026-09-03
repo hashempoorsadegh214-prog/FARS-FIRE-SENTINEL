@@ -2659,18 +2659,60 @@ async function loadFallbackCSV(){
             );
 
 
+        /*
+           fires.csv همیشه منبع داده جاری سامانه است.
+           بنابراین نباید فقط زمانی بارگذاری شود که
+           state.fires خالی باشد.
+
+           داده‌های آرشیوی قبلی حفظ می‌شوند، اما هر رکورد
+           مربوط به روز جاری ایران قبل از افزودن fires.csv
+           حذف می‌شود تا رکوردها دوباره شماری نشوند.
+        */
+
+        const currentIranDate =
+            getCurrentIranDate();
+
+        state.fires =
+            state.fires.filter(
+                fire=>{
+
+                    const fireDate =
+                        fire.archive_date
+                        ||
+                        fire.iran_date
+                        ||
+                        fire.acq_date
+                        ||
+                        "";
+
+                    return fireDate !== currentIranDate;
+
+                }
+            );
+
+
         if(
-            state.fires.length===0
+            state.archiveHeaders.length===0
         ){
 
             state.archiveHeaders =
                 parsed.headers.slice();
 
-
-            state.fires =
-                parsed.rows.slice();
-
         }
+
+
+        parsed.rows.forEach(
+            row=>{
+
+                row.archive_date =
+                    currentIranDate;
+
+                state.fires.push(
+                    row
+                );
+
+            }
+        );
 
     }catch(error){
 
@@ -5770,6 +5812,7 @@ setInterval(
 
 
         await loadArchiveIndex();
+        await loadFallbackCSV();
 
 
         updateArchiveDisplay();
@@ -5777,6 +5820,8 @@ setInterval(
         showArchiveDate(
             currentIranDate
         );
+
+        updateStatus();
 
     },
 
@@ -5827,9 +5872,7 @@ async function init(){
     */
 
     const latestArchiveDate =
-        state.archiveDates[
-            state.archiveDates.length - 1
-        ];
+        getCurrentIranDate();
 
 
     if(
