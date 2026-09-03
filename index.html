@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -450,7 +451,11 @@ body.night .fire-count-number{
     color:#ff5252;
 }
 
-body.night .leaflet-tile-pane{
+/*
+   فقط نقشه پایه خیابانی در حالت شب تاریک می‌شود.
+   لایه ماهواره‌ای معکوس نمی‌شود.
+*/
+body.night .leaflet-tile-pane.street-night{
     filter:
         invert(100%)
         hue-rotate(180deg)
@@ -635,6 +640,15 @@ body.night .leaflet-control-attribution{
             title="خروجی Excel"
         >
             📊
+        </button>
+
+        <!-- دکمه جدید لایه ماهواره‌ای -->
+        <button
+            id="satelliteBtn"
+            class="header-btn"
+            title="تصویر ماهواره‌ای"
+        >
+            🛰️
         </button>
 
         <button
@@ -855,6 +869,18 @@ const state={
 
     darkMap:null,
 
+    /*
+       لایه تصویر ماهواره‌ای
+    */
+    satelliteMap:null,
+
+    /*
+       وضعیت فعلی پس‌زمینه
+       street = نقشه خیابانی
+       satellite = تصویر ماهواره‌ای
+    */
+    baseMap:"street",
+
     boundaryLayer:null,
 
     protectedLayer:null,
@@ -867,21 +893,12 @@ const state={
 
     huntingGeoJSON:null,
 
-    /*
-       همه آرشیوهای واقعی دارای رکورد
-    */
     fires:[],
 
-    /*
-       تاریخ‌های موجود در archive
-    */
     archiveDates:[],
 
     archiveHeaders:[],
 
-    /*
-       حالت جاری
-    */
     mode:"24h",
 
     areaFilter:"none",
@@ -1484,6 +1501,9 @@ function createMap(){
     state.map=
         L.map("map");
 
+    /*
+       نقشه خیابانی روشن
+    */
     state.lightMap=
         L.tileLayer(
 
@@ -1503,6 +1523,9 @@ function createMap(){
             state.map
         );
 
+    /*
+       نقشه خیابانی تاریک
+    */
     state.darkMap=
         L.tileLayer(
 
@@ -1514,6 +1537,28 @@ function createMap(){
 
                 attribution:
                     "© OpenStreetMap © CARTO"
+
+            }
+
+        );
+
+    /*
+       =====================================================
+       لایه تصویر ماهواره‌ای
+       =====================================================
+    */
+
+    state.satelliteMap=
+        L.tileLayer(
+
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+
+            {
+
+                maxZoom:18,
+
+                attribution:
+                    "Tiles © Esri"
 
             }
 
@@ -1556,6 +1601,113 @@ function createMap(){
         [29.6,52.5],
         8
     );
+
+}
+
+
+/* =========================================================
+   BASE MAP SWITCHER
+========================================================= */
+
+function updateBaseMap(){
+
+    if(
+        !state.map
+    ){
+
+        return;
+
+    }
+
+    /*
+       ابتدا تمام لایه‌های پایه حذف می‌شوند.
+    */
+
+    if(
+        state.map.hasLayer(
+            state.lightMap
+        )
+    ){
+
+        state.map.removeLayer(
+            state.lightMap
+        );
+
+    }
+
+    if(
+        state.map.hasLayer(
+            state.darkMap
+        )
+    ){
+
+        state.map.removeLayer(
+            state.darkMap
+        );
+
+    }
+
+    if(
+        state.map.hasLayer(
+            state.satelliteMap
+        )
+    ){
+
+        state.map.removeLayer(
+            state.satelliteMap
+        );
+
+    }
+
+    /*
+       تصویر ماهواره‌ای
+    */
+
+    if(
+        state.baseMap==="satellite"
+    ){
+
+        state.satelliteMap.addTo(
+            state.map
+        );
+
+        $("satelliteBtn")
+            .textContent="🗺️";
+
+        $("satelliteBtn")
+            .title="بازگشت به نقشه خیابانی";
+
+        return;
+
+    }
+
+    /*
+       نقشه خیابانی
+    */
+
+    if(
+        document.body.classList.contains(
+            "night"
+        )
+    ){
+
+        state.darkMap.addTo(
+            state.map
+        );
+
+    }else{
+
+        state.lightMap.addTo(
+            state.map
+        );
+
+    }
+
+    $("satelliteBtn")
+        .textContent="🛰️";
+
+    $("satelliteBtn")
+        .title="تصویر ماهواره‌ای";
 
 }
 
@@ -1794,10 +1946,6 @@ async function loadArchiveIndex(){
 
             .filter(Boolean)
 
-            /*
-               امروز و روزهای گذشته مجازند.
-               آینده ممنوع است.
-            */
             .filter(
                 date=>
                     date<=today
@@ -1819,11 +1967,6 @@ async function loadArchiveIndex(){
 
     }
 
-    /*
-       اگر index امروز را نداشته باشد،
-       آن را candidate می‌کنیم تا فایل واقعی
-       archive/today.csv بررسی شود.
-    */
     if(
         !dates.includes(today)
     ){
@@ -1864,9 +2007,6 @@ async function loadArchives(){
 
                 );
 
-            /*
-               آرشیو خالی قابل نمایش نیست.
-            */
             if(
                 !parsed.rows.length
             ){
@@ -1912,9 +2052,6 @@ async function loadArchives(){
 
     }
 
-    /*
-       فقط فایل‌های واقعی دارای رکورد.
-    */
     state.archiveDates=
         validDates.sort();
 
@@ -1960,9 +2097,6 @@ function getTimeFilteredFires(){
     const now=
         Date.now();
 
-    /*
-       ۲۴ ساعت واقعی
-    */
     if(
         state.mode==="24h"
     ){
@@ -1993,7 +2127,7 @@ function getTimeFilteredFires(){
                 const timestamp=
                     time.getTime();
 
-                return (
+                return(
 
                     timestamp>=start
                     &&
@@ -2006,9 +2140,6 @@ function getTimeFilteredFires(){
 
     }
 
-    /*
-       ۵ روز واقعی
-    */
     if(
         state.mode==="5days"
     ){
@@ -2040,7 +2171,7 @@ function getTimeFilteredFires(){
                 const timestamp=
                     time.getTime();
 
-                return (
+                return(
 
                     timestamp>=start
                     &&
@@ -2053,10 +2184,6 @@ function getTimeFilteredFires(){
 
     }
 
-    /*
-       آخرین حریق‌های ثبت‌شده =
-       فقط امروز ایران
-    */
     if(
         state.mode==="today"
     ){
@@ -2511,10 +2638,6 @@ function applyAreaFilter(
 
 function getVisibleFires(){
 
-    /*
-       حالت آرشیو:
-       فقط همان روز
-    */
     if(
 
         state.mode==="archive"
@@ -2533,9 +2656,6 @@ function getVisibleFires(){
 
     }
 
-    /*
-       حالت‌های زمانی
-    */
     return applyAreaFilter(
 
         getTimeFilteredFires()
@@ -2934,9 +3054,6 @@ function setFireMode(
 
     }
 
-    /*
-       خروج کامل از آرشیو
-    */
     state.mode=
         mode;
 
@@ -4154,9 +4271,27 @@ async function buildReportMap(){
                     maxTile
                 );
 
-            const url=
+            /*
+               گزارش تصویری مطابق لایه پایه فعلی
+            */
 
-                `https://tile.openstreetmap.org/${zoom}/${wrappedX}/${safeY}.png`;
+            let url;
+
+            if(
+                state.baseMap==="satellite"
+            ){
+
+                url=
+
+                    `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${zoom}/${safeY}/${wrappedX}`;
+
+            }else{
+
+                url=
+
+                    `https://tile.openstreetmap.org/${zoom}/${wrappedX}/${safeY}.png`;
+
+            }
 
             tilePromises.push(
 
@@ -4572,6 +4707,20 @@ function toggleNight(){
 
     }
 
+    /*
+       اگر در حالت ماهواره‌ای هستیم،
+       با تغییر شب/روز نباید تصویر ماهواره‌ای عوض شود.
+       در غیر این صورت نقشه خیابانی به‌روزرسانی می‌شود.
+    */
+
+    if(
+        state.baseMap==="street"
+    ){
+
+        updateBaseMap();
+
+    }
+
 }
 
 
@@ -4604,6 +4753,46 @@ function restoreNight(){
     }
 
 }
+
+
+/* =========================================================
+   SATELLITE BUTTON
+========================================================= */
+
+$("satelliteBtn")
+    .addEventListener(
+
+        "click",
+
+        ()=>{
+
+            if(
+                state.baseMap==="satellite"
+            ){
+
+                /*
+                   برگشت به نقشه خیابانی
+                */
+
+                state.baseMap=
+                    "street";
+
+            }else{
+
+                /*
+                   رفتن به تصویر ماهواره‌ای
+                */
+
+                state.baseMap=
+                    "satellite";
+
+            }
+
+            updateBaseMap();
+
+        }
+
+    );
 
 
 /* =========================================================
@@ -4652,10 +4841,6 @@ setInterval(
         const currentIranDate=
             getCurrentIranDate();
 
-        /*
-           تغییر روز فقط بر اساس Asia/Tehran
-           و دقیقاً بعد از ۰۰:۰۰
-        */
         if(
             currentIranDate===
             lastIranDate
@@ -4681,10 +4866,6 @@ setInterval(
 
         setArchiveSliderToLatest();
 
-        /*
-           شروع روز جدید:
-           بازگشت به داده‌های جاری/زمانی
-        */
         state.mode=
             "24h";
 
@@ -4794,27 +4975,14 @@ async function init(){
 
     await loadHuntingLayer();
 
-    /*
-       archive/index.json
-    */
     await loadArchiveIndex();
 
-    /*
-       فایل‌های آرشیو واقعی دارای رکورد
-    */
     await loadArchives();
 
-    /*
-       آخرین آرشیو واقعی
-    */
     setArchiveSliderToLatest();
 
     await loadSystemUpdate();
 
-    /*
-       شروع سامانه:
-       ۲۴ ساعت گذشته
-    */
     state.mode=
         "24h";
 
@@ -4845,6 +5013,13 @@ async function init(){
     updateAreaLayers();
 
     restoreNight();
+
+    /*
+       اطمینان از اینکه پس‌زمینه مطابق
+       حالت ذخیره‌شده تنظیم شده است.
+    */
+
+    updateBaseMap();
 
 }
 
