@@ -957,7 +957,7 @@ function renderFires(fires){
    MODE UI
 ========================================================= */
 function setFireMode(mode){
-    if(!["24h","5days","latest"].includes(mode)) return;
+    if(!["24h","5days","today"].includes(mode)) return;
 
     state.mode=mode;
     state.currentArchiveDate=null;
