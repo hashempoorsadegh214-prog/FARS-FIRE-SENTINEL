@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -638,7 +637,7 @@ body.night .leaflet-control-attribution{
             📊
         </button>
 
-        <!-- دکمه تصویر ماهواره‌ای -->
+        <!-- فقط دکمه تصویر ماهواره‌ای اضافه شده -->
         <button
             id="satelliteBtn"
             class="header-btn"
@@ -865,9 +864,7 @@ const state={
 
     darkMap:null,
 
-    /*
-       لایه تصویر ماهواره‌ای
-    */
+    /* فقط برای لایه ماهواره‌ای اضافه شده */
     satelliteMap:null,
 
     boundaryLayer:null,
@@ -1536,14 +1533,7 @@ function createMap(){
 
     /*
        =====================================================
-       تصویر ماهواره‌ای
-       
-       اصلاح پایداری زوم:
-       - maxNativeZoom = سطح واقعی tile
-       - maxZoom = حداکثر زوم مجاز
-       - keepBuffer = حفظ tileهای اطراف
-       - updateWhenZooming = عدم حذف tile قبلی وسط زوم
-       - updateWhenIdle = بارگذاری tile جدید بعد از پایان زوم
+       تنها لایه جدید: تصویر ماهواره‌ای
        =====================================================
     */
 
@@ -1554,15 +1544,7 @@ function createMap(){
 
             {
 
-                maxZoom:19,
-
-                maxNativeZoom:18,
-
-                keepBuffer:8,
-
-                updateWhenZooming:false,
-
-                updateWhenIdle:true,
+                maxZoom:18,
 
                 attribution:
                     "Tiles © Esri"
@@ -4659,20 +4641,19 @@ function restoreNight(){
 
 
 /* =========================================================
-   SATELLITE BUTTON
+   SATELLITE
 ========================================================= */
 
+/*
+   فقط پس‌زمینه نقشه را بین
+   OSM و تصویر ماهواره‌ای جابه‌جا می‌کند.
+*/
 $("satelliteBtn")
     .addEventListener(
 
         "click",
 
         ()=>{
-
-            /*
-               اگر ماهواره‌ای فعال است:
-               برگشت به نقشه خیابانی
-            */
 
             if(
                 state.map.hasLayer(
@@ -4684,42 +4665,27 @@ $("satelliteBtn")
                     state.satelliteMap
                 );
 
-                /*
-                   در حالت شب همان منطق اصلی
-                   نقشه خیابانی را حفظ می‌کنیم.
-                */
-
                 if(
-                    document.body.classList.contains(
-                        "night"
+                    state.map.hasLayer(
+                        state.darkMap
                     )
                 ){
 
-                    state.darkMap.addTo(
-                        state.map
-                    );
-
-                }else{
-
-                    state.lightMap.addTo(
-                        state.map
-                    );
+                    state.darkMap.remove();
 
                 }
 
-                $("satelliteBtn")
-                    .textContent=
-                        "🛰️";
+                state.lightMap.addTo(
+                    state.map
+                );
 
                 $("satelliteBtn")
-                    .title=
-                        "تصویر ماهواره‌ای";
+                    .textContent="🛰️";
+
+                $("satelliteBtn")
+                    .title="تصویر ماهواره‌ای";
 
             }else{
-
-                /*
-                   رفتن به تصویر ماهواره‌ای
-                */
 
                 if(
                     state.map.hasLayer(
@@ -4750,12 +4716,10 @@ $("satelliteBtn")
                 );
 
                 $("satelliteBtn")
-                    .textContent=
-                        "🗺️";
+                    .textContent="🗺️";
 
                 $("satelliteBtn")
-                    .title=
-                        "بازگشت به نقشه خیابانی";
+                    .title="بازگشت به نقشه خیابانی";
 
             }
 
@@ -5019,4 +4983,3 @@ init();
 
 </body>
 </html>
-
