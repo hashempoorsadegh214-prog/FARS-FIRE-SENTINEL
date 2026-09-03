@@ -5,14 +5,9 @@
 
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-    سامانه پایش و مدیریت داده‌های حریق
-</title>
+<title>سامانه پایش و مدیریت داده‌های حریق</title>
 
 <link
     rel="stylesheet"
@@ -60,7 +55,6 @@ header{
     position:relative;
     z-index:5000;
     height:70px;
-
     background:
         linear-gradient(
             135deg,
@@ -69,7 +63,6 @@ header{
             #8f0000 75%,
             #e01b1b 100%
         );
-
     box-shadow:
         0 2px 12px rgba(80,0,0,.35);
 }
@@ -79,12 +72,9 @@ header{
     left:12px;
     top:50%;
     transform:translateY(-50%);
-
     width:68px;
     height:68px;
-
     object-fit:contain;
-
     filter:
         brightness(0)
         invert(1);
@@ -92,30 +82,23 @@ header{
 
 .header-content{
     height:100%;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    padding:
-        0 150px 0 120px;
-
+    padding:0 150px 0 120px;
     text-align:center;
 }
 
 .title h1{
     margin:0;
-
     font-family:
         "B Titr",
         "BTitr",
         Tahoma,
         Arial,
         sans-serif;
-
     font-size:23px;
     line-height:1.2;
-
     color:#fff;
 }
 
@@ -129,9 +112,7 @@ header{
     position:absolute;
     right:10px;
     top:50%;
-
     transform:translateY(-50%);
-
     display:flex;
     gap:4px;
 }
@@ -139,22 +120,16 @@ header{
 .header-btn{
     width:34px;
     height:34px;
-
     border:0;
     border-radius:8px;
-
-    background:
-        rgba(255,255,255,.18);
-
+    background:rgba(255,255,255,.18);
     color:#fff;
-
     cursor:pointer;
     font-size:16px;
 }
 
 .header-btn:hover{
-    background:
-        rgba(255,255,255,.30);
+    background:rgba(255,255,255,.30);
 }
 
 /* =========================================================
@@ -163,21 +138,14 @@ header{
 
 #map{
     position:absolute;
-
     top:80px;
     left:8px;
     right:8px;
     bottom:8px;
-
-    border:
-        1px solid #d7dde1;
-
+    border:1px solid #d7dde1;
     border-radius:10px;
-
     overflow:hidden;
-
-    box-shadow:
-        0 4px 16px rgba(0,0,0,.12);
+    box-shadow:0 4px 16px rgba(0,0,0,.12);
 }
 
 /* =========================================================
@@ -186,32 +154,20 @@ header{
 
 .control-panel{
     position:absolute;
-
     top:92px;
     right:18px;
-
     width:230px;
-
     z-index:4000;
-
     padding:7px;
-
-    border:
-        1px solid var(--border);
-
+    border:1px solid var(--border);
     border-radius:12px;
-
-    background:
-        var(--panel);
-
-    box-shadow:
-        0 4px 14px rgba(0,0,0,.16);
+    background:var(--panel);
+    box-shadow:0 4px 14px rgba(0,0,0,.16);
 }
 
 .control-panel *,
 .update-box *,
 .slider-box *{
-
     font-family:
         "B Nazanin",
         "BNazanin",
@@ -220,68 +176,39 @@ header{
         sans-serif !important;
 }
 
-/* =========================================================
-   FIRE COUNT
-========================================================= */
-
 .fire-count{
     margin-bottom:6px;
-
     padding:6px;
-
     text-align:center;
-
-    border:
-        1px solid #d9aaaa;
-
+    border:1px solid #d9aaaa;
     border-radius:8px;
-
     background:#fff4f4;
-
-    color:
-        var(--red-dark);
-
+    color:var(--red-dark);
     font-size:16px;
     font-weight:bold;
-
     line-height:1.2;
 }
 
 .fire-count-number{
     font-size:22px;
-    color:
-        var(--red);
+    color:var(--red);
 }
 
-/* =========================================================
-   MODE BUTTONS
-========================================================= */
-
 .mode-btn{
-
     width:100%;
-
     margin-bottom:5px;
-
     padding:6px 8px;
-
     border:0;
     border-radius:8px;
-
     background:#f0f2f4;
-
     color:#344047;
-
     font-size:15px;
     font-weight:bold;
-
     text-align:right;
-
     cursor:pointer;
 }
 
 .mode-btn.active{
-
     background:
         linear-gradient(
             135deg,
@@ -289,62 +216,42 @@ header{
             #d41414 55%,
             #980000
         );
-
     color:#fff;
-
-    box-shadow:
-        0 2px 8px rgba(114,0,0,.35);
+    box-shadow:0 2px 8px rgba(114,0,0,.35);
 }
 
 /* =========================================================
-   AREA FILTER
+   AREA
 ========================================================= */
 
 .area-box{
-
     margin-top:5px;
-
     padding-top:6px;
-
-    border-top:
-        1px solid #e6eaed;
+    border-top:1px solid #e6eaed;
 }
 
 .area-title{
-
     margin-bottom:4px;
-
     font-size:14px;
     font-weight:bold;
 }
 
 .area-option{
-
     display:flex;
-
     align-items:center;
-
     gap:7px;
-
     margin-bottom:4px;
-
     padding:5px 7px;
-
     border-radius:7px;
-
     background:#f6f7f8;
-
     font-size:14px;
     font-weight:bold;
-
     cursor:pointer;
 }
 
 .area-option input{
-
     width:14px;
     height:14px;
-
     margin:0;
 }
 
@@ -353,56 +260,32 @@ header{
 ========================================================= */
 
 .sensor-box{
-
     position:absolute;
-
     top:92px;
-
     left:50%;
-
-    transform:
-        translateX(-50%);
-
+    transform:translateX(-50%);
     z-index:4000;
-
     display:flex;
-
     align-items:center;
-
     gap:12px;
-
     padding:5px 10px;
-
-    border:
-        1px solid var(--border);
-
+    border:1px solid var(--border);
     border-radius:10px;
-
-    background:
-        var(--panel);
-
-    box-shadow:
-        0 4px 12px rgba(0,0,0,.14);
-
+    background:var(--panel);
+    box-shadow:0 4px 12px rgba(0,0,0,.14);
     font-size:14px;
-
     white-space:nowrap;
 }
 
 .sensor-item{
-
     display:flex;
-
     align-items:center;
-
     gap:5px;
 }
 
 .sensor-dot{
-
     width:9px;
     height:9px;
-
     border-radius:50%;
 }
 
@@ -411,60 +294,33 @@ header{
 ========================================================= */
 
 .update-box{
-
     position:absolute;
-
     right:9px;
-
     bottom:9px;
-
     z-index:4000;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     width:max-content;
-
-    max-width:
-        calc(100vw - 18px);
-
+    max-width:calc(100vw - 18px);
     padding:6px 12px;
-
-    border:
-        1px solid var(--border);
-
+    border:1px solid var(--border);
     border-radius:20px;
-
-    background:
-        var(--panel);
-
-    box-shadow:
-        0 4px 14px rgba(0,0,0,.16);
-
+    background:var(--panel);
+    box-shadow:0 4px 14px rgba(0,0,0,.16);
     white-space:nowrap;
-
     font-size:14px;
-
     font-weight:bold;
-
     direction:rtl;
 }
 
 .update-row{
-
     display:inline;
-
-    color:
-        var(--red-dark);
+    color:var(--red-dark);
 }
 
 .update-row + .update-row::before{
-
     content:"  │  ";
-
     color:#8b949a;
 }
 
@@ -473,65 +329,39 @@ header{
 ========================================================= */
 
 .slider-box{
-
     position:absolute;
-
     left:18px;
-
     bottom:14px;
-
     width:350px;
-
     z-index:4000;
-
     padding:7px 12px;
-
-    border:
-        1px solid var(--border);
-
+    border:1px solid var(--border);
     border-radius:20px;
-
-    background:
-        var(--panel);
-
-    box-shadow:
-        0 4px 14px rgba(0,0,0,.16);
+    background:var(--panel);
+    box-shadow:0 4px 14px rgba(0,0,0,.16);
 }
 
 .slider-head{
-
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
-
     gap:10px;
-
     margin-bottom:4px;
 }
 
 .slider-title{
-
     font-size:16px;
-
     font-weight:bold;
 }
 
 .slider-date{
-
     font-size:15px;
-
     font-weight:bold;
-
-    color:
-        var(--red-dark);
+    color:var(--red-dark);
 }
 
 .slider-count{
-
     font-size:14px;
-
     color:#546e7a;
 }
 
@@ -544,40 +374,23 @@ header{
 ========================================================= */
 
 .fire-popup{
-
     width:270px;
-
     direction:rtl;
-
     text-align:right;
-
-    font-family:
-        Tahoma,
-        Arial,
-        sans-serif;
-
+    font-family:Tahoma,Arial,sans-serif;
     font-size:12px;
-
     line-height:1.9;
 }
 
 .fire-popup h3{
-
-    margin:
-        0 0 6px;
-
-    color:
-        var(--red);
-
+    margin:0 0 6px;
+    color:var(--red);
     font-size:15px;
 }
 
 .fire-popup .row{
-
     padding:2px 0;
-
-    border-bottom:
-        1px solid #edf0f2;
+    border-bottom:1px solid #edf0f2;
 }
 
 .fire-popup .label{
@@ -585,9 +398,7 @@ header{
 }
 
 .area-name{
-
     color:#1565c0;
-
     font-weight:bold;
 }
 
@@ -603,25 +414,17 @@ body.night .control-panel,
 body.night .sensor-box,
 body.night .update-box,
 body.night .slider-box{
-
-    background:
-        rgba(26,32,40,.97);
-
-    border-color:
-        #3a4650;
-
+    background:rgba(26,32,40,.97);
+    border-color:#3a4650;
     color:#e8edf1;
 }
 
 body.night .mode-btn{
-
     background:#252d36;
-
     color:#dbe3e8;
 }
 
 body.night .mode-btn.active{
-
     background:
         linear-gradient(
             135deg,
@@ -629,23 +432,17 @@ body.night .mode-btn.active{
             #d41414 55%,
             #980000
         );
-
     color:#fff;
 }
 
 body.night .area-option{
-
     background:#252d36;
-
     color:#dbe3e8;
 }
 
 body.night .fire-count{
-
     background:#301e1e;
-
     border-color:#694141;
-
     color:#ffd6d6;
 }
 
@@ -654,7 +451,6 @@ body.night .fire-count-number{
 }
 
 body.night .leaflet-tile-pane{
-
     filter:
         invert(100%)
         hue-rotate(180deg)
@@ -667,19 +463,13 @@ body.night .leaflet-container{
 }
 
 body.night .leaflet-control-zoom a{
-
     background:#1e252d;
-
     color:#e6e6e6;
-
     border-color:#333;
 }
 
 body.night .leaflet-control-attribution{
-
-    background:
-        rgba(20,24,28,.85);
-
+    background:rgba(20,24,28,.85);
     color:#aaa;
 }
 
@@ -694,22 +484,17 @@ body.night .leaflet-control-attribution{
     }
 
     .header-content{
-        padding:
-            0 108px 0 58px;
+        padding:0 108px 0 58px;
     }
 
     .header-logo{
-
         left:6px;
-
         width:46px;
         height:46px;
     }
 
     .title h1{
-
         font-size:14px;
-
         white-space:nowrap;
     }
 
@@ -718,47 +503,34 @@ body.night .leaflet-control-attribution{
     }
 
     .header-buttons{
-
         right:5px;
-
         gap:3px;
     }
 
     .header-btn{
-
         width:27px;
         height:27px;
-
         font-size:12px;
     }
 
     #map{
-
         top:63px;
-
         left:4px;
         right:4px;
         bottom:4px;
     }
 
     .control-panel{
-
         top:72px;
         right:7px;
-
         width:145px;
-
         max-height:220px;
-
         overflow-y:auto;
-
         padding:5px;
     }
 
     .fire-count{
-
         font-size:11px;
-
         padding:4px;
     }
 
@@ -767,9 +539,7 @@ body.night .leaflet-control-attribution{
     }
 
     .mode-btn{
-
         font-size:11px;
-
         padding:5px 6px;
     }
 
@@ -778,33 +548,22 @@ body.night .leaflet-control-attribution{
     }
 
     .area-option{
-
         font-size:10px;
-
         padding:4px 5px;
     }
 
     .sensor-box{
-
         top:72px;
-
         right:158px;
-
         left:auto;
-
         transform:none;
-
         font-size:9px;
     }
 
     .slider-box{
-
         left:5px;
-
         right:5px;
-
         width:auto;
-
         bottom:40px;
     }
 
@@ -821,17 +580,11 @@ body.night .leaflet-control-attribution{
     }
 
     .update-box{
-
         left:5px;
-
         right:5px;
-
         bottom:5px;
-
         width:auto;
-
         font-size:9px;
-
         overflow:hidden;
     }
 }
@@ -1067,9 +820,7 @@ body.night .leaflet-control-attribution{
 
 </div>
 
-<script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
 
@@ -1077,25 +828,17 @@ body.night .leaflet-control-attribution{
    CONFIG
 ========================================================= */
 
-const CONFIG = {
+const CONFIG={
 
-    boundary:
-        "fars.geojson",
+    boundary:"fars.geojson",
 
-    protected:
-        "protected_areas.geojson",
+    protected:"protected_areas.geojson",
 
-    hunting:
-        "hunting_banned.geojson",
+    hunting:"hunting_banned.geojson",
 
-    archiveIndex:
-        "archive/index.json",
+    archiveIndex:"archive/index.json",
 
-    fallbackCsv:
-        "fires.csv",
-
-    updateInfo:
-        "update-info.json"
+    updateInfo:"update-info.json"
 
 };
 
@@ -1104,7 +847,7 @@ const CONFIG = {
    STATE
 ========================================================= */
 
-const state = {
+const state={
 
     map:null,
 
@@ -1125,22 +868,20 @@ const state = {
     huntingGeoJSON:null,
 
     /*
-       فقط رکوردهای آرشیوی
+       همه آرشیوهای واقعی دارای رکورد
     */
     fires:[],
 
     /*
-       فقط fires.csv
-    */
-    currentFires:[],
-
-    /*
-       تاریخ‌های واقعی قابل نمایش در آرشیو
+       تاریخ‌های موجود در archive
     */
     archiveDates:[],
 
     archiveHeaders:[],
 
+    /*
+       حالت جاری
+    */
     mode:"24h",
 
     areaFilter:"none",
@@ -1156,30 +897,27 @@ const state = {
    HELPERS
 ========================================================= */
 
-const $ =
-    id =>
+const $=
+    id=>
         document.getElementById(id);
 
 
 async function getText(url){
 
-    const response =
+    const response=
         await fetch(
-
-            url +
-            "?v=" +
+            url+
+            "?v="+
             Date.now(),
-
             {
                 cache:"no-store"
             }
-
         );
 
     if(!response.ok){
 
         throw new Error(
-            "خطا در دریافت فایل: " +
+            "خطا در دریافت فایل: "+
             url
         );
 
@@ -1214,34 +952,29 @@ function fa(value){
 
 function parseCSV(text){
 
-    text =
+    text=
         text
             .replace(/^\uFEFF/,"")
             .trim();
 
     if(!text){
 
-        return {
-
+        return{
             headers:[],
-
             rows:[]
-
         };
 
     }
 
-    const lines =
+    const lines=
         text.split(/\r?\n/);
 
-    const headers =
+    const headers=
         lines[0]
             .split(",")
             .map(
-                h =>
-                    h
-                        .trim()
-                        .toLowerCase()
+                h=>
+                    h.trim().toLowerCase()
             );
 
     const rows=[];
@@ -1252,11 +985,15 @@ function parseCSV(text){
         i++
     ){
 
-        if(!lines[i].trim()){
+        if(
+            !lines[i].trim()
+        ){
+
             continue;
+
         }
 
-        const values =
+        const values=
             lines[i].split(",");
 
         const row={};
@@ -1267,11 +1004,16 @@ function parseCSV(text){
                 index
             )=>{
 
-                row[header] =
-                    values[index] !== undefined
+                row[header]=
+
+                    values[index]!==undefined
+
                     ?
+
                     values[index].trim()
+
                     :
+
                     "";
 
             }
@@ -1281,12 +1023,9 @@ function parseCSV(text){
 
     }
 
-    return {
-
+    return{
         headers,
-
         rows
-
     };
 
 }
@@ -1303,7 +1042,6 @@ function gregorianToJalali(
 ){
 
     const gdm=[
-
         0,
         31,
         59,
@@ -1316,12 +1054,13 @@ function gregorianToJalali(
         273,
         304,
         334
-
     ];
 
     let jy;
 
-    if(gy>1600){
+    if(
+        gy>1600
+    ){
 
         jy=979;
         gy-=1600;
@@ -1333,14 +1072,14 @@ function gregorianToJalali(
 
     }
 
-    const gy2 =
+    const gy2=
         gm>2
         ?
         gy+1
         :
         gy;
 
-    let days =
+    let days=
 
         365*gy
 
@@ -1374,31 +1113,32 @@ function gregorianToJalali(
 
         gdm[gm-1];
 
-    jy +=
-        33 *
+    jy+=
+        33*
         Math.floor(
             days/12053
         );
 
-    days %= 12053;
+    days%=12053;
 
-    jy +=
-        4 *
+    jy+=
+        4*
         Math.floor(
             days/1461
         );
 
-    days %= 1461;
+    days%=1461;
 
-    if(days>365){
+    if(
+        days>365
+    ){
 
-        jy +=
-
+        jy+=
             Math.floor(
                 (days-1)/365
             );
 
-        days =
+        days=
             (days-1)%365;
 
     }
@@ -1406,38 +1146,38 @@ function gregorianToJalali(
     let jm;
     let jd;
 
-    if(days<186){
+    if(
+        days<186
+    ){
 
-        jm =
-            1 +
+        jm=
+            1+
             Math.floor(
                 days/31
             );
 
-        jd =
-            1 +
+        jd=
+            1+
             days%31;
 
     }else{
 
-        jm =
-            7 +
+        jm=
+            7+
             Math.floor(
                 (days-186)/30
             );
 
-        jd =
-            1 +
+        jd=
+            1+
             (days-186)%30;
 
     }
 
-    return [
-
+    return[
         jy,
         jm,
         jd
-
     ];
 
 }
@@ -1445,29 +1185,31 @@ function gregorianToJalali(
 
 function shamsiDate(date){
 
-    if(!date){
+    if(
+        !date
+    ){
 
-        return "---";
+        return"---";
 
     }
 
-    const parts =
+    const parts=
         String(date)
             .split("-");
 
-    if(parts.length!==3){
+    if(
+        parts.length!==3
+    ){
 
         return date;
 
     }
 
-    const j =
+    const j=
         gregorianToJalali(
 
             Number(parts[0]),
-
             Number(parts[1]),
-
             Number(parts[2])
 
         );
@@ -1489,197 +1231,17 @@ function shamsiDate(date){
 
     ];
 
-    return (
+    return(
 
         fa(j[2])
-
         +
-
         " "
-
         +
-
         months[j[1]-1]
-
         +
-
         " "
-
         +
-
         fa(j[0])
-
-    );
-
-}
-
-
-/* =========================================================
-   IRAN TIME
-   ---------------------------------------------------------
-   تمام منطق تغییر روز بر اساس Asia/Tehran
-========================================================= */
-
-function getIranDateParts(){
-
-    const parts =
-        new Intl.DateTimeFormat(
-
-            "en-CA",
-
-            {
-
-                timeZone:
-                    "Asia/Tehran",
-
-                year:"numeric",
-
-                month:"2-digit",
-
-                day:"2-digit"
-
-            }
-
-        )
-        .formatToParts(
-            new Date()
-        );
-
-    const result={};
-
-    parts.forEach(
-        part=>{
-
-            if(
-                part.type!=="literal"
-            ){
-
-                result[
-                    part.type
-                ]=
-                    part.value;
-
-            }
-
-        }
-    );
-
-    return result;
-
-}
-
-
-function getCurrentIranDate(){
-
-    const parts =
-        getIranDateParts();
-
-    return (
-
-        parts.year
-        +
-        "-"
-        +
-        parts.month
-        +
-        "-"
-        +
-        parts.day
-
-    );
-
-}
-
-
-function getCurrentIranDateTime(){
-
-    const parts =
-        new Intl.DateTimeFormat(
-
-            "en-CA",
-
-            {
-
-                timeZone:
-                    "Asia/Tehran",
-
-                year:"numeric",
-
-                month:"2-digit",
-
-                day:"2-digit",
-
-                hour:"2-digit",
-
-                minute:"2-digit",
-
-                second:"2-digit",
-
-                hourCycle:"h23"
-
-            }
-
-        )
-        .formatToParts(
-            new Date()
-        );
-
-    const result={};
-
-    parts.forEach(
-        part=>{
-
-            if(
-                part.type!=="literal"
-            ){
-
-                result[
-                    part.type
-                ]=
-                    part.value;
-
-            }
-
-        }
-    );
-
-    return result;
-
-}
-
-
-/*
-   timestamp شروع روز جاری ایران.
-   چون ایران UTC+03:30 است، نیمه‌شب ایران
-   برابر 20:30 روز قبل UTC است.
-*/
-function getIranDayStartTimestamp(){
-
-    const parts =
-        getIranDateParts();
-
-    return (
-
-        Date.UTC(
-
-            Number(parts.year),
-
-            Number(parts.month)-1,
-
-            Number(parts.day),
-
-            0,
-            0,
-            0
-
-        )
-
-        -
-
-        3.5 *
-        60 *
-        60 *
-        1000
 
     );
 
@@ -1701,11 +1263,13 @@ function fireUTCDateTime(fire){
 
     }
 
-    const date =
-        fire.acq_date
-            .split("-");
+    const date=
+        String(
+            fire.acq_date
+        )
+        .split("-");
 
-    const time =
+    const time=
         String(
             fire.acq_time
         )
@@ -1747,32 +1311,30 @@ function fireUTCDateTime(fire){
 
 function iranTime(fire){
 
-    const utc =
-        fireUTCDateTime(
-            fire
-        );
+    const utc=
+        fireUTCDateTime(fire);
 
-    if(!utc){
+    if(
+        !utc
+    ){
 
-        return "---";
+        return"---";
 
     }
 
-    const iran =
+    const iran=
         new Date(
 
             utc.getTime()
-
             +
-
-            3.5 *
-            60 *
-            60 *
+            3.5*
+            60*
+            60*
             1000
 
         );
 
-    return (
+    return(
 
         String(
             iran.getUTCHours()
@@ -1797,49 +1359,55 @@ function iranTime(fire){
 
 function getTimeLabel(fire){
 
-    const time =
-        iranTime(
-            fire
-        );
+    const time=
+        iranTime(fire);
 
-    if(time==="---"){
+    if(
+        time==="---"
+    ){
 
-        return "---";
+        return"---";
 
     }
 
-    const hour =
+    const hour=
         Number(
             time.slice(0,2)
         );
 
-    if(hour<6){
+    if(
+        hour<6
+    ){
 
-        return "بامداد";
+        return"بامداد";
 
     }
 
-    const dn =
+    const dn=
         String(
-            fire.daynight ||
+            fire.daynight||
             ""
         )
         .trim()
         .toUpperCase();
 
-    if(dn==="D"){
+    if(
+        dn==="D"
+    ){
 
-        return "روز";
-
-    }
-
-    if(dn==="N"){
-
-        return "شب";
+        return"روز";
 
     }
 
-    return "---";
+    if(
+        dn==="N"
+    ){
+
+        return"شب";
+
+    }
+
+    return"---";
 
 }
 
@@ -1850,7 +1418,7 @@ function getTimeLabel(fire){
 
 function getSensor(fire){
 
-    const value =
+    const value=
         String(
 
             fire.detected_sensor
@@ -1867,7 +1435,7 @@ function getSensor(fire){
         value.includes("VIIRS")
     ){
 
-        return "VIIRS";
+        return"VIIRS";
 
     }
 
@@ -1875,11 +1443,11 @@ function getSensor(fire){
         value.includes("MODIS")
     ){
 
-        return "MODIS";
+        return"MODIS";
 
     }
 
-    return "UNKNOWN";
+    return"UNKNOWN";
 
 }
 
@@ -1890,7 +1458,7 @@ function sensorColor(sensor){
         sensor==="VIIRS"
     ){
 
-        return "#ff1744";
+        return"#ff1744";
 
     }
 
@@ -1898,11 +1466,11 @@ function sensorColor(sensor){
         sensor==="MODIS"
     ){
 
-        return "#ff9800";
+        return"#ff9800";
 
     }
 
-    return "#8e24aa";
+    return"#8e24aa";
 
 }
 
@@ -1913,12 +1481,10 @@ function sensorColor(sensor){
 
 function createMap(){
 
-    state.map =
-        L.map(
-            "map"
-        );
+    state.map=
+        L.map("map");
 
-    state.lightMap =
+    state.lightMap=
         L.tileLayer(
 
             "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -1937,7 +1503,7 @@ function createMap(){
             state.map
         );
 
-    state.darkMap =
+    state.darkMap=
         L.tileLayer(
 
             "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
@@ -1980,7 +1546,7 @@ function createMap(){
     )
     .style.zIndex=600;
 
-    state.fireLayer =
+    state.fireLayer=
         L.layerGroup()
         .addTo(
             state.map
@@ -2015,20 +1581,19 @@ async function loadBoundary(){
 
     try{
 
-        const data =
+        const data=
             await loadGeoJSON(
                 CONFIG.boundary
             );
 
-        state.boundaryLayer =
+        state.boundaryLayer=
             L.geoJSON(
 
                 data,
 
                 {
 
-                    pane:
-                        "boundaryPane",
+                    pane:"boundaryPane",
 
                     style:{
 
@@ -2051,22 +1616,19 @@ async function loadBoundary(){
                 state.map
             );
 
-        const bounds =
+        const bounds=
             state.boundaryLayer
-                .getBounds();
+            .getBounds();
 
         if(
             bounds.isValid()
         ){
 
             state.map.fitBounds(
-
                 bounds,
-
                 {
                     padding:[15,15]
                 }
-
             );
 
         }
@@ -2091,29 +1653,25 @@ async function loadProtectedLayer(){
 
     try{
 
-        state.protectedGeoJSON =
+        state.protectedGeoJSON=
             await loadGeoJSON(
                 CONFIG.protected
             );
 
-        state.protectedLayer =
+        state.protectedLayer=
             L.geoJSON(
 
                 state.protectedGeoJSON,
 
                 {
 
-                    pane:
-                        "areaPane",
+                    pane:"areaPane",
 
                     style:{
 
                         color:"#1976d2",
-
                         weight:2,
-
                         fillColor:"#1976d2",
-
                         fillOpacity:.05
 
                     }
@@ -2142,29 +1700,25 @@ async function loadHuntingLayer(){
 
     try{
 
-        state.huntingGeoJSON =
+        state.huntingGeoJSON=
             await loadGeoJSON(
                 CONFIG.hunting
             );
 
-        state.huntingLayer =
+        state.huntingLayer=
             L.geoJSON(
 
                 state.huntingGeoJSON,
 
                 {
 
-                    pane:
-                        "areaPane",
+                    pane:"areaPane",
 
                     style:{
 
                         color:"#7b1fa2",
-
                         weight:2,
-
                         fillColor:"#7b1fa2",
-
                         fillOpacity:.05
 
                     }
@@ -2187,30 +1741,25 @@ async function loadHuntingLayer(){
 
 /* =========================================================
    ARCHIVE INDEX
-   ---------------------------------------------------------
-   امروز هم مجاز است.
-   فقط تاریخ آینده حذف می‌شود.
 ========================================================= */
 
 async function loadArchiveIndex(){
 
-    const today =
+    const today=
         getCurrentIranDate();
 
     let dates=[];
 
     try{
 
-        const data =
+        const data=
             JSON.parse(
-
                 await getText(
                     CONFIG.archiveIndex
                 )
-
             );
 
-        const index =
+        const index=
 
             Array.isArray(data)
 
@@ -2230,32 +1779,36 @@ async function loadArchiveIndex(){
 
             [];
 
-        dates =
+        dates=
 
             index
 
             .map(
-
-                item =>
-
+                item=>
                     typeof item==="string"
-
                     ?
-
                     item
-
                     :
-
                     item.date
-
             )
 
             .filter(Boolean)
 
+            /*
+               امروز و روزهای گذشته مجازند.
+               آینده ممنوع است.
+            */
             .filter(
-                date =>
+                date=>
                     date<=today
-            );
+            )
+
+            .filter(
+                (date,index,self)=>
+                    self.indexOf(date)===index
+            )
+
+            .sort();
 
     }catch(error){
 
@@ -2267,9 +1820,9 @@ async function loadArchiveIndex(){
     }
 
     /*
-       امروز را هم به عنوان candidate اضافه می‌کنیم.
-       اگر archive/YYYY-MM-DD.csv برای امروز وجود داشته
-       باشد، loadArchives آن را معتبر می‌کند.
+       اگر index امروز را نداشته باشد،
+       آن را candidate می‌کنیم تا فایل واقعی
+       archive/today.csv بررسی شود.
     */
     if(
         !dates.includes(today)
@@ -2279,17 +1832,14 @@ async function loadArchiveIndex(){
 
     }
 
-    state.archiveDates =
-        [...new Set(dates)]
-        .sort();
+    state.archiveDates=
+        dates.sort();
 
 }
 
 
 /* =========================================================
    LOAD ARCHIVES
-   ---------------------------------------------------------
-   فقط فایل واقعی و دارای حداقل یک رکورد.
 ========================================================= */
 
 async function loadArchives(){
@@ -2300,13 +1850,12 @@ async function loadArchives(){
     const validDates=[];
 
     for(
-        const date of
-        state.archiveDates
+        const date of state.archiveDates
     ){
 
         try{
 
-            const parsed =
+            const parsed=
                 parseCSV(
 
                     await getText(
@@ -2315,14 +1864,12 @@ async function loadArchives(){
 
                 );
 
+            /*
+               آرشیو خالی قابل نمایش نیست.
+            */
             if(
                 !parsed.rows.length
             ){
-
-                console.warn(
-                    "آرشیو بدون رکورد:",
-                    date
-                );
 
                 continue;
 
@@ -2332,7 +1879,7 @@ async function loadArchives(){
                 !state.archiveHeaders.length
             ){
 
-                state.archiveHeaders =
+                state.archiveHeaders=
                     parsed.headers.slice();
 
             }
@@ -2340,7 +1887,7 @@ async function loadArchives(){
             parsed.rows.forEach(
                 row=>{
 
-                    row.archive_date =
+                    row.archive_date=
                         date;
 
                     state.fires.push(
@@ -2357,7 +1904,7 @@ async function loadArchives(){
         }catch(error){
 
             console.warn(
-                "آرشیو قابل دریافت نیست:",
+                "آرشیو:",
                 date
             );
 
@@ -2365,313 +1912,40 @@ async function loadArchives(){
 
     }
 
-    state.archiveDates =
-        validDates;
-
-}
-
-
-/* =========================================================
-   CURRENT CSV
-========================================================= */
-
-async function loadFallbackCSV(){
-
-    try{
-
-        const parsed =
-            parseCSV(
-
-                await getText(
-                    CONFIG.fallbackCsv
-                )
-
-            );
-
-        state.currentFires =
-            parsed.rows.map(
-                row=>{
-
-                    delete row.archive_date;
-
-                    return row;
-
-                }
-            );
-
-        if(
-            !state.archiveHeaders.length
-        ){
-
-            state.archiveHeaders =
-                parsed.headers.slice();
-
-        }
-
-    }catch(error){
-
-        console.error(
-            "fires.csv:",
-            error
-        );
-
-        state.currentFires=[];
-
-    }
-
-}
-
-
-/* =========================================================
-   SLIDER
-========================================================= */
-
-function setArchiveSliderToLatest(){
-
-    const slider =
-        $("archiveSlider");
-
-    if(
-        !slider
-    ){
-
-        return;
-
-    }
-
-    if(
-        !state.archiveDates.length
-    ){
-
-        slider.min=0;
-        slider.max=0;
-        slider.value=0;
-
-        slider.disabled=true;
-
-        $("sliderDate")
-            .textContent=
-                "آرشیو موجود نیست";
-
-        $("sliderCount")
-            .textContent=
-                "تعداد رخداد: ۰";
-
-        return;
-
-    }
-
-    slider.disabled=false;
-
-    slider.min=0;
-
-    slider.max=
-        state.archiveDates.length-1;
-
     /*
-       آخرین فایل واقعی آرشیو.
-       اگر archive/2026-09-03.csv وجود داشته باشد،
-       همین تاریخ آخرین گزینه خواهد بود.
+       فقط فایل‌های واقعی دارای رکورد.
     */
-    slider.value=
-        state.archiveDates.length-1;
+    state.archiveDates=
+        validDates.sort();
 
 }
 
+
+/* =========================================================
+   ALL ARCHIVE DATA
+========================================================= */
+
+function getAllFires(){
+
+    return state.fires;
+
+}
+
+
+/* =========================================================
+   ARCHIVE DATE
+========================================================= */
 
 function getArchiveFires(date){
 
     return state.fires.filter(
 
-        fire =>
+        fire=>
             fire.archive_date===date
 
     );
 
 }
-
-
-function updateArchiveDisplay(){
-
-    const slider =
-        $("archiveSlider");
-
-    if(
-        !slider
-    ){
-
-        return;
-
-    }
-
-    if(
-        !state.archiveDates.length
-    ){
-
-        $("sliderDate")
-            .textContent=
-                "آرشیو موجود نیست";
-
-        $("sliderCount")
-            .textContent=
-                "تعداد رخداد: ۰";
-
-        return;
-
-    }
-
-    const index =
-        Number(
-            slider.value
-        );
-
-    const date =
-        state.archiveDates[index];
-
-    if(
-        !date
-    ){
-
-        $("sliderDate")
-            .textContent=
-                "---";
-
-        $("sliderCount")
-            .textContent=
-                "تعداد رخداد: ۰";
-
-        return;
-
-    }
-
-    const fires =
-        applyAreaFilter(
-
-            getArchiveFires(
-                date
-            )
-
-        );
-
-    $("sliderDate")
-        .textContent =
-            shamsiDate(
-                date
-            );
-
-    $("sliderCount")
-        .textContent =
-
-            "تعداد رخداد: "
-            +
-            fa(
-                fires.length
-            );
-
-}
-
-
-function showArchiveDate(date){
-
-    if(
-        !date
-    ){
-
-        return;
-
-    }
-
-    const today =
-        getCurrentIranDate();
-
-    if(
-        date>today
-    ){
-
-        return;
-
-    }
-
-    const fires =
-        applyAreaFilter(
-
-            getArchiveFires(
-                date
-            )
-
-        );
-
-    state.mode =
-        "archive";
-
-    state.currentArchiveDate =
-        date;
-
-    document
-        .querySelectorAll(
-            ".mode-btn"
-        )
-        .forEach(
-            button=>{
-
-                button.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-    renderFires(
-        fires
-    );
-
-    $("fireCount")
-        .textContent =
-            fa(
-                fires.length
-            );
-
-    $("sliderDate")
-        .textContent =
-            shamsiDate(
-                date
-            );
-
-    $("sliderCount")
-        .textContent =
-            "تعداد رخداد: "
-            +
-            fa(
-                fires.length
-            );
-
-}
-
-
-$("archiveSlider")
-    .addEventListener(
-
-        "input",
-
-        function(){
-
-            const index =
-                Number(
-                    this.value
-                );
-
-            const date =
-                state.archiveDates[index];
-
-            updateArchiveDisplay();
-
-            showArchiveDate(
-                date
-            );
-
-        }
-
-    );
 
 
 /* =========================================================
@@ -2680,40 +1954,51 @@ $("archiveSlider")
 
 function getTimeFilteredFires(){
 
-    const allFires =
+    const all=
         getAllFires();
 
-    const now =
+    const now=
         Date.now();
 
+    /*
+       ۲۴ ساعت واقعی
+    */
     if(
         state.mode==="24h"
     ){
 
-        const start =
-            now -
-            24*60*60*1000;
+        const start=
+            now-
+            24*
+            60*
+            60*
+            1000;
 
-        return allFires.filter(
+        return all.filter(
             fire=>{
 
-                const time =
+                const time=
                     fireUTCDateTime(
                         fire
                     );
 
-                if(!time){
+                if(
+                    !time
+                ){
 
                     return false;
 
                 }
 
-                const value =
+                const timestamp=
                     time.getTime();
 
                 return (
-                    value>=start &&
-                    value<=now
+
+                    timestamp>=start
+                    &&
+                    timestamp<=now
+
                 );
 
             }
@@ -2721,34 +2006,46 @@ function getTimeFilteredFires(){
 
     }
 
+    /*
+       ۵ روز واقعی
+    */
     if(
         state.mode==="5days"
     ){
 
-        const start =
-            now -
-            5*24*60*60*1000;
+        const start=
+            now-
+            5*
+            24*
+            60*
+            60*
+            1000;
 
-        return allFires.filter(
+        return all.filter(
             fire=>{
 
-                const time =
+                const time=
                     fireUTCDateTime(
                         fire
                     );
 
-                if(!time){
+                if(
+                    !time
+                ){
 
                     return false;
 
                 }
 
-                const value =
+                const timestamp=
                     time.getTime();
 
                 return (
-                    value>=start &&
-                    value<=now
+
+                    timestamp>=start
+                    &&
+                    timestamp<=now
+
                 );
 
             }
@@ -2756,47 +2053,33 @@ function getTimeFilteredFires(){
 
     }
 
+    /*
+       آخرین حریق‌های ثبت‌شده =
+       فقط امروز ایران
+    */
     if(
         state.mode==="today"
     ){
 
-        const startOfIranDay =
-            getIranDayStartTimestamp();
+        const today=
+            getCurrentIranDate();
 
-        return allFires.filter(
-            fire=>{
-
-                const time =
-                    fireUTCDateTime(
-                        fire
-                    );
-
-                if(!time){
-
-                    return false;
-
-                }
-
-                const value =
-                    time.getTime();
-
-                return (
-                    value>=startOfIranDay &&
-                    value<=now
-                );
-
-            }
+        return all.filter(
+            fire=>
+                String(
+                    fire.iran_date||""
+                ).trim()===today
         );
 
     }
 
-    return [];
+    return[];
 
 }
 
 
 /* =========================================================
-   POINT IN RING
+   AREA
 ========================================================= */
 
 function pointInRing(
@@ -2820,19 +2103,13 @@ function pointInRing(
 
     ){
 
-        const xi=
-            ring[i][0];
+        const xi=ring[i][0];
+        const yi=ring[i][1];
 
-        const yi=
-            ring[i][1];
+        const xj=ring[j][0];
+        const yj=ring[j][1];
 
-        const xj=
-            ring[j][0];
-
-        const yj=
-            ring[j][1];
-
-        const intersect =
+        const intersect=
 
             (
                 yi>y
@@ -2844,9 +2121,10 @@ function pointInRing(
 
             &&
 
-            x<
+            x <
 
             (
+
                 (
                     xj-xi
                 )
@@ -2860,6 +2138,7 @@ function pointInRing(
                 )
                 +
                 xi
+
             );
 
         if(
@@ -2926,17 +2205,15 @@ function pointInPolygon(
 }
 
 
-/* =========================================================
-   REGION NAME
-========================================================= */
-
 function findRegionName(
     properties
 ){
 
-    if(!properties){
+    if(
+        !properties
+    ){
 
-        return "";
+        return"";
 
     }
 
@@ -2945,49 +2222,36 @@ function findRegionName(
         "name",
         "NAME",
         "Name",
-
         "نام",
         "نام منطقه",
         "نام_منطقه",
-
         "نام منطقه حفاظت شده",
         "نام منطقه شکار ممنوع",
-
         "area_name",
         "AREA_NAME",
-
         "area",
         "AREA",
-
         "title",
         "Title",
-
         "region",
         "Region",
-
         "zone",
         "ZONE",
-
         "Name_1",
         "NAME_1"
 
     ];
 
     for(
-        const key of
-        preferred
+        const key of preferred
     ){
 
         if(
 
             properties[key]!==undefined
-
             &&
-
             properties[key]!==null
-
             &&
-
             String(
                 properties[key]
             ).trim()!==""
@@ -3002,16 +2266,14 @@ function findRegionName(
 
     }
 
-    const dynamicKey =
+    const dynamicKey=
         Object.keys(
             properties
         )
         .find(
             key=>
                 /name|نام|title|عنوان/i
-                .test(
-                    key
-                )
+                .test(key)
         );
 
     if(
@@ -3019,21 +2281,15 @@ function findRegionName(
     ){
 
         return String(
-            properties[
-                dynamicKey
-            ]
+            properties[dynamicKey]
         ).trim();
 
     }
 
-    return "";
+    return"";
 
 }
 
-
-/* =========================================================
-   FIND AREAS
-========================================================= */
 
 function findRegionsAtPoint(
     lat,
@@ -3041,17 +2297,13 @@ function findRegionsAtPoint(
 ){
 
     const result={
-
         protected:[],
         hunting:[]
-
     };
 
     const point=[
-
         lon,
         lat
-
     ];
 
     function scan(
@@ -3067,24 +2319,20 @@ function findRegionsAtPoint(
 
         }
 
-        const features =
+        const features=
 
             geojson.type==="FeatureCollection"
 
             ?
-
             geojson.features
 
             :
-
             geojson.type==="Feature"
 
             ?
-
             [geojson]
 
             :
-
             [];
 
         features.forEach(
@@ -3099,7 +2347,7 @@ function findRegionsAtPoint(
 
                 }
 
-                const geometry =
+                const geometry=
                     feature.geometry;
 
                 let inside=false;
@@ -3108,7 +2356,7 @@ function findRegionsAtPoint(
                     geometry.type==="Polygon"
                 ){
 
-                    inside =
+                    inside=
                         pointInPolygon(
                             point,
                             geometry.coordinates
@@ -3121,7 +2369,8 @@ function findRegionsAtPoint(
                 ){
 
                     for(
-                        const polygon of
+                        const polygon
+                        of
                         geometry.coordinates
                     ){
 
@@ -3146,14 +2395,16 @@ function findRegionsAtPoint(
                     inside
                 ){
 
-                    const name =
+                    const name=
                         findRegionName(
                             feature.properties
                         );
 
                     if(
 
-                        name &&
+                        name
+
+                        &&
 
                         !result[target]
                             .includes(
@@ -3162,9 +2413,10 @@ function findRegionsAtPoint(
 
                     ){
 
-                        result[target].push(
-                            name
-                        );
+                        result[target]
+                            .push(
+                                name
+                            );
 
                     }
 
@@ -3190,10 +2442,6 @@ function findRegionsAtPoint(
 }
 
 
-/* =========================================================
-   AREA FILTER
-========================================================= */
-
 function applyAreaFilter(
     fires
 ){
@@ -3209,12 +2457,12 @@ function applyAreaFilter(
     return fires.filter(
         fire=>{
 
-            const lat =
+            const lat=
                 Number(
                     fire.latitude
                 );
 
-            const lon =
+            const lon=
                 Number(
                     fire.longitude
                 );
@@ -3222,9 +2470,7 @@ function applyAreaFilter(
             if(
 
                 !Number.isFinite(lat)
-
                 ||
-
                 !Number.isFinite(lon)
 
             ){
@@ -3233,7 +2479,7 @@ function applyAreaFilter(
 
             }
 
-            const regions =
+            const regions=
                 findRegionsAtPoint(
                     lat,
                     lon
@@ -3243,13 +2489,13 @@ function applyAreaFilter(
                 state.areaFilter==="protected"
             ){
 
-                return (
+                return(
                     regions.protected.length>0
                 );
 
             }
 
-            return (
+            return(
                 regions.hunting.length>0
             );
 
@@ -3259,8 +2505,37 @@ function applyAreaFilter(
 }
 
 
+/* =========================================================
+   CURRENT DISPLAY
+========================================================= */
+
 function getVisibleFires(){
 
+    /*
+       حالت آرشیو:
+       فقط همان روز
+    */
+    if(
+
+        state.mode==="archive"
+        &&
+        state.currentArchiveDate
+
+    ){
+
+        return applyAreaFilter(
+
+            getArchiveFires(
+                state.currentArchiveDate
+            )
+
+        );
+
+    }
+
+    /*
+       حالت‌های زمانی
+    */
     return applyAreaFilter(
 
         getTimeFilteredFires()
@@ -3278,40 +2553,35 @@ function createFirePopup(
     fire
 ){
 
-    const sensor =
+    const sensor=
         getSensor(
             fire
         );
 
-    const date =
+    const date=
 
         fire.iran_date
         ||
-
         fire.archive_date
         ||
-
         fire.acq_date
         ||
-
         "---";
 
-    const lat =
+    const lat=
         Number(
             fire.latitude
         );
 
-    const lon =
+    const lon=
         Number(
             fire.longitude
         );
 
-    const areas =
+    const areas=
 
         Number.isFinite(lat)
-
         &&
-
         Number.isFinite(lon)
 
         ?
@@ -3334,7 +2604,7 @@ function createFirePopup(
         areas.protected.length
     ){
 
-        areaHTML += `
+        areaHTML+=`
 
             <div class="row">
 
@@ -3356,7 +2626,7 @@ function createFirePopup(
         areas.hunting.length
     ){
 
-        areaHTML += `
+        areaHTML+=`
 
             <div class="row">
 
@@ -3377,14 +2647,12 @@ function createFirePopup(
     if(
 
         !areas.protected.length
-
         &&
-
         !areas.hunting.length
 
     ){
 
-        areaHTML += `
+        areaHTML+=`
 
             <div class="row">
 
@@ -3400,7 +2668,7 @@ function createFirePopup(
 
     }
 
-    return `
+    return`
 
         <div class="fire-popup">
 
@@ -3424,7 +2692,7 @@ function createFirePopup(
                     ماهواره:
                 </span>
 
-                ${fire.satellite || "---"}
+                ${fire.satellite||"---"}
 
             </div>
 
@@ -3468,7 +2736,7 @@ function createFirePopup(
                     FRP:
                 </span>
 
-                ${fire.frp || "---"}
+                ${fire.frp||"---"}
                 MW
 
             </div>
@@ -3479,7 +2747,7 @@ function createFirePopup(
                     Confidence:
                 </span>
 
-                ${fire.confidence || "---"}
+                ${fire.confidence||"---"}
 
             </div>
 
@@ -3516,12 +2784,12 @@ function createFireMarker(
     fire
 ){
 
-    const lat =
+    const lat=
         Number(
             fire.latitude
         );
 
-    const lon =
+    const lon=
         Number(
             fire.longitude
         );
@@ -3529,9 +2797,7 @@ function createFireMarker(
     if(
 
         !Number.isFinite(lat)
-
         ||
-
         !Number.isFinite(lon)
 
     ){
@@ -3540,12 +2806,12 @@ function createFireMarker(
 
     }
 
-    const sensor =
+    const sensor=
         getSensor(
             fire
         );
 
-    const marker =
+    const marker=
         L.circleMarker(
 
             [
@@ -3576,11 +2842,9 @@ function createFireMarker(
         );
 
     marker.bindPopup(
-
         createFirePopup(
             fire
         )
-
     );
 
     return marker;
@@ -3609,7 +2873,7 @@ function renderFires(
     fires.forEach(
         fire=>{
 
-            const marker =
+            const marker=
                 createFireMarker(
                     fire
                 );
@@ -3632,7 +2896,7 @@ function renderFires(
 
 function refreshFireDisplay(){
 
-    const fires =
+    const fires=
         getVisibleFires();
 
     renderFires(
@@ -3640,7 +2904,7 @@ function refreshFireDisplay(){
     );
 
     $("fireCount")
-        .textContent =
+        .textContent=
             fa(
                 fires.length
             );
@@ -3649,7 +2913,7 @@ function refreshFireDisplay(){
 
 
 /* =========================================================
-   MODE
+   MODES
 ========================================================= */
 
 function setFireMode(
@@ -3659,13 +2923,9 @@ function setFireMode(
     if(
 
         mode!=="24h"
-
         &&
-
         mode!=="5days"
-
         &&
-
         mode!=="today"
 
     ){
@@ -3674,10 +2934,13 @@ function setFireMode(
 
     }
 
-    state.mode =
+    /*
+       خروج کامل از آرشیو
+    */
+    state.mode=
         mode;
 
-    state.currentArchiveDate =
+    state.currentArchiveDate=
         null;
 
     document
@@ -3704,6 +2967,10 @@ function setFireMode(
 }
 
 
+/* =========================================================
+   AREA CONTROLS
+========================================================= */
+
 document
     .querySelectorAll(
         ".mode-btn"
@@ -3729,57 +2996,31 @@ document
     );
 
 
-/* =========================================================
-   AREA
-========================================================= */
-
 function setAreaFilter(
     type
 ){
 
-    state.areaFilter =
+    state.areaFilter=
         type;
 
     $("protectedFilter")
-        .checked =
+        .checked=
             type==="protected";
 
     $("huntingFilter")
-        .checked =
+        .checked=
             type==="hunting";
 
     updateAreaLayers();
 
-    if(
-
-        state.mode==="archive"
-
-        &&
-
-        state.currentArchiveDate
-
-    ){
-
-        showArchiveDate(
-
-            state.currentArchiveDate
-
-        );
-
-    }else{
-
-        refreshFireDisplay();
-
-    }
+    refreshFireDisplay();
 
 }
 
 
 $("protectedFilter")
     .addEventListener(
-
         "change",
-
         function(){
 
             setAreaFilter(
@@ -3793,15 +3034,12 @@ $("protectedFilter")
             );
 
         }
-
     );
 
 
 $("huntingFilter")
     .addEventListener(
-
         "change",
-
         function(){
 
             setAreaFilter(
@@ -3815,7 +3053,6 @@ $("huntingFilter")
             );
 
         }
-
     );
 
 
@@ -3881,6 +3118,247 @@ function updateAreaLayers(){
 
 
 /* =========================================================
+   ARCHIVE SLIDER
+========================================================= */
+
+function updateArchiveDisplay(){
+
+    const slider=
+        $("archiveSlider");
+
+    if(
+        !slider
+    ){
+
+        return;
+
+    }
+
+    if(
+        !state.archiveDates.length
+    ){
+
+        slider.disabled=true;
+
+        $("sliderDate")
+            .textContent=
+                "آرشیو موجود نیست";
+
+        $("sliderCount")
+            .textContent=
+                "تعداد رخداد: ۰";
+
+        return;
+
+    }
+
+    slider.disabled=false;
+
+    slider.min=0;
+
+    slider.max=
+        state.archiveDates.length-1;
+
+    const index=
+        Number(
+            slider.value
+        );
+
+    const date=
+        state.archiveDates[index];
+
+    if(
+        !date
+    ){
+
+        $("sliderDate")
+            .textContent=
+                "---";
+
+        $("sliderCount")
+            .textContent=
+                "تعداد رخداد: ۰";
+
+        return;
+
+    }
+
+    const fires=
+        applyAreaFilter(
+
+            getArchiveFires(
+                date
+            )
+
+        );
+
+    $("sliderDate")
+        .textContent=
+            shamsiDate(
+                date
+            );
+
+    $("sliderCount")
+        .textContent=
+
+            "تعداد رخداد: "
+
+            +
+
+            fa(
+                fires.length
+            );
+
+}
+
+
+function setArchiveSliderToLatest(){
+
+    const slider=
+        $("archiveSlider");
+
+    if(
+        !slider
+    ){
+
+        return;
+
+    }
+
+    if(
+        !state.archiveDates.length
+    ){
+
+        slider.min=0;
+        slider.max=0;
+        slider.value=0;
+
+        slider.disabled=true;
+
+        updateArchiveDisplay();
+
+        return;
+
+    }
+
+    slider.disabled=false;
+
+    slider.min=0;
+
+    slider.max=
+        state.archiveDates.length-1;
+
+    slider.value=
+        state.archiveDates.length-1;
+
+    updateArchiveDisplay();
+
+}
+
+
+function showArchiveDate(
+    date
+){
+
+    if(
+        !date
+    ){
+
+        return;
+
+    }
+
+    const today=
+        getCurrentIranDate();
+
+    if(
+        date>today
+    ){
+
+        return;
+
+    }
+
+    const fires=
+        applyAreaFilter(
+
+            getArchiveFires(
+                date
+            )
+
+        );
+
+    state.mode=
+        "archive";
+
+    state.currentArchiveDate=
+        date;
+
+    document
+        .querySelectorAll(
+            ".mode-btn"
+        )
+        .forEach(
+            button=>{
+                button.classList.remove(
+                    "active"
+                );
+            }
+        );
+
+    renderFires(
+        fires
+    );
+
+    $("fireCount")
+        .textContent=
+            fa(
+                fires.length
+            );
+
+    $("sliderDate")
+        .textContent=
+            shamsiDate(
+                date
+            );
+
+    $("sliderCount")
+        .textContent=
+            "تعداد رخداد: "+
+            fa(
+                fires.length
+            );
+
+}
+
+
+$("archiveSlider")
+    .addEventListener(
+
+        "input",
+
+        function(){
+
+            const index=
+                Number(
+                    this.value
+                );
+
+            const date=
+                state.archiveDates[
+                    index
+                ];
+
+            showArchiveDate(
+                date
+            );
+
+        }
+
+    );
+
+
+/* =========================================================
    STATUS
 ========================================================= */
 
@@ -3891,7 +3369,7 @@ function getLatestObservation(){
     getAllFires().forEach(
         fire=>{
 
-            const time =
+            const time=
                 fireUTCDateTime(
                     fire
                 );
@@ -3909,7 +3387,7 @@ function getLatestObservation(){
                 time>latest
             ){
 
-                latest =
+                latest=
                     time;
 
             }
@@ -3934,7 +3412,7 @@ function ageText(
 
     }
 
-    const seconds =
+    const seconds=
         Math.max(
 
             0,
@@ -3942,8 +3420,7 @@ function ageText(
             Math.floor(
 
                 (
-                    Date.now()
-                    -
+                    Date.now()-
                     timestamp
                 )
                 /
@@ -3953,63 +3430,45 @@ function ageText(
 
         );
 
-    const hours =
+    const hours=
         Math.floor(
             seconds/3600
         );
 
-    const minutes =
+    const minutes=
         Math.floor(
-
-            (
-                seconds%3600
-            )
-            /
-            60
-
+            (seconds%3600)/60
         );
 
-    const sec =
+    const sec=
         seconds%60;
 
     if(
         hours>0
     ){
 
-        return (
+        return(
 
             fa(hours)
-
             +
-
             " ساعت و "
-
             +
-
             fa(minutes)
-
             +
-
             " دقیقه پیش"
 
         );
 
     }
 
-    return (
+    return(
 
         fa(minutes)
-
         +
-
         " دقیقه و "
-
         +
-
         fa(sec)
-
         +
-
         " ثانیه پیش"
 
     );
@@ -4021,7 +3480,7 @@ async function loadSystemUpdate(){
 
     try{
 
-        const data =
+        const data=
             JSON.parse(
 
                 await getText(
@@ -4030,16 +3489,18 @@ async function loadSystemUpdate(){
 
             );
 
-        const timestamp =
+        const timestamp=
             Number(
                 data.updated_at_timestamp
             );
 
         if(
-            Number.isFinite(timestamp)
+            Number.isFinite(
+                timestamp
+            )
         ){
 
-            state.systemTimestamp =
+            state.systemTimestamp=
                 timestamp*1000;
 
         }
@@ -4058,7 +3519,7 @@ async function loadSystemUpdate(){
 
 function updateStatus(){
 
-    const latest =
+    const latest=
         getLatestObservation();
 
     if(
@@ -4066,12 +3527,10 @@ function updateStatus(){
     ){
 
         $("sensorAge")
-            .textContent =
+            .textContent=
 
             "آخرین مشاهده حریق توسط سنجنده: "
-
             +
-
             ageText(
                 latest.getTime()
             );
@@ -4083,12 +3542,10 @@ function updateStatus(){
     ){
 
         $("systemAge")
-            .textContent =
+            .textContent=
 
             "آخرین به‌روزرسانی سامانه: "
-
             +
-
             ageText(
                 state.systemTimestamp
             );
@@ -4107,64 +3564,21 @@ function escapeXml(
 ){
 
     return String(
-        value ??
-        ""
+        value??""
     )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&apos;"
-    );
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&apos;");
 
 }
 
 
 function exportExcel(){
 
-    let fires;
-
-    if(
-
-        state.mode==="archive"
-
-        &&
-
-        state.currentArchiveDate
-
-    ){
-
-        fires =
-            applyAreaFilter(
-
-                getArchiveFires(
-
-                    state.currentArchiveDate
-
-                )
-
-            );
-
-    }else{
-
-        fires =
-            getVisibleFires();
-
-    }
+    const fires=
+        getVisibleFires();
 
     if(
         !fires.length
@@ -4184,7 +3598,10 @@ function exportExcel(){
         "longitude",
         "acq_date",
         "acq_time",
+        "iran_date",
+        "iran_time",
         "satellite",
+        "instrument",
         "detected_sensor",
         "frp",
         "confidence",
@@ -4193,7 +3610,7 @@ function exportExcel(){
 
     ];
 
-    let xml =
+    let xml=
 
         '<?xml version="1.0"?>'
 
@@ -4217,13 +3634,13 @@ function exportExcel(){
 
         '<Table>';
 
-    xml +=
+    xml+=
         "<Row>";
 
     headers.forEach(
         header=>{
 
-            xml +=
+            xml+=
 
                 "<Cell>"
 
@@ -4248,19 +3665,19 @@ function exportExcel(){
         }
     );
 
-    xml +=
+    xml+=
         "</Row>";
 
     fires.forEach(
         fire=>{
 
-            xml +=
+            xml+=
                 "<Row>";
 
             headers.forEach(
                 header=>{
 
-                    xml +=
+                    xml+=
 
                         "<Cell>"
 
@@ -4285,13 +3702,13 @@ function exportExcel(){
                 }
             );
 
-            xml +=
+            xml+=
                 "</Row>";
 
         }
     );
 
-    xml +=
+    xml+=
 
         "</Table>"
 
@@ -4303,7 +3720,7 @@ function exportExcel(){
 
         "</Workbook>";
 
-    const blob =
+    const blob=
         new Blob(
 
             [xml],
@@ -4317,20 +3734,19 @@ function exportExcel(){
 
         );
 
-    const url =
+    const url=
         URL.createObjectURL(
             blob
         );
 
-    const link =
+    const link=
         document.createElement(
             "a"
         );
 
-    link.href =
-        url;
+    link.href=url;
 
-    link.download =
+    link.download=
 
         "fires_"
 
@@ -4356,15 +3772,8 @@ function exportExcel(){
     link.remove();
 
     setTimeout(
-
-        ()=>{
-            URL.revokeObjectURL(
-                url
-            );
-        },
-
+        ()=>URL.revokeObjectURL(url),
         1000
-
     );
 
 }
@@ -4381,14 +3790,11 @@ function clamp(
 ){
 
     return Math.max(
-
         min,
-
         Math.min(
             max,
             value
         )
-
     );
 
 }
@@ -4399,14 +3805,14 @@ function lonToWorldX(
     zoom
 ){
 
-    const size =
-        256 *
+    const size=
+        256*
         Math.pow(
             2,
             zoom
         );
 
-    return (
+    return(
 
         (
             lon+
@@ -4415,8 +3821,7 @@ function lonToWorldX(
         /
         360
 
-    )
-    *
+    )*
     size;
 
 }
@@ -4427,32 +3832,31 @@ function latToWorldY(
     zoom
 ){
 
-    const size =
-        256 *
+    const size=
+        256*
         Math.pow(
             2,
             zoom
         );
 
-    const rad =
-        lat *
-        Math.PI /
+    const rad=
+        lat*
+        Math.PI/
         180;
 
-    const mercator =
+    const mercator=
         Math.log(
 
             Math.tan(
 
-                Math.PI/4
-                +
+                Math.PI/4+
                 rad/2
 
             )
 
         );
 
-    return (
+    return(
 
         (
             1-
@@ -4462,8 +3866,7 @@ function latToWorldY(
         /
         2
 
-    )
-    *
+    )*
     size;
 
 }
@@ -4474,38 +3877,28 @@ function loadImage(
 ){
 
     return new Promise(
+        (resolve,reject)=>{
 
-        (
-            resolve,
-            reject
-        )=>{
-
-            const image =
+            const image=
                 new Image();
 
-            image.crossOrigin =
+            image.crossOrigin=
                 "anonymous";
 
-            image.onload =
-                ()=>resolve(
-                    image
-                );
+            image.onload=
+                ()=>resolve(image);
 
-            image.onerror =
+            image.onerror=
                 ()=>reject(
-
                     new Error(
                         "Tile load failed: "+
                         url
                     )
-
                 );
 
-            image.src =
-                url;
+            image.src=url;
 
         }
-
     );
 
 }
@@ -4530,15 +3923,12 @@ function drawFireStar(
         i++
     ){
 
-        const angle =
+        const angle=
 
-            -Math.PI/2
-
-            +
-
+            -Math.PI/2+
             i*Math.PI/5;
 
-        const radius =
+        const radius=
 
             i%2===0
             ?
@@ -4546,14 +3936,12 @@ function drawFireStar(
             :
             inner;
 
-        const px =
-
+        const px=
             x+
             Math.cos(angle)*
             radius;
 
-        const py =
-
+        const py=
             y+
             Math.sin(angle)*
             radius;
@@ -4580,15 +3968,15 @@ function drawFireStar(
 
     ctx.closePath();
 
-    ctx.fillStyle =
+    ctx.fillStyle=
         "#ff0000";
 
     ctx.fill();
 
-    ctx.lineWidth =
+    ctx.lineWidth=
         1.5;
 
-    ctx.strokeStyle =
+    ctx.strokeStyle=
         "#720000";
 
     ctx.stroke();
@@ -4600,21 +3988,21 @@ function drawFireStar(
 
 async function buildReportMap(){
 
-    const center =
+    const center=
         state.map.getCenter();
 
-    const zoom =
+    const zoom=
         state.map.getZoom();
 
-    const mapElement =
+    const mapElement=
         $("map");
 
-    const width =
+    const width=
         Math.round(
             mapElement.clientWidth
         );
 
-    const height =
+    const height=
         Math.round(
             mapElement.clientHeight
         );
@@ -4632,43 +4020,43 @@ async function buildReportMap(){
 
     const tileSize=256;
 
-    const centerWorldX =
+    const centerWorldX=
         lonToWorldX(
             center.lng,
             zoom
         );
 
-    const centerWorldY =
+    const centerWorldY=
         latToWorldY(
             center.lat,
             zoom
         );
 
-    const topLeftWorldX =
-        centerWorldX -
+    const topLeftWorldX=
+        centerWorldX-
         width/2;
 
-    const topLeftWorldY =
-        centerWorldY -
+    const topLeftWorldY=
+        centerWorldY-
         height/2;
 
-    const canvas =
+    const canvas=
         document.createElement(
             "canvas"
         );
 
-    canvas.width =
+    canvas.width=
         width;
 
-    canvas.height =
+    canvas.height=
         height;
 
-    const ctx =
+    const ctx=
         canvas.getContext(
             "2d"
         );
 
-    ctx.fillStyle =
+    ctx.fillStyle=
         "#e5e5e5";
 
     ctx.fillRect(
@@ -4678,19 +4066,19 @@ async function buildReportMap(){
         height
     );
 
-    const startTileX =
+    const startTileX=
         Math.floor(
             topLeftWorldX/
             tileSize
         );
 
-    const startTileY =
+    const startTileY=
         Math.floor(
             topLeftWorldY/
             tileSize
         );
 
-    const endTileX =
+    const endTileX=
         Math.floor(
 
             (
@@ -4702,7 +4090,7 @@ async function buildReportMap(){
 
         );
 
-    const endTileY =
+    const endTileY=
         Math.floor(
 
             (
@@ -4714,21 +4102,18 @@ async function buildReportMap(){
 
         );
 
-    const maxTile =
-
+    const maxTile=
         Math.pow(
             2,
             zoom
-        )
-        -
+        )-
         1;
 
     const tilePromises=[];
 
     for(
 
-        let tileY=
-            startTileY;
+        let tileY=startTileY;
 
         tileY<=endTileY;
 
@@ -4738,8 +4123,7 @@ async function buildReportMap(){
 
         for(
 
-            let tileX=
-                startTileX;
+            let tileX=startTileX;
 
             tileX<=endTileX;
 
@@ -4747,10 +4131,10 @@ async function buildReportMap(){
 
         ){
 
-            const worldTiles =
+            const worldTiles=
                 maxTile+1;
 
-            const wrappedX =
+            const wrappedX=
 
                 (
                     (
@@ -4763,18 +4147,14 @@ async function buildReportMap(){
                 %
                 worldTiles;
 
-            const safeY =
+            const safeY=
                 clamp(
-
                     tileY,
-
                     0,
-
                     maxTile
-
                 );
 
-            const url =
+            const url=
 
                 `https://tile.openstreetmap.org/${zoom}/${wrappedX}/${safeY}.png`;
 
@@ -4783,16 +4163,17 @@ async function buildReportMap(){
                 loadImage(
                     url
                 )
-
                 .then(
                     image=>{
 
-                        const dx =
+                        const dx=
+
                             tileX*
                             tileSize-
                             topLeftWorldX;
 
-                        const dy =
+                        const dy=
+
                             tileY*
                             tileSize-
                             topLeftWorldY;
@@ -4801,13 +4182,9 @@ async function buildReportMap(){
 
                             image,
 
-                            Math.round(
-                                dx
-                            ),
+                            Math.round(dx),
 
-                            Math.round(
-                                dy
-                            ),
+                            Math.round(dy),
 
                             tileSize,
                             tileSize
@@ -4816,7 +4193,6 @@ async function buildReportMap(){
 
                     }
                 )
-
                 .catch(
                     ()=>{}
                 )
@@ -4831,48 +4207,21 @@ async function buildReportMap(){
         tilePromises
     );
 
-    let reportFires;
+    const reportFires=
+        getVisibleFires();
 
-    if(
-
-        state.mode==="archive"
-
-        &&
-
-        state.currentArchiveDate
-
-    ){
-
-        reportFires =
-            applyAreaFilter(
-
-                getArchiveFires(
-
-                    state.currentArchiveDate
-
-                )
-
-            );
-
-    }else{
-
-        reportFires =
-            getVisibleFires();
-
-    }
-
-    const bounds =
+    const bounds=
         state.map.getBounds();
 
     reportFires.forEach(
         fire=>{
 
-            const lat =
+            const lat=
                 Number(
                     fire.latitude
                 );
 
-            const lon =
+            const lon=
                 Number(
                     fire.longitude
                 );
@@ -4880,9 +4229,7 @@ async function buildReportMap(){
             if(
 
                 !Number.isFinite(lat)
-
                 ||
-
                 !Number.isFinite(lon)
 
             ){
@@ -4901,13 +4248,13 @@ async function buildReportMap(){
 
             }
 
-            const fireWorldX =
+            const fireWorldX=
                 lonToWorldX(
                     lon,
                     zoom
                 );
 
-            const fireWorldY =
+            const fireWorldY=
                 latToWorldY(
                     lat,
                     zoom
@@ -4933,70 +4280,58 @@ async function buildReportMap(){
 }
 
 
-/* =========================================================
-   REPORT
-========================================================= */
-
 async function createRegionReport(){
 
     try{
 
-        const mapCanvas =
+        const mapCanvas=
             await buildReportMap();
 
         const headerHeight=92;
 
-        const reportCanvas =
+        const reportCanvas=
             document.createElement(
                 "canvas"
             );
 
-        reportCanvas.width =
+        reportCanvas.width=
             mapCanvas.width;
 
-        reportCanvas.height =
+        reportCanvas.height=
             mapCanvas.height+
             headerHeight;
 
-        const ctx =
+        const ctx=
             reportCanvas.getContext(
                 "2d"
             );
 
-        ctx.fillStyle =
+        ctx.fillStyle=
             "#ffffff";
 
         ctx.fillRect(
-
             0,
             0,
-
             reportCanvas.width,
             reportCanvas.height
-
         );
 
-        ctx.fillStyle =
+        ctx.fillStyle=
             "#b71c1c";
 
         ctx.fillRect(
-
             0,
             0,
-
             reportCanvas.width,
             headerHeight
-
         );
 
         try{
 
-            const logo =
+            const logo=
                 await loadImage(
-
                     "logo.webp?v="+
                     Date.now()
-
                 );
 
             const logoSize=66;
@@ -5026,14 +4361,16 @@ async function createRegionReport(){
 
         }
 
-        ctx.direction="rtl";
+        ctx.direction=
+            "rtl";
 
-        ctx.textAlign="right";
+        ctx.textAlign=
+            "right";
 
-        ctx.fillStyle =
+        ctx.fillStyle=
             "#ffffff";
 
-        ctx.font =
+        ctx.font=
             "bold 25px Tahoma";
 
         ctx.fillText(
@@ -5046,14 +4383,14 @@ async function createRegionReport(){
 
         );
 
-        let periodText =
+        let periodText=
             "۲۴ ساعت";
 
         if(
             state.mode==="5days"
         ){
 
-            periodText =
+            periodText=
                 "۵ روز";
 
         }
@@ -5062,7 +4399,7 @@ async function createRegionReport(){
             state.mode==="today"
         ){
 
-            periodText =
+            periodText=
                 "از ۰۰:۰۰ امروز تا آخرین برداشت";
 
         }
@@ -5077,7 +4414,7 @@ async function createRegionReport(){
 
         ){
 
-            periodText =
+            periodText=
 
                 "آرشیو "
 
@@ -5089,44 +4426,17 @@ async function createRegionReport(){
 
         }
 
-        let fires;
+        const fires=
+            getVisibleFires();
 
-        if(
-
-            state.mode==="archive"
-
-            &&
-
-            state.currentArchiveDate
-
-        ){
-
-            fires =
-                applyAreaFilter(
-
-                    getArchiveFires(
-
-                        state.currentArchiveDate
-
-                    )
-
-                );
-
-        }else{
-
-            fires =
-                getVisibleFires();
-
-        }
-
-        let filterText =
+        let filterText=
             "بدون فیلتر مکانی";
 
         if(
             state.areaFilter==="protected"
         ){
 
-            filterText =
+            filterText=
                 "مناطق چهارگانه محیط زیست";
 
         }
@@ -5135,38 +4445,26 @@ async function createRegionReport(){
             state.areaFilter==="hunting"
         ){
 
-            filterText =
+            filterText=
                 "مناطق شکار ممنوع";
 
         }
 
-        ctx.font =
+        ctx.font=
             "13px Tahoma";
 
         ctx.fillText(
 
             "تعداد رخداد: "
-
             +
-
-            fa(
-                fires.length
-            )
-
+            fa(fires.length)
             +
-
             " | بازه: "
-
             +
-
             periodText
-
             +
-
             " | فیلتر: "
-
             +
-
             filterText,
 
             reportCanvas.width-24,
@@ -5185,12 +4483,12 @@ async function createRegionReport(){
 
         );
 
-        const link =
+        const link=
             document.createElement(
                 "a"
             );
 
-        link.download =
+        link.download=
 
             "fire_report_"
 
@@ -5207,7 +4505,7 @@ async function createRegionReport(){
 
             ".png";
 
-        link.href =
+        link.href=
             reportCanvas.toDataURL(
                 "image/png"
             );
@@ -5242,19 +4540,19 @@ async function createRegionReport(){
 
 function toggleNight(){
 
-    const night =
+    const night=
         document.body.classList.toggle(
             "night"
         );
 
-    const btn =
+    const btn=
         $("nightBtn");
 
     if(
         night
     ){
 
-        btn.textContent =
+        btn.textContent=
             "☀️";
 
         localStorage.setItem(
@@ -5264,7 +4562,7 @@ function toggleNight(){
 
     }else{
 
-        btn.textContent =
+        btn.textContent=
             "🌙";
 
         localStorage.setItem(
@@ -5291,14 +4589,14 @@ function restoreNight(){
             "night"
         );
 
-        const btn =
+        const btn=
             $("nightBtn");
 
         if(
             btn
         ){
 
-            btn.textContent =
+            btn.textContent=
                 "☀️";
 
         }
@@ -5341,22 +4639,23 @@ $("refreshBtn")
 
 
 /* =========================================================
-   AUTO DATE CHANGE
-   ---------------------------------------------------------
-   روز جدید = دقیقاً 00:00 Asia/Tehran
+   AUTO DAY CHANGE
 ========================================================= */
 
-let lastIranDate =
+let lastIranDate=
     getCurrentIranDate();
 
 
 setInterval(
-
     async()=>{
 
-        const currentIranDate =
+        const currentIranDate=
             getCurrentIranDate();
 
+        /*
+           تغییر روز فقط بر اساس Asia/Tehran
+           و دقیقاً بعد از ۰۰:۰۰
+        */
         if(
             currentIranDate===
             lastIranDate
@@ -5373,32 +4672,24 @@ setInterval(
             currentIranDate
         );
 
-        lastIranDate =
+        lastIranDate=
             currentIranDate;
 
-        /*
-           دریافت آرشیوها و داده جاری جدید
-        */
         await loadArchiveIndex();
 
         await loadArchives();
 
-        await loadFallbackCSV();
-
-        /*
-           آخرین آرشیو واقعی دوباره تعیین می‌شود.
-        */
         setArchiveSliderToLatest();
 
-        updateArchiveDisplay();
-
         /*
-           با ورود به روز جدید، سامانه از آرشیو
-           خارج و دوباره روی وضعیت جاری می‌رود.
+           شروع روز جدید:
+           بازگشت به داده‌های جاری/زمانی
         */
-        state.mode="24h";
+        state.mode=
+            "24h";
 
-        state.currentArchiveDate=null;
+        state.currentArchiveDate=
+            null;
 
         document
             .querySelectorAll(
@@ -5417,13 +4708,76 @@ setInterval(
 
         refreshFireDisplay();
 
+        updateArchiveDisplay();
+
         updateStatus();
 
     },
-
-    10000
-
+    5000
 );
+
+
+/* =========================================================
+   CURRENT IRAN DATE
+========================================================= */
+
+function getCurrentIranDate(){
+
+    const parts=
+        new Intl.DateTimeFormat(
+
+            "en-CA",
+
+            {
+
+                timeZone:
+                    "Asia/Tehran",
+
+                year:"numeric",
+
+                month:"2-digit",
+
+                day:"2-digit"
+
+            }
+
+        )
+        .formatToParts(
+            new Date()
+        );
+
+    const values={};
+
+    parts.forEach(
+        part=>{
+
+            if(
+                part.type!=="literal"
+            ){
+
+                values[
+                    part.type
+                ]=
+                    part.value;
+
+            }
+
+        }
+    );
+
+    return(
+
+        values.year+
+        "-"
+        +
+        values.month+
+        "-"
+        +
+        values.day
+
+    );
+
+}
 
 
 /* =========================================================
@@ -5441,20 +4795,17 @@ async function init(){
     await loadHuntingLayer();
 
     /*
-       آرشیوهای واقعی، شامل امروز
+       archive/index.json
     */
     await loadArchiveIndex();
 
+    /*
+       فایل‌های آرشیو واقعی دارای رکورد
+    */
     await loadArchives();
 
     /*
-       fires.csv
-    */
-    await loadFallbackCSV();
-
-    /*
-       آخرین آرشیو واقعی انتخاب می‌شود.
-       در وضعیت فعلی باید 2026-09-03 باشد.
+       آخرین آرشیو واقعی
     */
     setArchiveSliderToLatest();
 
@@ -5462,18 +4813,31 @@ async function init(){
 
     /*
        شروع سامانه:
-       داده جاری + حریق‌های ۲۴ ساعت گذشته
+       ۲۴ ساعت گذشته
     */
-    state.mode="24h";
+    state.mode=
+        "24h";
 
-    state.currentArchiveDate=null;
+    state.currentArchiveDate=
+        null;
+
+    document
+        .querySelectorAll(
+            ".mode-btn"
+        )
+        .forEach(
+            button=>{
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.mode==="24h"
+                );
+
+            }
+        );
 
     refreshFireDisplay();
 
-    /*
-       فقط عنوان و تعداد آخرین آرشیو را نشان می‌دهیم؛
-       نقشه همچنان روی حالت ۲۴ ساعت گذشته است.
-    */
     updateArchiveDisplay();
 
     updateStatus();
@@ -5496,5 +4860,4 @@ init();
 </script>
 
 </body>
-
 </html>
