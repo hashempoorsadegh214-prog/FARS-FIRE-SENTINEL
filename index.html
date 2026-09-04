@@ -2052,22 +2052,30 @@ function createMap(){
 
         );
 
-
     /*
-       تصویر ماهواره‌ای
+       تصویر ماهواره‌ای NASA GIBS
+       منبع مستقل از ArcGIS؛ تصویر روزانه VIIRS
     */
+    const satelliteDate =
+        new Date(
+            Date.now() - 24 * 60 * 60 * 1000
+        )
+        .toISOString()
+        .slice(0, 10);
 
     state.satelliteMap=
         L.tileLayer(
 
-            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+            `https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/VIIRS_SNPP_CorrectedReflectance_TrueColor/default/${satelliteDate}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg`,
 
             {
 
                 maxZoom:18,
-
+                maxNativeZoom:9,
+                minZoom:0,
+                tileSize:256,
                 attribution:
-                    "Tiles © Esri"
+                    "NASA EOSDIS GIBS / VIIRS SNPP"
 
             }
 
