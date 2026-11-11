@@ -1,0 +1,2 @@
+﻿latitude,longitude,acq_date,acq_time,iran_date,iran_time,year,month,day,satellite,instrument,detected_sensor,confidence,frp,brightness,daynight,scan,track
+29.25587,53.123,2026-11-10,2252,2026-11-11,02:22,2026,11,11,N21,VIIRS,VIIRS,n,2.65,329.11,N,0.36,0.57
