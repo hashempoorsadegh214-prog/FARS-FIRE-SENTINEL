@@ -1,4 +1,5 @@
 ﻿latitude,longitude,acq_date,acq_time,iran_date,iran_time,year,month,day,satellite,instrument,detected_sensor,confidence,frp,brightness,daynight,scan,track
+27.49241,52.9757,2026-11-13,1700,2026-11-13,20:30,2026,11,13,Terra,MODIS,MODIS,13,8.66,300.05,N,1.36,1.15
 29.25453,53.12584,2026-11-13,1028,2026-11-13,13:58,2026,11,13,N20,VIIRS,VIIRS,n,4.6,344.69,D,0.49,0.65
 29.194,52.83971,2026-11-13,932,2026-11-13,13:02,2026,11,13,N21,VIIRS,VIIRS,n,3.88,332.1,D,0.39,0.36
 29.36958,52.61302,2026-11-13,932,2026-11-13,13:02,2026,11,13,N21,VIIRS,VIIRS,n,2.57,330.23,D,0.39,0.36
